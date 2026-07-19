@@ -1,3 +1,5 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>政党相性診断 — あなたに近い党は？</title>
 <style>
 :root{ --paper:#f3f4f7; --card:#fbfbfd; --ink:#1b2130; --muted:#5c6675; --line:#dcdfe6;
@@ -28,6 +30,14 @@ h1{ font-family:var(--serif); font-weight:600; font-size:clamp(24px,4.4vw,36px);
 .rule{ height:1px; background:var(--line); border:0; margin:26px 0; }
 .qhead{ font-family:var(--serif); font-size:18px; font-weight:600; margin:0 0 4px; }
 .qsub{ color:var(--muted); font-size:13px; margin:0 0 16px; }
+/* 進捗バー：診断中は常に上部に見える。この画面ではサイトヘッダは追従させず進捗を優先 */
+.sitehdr{ position:static !important; }
+.prog{ position:sticky; top:0; z-index:80; background:var(--paper);
+  display:flex; align-items:center; gap:12px; padding:11px 0; margin:0 0 14px; border-bottom:1px solid var(--line); }
+.prog-bar{ flex:1; height:8px; background:var(--accent-soft); border-radius:99px; overflow:hidden; }
+.prog-fill{ height:100%; width:0%; background:var(--accent); border-radius:99px; transition:width .35s ease; }
+.prog-txt{ font-family:var(--mono); font-size:12px; color:var(--muted); white-space:nowrap; font-variant-numeric:tabular-nums; }
+.prog-txt b{ color:var(--accent); font-size:14.5px; }
 .oi-grid{ display:grid; grid-template-columns:1fr 1fr; gap:10px; }
 @media (max-width:560px){ .oi-grid{ grid-template-columns:1fr; } }
 .oi-item{ background:var(--card); border:1.5px solid var(--line); border-radius:12px;
@@ -127,13 +137,18 @@ details.arg[open]>summary{ margin-bottom:10px; }
 a.src{ color:var(--accent); text-decoration:none; } a.src:hover{ text-decoration:underline; }
 :focus-visible{ outline:2px solid var(--accent); outline-offset:2px; border-radius:4px; }
 </style>
-<div class="wrap"><style>html{scroll-padding-top:64px;}.sitehdr{position:sticky;top:0;z-index:100;background:var(--paper);margin:calc(-1*clamp(20px,5vw,56px)) calc(-1*clamp(16px,5vw,40px)) 26px;padding:10px clamp(16px,5vw,40px);border-bottom:1px solid var(--line);}.sitehdr-in{max-width:900px;margin:0 auto;display:flex;align-items:center;gap:12px;}.brand{font-family:var(--serif);font-weight:600;font-size:15px;color:var(--ink);text-decoration:none;white-space:nowrap;}.brand span{color:var(--accent);}.topnav{display:flex;flex-wrap:wrap;gap:6px;margin-left:auto;font-family:var(--mono);font-size:12px}.topnav a{color:var(--muted);text-decoration:none;border:1px solid var(--line);border-radius:20px;padding:5px 11px}.topnav a:hover{border-color:var(--accent);color:var(--accent)}.topnav a.cur{background:var(--accent);color:#fff;border-color:var(--accent)}@media(max-width:600px){.sitehdr-in{flex-wrap:wrap;gap:8px;}.topnav{width:100%;margin-left:0;font-size:11px;gap:5px;justify-content:space-between;}.topnav a{padding:5px 9px;}}</style><header class="sitehdr"><div class="sitehdr-in"><a class="brand" href="index.html">政策<span>くらべ</span></a><nav class="topnav"><a href="index.html">トップ</a><a href="guide.html">政策ガイド</a><a href="oneissue.html">ワンイシュー</a><a href="shindan.html" class="cur">相性診断</a><a href="shukei.html">みんなの結果</a><a href="about.html">について</a><a href="feedback.html">ご意見</a></nav></div></header><div class="doc">
+<div class="wrap"><style>html{scroll-padding-top:64px;}.sitehdr{position:sticky;top:0;z-index:100;background:var(--paper);margin:calc(-1*clamp(20px,5vw,56px)) calc(-1*clamp(16px,5vw,40px)) 26px;padding:10px clamp(16px,5vw,40px);border-bottom:1px solid var(--line);}.sitehdr-in{max-width:900px;margin:0 auto;display:flex;align-items:center;gap:12px;}.brand{font-family:var(--serif);font-weight:600;font-size:15px;color:var(--ink);text-decoration:none;white-space:nowrap;}.brand span{color:var(--accent);}.topnav{display:flex;flex-wrap:wrap;gap:6px;margin-left:auto;font-family:var(--mono);font-size:12px}.topnav a{color:var(--muted);text-decoration:none;border:1px solid var(--line);border-radius:20px;padding:5px 11px}.topnav a:hover{border-color:var(--accent);color:var(--accent)}.topnav a.cur{background:var(--accent);color:#fff;border-color:var(--accent)}@media(max-width:600px){.sitehdr{padding:8px clamp(16px,5vw,40px);}.sitehdr-in{gap:10px;}.brand{flex:none;font-size:14px;}.topnav{flex:1;min-width:0;margin-left:6px;flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;font-size:11.5px;gap:5px;}.topnav::-webkit-scrollbar{display:none;}.topnav a{flex:none;white-space:nowrap;padding:5px 10px;}}</style><header class="sitehdr"><div class="sitehdr-in"><a class="brand" href="index.html">政策<span>くらべ</span></a><nav class="topnav"><a href="index.html">トップ</a><a href="guide.html">政策ガイド</a><a href="oneissue.html">ワンイシュー</a><a href="shindan.html" class="cur">相性診断</a><a href="shukei.html">みんなの結果</a><a href="about.html">について</a><a href="feedback.html">ご意見</a></nav></div></header><div class="doc">
   <p class="eyebrow">比例区・投票ガイド ／ 相性診断 v1.7</p>
   <h1>あなたに近い政党は？ ― 1点で選ぶか、全体で選ぶか</h1>
   <p class="lede">2つの角度で診断します。<b>第1問</b>は各党の「ワンイシュー（特に重視する1点）」への共感、
   <b>第2問以降</b>は主要政策への賛否です。各党の立場は<b>第217回国会の参院採決・国会発言</b>に基づきます。
   <b>点数で党を格付けするものではなく、あなたの回答との一致度を示すだけ</b>です。</p>
   <hr class="rule">
+
+  <div class="prog" id="prog">
+    <div class="prog-bar"><div class="prog-fill" id="progFill"></div></div>
+    <span class="prog-txt"><b id="progNum">0</b> / 11 問 回答</span>
+  </div>
 
   <p class="qhead">第1問　各党のワンイシュー、特に共感するものを1つ選んでください <span class="req">必須</span></p>
   <p class="qsub">最も共感する1つを選択（1つだけ）。ワンイシューにこだわらないなら「特にない」を。
@@ -174,6 +189,14 @@ function selectOne(item){   // 単一選択(必須・ラジオ式)
   const m=item.querySelector('.oi-main');
   if(m) m.setAttribute('aria-pressed','true');
   const err=document.getElementById('q1err'); if(err) err.style.display='none';
+  updateProg();
+}
+function updateProg(){
+  const oi=document.querySelector('.oi-item.sel')?1:0;
+  const pol=document.querySelectorAll('.pq .opt.sel').length;
+  const n=oi+pol, total=11;
+  const num=document.getElementById('progNum'); if(num) num.textContent=n;
+  const fill=document.getElementById('progFill'); if(fill) fill.style.width=(n/total*100)+'%';
 }
 document.querySelectorAll('.oi-main').forEach(m=>{
   const item=m.closest('.oi-item');
@@ -183,6 +206,7 @@ document.querySelectorAll('.oi-main').forEach(m=>{
 document.querySelectorAll('.pq .opt').forEach(b=>b.addEventListener('click',()=>{
   b.parentNode.querySelectorAll('.opt').forEach(x=>x.classList.remove('sel'));
   b.classList.add('sel');
+  updateProg();
   // 「どちらでもない」を選んだら、その争点の対立軸を自動で開いて理解を助ける
   if(b.dataset.val==='0'){ var d=b.closest('.pq').querySelector('details.arg'); if(d&&!d.open) d.open=true; }
 }));
@@ -263,8 +287,10 @@ document.getElementById('go').addEventListener('click',compute);
 document.getElementById('reset').addEventListener('click',()=>{
   document.querySelectorAll('.sel,.wt.on').forEach(e=>{e.classList.remove('sel');e.classList.remove('on');});
   document.getElementById('result').innerHTML='';
+  updateProg();
   window.scrollTo({top:0,behavior:'smooth'});
 });
+updateProg();
 // 最新ニュース: 同一フォルダの news.json を読んで各設問に見出しを表示(無ければ何もしない)
 fetch('news.json').then(function(r){return r.ok?r.json():null;}).then(function(nd){
   if(!nd||!nd.topics) return;
