@@ -1,0 +1,101 @@
+<title>みんなの結果（集計）— 政党相性診断</title>
+<style>
+:root{ --paper:#f3f4f7; --card:#fbfbfd; --ink:#1b2130; --muted:#5c6675; --line:#dcdfe6;
+  --accent:#3a4d8f; --accent-soft:#e6e9f4; --pos:#2f8f7f; --neg:#c1704f; --neu:#9aa3b2;
+  --shadow:0 1px 2px rgba(20,28,50,.05),0 8px 24px rgba(20,28,50,.05); }
+@media (prefers-color-scheme:dark){ :root{ --paper:#12151d; --card:#191d27; --ink:#e7eaf1;
+  --muted:#98a1b2; --line:#282e3b; --accent:#8ea2e6; --accent-soft:#222a40; --neu:#5c6473;
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 10px 30px rgba(0,0,0,.35); } }
+:root[data-theme="dark"]{ --paper:#12151d; --card:#191d27; --ink:#e7eaf1; --muted:#98a1b2;
+  --line:#282e3b; --accent:#8ea2e6; --accent-soft:#222a40; --neu:#5c6473;
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 10px 30px rgba(0,0,0,.35); }
+:root[data-theme="light"]{ --paper:#f3f4f7; --card:#fbfbfd; --ink:#1b2130; --muted:#5c6675;
+  --line:#dcdfe6; --accent:#3a4d8f; --accent-soft:#e6e9f4; --neu:#9aa3b2;
+  --shadow:0 1px 2px rgba(20,28,50,.05),0 8px 24px rgba(20,28,50,.05); }
+*{ box-sizing:border-box; }
+.wrap{ --serif:"Hiragino Mincho ProN","Yu Mincho",YuMincho,"Noto Serif JP",serif;
+  --sans:"Hiragino Kaku Gothic ProN","Yu Gothic",YuGothic,"Noto Sans JP",Meiryo,sans-serif;
+  --mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+  background:var(--paper); color:var(--ink); font-family:var(--sans); line-height:1.7;
+  -webkit-font-smoothing:antialiased; padding:clamp(20px,5vw,56px) clamp(16px,5vw,40px); }
+.doc{ max-width:800px; margin:0 auto; }
+.eyebrow{ font-family:var(--mono); font-size:12px; letter-spacing:.16em; text-transform:uppercase;
+  color:var(--accent); margin:0 0 12px; }
+h1{ font-family:var(--serif); font-weight:600; font-size:clamp(24px,4.4vw,36px); line-height:1.3;
+  text-wrap:balance; margin:0 0 14px; }
+.lede{ color:var(--muted); font-size:14.5px; margin:0 0 8px; }
+.demo{ display:inline-block; font-family:var(--mono); font-size:11.5px; color:#a4700f;
+  background:rgba(200,140,20,.12); border:1px solid rgba(200,140,20,.4); border-radius:8px;
+  padding:6px 12px; margin:6px 0 4px; }
+.n{ font-family:var(--mono); font-variant-numeric:tabular-nums; }
+.rule{ height:1px; background:var(--line); border:0; margin:24px 0; }
+.sec{ font-family:var(--serif); font-size:19px; font-weight:600; margin:0 0 4px; }
+.sec-s{ color:var(--muted); font-size:13px; margin:0 0 18px; }
+.card{ background:var(--card); border:1px solid var(--line); border-radius:16px; padding:20px 22px;
+  box-shadow:var(--shadow); margin-bottom:18px; }
+.total{ font-family:var(--mono); font-variant-numeric:tabular-nums; font-size:clamp(26px,4vw,34px);
+  font-weight:600; color:var(--accent); }
+.total small{ font-size:14px; color:var(--muted); font-weight:400; }
+/* C */
+.crow{ display:grid; grid-template-columns:150px 1fr 62px; gap:12px; align-items:center; margin-bottom:11px; }
+.cnm b{ font-family:var(--serif); font-weight:600; font-size:14px; display:block; }
+.cnm span{ font-size:10.5px; color:var(--muted); display:block; line-height:1.4; }
+.cbarwrap{ background:var(--line); border-radius:6px; height:14px; overflow:hidden; }
+.cbar{ height:100%; background:var(--accent); border-radius:6px; }
+.cval{ font-family:var(--mono); font-variant-numeric:tabular-nums; font-weight:600; text-align:right; }
+.cval small{ display:block; font-size:10px; color:var(--muted); font-weight:400; }
+@media(max-width:560px){ .crow{ grid-template-columns:120px 1fr 52px; } }
+/* B */
+.bq{ margin-bottom:18px; }
+.bq-q{ font-size:13.5px; font-weight:600; margin:0 0 8px; }
+.bq-n{ font-family:var(--mono); color:var(--accent); margin-right:8px; }
+.bseg{ display:flex; height:22px; border-radius:7px; overflow:hidden; border:1px solid var(--line); }
+.sg{ height:100%; }
+.sg.agree{ background:var(--pos); } .sg.neu{ background:var(--neu); } .sg.opp{ background:var(--neg); }
+.bkey{ display:flex; flex-wrap:wrap; gap:14px; margin-top:7px; font-size:11.5px; }
+.bkey .k::before{ content:""; display:inline-block; width:10px; height:10px; border-radius:3px;
+  margin-right:5px; vertical-align:-1px; }
+.k.agree{ color:var(--pos); } .k.agree::before{ background:var(--pos); }
+.k.neu{ color:var(--muted); } .k.neu::before{ background:var(--neu); }
+.k.opp{ color:var(--neg); } .k.opp::before{ background:var(--neg); }
+.note{ font-size:12px; color:var(--muted); line-height:1.85; margin-top:20px; }
+.note b{ color:var(--ink); }
+a.src{ color:var(--accent); text-decoration:none; } a.src:hover{ text-decoration:underline; }
+</style>
+<div class="wrap"><div class="doc"><style>.topnav{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 22px;font-family:var(--mono);font-size:12px}.topnav a{color:var(--muted);text-decoration:none;border:1px solid var(--line);border-radius:20px;padding:5px 12px}.topnav a:hover{border-color:var(--accent);color:var(--accent)}.topnav a.cur{background:var(--accent);color:#fff;border-color:var(--accent)}</style><nav class="topnav"><a href="index.html">トップ</a><a href="guide.html">政策ガイド</a><a href="shindan.html">相性診断</a><a href="shukei.html" class="cur">みんなの結果</a><a href="feedback.html">ご意見</a></nav>
+  <p class="eyebrow">比例区・投票ガイド ／ みんなの結果</p>
+  <h1>みんなの相性診断の結果（集計）</h1>
+  <p class="demo" id="demoBadge">※ 現在はサンプル（ダミー）データです。実データはFirebase接続後に反映されます。</p>
+  <p class="lede">相性診断に回答した人の集計です。<b>これは診断しに来た人だけの自己選択サンプルで、
+  世論調査（代表サンプル）ではありません。</b>あくまで参考値としてご覧ください。個人情報は一切集めていません。</p>
+  <div class="card" style="text-align:center">
+    <div class="total" id="totalN">1,000<small> 件の回答</small></div>
+  </div>
+
+  <hr class="rule">
+  <p class="sec">C ／ 共感された「ワンイシュー」ランキング</p>
+  <p class="sec-s">第1問で「最も共感する」と選ばれた各党ワンイシューの割合（1人1つの単一選択・必須）。</p>
+  <div class="card" id="cCard"><div class="crow"><div class="cnm"><b>れいわ</b><span>消費税廃止・積極財政</span></div><div class="cbarwrap"><div class="cbar" style="width:21%"></div></div><div class="cval">21%<small>210</small></div></div><div class="crow"><div class="cnm"><b>国民</b><span>手取りを増やす（減税・103万円の壁）</span></div><div class="cbarwrap"><div class="cbar" style="width:18%"></div></div><div class="cval">18%<small>180</small></div></div><div class="crow"><div class="cnm"><b>維新</b><span>身を切る改革・歳出改革</span></div><div class="cbarwrap"><div class="cbar" style="width:12%"></div></div><div class="cval">12%<small>120</small></div></div><div class="crow"><div class="cnm"><b>参政</b><span>消費税減税・インボイス廃止</span></div><div class="cbarwrap"><div class="cbar" style="width:11%"></div></div><div class="cval">11%<small>110</small></div></div><div class="crow"><div class="cnm"><b>自民</b><span>防衛力の強化と現実的な政権運営</span></div><div class="cbarwrap"><div class="cbar" style="width:11%"></div></div><div class="cval">11%<small>110</small></div></div><div class="crow"><div class="cnm"><b>共産</b><span>軍拡より暮らし（大軍拡・改憲に反対）</span></div><div class="cbarwrap"><div class="cbar" style="width:10%"></div></div><div class="cval">10%<small>95</small></div></div><div class="crow"><div class="cnm"><b>立憲</b><span>行政・財政の透明化と説明責任</span></div><div class="cbarwrap"><div class="cbar" style="width:8%"></div></div><div class="cval">8%<small>85</small></div></div><div class="crow"><div class="cnm"><b>（特にない）</b><span>ワンイシューにこだわらない</span></div><div class="cbarwrap"><div class="cbar" style="width:5%"></div></div><div class="cval">5%<small>50</small></div></div><div class="crow"><div class="cnm"><b>公明</b><span>福祉と現場の処遇改善</span></div><div class="cbarwrap"><div class="cbar" style="width:4%"></div></div><div class="cval">4%<small>40</small></div></div></div>
+
+  <hr class="rule">
+  <p class="sec">B ／ 各政策への賛否</p>
+  <p class="sec-s">第2問以降の各設問に、回答者全体がどう答えたか。</p>
+  <div class="card" id="bCard"><div class="bq"><p class="bq-q"><span class="bq-n">Q2</span>消費税は引き下げる（または廃止する）べきだ</p><div class="bseg"><div class="sg agree" style="width:64%" title="賛成 64%"></div><div class="sg neu" style="width:18%" title="どちらでもない 18%"></div><div class="sg opp" style="width:18%" title="反対 18%"></div></div><div class="bkey"><span class="k agree">賛成 64%</span><span class="k neu">どちらでもない 18%</span><span class="k opp">反対 18%</span></div></div><div class="bq"><p class="bq-q"><span class="bq-n">Q3</span>防衛費を増やし、防衛力を強化すべきだ</p><div class="bseg"><div class="sg agree" style="width:47%" title="賛成 47%"></div><div class="sg neu" style="width:25%" title="どちらでもない 25%"></div><div class="sg opp" style="width:28%" title="反対 28%"></div></div><div class="bkey"><span class="k agree">賛成 47%</span><span class="k neu">どちらでもない 25%</span><span class="k opp">反対 28%</span></div></div><div class="bq"><p class="bq-q"><span class="bq-n">Q4</span>今回の年金制度改革（給付水準の調整を含む現行案）を支持する</p><div class="bseg"><div class="sg agree" style="width:30%" title="賛成 30%"></div><div class="sg neu" style="width:33%" title="どちらでもない 33%"></div><div class="sg opp" style="width:37%" title="反対 37%"></div></div><div class="bkey"><span class="k agree">賛成 30%</span><span class="k neu">どちらでもない 33%</span><span class="k opp">反対 37%</span></div></div><div class="bq"><p class="bq-q"><span class="bq-n">Q5</span>脱炭素・GXを政府主導で強力に進めるべきだ</p><div class="bseg"><div class="sg agree" style="width:42%" title="賛成 42%"></div><div class="sg neu" style="width:33%" title="どちらでもない 33%"></div><div class="sg opp" style="width:25%" title="反対 25%"></div></div><div class="bkey"><span class="k agree">賛成 42%</span><span class="k neu">どちらでもない 33%</span><span class="k opp">反対 25%</span></div></div><div class="bq"><p class="bq-q"><span class="bq-n">Q6</span>憲法改正（緊急事態条項・議員任期延長など）を進めるべきだ</p><div class="bseg"><div class="sg agree" style="width:38%" title="賛成 38%"></div><div class="sg neu" style="width:26%" title="どちらでもない 26%"></div><div class="sg opp" style="width:36%" title="反対 36%"></div></div><div class="bkey"><span class="k agree">賛成 38%</span><span class="k neu">どちらでもない 26%</span><span class="k opp">反対 36%</span></div></div><div class="bq"><p class="bq-q"><span class="bq-n">Q7</span>財政は健全化（PB黒字化・歳出抑制）を積極財政より優先すべきだ</p><div class="bseg"><div class="sg agree" style="width:40%" title="賛成 40%"></div><div class="sg neu" style="width:30%" title="どちらでもない 30%"></div><div class="sg opp" style="width:30%" title="反対 30%"></div></div><div class="bkey"><span class="k agree">賛成 40%</span><span class="k neu">どちらでもない 30%</span><span class="k opp">反対 30%</span></div></div><div class="bq"><p class="bq-q"><span class="bq-n">Q8</span>日米同盟を基軸に安全保障協力（協定など）を強化すべきだ</p><div class="bseg"><div class="sg agree" style="width:52%" title="賛成 52%"></div><div class="sg neu" style="width:26%" title="どちらでもない 26%"></div><div class="sg opp" style="width:22%" title="反対 22%"></div></div><div class="bkey"><span class="k agree">賛成 52%</span><span class="k neu">どちらでもない 26%</span><span class="k opp">反対 22%</span></div></div><div class="bq"><p class="bq-q"><span class="bq-n">Q9</span>原発を再稼働し、活用（新増設・次世代炉を含む）を進めるべきだ</p><div class="bseg"><div class="sg agree" style="width:48%" title="賛成 48%"></div><div class="sg neu" style="width:20%" title="どちらでもない 20%"></div><div class="sg opp" style="width:32%" title="反対 32%"></div></div><div class="bkey"><span class="k agree">賛成 48%</span><span class="k neu">どちらでもない 20%</span><span class="k opp">反対 32%</span></div></div><div class="bq"><p class="bq-q"><span class="bq-n">Q10</span>外国人の受け入れは、もっと規制・抑制すべきだ</p><div class="bseg"><div class="sg agree" style="width:42%" title="賛成 42%"></div><div class="sg neu" style="width:24%" title="どちらでもない 24%"></div><div class="sg opp" style="width:34%" title="反対 34%"></div></div><div class="bkey"><span class="k agree">賛成 42%</span><span class="k neu">どちらでもない 24%</span><span class="k opp">反対 34%</span></div></div><div class="bq"><p class="bq-q"><span class="bq-n">Q11</span>高校・大学まで、教育の無償化を進めるべきだ</p><div class="bseg"><div class="sg agree" style="width:70%" title="賛成 70%"></div><div class="sg neu" style="width:18%" title="どちらでもない 18%"></div><div class="sg opp" style="width:12%" title="反対 12%"></div></div><div class="bkey"><span class="k agree">賛成 70%</span><span class="k neu">どちらでもない 18%</span><span class="k opp">反対 12%</span></div></div></div>
+
+  <hr class="rule">
+  <p class="sec">D ／ みんなが「特に重視」した争点</p>
+  <p class="sec-s">診断で「◎ 特に重視する」を押した割合（複数選択可）。いま何に関心が集まっているかの目安。</p>
+  <div class="card" id="dCard"><div class="crow"><div class="cnm"><b>消費税減税</b></div><div class="cbarwrap"><div class="cbar" style="width:46%"></div></div><div class="cval">46%<small>460</small></div></div><div class="crow"><div class="cnm"><b>防衛費増額</b></div><div class="cbarwrap"><div class="cbar" style="width:38%"></div></div><div class="cval">38%<small>380</small></div></div><div class="crow"><div class="cnm"><b>外国人受け入れ規制</b></div><div class="cbarwrap"><div class="cbar" style="width:35%"></div></div><div class="cval">35%<small>350</small></div></div><div class="crow"><div class="cnm"><b>原発の活用</b></div><div class="cbarwrap"><div class="cbar" style="width:32%"></div></div><div class="cval">32%<small>320</small></div></div><div class="crow"><div class="cnm"><b>年金改革の支持</b></div><div class="cbarwrap"><div class="cbar" style="width:30%"></div></div><div class="cval">30%<small>300</small></div></div><div class="crow"><div class="cnm"><b>教育の無償化</b></div><div class="cbarwrap"><div class="cbar" style="width:30%"></div></div><div class="cval">30%<small>300</small></div></div><div class="crow"><div class="cnm"><b>憲法改正</b></div><div class="cbarwrap"><div class="cbar" style="width:26%"></div></div><div class="cval">26%<small>260</small></div></div><div class="crow"><div class="cnm"><b>財政健全化を優先</b></div><div class="cbarwrap"><div class="cbar" style="width:24%"></div></div><div class="cval">24%<small>240</small></div></div><div class="crow"><div class="cnm"><b>日米同盟の強化</b></div><div class="cbarwrap"><div class="cbar" style="width:21%"></div></div><div class="cval">21%<small>210</small></div></div><div class="crow"><div class="cnm"><b>脱炭素・GX</b></div><div class="cbarwrap"><div class="cbar" style="width:18%"></div></div><div class="cval">18%<small>180</small></div></div></div>
+
+  <p class="note">
+    <b>集計の作り方（予定）：</b>診断で「結果を見る」を押すと、選んだワンイシューと各設問の賛否だけが
+    件数として1つずつ加算されます（個人が特定できる情報は保存しません）。<br>
+    <b>読み方の注意：</b>回答者は自ら診断に来た人に偏っており、母集団を代表しません。数字の独り歩きに注意してください。<br>
+    <a class="src" href="shindan.html">▸ 自分でも相性診断をやってみる</a>
+    <a class="src" href="index.html">▸ トップにもどる</a>
+  </p>
+</div></div>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-check-compat.js"></script>
+<script src="firebase.js"></script><script>(function(){if(!window.KG)return;var OI=[{"id": "jimin", "short": "自民", "oneissue": "防衛力の強化と現実的な政権運営"}, {"id": "rikken", "short": "立憲", "oneissue": "行政・財政の透明化と説明責任"}, {"id": "ishin", "short": "維新", "oneissue": "身を切る改革・歳出改革"}, {"id": "kokumin", "short": "国民", "oneissue": "手取りを増やす（減税・103万円の壁）"}, {"id": "komei", "short": "公明", "oneissue": "福祉と現場の処遇改善"}, {"id": "kyosan", "short": "共産", "oneissue": "軍拡より暮らし（大軍拡・改憲に反対）"}, {"id": "reiwa", "short": "れいわ", "oneissue": "消費税廃止・積極財政"}, {"id": "sansei", "short": "参政", "oneissue": "消費税減税・インボイス廃止"}, {"id": "none", "short": "（特にない）", "oneissue": "ワンイシューにこだわらない"}];var QS=["消費税は引き下げる（または廃止する）べきだ", "防衛費を増やし、防衛力を強化すべきだ", "今回の年金制度改革（給付水準の調整を含む現行案）を支持する", "脱炭素・GXを政府主導で強力に進めるべきだ", "憲法改正（緊急事態条項・議員任期延長など）を進めるべきだ", "財政は健全化（PB黒字化・歳出抑制）を積極財政より優先すべきだ", "日米同盟を基軸に安全保障協力（協定など）を強化すべきだ", "原発を再稼働し、活用（新増設・次世代炉を含む）を進めるべきだ", "外国人の受け入れは、もっと規制・抑制すべきだ", "高校・大学まで、教育の無償化を進めるべきだ"];var QSHORT=["消費税減税", "防衛費増額", "年金改革の支持", "脱炭素・GX", "憲法改正", "財政健全化を優先", "日米同盟の強化", "原発の活用", "外国人受け入れ規制", "教育の無償化"];function esc(s){return String(s).replace(/[&<>]/g,function(c){return({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]);});}function render(agg){var total=agg.responses||0;if(!total)return;document.getElementById('totalN').innerHTML=total.toLocaleString()+'<small> 件の回答</small>';var ci=OI.map(function(o){return{o:o,n:agg['oi_'+o.id]||0};});ci.sort(function(a,b){return b.n-a.n;});document.getElementById('cCard').innerHTML=ci.map(function(it){var p=total?Math.round(it.n/total*100):0;return '<div class="crow"><div class="cnm"><b>'+esc(it.o.short)+'</b><span>'+esc(it.o.oneissue)+'</span></div><div class="cbarwrap"><div class="cbar" style="width:'+p+'%"></div></div>'+'<div class="cval">'+p+'%<small>'+it.n+'</small></div></div>';}).join('');document.getElementById('bCard').innerHTML=QS.map(function(q,i){var a=agg['p'+i+'_agree']||0,n=agg['p'+i+'_neutral']||0,o=agg['p'+i+'_oppose']||0;var t=a+n+o||1;var pa=Math.round(a/t*100),pn=Math.round(n/t*100),po=Math.round(o/t*100);return '<div class="bq"><p class="bq-q"><span class="bq-n">Q'+(i+2)+'</span>'+esc(q)+'</p>'+'<div class="bseg"><div class="sg agree" style="width:'+pa+'%"></div><div class="sg neu" style="width:'+pn+'%"></div>'+'<div class="sg opp" style="width:'+po+'%"></div></div><div class="bkey"><span class="k agree">賛成 '+pa+'%</span>'+'<span class="k neu">どちらでもない '+pn+'%</span><span class="k opp">反対 '+po+'%</span></div></div>';}).join('');var dc=document.getElementById('dCard');if(dc){var dr=QSHORT.map(function(l,i){return{l:l,n:agg['wt'+i]||0};});dr.sort(function(a,b){return b.n-a.n;});dc.innerHTML=dr.map(function(it){var p=total?Math.round(it.n/total*100):0;return '<div class="crow"><div class="cnm"><b>'+esc(it.l)+'</b></div><div class="cbarwrap">'+'<div class="cbar" style="width:'+p+'%"></div></div><div class="cval">'+p+'%<small>'+it.n+'</small></div></div>';}).join('');}var d=document.getElementById('demoBadge');if(d)d.style.display='none';}KG.loadAgg().then(function(agg){if(agg&&agg.responses)render(agg);});})();</script>

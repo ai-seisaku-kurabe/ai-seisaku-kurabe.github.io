@@ -1,0 +1,12 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // 集計カウンターのみ公開。読み取り自由 / aggregates/summary の更新のみ許可 / 削除禁止。
+    match /aggregates/summary {
+      allow read: if true;
+      allow create, update: if true;   // ※テスト用。悪用対策は App Check の追加を推奨(README参照)
+      allow delete: if false;
+    }
+    match /{document=**} { allow read, write: if false; }
+  }
+}
