@@ -1,0 +1,88 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>マイノート — 保存した言と行の比較 ｜ 政策くらべ</title>
+<style>
+:root{ --paper:#f3f4f7; --card:#fbfbfd; --ink:#1b2130; --muted:#5c6675; --line:#dcdfe6;
+  --accent:#3a4d8f; --accent-soft:#e6e9f4; --shadow:0 1px 2px rgba(20,28,50,.05),0 8px 24px rgba(20,28,50,.05); }
+@media(prefers-color-scheme:dark){ :root{ --paper:#12151d; --card:#191d27; --ink:#e7eaf1; --muted:#98a1b2;
+  --line:#282e3b; --accent:#8ea2e6; --accent-soft:#222a40; --shadow:0 1px 2px rgba(0,0,0,.3),0 10px 30px rgba(0,0,0,.35);} }
+:root[data-theme="dark"]{ --paper:#12151d;--card:#191d27;--ink:#e7eaf1;--muted:#98a1b2;--line:#282e3b;--accent:#8ea2e6;--accent-soft:#222a40; }
+:root[data-theme="light"]{ --paper:#f3f4f7;--card:#fbfbfd;--ink:#1b2130;--muted:#5c6675;--line:#dcdfe6;--accent:#3a4d8f;--accent-soft:#e6e9f4; }
+*{box-sizing:border-box;}
+.wrap{ --serif:"Hiragino Mincho ProN","Yu Mincho",YuMincho,"Noto Serif JP",serif;
+  --sans:"Hiragino Kaku Gothic ProN","Yu Gothic",YuGothic,"Noto Sans JP",Meiryo,sans-serif;
+  --mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+  background:var(--paper);color:var(--ink);font-family:var(--sans);line-height:1.7;
+  -webkit-font-smoothing:antialiased;padding:clamp(20px,5vw,56px) clamp(16px,5vw,40px);}
+.doc{max-width:900px;margin:0 auto;}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin:0 0 12px;}
+h1{font-family:var(--serif);font-weight:600;font-size:clamp(26px,5vw,42px);line-height:1.28;text-wrap:balance;margin:0 0 14px;}
+.lede{color:var(--muted);font-size:15px;max-width:62ch;margin:0 0 26px;}
+.lede b{color:var(--ink);}
+.nav2{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:34px;}
+@media(max-width:640px){.nav2{grid-template-columns:1fr;}}
+.big{position:relative;display:block;text-decoration:none;color:inherit;background:var(--card);border:1px solid var(--line);
+  border-radius:16px;padding:22px 44px 22px 22px;box-shadow:var(--shadow);transition:transform .1s,border-color .15s;}
+.big:hover{transform:translateY(-2px);border-color:var(--accent);}
+.big .k{font-family:var(--mono);font-size:11px;letter-spacing:.1em;color:var(--accent);text-transform:uppercase;}
+.big .t{font-family:var(--serif);font-size:21px;font-weight:600;margin:8px 0 4px;}
+.big .s{font-size:12.5px;color:var(--muted);line-height:1.7;}
+.big .arw{position:absolute;right:18px;top:50%;transform:translateY(-50%);font-family:var(--mono);
+  font-size:18px;color:var(--line);transition:.15s;}
+.big:hover .arw{color:var(--accent);right:14px;}
+.big.primary{margin-bottom:14px;padding:24px 26px;border:2px solid var(--accent);background:var(--accent-soft);
+  display:flex;flex-direction:column;align-items:flex-start;}
+.big.primary .t{font-size:clamp(22px,4vw,27px);color:var(--accent);margin:6px 0 6px;}
+.big.primary .s{font-size:13.5px;}
+.big.primary .go{margin-top:16px;font-family:var(--mono);font-size:13.5px;font-weight:700;color:#fff;
+  background:var(--accent);border-radius:24px;padding:11px 24px;transition:.15s;}
+.big.primary:hover .go{padding-left:28px;padding-right:28px;}
+.sec{font-family:var(--serif);font-size:20px;font-weight:600;margin:0 0 4px;}
+.sec-s{color:var(--muted);font-size:13px;margin:0 0 16px;}
+.pgrid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+@media(max-width:600px){.pgrid{grid-template-columns:1fr;}}
+.pcard{position:relative;display:block;text-decoration:none;color:inherit;background:var(--card);border:1px solid var(--line);
+  border-left:4px solid var(--pc,var(--accent));border-radius:14px;padding:15px 34px 15px 18px;transition:border-color .15s,transform .1s;}
+.pcard:hover{border-color:var(--pc,var(--accent));transform:translateY(-2px);box-shadow:var(--shadow);}
+.pcard::after{content:"›";position:absolute;right:15px;top:50%;transform:translateY(-50%);
+  font-size:22px;line-height:1;color:var(--line);transition:.15s;}
+.pcard:hover::after{color:var(--pc,var(--accent));right:11px;}
+.ps{display:flex;align-items:center;gap:8px;font-family:var(--serif);font-weight:600;font-size:16px;}
+.pdot{flex:none;width:10px;height:10px;border-radius:50%;background:var(--pc,var(--accent));}
+.poi{display:block;font-size:12px;color:var(--muted);margin-top:3px;}
+.note{margin-top:28px;font-size:12px;color:var(--muted);line-height:1.85;}
+
+.mn-lede{color:var(--muted);font-size:14.5px;line-height:1.85;max-width:64ch;margin:0 0 22px;}
+.mn-lede b{color:var(--ink);}
+.mn-empty{background:var(--card);border:1px dashed var(--line);border-radius:14px;padding:26px 22px;
+  font-size:14px;color:var(--muted);line-height:1.9;text-align:center;}
+.mn-empty a{color:var(--accent);text-decoration:none;font-weight:600;}
+.mn-group{margin:0 0 30px;}
+.mn-dom{font-family:var(--serif);font-weight:600;font-size:19px;margin:0 0 12px;
+  padding-bottom:8px;border-bottom:1px solid var(--line);}
+.mn-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+@media(max-width:640px){.mn-grid{grid-template-columns:1fr;}}
+.mn-card{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--pc,var(--accent));
+  border-radius:12px;padding:14px 16px;display:flex;flex-direction:column;gap:9px;}
+.mn-top{display:flex;align-items:center;justify-content:space-between;}
+.mn-badge{font-family:var(--mono);font-size:12px;font-weight:700;color:var(--pc,var(--accent));}
+.mn-x{background:none;border:none;cursor:pointer;color:var(--muted);font-size:18px;line-height:1;padding:2px 6px;border-radius:6px;}
+.mn-x:hover{color:#c1704f;background:var(--accent-soft);}
+.mn-point{font-size:13.5px;line-height:1.8;color:var(--ink);margin:0;}
+.mn-q{margin:0;padding:9px 12px;border-left:3px solid var(--pc,var(--accent));background:var(--paper);
+  border-radius:0 8px 8px 0;font-size:13px;line-height:1.75;}
+.mn-q cite{display:block;font-style:normal;font-family:var(--mono);font-size:10.5px;color:var(--muted);margin-top:6px;}
+.mn-q .src{color:var(--accent);text-decoration:none;}
+.mn-votes{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:9px 11px;}
+.mn-vl{display:block;font-family:var(--mono);font-size:10px;font-weight:700;letter-spacing:.1em;color:var(--muted);margin-bottom:6px;}
+.mn-vrow{display:flex;flex-wrap:wrap;gap:6px;}
+.mn-v{display:inline-flex;align-items:center;gap:4px;font-size:10.5px;color:var(--muted);text-decoration:none;
+  border:1px solid var(--line);border-radius:8px;padding:3px 8px;}
+.mn-v b{font-size:11px;}
+.mn-v.yes{color:#2f8f7f;border-color:#2f8f7f66;} .mn-v.no{color:#c1704f;border-color:#c1704f66;}
+.mn-actions{margin-top:8px;}
+.mn-clear{font-family:var(--mono);font-size:12px;color:var(--muted);background:none;border:1px solid var(--line);
+  border-radius:20px;padding:7px 15px;cursor:pointer;}
+.mn-clear:hover{border-color:#c1704f;color:#c1704f;}
+</style>
+<div class="wrap"><style>html{scroll-padding-top:64px;}.sitehdr{position:sticky;top:0;z-index:100;background:var(--paper);margin:calc(-1*clamp(20px,5vw,56px)) calc(-1*clamp(16px,5vw,40px)) 26px;padding:10px clamp(16px,5vw,40px);border-bottom:1px solid var(--line);}.sitehdr-in{max-width:900px;margin:0 auto;display:flex;align-items:center;gap:12px;}.brand{font-family:var(--serif);font-weight:600;font-size:15px;color:var(--ink);text-decoration:none;white-space:nowrap;}.brand span{color:var(--accent);}.topnav{display:flex;flex-wrap:wrap;gap:6px;margin-left:auto;font-family:var(--mono);font-size:12px}.topnav a{color:var(--muted);text-decoration:none;border:1px solid var(--line);border-radius:20px;padding:5px 11px}.topnav a:hover{border-color:var(--accent);color:var(--accent)}.topnav a.cur{background:var(--accent);color:#fff;border-color:var(--accent)}@media(max-width:600px){.sitehdr{padding:8px clamp(16px,5vw,40px);}.sitehdr-in{gap:10px;}.brand{flex:none;font-size:14px;}.topnav{flex:1;min-width:0;margin-left:6px;flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;font-size:11.5px;gap:5px;}.topnav::-webkit-scrollbar{display:none;}.topnav a{flex:none;white-space:nowrap;padding:5px 10px;}}</style><header class="sitehdr"><div class="sitehdr-in"><a class="brand" href="index.html">政策<span>くらべ</span></a><nav class="topnav"><a href="index.html">トップ</a><a href="guide.html">政策ガイド</a><a href="oneissue.html">ワンイシュー</a><a href="shindan.html">相性診断</a><a href="shukei.html">みんなの結果</a><a href="about.html">サイトについて</a><a href="feedback.html">ご意見</a></nav></div></header><div class="doc"><p class="eyebrow">マイノート</p><h1>あなたが選んだ「言と行」。</h1><p class="mn-lede">政策ガイドで保存した項目を、<b>分野ごとに並べて比較</b>できます。データはこの端末内にだけ保存され（ログイン不要）、外部には送信されません。各分野カードの<b>しおりアイコン</b>で追加・解除できます。</p><div class="mn-empty" id="noteEmpty" hidden>まだ保存された項目がありません。<br><a href="guide.html">政策ガイド</a>で、各分野カードの右上にある「しおり」を押すと、ここに集まります。</div><div id="noteRoot"></div><div class="mn-actions" id="noteActions" hidden><button class="mn-clear" id="noteClear">すべて消す</button></div></div></div><script>(function(){function esc(s){return String(s).replace(/[&<>"]/g,function(c){return({'&':'&amp;','<':'&lt;','>':'&gt;','\"':'&quot;'}[c]);});}function get(){try{return JSON.parse(localStorage.getItem('kg_notes')||'{}');}catch(e){return {};}}function save(o){localStorage.setItem('kg_notes',JSON.stringify(o));}var ORD=['財政','外交・安保','社会保障','エネルギー・環境','経済・産業','憲法'];function scls(st){return st==='賛成'?'yes':(st==='反対'?'no':'na');}function render(){var notes=get(),ids=Object.keys(notes);var root=document.getElementById('noteRoot'),empty=document.getElementById('noteEmpty'),act=document.getElementById('noteActions');if(!ids.length){empty.hidden=false;root.innerHTML='';act.hidden=true;return;}empty.hidden=true;act.hidden=false;var g={};ids.forEach(function(id){var it=notes[id];it._id=id;(g[it.dom]=g[it.dom]||[]).push(it);});var order=ORD.filter(function(d){return g[d];}).concat(Object.keys(g).filter(function(d){return ORD.indexOf(d)<0;}));root.innerHTML=order.map(function(dom){var items=g[dom].map(function(it){var votes=(it.votes||[]).map(function(v){return '<a class="mn-v '+scls(v.st)+'" href="'+v.u+'" target="_blank" rel="noopener">'+esc(v.l)+' <b>'+esc(v.st)+'</b></a>';}).join('');return '<div class="mn-card" style="--pc:'+esc(it.pc)+'"><div class="mn-top"><span class="mn-badge">'+esc(it.party)+'</span>'+'<button class="mn-x" data-id="'+esc(it._id)+'" title="削除" aria-label="削除">×</button></div>'+'<p class="mn-point">'+esc(it.point)+'</p>'+'<blockquote class="mn-q">「'+esc(it.quote)+'」<cite>— '+esc(it.who)+'議員　<a class="src" href="'+esc(it.url)+'" target="_blank" rel="noopener">議事録原文→</a></cite></blockquote>'+(votes?'<div class="mn-votes"><span class="mn-vl">行 ／ 参院採決</span><div class="mn-vrow">'+votes+'</div></div>':'')+'</div>';}).join('');return '<section class="mn-group"><h2 class="mn-dom">'+esc(dom)+'</h2><div class="mn-grid">'+items+'</div></section>';}).join('');root.querySelectorAll('.mn-x').forEach(function(b){b.addEventListener('click',function(){var n=get();delete n[b.dataset.id];save(n);render();if(window.KGNOTE)KGNOTE.refresh();});});}var cl=document.getElementById('noteClear');if(cl)cl.addEventListener('click',function(){if(confirm('保存した項目をすべて消しますか？')){localStorage.removeItem('kg_notes');render();if(window.KGNOTE)KGNOTE.refresh();}});render();})();</script>
