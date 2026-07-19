@@ -43,7 +43,7 @@ h1{font-family:var(--serif);font-weight:600;font-size:clamp(26px,5vw,42px);line-
 @media(max-width:600px){.pgrid{grid-template-columns:1fr;}}
 .pcard{position:relative;display:block;text-decoration:none;color:inherit;background:var(--card);border:1px solid var(--line);
   border-left:4px solid var(--pc,var(--accent));border-radius:14px;padding:15px 34px 15px 18px;transition:border-color .15s,transform .1s;}
-.pcard:hover{border-color:var(--pc,var(--accent));transform:translateY(-2px);}
+.pcard:hover{border-color:var(--pc,var(--accent));transform:translateY(-2px);box-shadow:var(--shadow);}
 .pcard::after{content:"›";position:absolute;right:15px;top:50%;transform:translateY(-50%);
   font-size:22px;line-height:1;color:var(--line);transition:.15s;}
 .pcard:hover::after{color:var(--pc,var(--accent));right:11px;}
