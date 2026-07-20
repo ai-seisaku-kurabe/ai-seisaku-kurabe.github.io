@@ -3,7 +3,7 @@
 - 既存の policy_guide.html / shindan.html / shukei.html を生成→ナビ挿入・相対リンク・Firebase配線
 - index.html(トップ), firebase.js, firestore.rules, README.md を新規生成
 Firebase未設定でも全ページ動作(送信/集計だけ無効)。設定を firebase.js に貼れば集計有効化。"""
-import html, json, os, shutil, re
+import html, json, os, shutil, re, urllib.parse
 
 ns={}
 exec(open("build_shindan.py",encoding="utf-8").read(), ns)   # -> shindan.html, PARTIES, POLICY
@@ -293,6 +293,23 @@ THEME={"自由民主党":"外交・安保","立憲民主党":"税・財政","日
   "国民民主党":"税・財政","公明党":"くらし・社会保障","日本共産党":"外交・安保",
   "れいわ新選組":"税・財政","参政党":"税・財政"}
 THEME_ORDER=["税・財政","外交・安保","くらし・社会保障"]
+# ワンイシューに対応するニュース分野と、会議録検索に渡すキーワード
+ONEISSUE_DOMAIN = {"自由民主党":"外交・安保","立憲民主党":"財政","日本維新の会":"財政",
+  "国民民主党":"財政","公明党":"社会保障","日本共産党":"外交・安保",
+  "れいわ新選組":"財政","参政党":"財政"}
+ONEISSUE_KEYWORD = {"自由民主党":"抑止力","立憲民主党":"説明責任","日本維新の会":"歳出改革",
+  "国民民主党":"手取り","公明党":"処遇改善","日本共産党":"軍事費",
+  "れいわ新選組":"消費税","参政党":"消費税"}
+def oneissue_links(full):
+    """その争点のニュースと、会議録での発言検索への入口。"""
+    dom = ONEISSUE_DOMAIN.get(full, "財政")
+    kw = ONEISSUE_KEYWORD.get(full, "")
+    q = urllib.parse.urlencode({"keyword": kw, "from": "2026-01-01", "until": "2026-07-20"})
+    return (f'<div class="oi-more2">'
+            f'<a href="news.html?domain={urllib.parse.quote(dom)}">▸ この争点のニュース（{esc(dom)}）</a>'
+            f'<a href="https://kokkai.ndl.go.jp/#/result?{q}" target="_blank" rel="noopener">'
+            f'▸ この争点の発言を会議録で探す（「{esc(kw)}」）</a></div>')
+
 oi_index="".join(
   f'<a class="oi-ix" href="#{ID[p["full"]]}" data-theme="{THEME[p["full"]]}" style="--pc:{PC[p["full"]]}">'
   f'<span class="oi-ix-p"><i class="pdot"></i>{esc(p["short"])}</span>'
@@ -304,7 +321,7 @@ oi_sections="".join(
   f'<h2 class="oi-issue">{esc(p["oneissue"])}</h2>'
   f'<p class="oi-why2">{esc(p["why"])}</p>'
   f'{oi_speeches(p["full"])}{oi_records(p["full"])}'
-  f'<div class="pnews" data-pid="{ID[p["full"]]}"></div></section>'
+  f'{oneissue_links(p["full"])}</section>'
   for p in PARTIES)
 OI_CSS="""
 .oi-lede{color:var(--muted);font-size:15px;max-width:64ch;margin:0 0 24px;}
@@ -358,6 +375,10 @@ OI_CSS="""
   border-radius:10px;padding:12px 15px;margin:0;}
 .oi-cav{font-size:12px;color:var(--muted);line-height:1.7;margin:9px 2px 0;}
 .oi-cav b{color:var(--ink);}
+.oi-more2{display:flex;flex-wrap:wrap;gap:16px;margin-top:16px;padding-top:12px;
+  border-top:1px dotted var(--line);}
+.oi-more2 a{font-family:var(--mono);font-size:12px;color:var(--muted);text-decoration:none;}
+.oi-more2 a:hover{color:var(--pc,var(--accent));}
 .oi-newshd{font-family:var(--mono);font-size:11px;letter-spacing:.1em;color:var(--muted);text-transform:uppercase;margin:20px 0 4px;}
 .oi-news{display:block;text-decoration:none;color:var(--ink);font-size:13px;line-height:1.6;
   padding:7px 0;border-top:1px solid var(--line);}
@@ -398,7 +419,7 @@ ONEISSUE=(f'<title>ワンイシュー — 各党が最も重視する一点 ｜ 
   '<p class="note" style="margin-top:34px">出典：国会会議録検索システム（発言）／参議院 記名投票結果 第217回国会（採決）。'
   '「ワンイシュー」は各党の国会での言動をもとに編集部が要約したものです。採決は各党のワンイシューに関連の深い分野のものを表示しています。'
   'データの作り方・選定基準・限界は<a class="src" href="about.html">▸ このサイトについて（方法論）</a>で公開しています。</p>'
-  '</div></div>'+OI_NEWS_JS+OI_FILTER_JS)
+  '</div></div>'+OI_FILTER_JS)
 open("site/oneissue.html","w",encoding="utf-8").write(ONEISSUE)
 
 # ---------- about.html (このサイトについて＝方法論・透明性) ----------
