@@ -77,9 +77,10 @@ def _chips(vkey, votes, labels):
                    f'{esc(labels[i])}<b>{esc(st or "—")}</b></a>')
     return "".join(out)
 
-def session_quote(ses, who, quote, url):
+def session_quote(ses, who, quote, url, where=""):
+    w = f'・{esc(where)}' if where else ""
     return (f'<div class="vses"><span class="vsl">{ses}</span>'
-            f'<blockquote>「{esc(quote)}」<cite>— {esc(who)}議員</cite>'
+            f'<blockquote>「{esc(quote)}」<cite>— {esc(who)}議員{w}</cite>'
             f'<a class="evq" href="{esc(url)}" target="_blank" rel="noopener">全文→</a>'
             f'</blockquote></div>')
 
@@ -88,7 +89,8 @@ def say_block(full, dname, entry):
     rows = [session_quote("第217回", entry["who"], clean_quote(entry["quote"]), entry["url"])]
     e2 = S221.get(full, {}).get(dname)
     if e2:
-        rows.append(session_quote("第221回", e2["who"], e2["quote"], e2["url"]))
+        rows.append(session_quote("第221回", e2["who"], e2["quote"], e2["url"],
+                                  f'{e2.get("house","")}{e2.get("meeting","")}'))
     else:
         rows.append('<div class="vses"><span class="vsl">第221回</span>'
                     '<span class="vna">この会期ではこの分野の会派代表発言を確認できませんでした</span></div>')
@@ -475,7 +477,7 @@ HTML = f'''<title>AI政策くらべ — 政党で選ぶ（比例区）v1.5</titl
     <b>データの出どころ：</b>言＝<a class="src" href="https://kokkai.ndl.go.jp/" target="_blank" rel="noopener">国会会議録検索システム</a>（第217回・第221回の2会期を併記）。
     行＝参議院 記名投票の会派別賛否（<a class="src" href="https://www.sangiin.go.jp/japanese/touhyoulist/217/vote_ind.htm" target="_blank" rel="noopener">第217回</a>・<a class="src" href="https://www.sangiin.go.jp/japanese/touhyoulist/221/vote_ind.htm" target="_blank" rel="noopener">第221回</a>の2会期を併記）。憲法分野は記名投票の議案が無く「行」は該当なし。<br>
     <b>会期を並べている理由：</b>同じ党でも会期によって賛否が変わることがあります。どちらが良いという評価はせず、事実として並べています。第217回と第221回の間に選挙があり、会派の構成も変わりました。<br>
-    <b>賛否は「結果」であり「理由」ではありません：</b>各党は「方向性には賛成だが規定が不十分」等の複雑な理由で反対することもあります。
+    <b>衆参の扱いが異なります：</b>発言（言）は<b>衆議院・参議院の両方</b>から採っています（引用に議院と委員会を明記）。一方、採決（行）は<b>参議院のみ</b>です。衆議院の本会議は原則として起立採決で、会派別・個人別の賛否が公式記録に残らないためです。<br><b>賛否は「結果」であり「理由」ではありません：</b>各党は「方向性には賛成だが規定が不十分」等の複雑な理由で反対することもあります。
     賛否だけで是非を判断せず、反対・賛成の<b>理由や討論は原典（会議録・記名投票結果）</b>でご確認ください。<br>
     <b>正直な断り：</b>「ワンイシュー」「力点」は編集要約で党の公式見解そのものではありません。参政党は第217回国会では会派未結成のため賛否記録がありませんが、第221回国会では会派を結成しており賛否が記録されています。判断は必ず原典リンクで裏取りを。
     データの作り方・選定基準・限界は<a class="src" href="about.html">▸ このサイトについて（方法論）</a>で公開しています。

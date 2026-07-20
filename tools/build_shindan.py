@@ -77,7 +77,7 @@ POLICY = [
            ("参考：プライマリーバランスとは（財務省）","https://www.mof.go.jp/zaisei/reference/reference-03.html"),
            ("積極財政側：れいわ・反緊縮の主張（会議録）","https://kokkai.ndl.go.jp/txt/121704376X02320250528/106")]},
  {"q":"日米同盟を基軸に安全保障協力（協定など）を強化すべきだ",
-  "stance":{"自由民主党":1,"立憲民主党":1,"日本維新の会":1,"国民民主党":1,"公明党":1,"日本共産党":-1,"れいわ新選組":-1,"参政党":0},
+  "stance":{"自由民主党":1,"立憲民主党":1,"日本維新の会":1,"国民民主党":1,"公明党":1,"日本共産党":-1,"れいわ新選組":-1,"参政党":1},
   "pro":"厳しい安全保障環境の下、日米同盟を基軸に、豪州やフィリピンなど同志国との防衛協力（円滑化協定など）を広げることが抑止力と地域の安定を高める、という立場。一国では守り切れない安全を、信頼できる国々との連携で確保するとする。",
   "con":"米国への追従を強めれば、米国の戦争や対立に巻き込まれるリスクが高まる、という懸念（共産・れいわ）。在日米軍の基地負担の集中や主権の制約という問題もあり、対米自立と、近隣国も含めた外交努力を重視すべきだ、とする。",
   "links":[("賛成：参院採決（日比・自衛隊円滑化協定）",SANGIIN+"217-0606-v001.htm"),
@@ -107,6 +107,10 @@ POLICY = [
            ("公式：こども家庭庁","https://www.cfa.go.jp/"),
            ("財源の論点：財政を考える（財務省）","https://www.mof.go.jp/zaisei/fiscal-soundness/fiscal-soundness-01.html")]},
 ]
+# 各設問の「判定の根拠」を設問ごとに開示する（採決から立場を一意に導けない場合は明示する）
+for _i,(_b,_u) in enumerate([('該当する記名採決が無いため、各党の公約と国会での発言にもとづく判定です。', ''), ('各党の公約と国会での発言にもとづく判定です。関連する採決はありますが、賛否だけでは賛成・反対の理由を一意に 判断 できないため、採決のみを根拠とはしていません。', ''), ('該当する記名採決が無いため、各党の公約と国会での発言にもとづく判定です。', ''), ('該当する記名採決が無いため、各党の公約と国会での発言にもとづく判定です。', ''), ('憲法審査会は討議の場で記名採決の議案が無いため、各党の公約と国会での発言にもとづく判定です。', ''), ('各党の公約と国会での発言にもとづく判定です。予算への賛否は「規模が大きすぎる／小さすぎる」の両方の理由から反対が生じるため、採決のみを根拠とはしていません。', ''), ('第221回国会・日比ACSA（物品役務相互提供協定）の承認に対する各党の賛否にもとづく判定です。', 'https://www.sangiin.go.jp/japanese/touhyoulist/221/221-0619-v001.htm'), ('該当する記名採決が無いため、各党の公約と国会での発言にもとづく判定です。', ''), ('各党の公約と国会での発言にもとづく判定です。関連する入管法改正の採決はありますが、法案の内容が規制強化か緩和かを確認できていないため、賛否を根拠にしていません。', ''), ('各党の公約と国会での発言にもとづく判定です。関連する採決はありますが、教育無償化そのものを問う議案ではないため根拠にしていません。', '')]):
+    POLICY[_i]["basis"]=_b; POLICY[_i]["basis_url"]=_u
+
 # 結果画面の個別フィードバック用の短ラベル(POLICYと同順)
 for _i,_s in enumerate(["消費税減税","防衛費増額","年金改革","脱炭素・GX","憲法改正",
                         "財政健全化","日米同盟","原発活用","外国人受け入れ規制","教育無償化"]):
@@ -165,6 +169,9 @@ for i,q in enumerate(POLICY):
            f'<span class="arg-parties con">反対：{side_parties(q["stance"],-1)}</span></div>'
            f'<p>{html.escape(q["con"])}</p></div></div>'
            f'<p class="arg-l">根拠資料：{links_html(q["links"])}</p>'
+           f'<p class="arg-basis"><b>この設問での各党の立場は何にもとづくか：</b>{html.escape(q.get("basis",""))}'
+           + (f' <a class="src" href="{q["basis_url"]}" target="_blank" rel="noopener">採決の原典→</a>' if q.get("basis_url") else '')
+           + '</p>'
            f'<p class="arg-l">{news_link(i)}　'
            f'<span class="arg-neutral">※「どちらでもない/不明」の党は各分野で中立扱い</span></p>'
            f'<div class="newsbox" data-qi="{i}"></div>'
@@ -266,6 +273,9 @@ details.arg[open]>summary{ margin-bottom:10px; }
 .arg-parties{ font-size:10.5px; line-height:1.5; text-align:right; }
 .arg-parties.pro{ color:var(--pos); } .arg-parties.con{ color:var(--neg); }
 .arg-col p{ margin:0; font-size:12.5px; line-height:1.85; color:var(--ink); }
+.arg-basis{ background:var(--paper); border:1px solid var(--line); border-radius:8px;
+  padding:9px 12px; font-size:12px; line-height:1.8; color:var(--muted); margin:12px 0 0; }
+.arg-basis b{ color:var(--ink); }
 .arg-l{ font-size:11.5px; color:var(--muted); line-height:1.95; margin:0; }
 .arg-neutral{ opacity:.85; }
 .arg-l .news{ font-weight:600; }

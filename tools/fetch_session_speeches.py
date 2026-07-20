@@ -1,6 +1,10 @@
 # -*- coding: utf-8 -*-
 """②編集班用: 指定期間の「言」（各党×各分野の代表発言）を会議録から集める。
 
+発言は衆参両院から取る（会議録検索システムは両院を収録している）。
+どちらの院の発言かは house に記録し、サイト上でも明示する。
+（採決は参院のみ。衆院は起立採決が原則で会派別の賛否が記録に残らないため。）
+
 「行」（採決）は会期を併記できたのに「言」が第217回のままだと、
 発言は1年前・投票は最新という非対称が生じる。それを埋めるための取得スクリプト。
 
@@ -91,7 +95,8 @@ def main():
                     continue
                 p = hit[0]
                 out[p][dom] = {"who": rec["speaker"], "quote": text, "url": rec["speechURL"],
-                               "date": rec["date"], "meeting": rec["nameOfMeeting"], "term": term}
+                               "date": rec["date"], "house": rec.get("nameOfHouse", ""),
+                               "meeting": rec["nameOfMeeting"], "term": term}
                 need.discard(p)
             time.sleep(0.4)
         got = [p for p in PARTY_KEYS if dom in out[p]]
