@@ -51,7 +51,7 @@ PROVIDERS = {
         "base": "https://api.openai.com/v1",
     },
     # Groq（推論の高速配信。Llama/Qwen/gpt-oss等を無料枠で提供）。
-    # xAIの「Grok」とは別会社。鍵は Groq が gsk_… 、xAI が xai_… で見分けられる。
+    # xAIの「Grok」とは別会社。鍵は Groq が gsk_… 、xAI が xai-… で見分けられる（実測）。
     "Groq": {
         "key_env": "GROQ_API_KEY",
         "model_env": "GROQ_MODEL",
@@ -174,7 +174,7 @@ def main():
         pref = cfg.get("key_prefix")
         if pref and not key.startswith(pref):
             print(f"⚠ {name}: {cfg['key_env']} が {pref}… で始まっていません"
-                  f"（別の提供元の鍵かもしれません。Groq={'gsk_'}／Grok(xAI)={'xai-'}）")
+                  "（別の提供元の鍵かもしれません。Groq=gsk_ ／ Grok(xAI)=xai-）")
 
         override = os.environ.get(cfg["model_env"])
         models = [m.strip() for m in override.split(",")] if override else cfg["models"]
