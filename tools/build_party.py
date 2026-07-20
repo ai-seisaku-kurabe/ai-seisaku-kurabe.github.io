@@ -48,6 +48,7 @@ BILLS221 = {
  "経済・産業": [("221-0715-v003","金商法"), ("221-0529-v009","産業競争力"),
                 ("221-0612-v009","産業技術力"), ("221-0612-v006","郵便法")],
 }
+S221 = json.load(open("221_speeches.json", encoding="utf-8"))   # 会期併記用の「言」
 _raw221 = json.load(open("221_votes.json", encoding="utf-8"))
 _byid221 = {b["id"]: b for b in _raw221["bills"]}
 V221 = {}
@@ -75,6 +76,24 @@ def _chips(vkey, votes, labels):
                    f'rel="noopener" title="{esc(b["label"])}：{esc(st or "—")}（原典へ）">'
                    f'{esc(labels[i])}<b>{esc(st or "—")}</b></a>')
     return "".join(out)
+
+def session_quote(ses, who, quote, url):
+    return (f'<div class="vses"><span class="vsl">{ses}</span>'
+            f'<blockquote>「{esc(quote)}」<cite>— {esc(who)}議員</cite>'
+            f'<a class="evq" href="{esc(url)}" target="_blank" rel="noopener">全文→</a>'
+            f'</blockquote></div>')
+
+def say_block(full, dname, entry):
+    """第217回と第221回の発言を並べる。採決と同じく、変化に評価は与えない。"""
+    rows = [session_quote("第217回", entry["who"], clean_quote(entry["quote"]), entry["url"])]
+    e2 = S221.get(full, {}).get(dname)
+    if e2:
+        rows.append(session_quote("第221回", e2["who"], e2["quote"], e2["url"]))
+    else:
+        rows.append('<div class="vses"><span class="vsl">第221回</span>'
+                    '<span class="vna">この会期ではこの分野の会派代表発言を確認できませんでした</span></div>')
+    return ('<div class="say"><span class="vlbl gen">言 ／ 国会での発言（会期別）</span>'
+            f'<p class="point">{esc(entry["point"])}</p>' + "".join(rows) + '</div>')
 
 def votes_block(full, dname, entry, votes, labels):
     """第217回と第221回の賛否を並べて示す。どちらが良いという評価はしない。"""
@@ -227,8 +246,7 @@ def domain_row(dname, entry, votes, labels, cid, full):
     vblock = votes_block(full, dname, entry, votes, labels)
     return (f'<article class="drow"><div class="drow-h">'
             f'<span class="dname">{esc(dname)}</span><span class="dh-r">{tag}{clip}</span></div>'
-            f'<div class="say"><span class="vlbl gen">言 ／ 国会での発言</span>'
-            f'<p class="point">{esc(entry["point"])}</p>{quote_block(entry)}</div>{vblock}</article>')
+            f'{say_block(full, dname, entry)}{vblock}</article>')
 
 panes, tabs = [], []
 for i,(full,short) in enumerate(PARTIES):
@@ -351,6 +369,7 @@ blockquote .evq:hover{ text-decoration:underline; }
   border-radius:10px; padding:11px 13px; }
 .vses{ display:flex; align-items:flex-start; gap:9px; padding:5px 0; }
 .vses + .vses{ border-top:1px dotted var(--line); }
+.vses blockquote{ flex:1; min-width:0; }
 .vsl{ flex:none; font-family:var(--mono); font-size:10px; font-weight:700; color:var(--muted);
   background:var(--card); border:1px solid var(--line); border-radius:6px; padding:3px 7px; margin-top:1px; }
 .vlbl{ display:block; font-family:var(--mono); font-size:10px; letter-spacing:.1em;
@@ -453,7 +472,7 @@ HTML = f'''<title>AI政策くらべ — 政党で選ぶ（比例区）v1.5</titl
   <p class="note">
     <b>ワンイシューについて：</b>各党が特に重視する1点を、国会での言動から<b>編集の判断</b>で1つに絞ったものです（根拠となる実発言にリンク）。
     この項目への共感を第1問に、他の政策との整合も合わせて「どの党が自分に近いか」を照らし合わせる「政策で照らす」も用意しています。<br>
-    <b>データの出どころ：</b>言＝<a class="src" href="https://kokkai.ndl.go.jp/" target="_blank" rel="noopener">国会会議録検索システム</a>（第217回国会）。
+    <b>データの出どころ：</b>言＝<a class="src" href="https://kokkai.ndl.go.jp/" target="_blank" rel="noopener">国会会議録検索システム</a>（第217回・第221回の2会期を併記）。
     行＝参議院 記名投票の会派別賛否（<a class="src" href="https://www.sangiin.go.jp/japanese/touhyoulist/217/vote_ind.htm" target="_blank" rel="noopener">第217回</a>・<a class="src" href="https://www.sangiin.go.jp/japanese/touhyoulist/221/vote_ind.htm" target="_blank" rel="noopener">第221回</a>の2会期を併記）。憲法分野は記名投票の議案が無く「行」は該当なし。<br>
     <b>会期を並べている理由：</b>同じ党でも会期によって賛否が変わることがあります。どちらが良いという評価はせず、事実として並べています。第217回と第221回の間に選挙があり、会派の構成も変わりました。<br>
     <b>賛否は「結果」であり「理由」ではありません：</b>各党は「方向性には賛成だが規定が不十分」等の複雑な理由で反対することもあります。

@@ -102,6 +102,10 @@ def check_quotes(bp, oneissue, limit=None):
     for full, recs in oneissue.items():
         for r in recs:
             targets.append((f"oneissue/{full}", r.get("who"), r.get("text"), r.get("url")))
+    # 第221回の発言（会期併記で追加した分）
+    for full, doms in (bp.get("S221") or {}).items():
+        for dname, e in doms.items():
+            targets.append((f"guide221/{full}/{dname}", e.get("who"), e.get("quote"), e.get("url")))
 
     if limit: targets = targets[:limit]
     ok = 0
@@ -216,6 +220,7 @@ PROMISES = [
     ("guide.html",    ["第217回国会では会派未結成"],                       "データ空白の理由明示"),
     ("guide.html",    ["結果」であり「理由」ではありません"],       "賛否は理由でない旨の注記"),
     ("guide.html",    ["第221回"],                                  "第221回国会の併記"),
+    ("guide.html",    ["言 ／ 国会での発言（会期別）"],              "言の会期併記"),
     ("about.html",    ["第221回国会では会派を結成"],                "会派構成の変化を反映"),
     ("oneissue.html", ["会派を構成しておらず"],                     "ワンイシュー側の空白明示"),
 ]
