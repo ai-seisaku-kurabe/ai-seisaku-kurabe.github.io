@@ -129,6 +129,34 @@ python agents/make_review_request.py --paths tools/build_party.py guide.html
 **AIごとに新しい会話で聞いてください。** 同じ会話に続けて貼ると、
 先に出た意見に引きずられ、独立した点検になりません。
 
+## 自動で聞く（推奨）
+
+手で貼る代わりに、APIへ直接送れます。**貼り付けの事故（下記）が起きず、
+1回ずつ独立した問い合わせになるため「新しい会話で聞く」も自然に守られます。**
+
+```bash
+cd tools
+python agents/ask_reviewers.py                 # main との差分を査読させる
+python agents/ask_reviewers.py --paths guide.html
+python agents/ask_reviewers.py --dry-run       # 送らずに送信内容だけ確認
+```
+
+鍵は環境変数から読みます（未設定の提供元は自動で飛ばします）。
+
+| 環境変数 | 取得先 |
+|---|---|
+| `GEMINI_API_KEY` | https://aistudio.google.com/apikey |
+| `OPENAI_API_KEY` | https://platform.openai.com/api-keys |
+
+モデル名は `GEMINI_MODEL` / `OPENAI_MODEL` で差し替えられます（モデル名は変わるため）。
+
+終了コードは **0=BLOCKなし / 1=BLOCKまたは判定不明 / 2=査読できなかった**。
+判定が読み取れない返答は **PASS扱いにせず「不明」** にします。
+黙って通すより、人に読ませる方を選ぶためです。
+
+結果は `tools/state/reviews/<日時>.md` に全文が残ります。**自動化するのは「聞くこと」だけで、
+判断は自動化しません。** BLOCK を退けるのも、公開するのも人の仕事のままです。
+
 ### 貼り付けず、ファイルとして添付する
 
 依頼文は数万字になります。**入力欄への貼り付けは途中で切れます。**

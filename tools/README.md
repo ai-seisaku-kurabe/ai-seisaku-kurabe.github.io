@@ -85,7 +85,8 @@ python agents/verify_content.py --offline       # 通信なしの項目だけ（
 # ⑥ 公開サイトが壊れていないか外から点検
 python agents/health_check.py
 
-# ⑧ 他のAIに貼る査読依頼文をつくる（憲法8条＋差分を一枚にまとめる）
+# ⑧ 他のAIに査読させる（APIキーがあれば自動、無ければ依頼文を作って手で貼る）
+python agents/ask_reviewers.py
 python agents/make_review_request.py --out review.txt
 ```
 
