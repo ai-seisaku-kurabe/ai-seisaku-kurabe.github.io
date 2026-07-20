@@ -2,7 +2,7 @@
 """AI政策くらべ v1.1 「政党で選ぶ」= 党タブ主体。
 既存 build_guide.py のデータ(46発言+投票)・整形関数を再利用し、行列を転置して党ごとに表示。
 各党に『ワンイシュー』(特に重視する1点)を新設。"""
-import html, json
+import html, json, urllib.parse
 
 # --- 既存ファイルを実行して、データと関数を取り込む(policy_guide.htmlは後で上書き) ---
 ns = {}
@@ -240,6 +240,23 @@ def build_clip(full, short, dname, entry, votes, labels):
                      "who": entry["who"], "url": entry["url"], "votes": vlist}
     return cid
 
+# 分野ごとの会議録検索キーワード（発言一覧リンク用）
+DOMAIN_SEARCH = {
+    "財政": "財政", "外交・安保": "安全保障", "社会保障": "社会保障",
+    "エネルギー・環境": "エネルギー", "経済・産業": "経済", "憲法": "憲法",
+}
+# 会派名は会期で変わるため、検索は会派指定なし（議員名で辿れるよう発言リンクは別途ある）
+def domain_links(full, dname):
+    """この分野の『もっと見る』導線。ニュースは当サイト、発言は会議録検索システムへ。"""
+    kw = DOMAIN_SEARCH.get(dname, dname)
+    q = urllib.parse.urlencode({"keyword": kw, "from": "2026-01-01", "until": "2026-07-20"})
+    kokkai = f"https://kokkai.ndl.go.jp/#/result?{q}"
+    news = "news.html?domain=" + urllib.parse.quote(dname)
+    return (f'<div class="dmore">'
+            f'<a href="{news}">▸ この分野のニュース</a>'
+            f'<a href="{esc(kokkai)}" target="_blank" rel="noopener">▸ この分野の発言を会議録で探す</a>'
+            f'</div>')
+
 def domain_row(dname, entry, votes, labels, cid, full):
     tag = f'<span class="tag">◉ {esc(entry["tag"])}</span>' if entry.get("tag") else ""
     clip = (f'<button class="clip" type="button" data-clip="{cid}" aria-label="この分野をマイノートに保存" '
@@ -248,7 +265,7 @@ def domain_row(dname, entry, votes, labels, cid, full):
     vblock = votes_block(full, dname, entry, votes, labels)
     return (f'<article class="drow"><div class="drow-h">'
             f'<span class="dname">{esc(dname)}</span><span class="dh-r">{tag}{clip}</span></div>'
-            f'{say_block(full, dname, entry)}{vblock}</article>')
+            f'{say_block(full, dname, entry)}{vblock}{domain_links(full, dname)}</article>')
 
 panes, tabs = [], []
 for i,(full,short) in enumerate(PARTIES):
@@ -268,7 +285,6 @@ for i,(full,short) in enumerate(PARTIES):
     panes.append(f'<section class="pane" data-pane="{i}" '
                  f'style="--pc:{PARTY_COLOR[full]};--pc-on:{pc_on(PARTY_COLOR[full])}"{"" if i==0 else " hidden"}>'
                  f'{oneissue_block(full)}{package_block(full)}'
-                 f'<div class="pnews" data-pid="{PARTY_IDMAP.get(full,"")}"></div>'
                  f'<div class="dgrid">{rows}</div>{miss}</section>')
 
 CSS = """
@@ -343,6 +359,10 @@ h1{ font-family:var(--serif); font-weight:600; font-size:clamp(24px,4.4vw,38px);
 .drow{ background:var(--card); border:1px solid var(--line); border-radius:14px; padding:16px 18px;
   box-shadow:var(--shadow); display:flex; flex-direction:column; gap:10px; }
 .drow-h{ display:flex; align-items:center; justify-content:space-between; gap:8px; }
+.dmore{ display:flex; flex-wrap:wrap; gap:14px; margin-top:11px; padding-top:10px;
+  border-top:1px dotted var(--line); }
+.dmore a{ font-family:var(--mono); font-size:11.5px; color:var(--muted); text-decoration:none; }
+.dmore a:hover{ color:var(--pc,var(--accent)); }
 .dh-r{ display:flex; align-items:center; gap:8px; flex:none; }
 .drow.dfocus{ border-color:var(--pc,var(--accent)); box-shadow:0 0 0 2px var(--accent-soft); }
 .clip{ background:none; border:none; cursor:pointer; padding:2px; line-height:0; color:var(--line);
