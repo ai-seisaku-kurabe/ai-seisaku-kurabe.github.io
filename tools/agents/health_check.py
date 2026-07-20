@@ -20,7 +20,7 @@ import argparse, datetime, json, re, sys, urllib.error, urllib.request
 BASE = "https://tsuruwa2.netlify.app"
 UA = {"User-Agent": "seisaku-kurabe-healthcheck/1.0 (+https://tsuruwa2.netlify.app)"}
 
-PAGES = ["index.html", "guide.html", "oneissue.html", "shindan.html",
+PAGES = ["index.html", "guide.html", "oneissue.html", "shindan.html", "news.html",
          "shukei.html", "about.html", "mynote.html", "feedback.html"]
 
 # ページごとに「これが消えていたら生成が壊れている」という目印
@@ -31,6 +31,7 @@ MARKERS = {
     "shindan.html":  ["prog-fill", "対立軸", "oi-item"],
     "shukei.html":   ["みんなの結果"],
     "about.html":    ["rulebook", "運用ルール"],
+    "news.html":     ["nwList", "nw-chip", "政策ニュース"],
     "mynote.html":   ["noteRoot", "マイノート"],
     # data-netlify は Netlify がデプロイ時に除去するため、公開HTMLでは目印にできない
     "feedback.html": ["fbform", 'name="form-name"', "ご意見"],

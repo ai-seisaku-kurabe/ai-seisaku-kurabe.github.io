@@ -1,7 +1,8 @@
 name: update-news
+# ①収集の一部: 毎日ニュース見出しを取得し、分野タグ付きで蓄積する
 on:
   schedule:
-    - cron: '0 21 * * *'
+    - cron: '0 21 * * *'   # 毎日 JST 6:00
   workflow_dispatch:
 permissions:
   contents: write
@@ -17,6 +18,6 @@ jobs:
       - run: |
           git config user.name "github-actions"
           git config user.email "actions@github.com"
-          git add news.json
-          git commit -m "chore: update news.json" || echo "no changes"
+          git add news.json news_archive.json
+          git commit -m "chore: update news.json / news_archive.json" || echo "no changes"
           git push
