@@ -8,7 +8,8 @@
 GitHub Actions で毎日自動実行される（.github/workflows/news.yml）。
 見出し・出典・リンクのみを扱い、本文は一切転載しない。
 """
-import urllib.request, urllib.parse, re, json, html, datetime, time, os
+import urllib.request, urllib.parse, re, json, html, datetime, time, os, sys
+from email.utils import parsedate_to_datetime
 
 # 「政策で照らす」の設問(POLICY)と同じ順・同じ話題
 NEWS_QUERY = ["消費税 減税", "防衛費 増額", "年金制度改革", "GX 脱炭素 政策",
@@ -41,8 +42,8 @@ DOMAIN_KEYWORDS = {
     "憲法": ["憲法", "改憲", "九条", "緊急事態条項", "国民投票", "憲法審査会"],
 }
 
-KEEP_DAYS = 180    # これより古い見出しはアーカイブから落とす
-MAX_ITEMS = 900    # 上限（静的配信なのでファイルを太らせない）
+KEEP_DAYS = 400    # これより古い見出しはアーカイブから落とす（年度分を保持）
+MAX_ITEMS = 4000   # 上限（静的配信なのでファイルを太らせすぎない）
 ARCHIVE_PATH = "news_archive.json"
 
 
@@ -64,9 +65,15 @@ def fetch(term, n=PER_FETCH):
         tm = re.search(r"<title>(.*?)</title>", it, re.S)
         lm = re.search(r"<link>(.*?)</link>", it, re.S)
         sm = re.search(r"<source[^>]*>(.*?)</source>", it, re.S)
+        pm = re.search(r"<pubDate>(.*?)</pubDate>", it, re.S)
         src = html.unescape(sm.group(1)).strip() if sm else ""
+        pub = ""
+        if pm:
+            try: pub = parsedate_to_datetime(pm.group(1).strip()).date().isoformat()
+            except Exception: pub = ""
         if tm and lm:
-            out.append({"t": clean_title(tm.group(1), src), "u": lm.group(1).strip(), "s": src})
+            out.append({"t": clean_title(tm.group(1), src), "u": lm.group(1).strip(),
+                        "s": src, "pub": pub})
     return out
 
 
@@ -84,9 +91,54 @@ def load_archive():
     return []
 
 
+def month_windows(start_iso):
+    """開始日から今日まで、1か月ずつの (from, to) を返す。"""
+    d = datetime.date.fromisoformat(start_iso)
+    end = datetime.date.today() + datetime.timedelta(days=1)
+    out = []
+    while d < end:
+        nxt = (d.replace(day=28) + datetime.timedelta(days=4)).replace(day=1)
+        out.append((d.isoformat(), min(nxt, end).isoformat()))
+        d = nxt
+    return out
+
+
+def backfill(start_iso):
+    """Google ニュースの after:/before: を使い、過去の見出しを月ごとに遡って集める。
+
+    1クエリあたり100件が上限なので、月で区切って取りこぼしを減らす。
+    公開日は記事の pubDate をそのまま使う（取得日ではない）。
+    """
+    collected = []
+    wins = month_windows(start_iso)
+    terms = [(t, None) for t in NEWS_QUERY] + [(t, pid) for pid, t in PARTY_QUERY]
+    print(f"backfill: {start_iso} 以降を {len(wins)} か月分 × {len(terms)} クエリで取得します")
+    for (a, b) in wins:
+        got = 0
+        for term, pid in terms:
+            q = f"{term} after:{a} before:{b}"
+            try:
+                items = fetch(q, n=100)
+            except Exception as e:
+                print("  WARN", q, e); items = []
+            for x in items:
+                collected.append({**x, "topic": None if pid else term, "party": pid})
+            got += len(items)
+            time.sleep(0.4)
+        print(f"  {a} 〜 {b}: {got} 件")
+    return collected
+
+
 def main():
     today = datetime.date.today().isoformat()
     collected = []   # アーカイブ候補
+
+    # --backfill YYYY-MM-DD : 過去分をまとめて取得してアーカイブに足す（news.jsonは触らない）
+    if "--backfill" in sys.argv:
+        start = sys.argv[sys.argv.index("--backfill") + 1]
+        collected = backfill(start)
+        merge_archive(collected, today)
+        return
 
     topics = {}
     for i, term in enumerate(NEWS_QUERY):
@@ -117,7 +169,11 @@ def main():
     print("wrote news.json  headlines:",
           sum(len(v) for v in topics.values()) + sum(len(v) for v in parties.values()))
 
-    # ---- アーカイブ（タグ付け＋無関係を除外＋重複排除＋古いものを整理） ----
+    merge_archive(collected, today)
+
+
+def merge_archive(collected, today):
+    """タグ付け＋無関係を除外＋重複排除＋古いものを整理して書き出す。"""
     archive = load_archive()
     by_url = {it["u"]: it for it in archive}
     added = skipped = 0
@@ -133,7 +189,8 @@ def main():
                 ex["p"] = sorted(set(ex.get("p") or []) | {c["party"]})
             continue
         by_url[u] = {"t": c["t"], "u": u, "s": c["s"], "d": doms,
-                     "p": [c["party"]] if c["party"] else [], "date": today}
+                     "p": [c["party"]] if c["party"] else [],
+                     "date": c.get("pub") or today}
         added += 1
 
     items = list(by_url.values())
