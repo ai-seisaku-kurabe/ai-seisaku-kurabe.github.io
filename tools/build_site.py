@@ -1071,7 +1071,9 @@ def wrap_document(fn, html):
     import re as _re
     m = _re.search(r"<title>(.*?)</title>", html, _re.S)
     title = m.group(1) if m else "AI政策くらべ"
-    head_extra = (f'<meta name="description" content="{esc(d)}">'
+    head_extra = ('<meta name="google-site-verification" '
+                  'content="5MZhggn_go-F1KWBR-mDVs2F6fG3wO9S0UdiSt53XKM">'
+                  f'<meta name="description" content="{esc(d)}">'
                   f'<link rel="canonical" href="{SITE_URL}/{"" if fn=="index.html" else fn}">'
                   f'<meta property="og:type" content="website">'
                   f'<meta property="og:site_name" content="AI政策くらべ">'
