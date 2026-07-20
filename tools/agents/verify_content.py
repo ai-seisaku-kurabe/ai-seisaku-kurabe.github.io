@@ -97,6 +97,9 @@ def check_quotes(bp, oneissue, limit=None):
     targets = []   # (どこ, 話者, 表示テキスト, URL)
     for full, doms in bp["PIDX"].items():
         for dname, (entry, _v, _l) in doms.items():
+            # 第217回に会派が無かった党は空の器なので照合対象外（第221回側で照合する）
+            if not entry.get("quote") or not entry.get("url"):
+                continue
             targets.append((f"guide/{full}/{dname}", entry.get("who"),
                             clean(entry["quote"]), entry.get("url")))
     for full, recs in oneissue.items():

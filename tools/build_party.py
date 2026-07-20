@@ -23,12 +23,15 @@ DOMAIN_ORDER = [
 ]
 PARTIES = [("自由民主党","自民"),("立憲民主党","立憲"),("日本維新の会","維新"),
            ("国民民主党","国民"),("公明党","公明"),("日本共産党","共産"),
-           ("れいわ新選組","れいわ"),("参政党","参政")]
+           ("れいわ新選組","れいわ"),("参政党","参政"),
+           ("チームみらい","みらい"),("社会民主党","社民")]
 PARTY_IDMAP = {"自由民主党":"jimin","立憲民主党":"rikken","日本維新の会":"ishin","国民民主党":"kokumin",
-               "公明党":"komei","日本共産党":"kyosan","れいわ新選組":"reiwa","参政党":"sansei"}
+               "公明党":"komei","日本共産党":"kyosan","れいわ新選組":"reiwa","参政党":"sansei",
+               "チームみらい":"mirai","社会民主党":"shamin"}
 # 各党のイメージカラー（各党公式サイト基準・報道慣例を参考。build_site.py と同一）
 PARTY_COLOR = {"自由民主党":"#E60012","立憲民主党":"#004097","日本維新の会":"#12A150","国民民主党":"#F2B200",
-               "公明党":"#F55881","日本共産党":"#D7003A","れいわ新選組":"#E4007F","参政党":"#E8630A"}
+               "公明党":"#F55881","日本共産党":"#D7003A","れいわ新選組":"#E4007F","参政党":"#E8630A",
+               "チームみらい":"#00B8C4","社会民主党":"#0B60A8"}
 def pc_on(hx):
     r,g,b=int(hx[1:3],16),int(hx[3:5],16),int(hx[5:7],16)
     return "#1b2130" if (0.299*r+0.587*g+0.114*b)>150 else "#ffffff"
@@ -59,7 +62,8 @@ for _dom, _sel in BILLS221.items():
 # 第221回の会派名（選挙を経て変わった）。参政党はこの会期で会派を結成した。
 VKEY221 = {"自由民主党":"自由民主党","立憲民主党":"立憲民主","日本維新の会":"日本維新の会",
            "国民民主党":"国民民主","公明党":"公明党","日本共産党":"日本共産党",
-           "れいわ新選組":"れいわ","参政党":"参政党"}
+           "れいわ新選組":"れいわ","参政党":"参政党",
+           "チームみらい":"チームみらい","社会民主党":"社会民主党"}
 
 def vote_url(bid):
     """議案IDの先頭3桁が会期番号なので、そこからURLを組み立てる。"""
@@ -86,7 +90,11 @@ def session_quote(ses, who, quote, url, where=""):
 
 def say_block(full, dname, entry):
     """第217回と第221回の発言を並べる。採決と同じく、変化に評価は与えない。"""
-    rows = [session_quote("第217回", entry["who"], clean_quote(entry["quote"]), entry["url"])]
+    if entry.get("quote"):
+        rows = [session_quote("第217回", entry["who"], clean_quote(entry["quote"]), entry["url"])]
+    else:
+        rows = ['<div class="vses"><span class="vsl">第217回</span>'
+                '<span class="vna">この会期にはこの党の会派が存在せず、会派としての発言記録がありません</span></div>']
     e2 = S221.get(full, {}).get(dname)
     if e2:
         rows.append(session_quote("第221回", e2["who"], e2["quote"], e2["url"],
@@ -95,7 +103,8 @@ def say_block(full, dname, entry):
         rows.append('<div class="vses"><span class="vsl">第221回</span>'
                     '<span class="vna">この会期ではこの分野の会派代表発言を確認できませんでした</span></div>')
     return ('<div class="say"><span class="vlbl gen">言 ／ 国会での発言（会期別）</span>'
-            f'<p class="point">{esc(entry["point"])}</p>' + "".join(rows) + '</div>')
+            + (f'<p class="point">{esc(entry["point"])}</p>' if entry.get("point") else "")
+            + "".join(rows) + '</div>')
 
 def votes_block(full, dname, entry, votes, labels):
     """第217回と第221回の賛否を並べて示す。どちらが良いという評価はしない。"""
@@ -126,6 +135,17 @@ for dname, lst, votes, labels in DOMAIN_ORDER:
         if e["party"] in PIDX:
             PIDX[e["party"]][dname] = (e, votes, labels)
 
+# 第217回に会派が無かった党（チームみらい・社民）は上のループで空になる。
+# 第221回の発言がある分野については、217側を「該当なし」としてカードを作る。
+_DOM_VOTES = {dn: (v, l) for dn, _lst, v, l in DOMAIN_ORDER}
+for full, doms in S221.items():
+    if full not in PIDX or PIDX[full]:
+        continue
+    for dname in doms:
+        v, l = _DOM_VOTES.get(dname, (None, None))
+        PIDX[full][dname] = ({"party": full, "point": "", "who": "", "quote": "",
+                              "url": "", "vkey": None, "tag": ""}, v, l)
+
 # ワンイシュー(国会での言動から抽出した具体版)。根拠は ref 領域の実発言にリンク。
 ONEISSUE = {
  "自由民主党":  ("防衛力の強化と現実的な政権運営","広範な政権与党で単一争点ではないが、強いて挙げれば抑止力の向上・防衛力強化を前面に。","外交・安保"),
@@ -136,6 +156,8 @@ ONEISSUE = {
  "日本共産党":  ("軍拡より暮らし（大軍拡・改憲に反対）","軍事費拡大と改憲に一貫して反対し、暮らし・社会保障を優先。","外交・安保"),
  "れいわ新選組":("消費税廃止・積極財政","結党以来の一貫した看板政策。反緊縮で需要を底上げする。","経済・産業"),
  "参政党":      ("消費税減税・インボイス廃止","既存政治への異議として、減税と負担軽減を前面に掲げる。","財政"),
+ "チームみらい":("テクノロジーで政治を作り変える","デジタル技術で行政の効率化・政治資金の可視化・プッシュ型支援を進めることを前面に掲げる。","経済・産業"),
+ "社会民主党":  ("憲法9条を守り、暮らしを底上げする","護憲と反戦を党是とし、食料品消費税ゼロや最低賃金の引き上げで生活を支えると訴える。","憲法"),
 }
 
 # 政策パッケージ要約（2025年参院選の公約等より・編集要約）。url=各党公式サイト。
@@ -189,6 +211,20 @@ PACKAGE = {
    "原発の廃止と再エネ",
    "障害者・弱者支援、社会保障の拡充",
    "非軍事・平和外交（防衛費増や安保法制に反対）"]},
+ "チームみらい": {"url":"https://team-mir.ai/", "bullets":[
+   "「子育て減税」（子どもの人数に応じて親の所得税率を定率で減税）",
+   "社会保険料の引き下げ（消費税減税より優先）",
+   "行政の「プッシュ型支援」（申請主義をやめ、支援を自動で届ける）",
+   "政治資金の可視化と国会のデジタル化",
+   "高等専門学校への設備投資、大学の運営費交付金の拡充",
+   "AI・ロボット・自動運転など新産業の育成"]},
+ "社会民主党": {"url":"https://sdp.or.jp/", "bullets":[
+   "食料品の消費税をゼロに（財源は防衛費の引き下げ・法人税や所得税の累進強化）",
+   "憲法9条の改悪に反対（護憲）",
+   "原発ゼロ・自然エネルギー100%",
+   "働く人の社会保険料を半減、最低賃金は全国一律1500円",
+   "包括的差別禁止法・国内人権救済機関の設置",
+   "選択的夫婦別姓と同性婚の実現"]},
  "参政党": {"url":"https://www.sanseito.jp/", "bullets":[
    "「日本人ファースト」、行き過ぎた外国人受け入れに反対",
    "消費税減税・インボイス廃止など国民負担の軽減",
@@ -206,7 +242,11 @@ def quote_block(e, ref_note=""):
 
 def oneissue_block(full):
     issue, why, ref = ONEISSUE[full]
-    e = PIDX[full][ref][0]
+    e = PIDX[full].get(ref, (None,))[0]
+    if not e or not e.get("quote"):          # 第221回しかない党はそちらを根拠にする
+        alt = S221.get(full, {}).get(ref) or next(iter(S221.get(full, {}).values()), None)
+        if alt:
+            e = {"who": alt["who"], "quote": alt["quote"], "url": alt["url"]}
     pid = PARTY_IDMAP.get(full, "")
     more = (f'<a class="oi-more" href="oneissue.html#{pid}">'
             f'▸ このワンイシューを深掘り（関連する発言・採決の実績を見る）</a>')
