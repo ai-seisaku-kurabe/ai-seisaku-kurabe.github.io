@@ -51,20 +51,72 @@ BILLS221 = {
  "経済・産業": [("221-0715-v003","金商法"), ("221-0529-v009","産業競争力"),
                 ("221-0612-v009","産業技術力"), ("221-0612-v006","郵便法")],
 }
+# 第219回（2025年11-12月の臨時国会）。記名投票31件のうち10件が人事同意案件、
+# 4件がNHK決算で、政策議案は財政と社会保障に偏る。外交・安保／エネルギー・環境／
+# 経済・産業には該当議案が無く、空欄になる（理由は画面に明示する）。
+BILLS219 = {
+ "財政": [("219-1216-v001","補正予算"), ("219-1216-v002","特会補正"),
+          ("219-1216-v008","交付税"), ("219-1128-v010","租特")],
+ "社会保障": [("219-1205-v002","医療法"), ("219-1216-v003","高次脳機能障害")],
+}
 S221 = json.load(open("221_speeches.json", encoding="utf-8"))   # 会期併記用の「言」
+S219 = json.load(open("219_speeches.json", encoding="utf-8"))
 META217 = json.load(open("217_speech_meta.json", encoding="utf-8"))  # 第217回の議院・会議名
-_raw221 = json.load(open("221_votes.json", encoding="utf-8"))
-_byid221 = {b["id"]: b for b in _raw221["bills"]}
-V221 = {}
-for _dom, _sel in BILLS221.items():
-    _bs = [(_byid221[i], lab) for i, lab in _sel if i in _byid221]
-    V221[_dom] = ({"bills": [b for b, _ in _bs]}, [lab for _, lab in _bs])
+
+
+def _load_votes(path, sel):
+    """選定した議案だけを、分野ごとに (votes, labels) の形にまとめる。"""
+    byid = {b["id"]: b for b in json.load(open(path, encoding="utf-8"))["bills"]}
+    out = {}
+    for dom, pairs in sel.items():
+        bs = [(byid[i], lab) for i, lab in pairs if i in byid]
+        out[dom] = ({"bills": [b for b, _ in bs]}, [lab for _, lab in bs])
+    return out
+
+
+V221 = _load_votes("221_votes.json", BILLS221)
+V219 = _load_votes("219_votes.json", BILLS219)
 
 # 第221回の会派名（選挙を経て変わった）。参政党はこの会期で会派を結成した。
 VKEY221 = {"自由民主党":"自由民主党","立憲民主党":"立憲民主","日本維新の会":"日本維新の会",
            "国民民主党":"国民民主","公明党":"公明党","日本共産党":"日本共産党",
            "れいわ新選組":"れいわ","参政党":"参政党",
            "チームみらい":"チームみらい","社会民主党":"社会民主党"}
+
+# 第219回の会派名。社民は立憲との統一会派「立憲民主・社民・無所属」に属しており、
+# 会派としての単独の賛否が記録に残らない。統一会派の賛否を1党の賛否として扱うと
+# 事実と違うものを載せることになるため、ここには入れず、理由を画面に出す。
+# チームみらいはこの会期にまだ会派が無い。
+VKEY219 = {"自由民主党":"自由民主党","立憲民主党":"立憲民主","日本維新の会":"日本維新の会",
+           "国民民主党":"国民民主","公明党":"公明党","日本共産党":"日本共産党",
+           "れいわ新選組":"れいわ","参政党":"参政党"}
+
+# 会期×党で、既定の説明文では事実と食い違う場合の個別の説明。
+# {what} は「賛否記録」「発言記録」のように、行と言で言い分けるために置いている
+# （採決用の文言を発言欄に出すと、書いていないことを書いたことになる）。
+SESSION_NOTE = {
+    ("第219回", "社会民主党"):
+        "この会期は立憲民主党などとの統一会派（立憲民主・社民・無所属）に属しており、"
+        "会派としての単独の{what}がありません",
+}
+
+
+def session_note(ses, full, what):
+    tpl = SESSION_NOTE.get((ses, full))
+    return tpl.format(what=what) if tpl else None
+
+
+def sessions_for(full, dname, entry, votes, labels):
+    """掲載する会期を古い順に (表示名, vkey, votes, labels) で返す。
+
+    会期を足すときはここに1行足す。表示側3か所が同じ並びを使うため、
+    片方だけ直して会期が食い違う事故が起きない。
+    """
+    v219, l219 = V219.get(dname, (None, None))
+    v221, l221 = V221.get(dname, (None, None))
+    return [("第217回", entry.get("vkey"), votes, labels),
+            ("第219回", VKEY219.get(full), v219, l219),
+            ("第221回", VKEY221.get(full), v221, l221)]
 
 def vote_url(bid):
     """議案IDの先頭3桁が会期番号なので、そこからURLを組み立てる。"""
@@ -102,29 +154,34 @@ def say_block(full, dname, entry):
     else:
         rows = ['<div class="vses"><span class="vsl">第217回</span>'
                 '<span class="vna">この会期にはこの党の会派が存在せず、会派としての発言記録がありません</span></div>']
-    e2 = S221.get(full, {}).get(dname)
-    if e2:
-        rows.append(session_quote("第221回", e2["who"], e2["quote"], e2["url"],
-                                  f'{e2.get("house","")}{e2.get("meeting","")}', e2.get("date","")))
-    else:
-        rows.append('<div class="vses"><span class="vsl">第221回</span>'
-                    '<span class="vna">この会期ではこの分野の会派代表発言を確認できませんでした</span></div>')
+    for ses, src in (("第219回", S219), ("第221回", S221)):
+        e2 = src.get(full, {}).get(dname)
+        if e2:
+            rows.append(session_quote(ses, e2["who"], e2["quote"], e2["url"],
+                                      f'{e2.get("house","")}{e2.get("meeting","")}',
+                                      e2.get("date","")))
+        else:
+            reason = (session_note(ses, full, "発言記録")
+                      or "この会期ではこの分野の会派代表発言を確認できませんでした")
+            rows.append(f'<div class="vses"><span class="vsl">{ses}</span>'
+                        f'<span class="vna">{reason}</span></div>')
     return ('<div class="say"><span class="vlbl gen">言 ／ 国会での発言（会期別）</span>'
             + (f'<p class="point">{esc(entry["point"])}</p>' if entry.get("point") else "")
             + "".join(rows) + '</div>')
 
 def votes_block(full, dname, entry, votes, labels):
-    """第217回と第221回の賛否を並べて示す。どちらが良いという評価はしない。"""
-    v221, l221 = V221.get(dname, (None, None))
+    """各会期の賛否を並べて示す。どちらが良いという評価はしない。"""
     rows = []
-    for ses, vk, vv, ll in [("第217回", entry.get("vkey"), votes, labels),
-                            ("第221回", VKEY221.get(full), v221, l221)]:
+    for ses, vk, vv, ll in sessions_for(full, dname, entry, votes, labels):
         chips = _chips(vk, vv, ll)
         if chips:
             rows.append(f'<div class="vses"><span class="vsl">{ses}</span>'
                         f'<div class="vrow">{chips}</div></div>')
             continue
-        if dname == "憲法":
+        note = session_note(ses, full, "賛否記録")
+        if note:
+            reason = note
+        elif dname == "憲法":
             reason = "憲法審査会は討議の場で、本会議の記名投票にかかる議案がありません"
         elif not vk:
             reason = "この会期では会派未結成のため、会派別の賛否記録がありません"
@@ -274,9 +331,8 @@ CLIP_CAT = {}
 def build_clip(full, short, dname, entry, votes, labels):
     cid = PARTY_IDMAP[full] + "__" + dname
     vlist = []
-    v221, l221 = V221.get(dname, (None, None))
-    for ses, vk, vv, ll in [("217", entry.get("vkey"), votes, labels),
-                            ("221", VKEY221.get(full), v221, l221)]:
+    for ses, vk, vv, ll in sessions_for(full, dname, entry, votes, labels):
+        ses = ses.strip("第回")   # マイノートでは「217」と短く出す
         if vv is None or not vk:
             continue
         for i, b in enumerate(vv["bills"]):

@@ -42,6 +42,10 @@ PARTY_KEYS = {
     "自由民主党": "自由民主党", "立憲民主党": "立憲民主", "日本維新の会": "日本維新の会",
     "国民民主党": "国民民主", "公明党": "公明党", "日本共産党": "日本共産党",
     "れいわ新選組": "れいわ", "参政党": "参政党",
+    # 第221回で会派を持つようになった党。対象から漏れていたため、この2党だけ
+    # 別ファイル（221_speeches_new.json）に手作業で足す運用になっており、
+    # 取り直すたびに消えていた。正規の経路に載せる。
+    "チームみらい": "チームみらい", "社会民主党": "社会民主党",
 }
 
 # 委員長報告・趣旨説明・議事進行など、党の立場を示さない手続き的発言
@@ -102,19 +106,35 @@ def fetch(term, date_from, date_until, n=90):
     return json.loads(urllib.request.urlopen(req, timeout=40).read()
                       .decode("utf-8")).get("speechRecord", [])
 
+MINLEN, MAXLEN = 60, 260   # 短すぎたら次の文を足し、長くても文の途中では切らない
+
+
 def snippet(body, term):
-    """争点キーワードの周辺を抜き出す。挨拶・定型の前置きを避けるため。"""
-    b = re.sub(r"^○[^　]{1,14}　", "", body).strip()
-    i = b.find(term)
-    if i < 0:
-        i = 0
-        parts = b.split("。")
-        b = ("。".join(parts[1:]) if len(parts) > 2 else b).strip()
-    seg = b[max(0, i - 30):max(0, i - 30) + 150]
-    d = seg.find("。")
-    if 0 <= d < 45:
-        seg = seg[d + 1:]
-    return re.sub(r"\s+", " ", seg).strip()[:130]
+    """争点キーワードを含む文を、文の切れ目で抜き出す。
+
+    以前は固定幅で切っていたため、「しましては、…」のように文の途中から始まったり、
+    「…というふうに」で途切れたりする引用が生まれていた（219で10/47件、221で13/55件）。
+    原文の文字列ではあっても、文の途中を切り出したものは読者に別の意味を与える。
+    ルール2（引用は原文のまま）は、文として成立していることまで含めて守る。
+    そのため、**文の途中では絶対に切らない**。
+    """
+    b = re.sub(r"^○[^　]{1,14}　", "", body)
+    b = re.sub(r"\s+", " ", b).strip()
+    sents = [s.strip() for s in re.split(r"(?<=。)", b) if s.strip()]
+    if not sents:
+        return ""
+
+    idx = next((k for k, s in enumerate(sents) if term in s), None)
+    if idx is None:
+        idx = 1 if len(sents) > 2 else 0   # 挨拶・前置きの1文目を避ける
+
+    out = sents[idx]
+    k = idx + 1
+    # 1文が短いときだけ、後ろの文を足す（順序は原文のまま。中略は挟まない）
+    while len(out) < MINLEN and k < len(sents) and len(out) + len(sents[k]) <= MAXLEN:
+        out += sents[k]
+        k += 1
+    return out
 
 def main():
     if len(sys.argv) < 4:
@@ -152,7 +172,8 @@ def main():
                 need.discard(p)
             time.sleep(0.4)
         got = [p for p in PARTY_KEYS if dom in out[p]]
-        print(f"  取得: {len(got)}/8 党" + ("" if len(got) == 8 else f"  未取得={[p for p in PARTY_KEYS if dom not in out[p]]}"))
+        miss = [p for p in PARTY_KEYS if dom not in out[p]]
+        print(f"  取得: {len(got)}/{len(PARTY_KEYS)} 党" + (f"  未取得={miss}" if miss else ""))
 
     path = f"{session}_speeches.json"
     json.dump(out, open(path, "w", encoding="utf-8"), ensure_ascii=False, indent=1)

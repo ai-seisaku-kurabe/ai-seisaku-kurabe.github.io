@@ -17,7 +17,7 @@
 （同じ会話に続けて貼ると、先に出た意見に引きずられて独立した点検にならない）。
 詳しい取り決めは agents/REVIEW_CHARTER.md を参照。
 """
-import argparse, os, re, subprocess, sys
+import argparse, datetime, os, re, subprocess, sys
 
 # 日本語Windowsの端末は cp932 で、依頼文に含まれる「—」等を出力できず落ちる。
 # 依頼文を画面に出すことが仕事の中心なので、出口を UTF-8 に固定しておく。
@@ -160,8 +160,26 @@ def chunk(units, max_chars):
     return groups
 
 
+PREMISE = """
+# 前提（日付と、データの実在について）
+
+**今日は {today} です。あなたの学習時点より新しい国会会期・議案・法律が出てきます。**
+
+掲載しているデータは、③検証班が一次情報に対して機械的に照合済みです
+（引用は国会会議録検索システムのAPIで原文と一致することを確認、
+採決は参議院の記名投票ページ、リンクは到達可能であることを確認）。
+
+そのため「この会期は存在しないはずだ」「この議案は実在しないのでは」という疑いは、
+**あなたの知識が古いだけである可能性が高い**です。
+実在そのものを疑う場合は、BLOCK にせず「未確認」として書いてください。
+差分の中に一次情報へのリンクがあるので、実在の確認はそちらで行えます。
+
+これは指摘を控えさせるための注意ではありません。**確認できないことを断定させない**ためのものです。
+"""
+
+
 def build(group, base, idx, total):
-    parts = [HEADER]
+    parts = [HEADER, PREMISE.format(today=datetime.date.today().isoformat())]
     if total > 1:
         files = "".join(f"  - {p}\n" for p, _ in group)
         last = idx == total

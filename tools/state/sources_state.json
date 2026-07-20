@@ -1,11 +1,16 @@
 {
- "covered_session": 217,
- "speech_until": "2025-06-30",
+ "covered_session": 221,
+ "speech_until": "2026-07-20",
  "known_sessions": {
   "217": 136,
   "218": 0,
   "219": 31,
   "220": 0,
   "221": 113
- }
+ },
+ "covered_sessions": [
+  217,
+  219,
+  221
+ ]
 }
