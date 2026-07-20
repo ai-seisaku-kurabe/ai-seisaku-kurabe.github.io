@@ -48,7 +48,13 @@ PROVIDERS = {
         "key_env": "OPENAI_API_KEY",
         "model_env": "OPENAI_MODEL",
         "models": ["gpt-5.5", "gpt-5.1", "gpt-4.1"],
-        "list_url": "https://api.openai.com/v1/models",
+        "base": "https://api.openai.com/v1",
+    },
+    "Grok": {
+        "key_env": "XAI_API_KEY",
+        "model_env": "XAI_MODEL",
+        "models": ["grok-4", "grok-3"],
+        "base": "https://api.x.ai/v1",   # OpenAI互換
     },
 }
 
@@ -84,14 +90,20 @@ def ask_gemini(model, key, prompt):
                    for p in d["candidates"][0]["content"]["parts"]).strip()
 
 
-def ask_openai(model, key, prompt):
-    d = post("https://api.openai.com/v1/chat/completions",
-             {"model": model, "messages": [{"role": "user", "content": prompt}]},
-             {"Authorization": f"Bearer {key}"})
-    return d["choices"][0]["message"]["content"].strip()
+def ask_openai_compatible(base):
+    """OpenAI互換のAPI（OpenAI本家・xAI等）は同じ呼び方で済む。"""
+    def ask(model, key, prompt):
+        d = post(f"{base}/chat/completions",
+                 {"model": model, "messages": [{"role": "user", "content": prompt}]},
+                 {"Authorization": f"Bearer {key}"})
+        return d["choices"][0]["message"]["content"].strip()
+    return ask
 
 
-ASKERS = {"Gemini": ask_gemini, "ChatGPT": ask_openai}
+def asker_for(name, cfg):
+    if name == "Gemini":
+        return ask_gemini
+    return ask_openai_compatible(cfg["base"])
 
 
 def verdict_of(text):
@@ -147,7 +159,7 @@ def main():
         for model in models:
             print(f"→ {name} ({model}) に問い合わせ中 …", flush=True)
             try:
-                text = ASKERS[name](model, key, prompt)
+                text = asker_for(name, cfg)(model, key, prompt)
                 results[name] = (verdict_of(text), f"（モデル: {model}）\n\n{text}")
                 asked += 1
                 print(f"   判定: {results[name][0]}")
@@ -184,9 +196,9 @@ def main():
         f.write("| AI | 判定 |\n|---|---|\n")
         for n, (v, _) in results.items():
             f.write(f"| {n} | {v} |\n")
-        if asked < len(PROVIDERS):
-            f.write(f"\n**査読できたのは {asked}/{len(PROVIDERS)} 社。**"
-                    "独立した点検の数が減っている。\n")
+        if asked < 2:
+            f.write(f"\n**実際に査読できたのは {asked} 社だけ。"
+                    "独立した点検が2つ以上ないため、これは合議ではなく1社の意見。**\n")
         for n, (v, t) in results.items():
             f.write(f"\n## {n} — {v}\n\n{t}\n")
         f.write("\n---\n\nPASS は「異議なし」であって承認ではない。"
@@ -197,10 +209,16 @@ def main():
     for n, (v, _) in results.items():
         print(f"  {n}: {v}")
     print("=" * 60)
-    if asked < len(PROVIDERS):
-        # 何社が見たのかを黙らせない。1社だけの査読を、全社が見たことにしない。
-        print(f"⚠ 査読できたのは {asked}/{len(PROVIDERS)} 社です。"
-              "独立した点検の数が減っていることを承知の上で進めてください。")
+    # 何社が見たのかを黙らせない。1社だけの査読を、全社が見たことにしない。
+    expected = len(PROVIDERS) - len(nokey)
+    if failed:
+        print(f"⚠ 鍵はあるのに応答が無かった提供元があります: {', '.join(failed)}")
+    if asked < 2:
+        print(f"⚠ 実際に査読できたのは {asked} 社だけです。"
+              "**独立した点検が2つ以上ないと合議になりません。**"
+              "この状態で進めるなら、査読は「1社の意見」として扱ってください。")
+    elif asked < expected:
+        print(f"⚠ 査読できたのは {asked}/{expected} 社です。")
 
     blocked = [n for n, (v, _) in results.items() if v in ("BLOCK", "不明")]
     if blocked:
