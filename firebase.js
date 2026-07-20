@@ -9,7 +9,7 @@ var FIREBASE_CONFIG = {
 /* ======================== */
 /* App Check（bot・不正投稿対策・任意）。使う場合は reCAPTCHA v3 のサイトキーを入れる。空なら無効。
    ※コンソールで「適用(enforce)」する前に、キーを入れて動作確認すること（順序はREADME参照）。 */
-var RECAPTCHA_SITE_KEY = "";
+var RECAPTCHA_SITE_KEY = "6LdeKFwtAAAAAJaehOE0Y-Drhy8UsikHRuR3Clqv";
 var PARTY_ID = {"自由民主党": "jimin", "立憲民主党": "rikken", "日本維新の会": "ishin", "国民民主党": "kokumin", "公明党": "komei", "日本共産党": "kyosan", "れいわ新選組": "reiwa", "参政党": "sansei", "none": "none"};
 window.KG = (function(){
   var db=null, ready=false;
