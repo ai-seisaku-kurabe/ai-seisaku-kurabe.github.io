@@ -697,6 +697,7 @@ NEWS_CSS="""
 .nw-pg:hover:not(:disabled){border-color:var(--accent);color:var(--accent);}
 .nw-pg:disabled{opacity:.35;cursor:not-allowed;}
 .nw-pgi{font-family:var(--mono);font-size:12.5px;color:var(--muted);font-variant-numeric:tabular-nums;}
+.nw-empty a{color:var(--accent);text-decoration:none;font-weight:600;}
 .nw-empty{background:var(--card);border:1px dashed var(--line);border-radius:12px;
   padding:24px;text-align:center;color:var(--muted);font-size:13.5px;}
 """
@@ -708,7 +709,7 @@ NEWS_JS=("<script>(function(){"
   "return (fd==='all'||(x.d||[]).indexOf(fd)>=0)&&(fp==='all'||(x.p||[]).indexOf(fp)>=0);});"
   "var total=L.length,pages=Math.max(1,Math.ceil(total/PAGE));if(page>pages)page=pages;""var from=(page-1)*PAGE;var slice=L.slice(from,from+PAGE);""document.getElementById('nwCount').textContent=total?(total+' 件中 '+(from+1)+'〜'+(from+slice.length)+' 件目'):'0 件';""var cta=document.getElementById('nwCta'),ctaT=document.getElementById('nwCtaT');""if(cta){if(fd==='all'){cta.href='guide.html';""ctaT.textContent='各党が国会で何を論じ、どう投票したかを、原典リンク付きで確かめる →';}""else{cta.href='guide.html?domain='+encodeURIComponent(fd);""ctaT.textContent='「'+fd+'」について、各党が国会で何を論じ、どう投票したかを確かめる →';}}"
   "var root=document.getElementById('nwList');"
-  "var pg=document.getElementById('nwPager');""if(!total){root.innerHTML='<div class=\"nw-empty\">条件に合う見出しがありません。</div>';pg.innerHTML='';return;}""pg.innerHTML = pages>1 ? ('<button class=\"nw-pg\" data-go=\"prev\"'+(page<=1?' disabled':'')+'>← 前の10件</button>'""+'<span class=\"nw-pgi\">'+page+' / '+pages+' ページ</span>'""+'<button class=\"nw-pg\" data-go=\"next\"'+(page>=pages?' disabled':'')+'>次の10件 →</button>') : '';"
+  "var pg=document.getElementById('nwPager');""if(!total){var wider=(fp!=='all'&&fd!=='all')?('<div class=\"nw-empty\">この党のこの分野の見出しは、まだ蓄積されていません。<br>'+'<a href=\"#\" id=\"nwWiden\">▸ 「'+fd+'」の見出しをすべて見る</a></div>'):'<div class=\"nw-empty\">条件に合う見出しがありません。</div>';root.innerHTML=wider;pg.innerHTML='';var w=document.getElementById('nwWiden');if(w)w.addEventListener('click',function(e){e.preventDefault();fp='all';page=1;document.querySelectorAll('.nw-chip').forEach(function(c){if(c.getAttribute('data-g')==='p'){if(c.getAttribute('data-v')==='all'){c.classList.add('on');}else{c.classList.remove('on');}}});render();});return;}""pg.innerHTML = pages>1 ? ('<button class=\"nw-pg\" data-go=\"prev\"'+(page<=1?' disabled':'')+'>← 前の10件</button>'""+'<span class=\"nw-pgi\">'+page+' / '+pages+' ページ</span>'""+'<button class=\"nw-pg\" data-go=\"next\"'+(page>=pages?' disabled':'')+'>次の10件 →</button>') : '';"
   "root.innerHTML=slice.map(function(x){"
   "var tags=(x.d||[]).map(function(d){return '<span class=\"nw-tag\">'+esc(d)+'</span>';}).join('');"
   "var pts=(x.p||[]).map(function(p){var m=PTY[p];return m?'<span class=\"nw-pty\" style=\"--pc:'+m.c+'\">'+esc(m.n)+'</span>':'';}).join('');"

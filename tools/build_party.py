@@ -291,9 +291,10 @@ def domain_links(full, dname):
     kw = DOMAIN_SEARCH.get(dname, dname)
     q = urllib.parse.urlencode({"keyword": kw, "from": "2026-01-01", "until": "2026-07-20"})
     kokkai = f"https://kokkai.ndl.go.jp/#/result?{q}"
-    news = "news.html?domain=" + urllib.parse.quote(dname)
+    pid = PARTY_IDMAP.get(full, "")
+    news = "news.html?domain=" + urllib.parse.quote(dname) + ("&party=" + pid if pid else "")
     return (f'<div class="dmore">'
-            f'<a href="{news}">▸ この分野のニュース</a>'
+            f'<a href="{news}">▸ この党のこの分野のニュース</a>'
             f'<a href="{esc(kokkai)}" target="_blank" rel="noopener">▸ この分野の発言を会議録で探す</a>'
             f'</div>')
 
