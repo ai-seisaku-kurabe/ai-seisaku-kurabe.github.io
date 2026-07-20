@@ -1049,6 +1049,45 @@ jobs:
 os.makedirs("site/.github/workflows", exist_ok=True)
 open("site/.github/workflows/news.yml", "w", encoding="utf-8").write(WORKFLOW)
 
+
+# ---------- HTMLを完全な文書にする（クローラ・共有カード対策） ----------
+SITE_URL = "https://ai-seisaku-kurabe.github.io"
+PAGE_DESC = {
+ "index.html":   "各党が国会で何を論じ、どう投票したか（言と行）を一次情報で比べる投票ガイド。点数化も格付けもしません。",
+ "guide.html":   "政党ごとに、ワンイシューと6分野の「言（国会発言）」「行（参院採決）」を原典リンク付きで確認できます。",
+ "oneissue.html":"各党が特に重視する一点（ワンイシュー）を、関連する国会発言と採決の実績から確認できます。",
+ "shindan.html": "11問に答えると、あなたの考えと各党の言と行がどこで交差しどこでズレるかを表示します。",
+ "news.html":    "各党・各争点のニュース見出しを政策分野別に分類して蓄積しています。見出しと出典リンクのみ。",
+ "speeches.html":"国会での発言を、政党・政策分野・会期で絞り込んで探せます。すべて議事録原文へのリンク付き。",
+ "shukei.html":  "「政策で照らす」に回答した人の傾向（参考値・自己選択サンプル）。",
+ "about.html":   "データの作り方・編集の判断・限界、そして運用ルールを全文公開しています。",
+ "mynote.html":  "保存した各党の言と行を、分野ごとに並べて比較できます。",
+ "feedback.html":"誤りの指摘・機能の要望・感想をお寄せください。",
+}
+def wrap_document(fn, html):
+    """<!DOCTYPE>〜<body> で包み、説明文とOGタグを足す。
+    これまで<title>から書き始めていたためブラウザ以外では不完全な文書だった。"""
+    d = PAGE_DESC.get(fn, PAGE_DESC["index.html"])
+    import re as _re
+    m = _re.search(r"<title>(.*?)</title>", html, _re.S)
+    title = m.group(1) if m else "AI政策くらべ"
+    head_extra = (f'<meta name="description" content="{esc(d)}">'
+                  f'<link rel="canonical" href="{SITE_URL}/{"" if fn=="index.html" else fn}">'
+                  f'<meta property="og:type" content="website">'
+                  f'<meta property="og:site_name" content="AI政策くらべ">'
+                  f'<meta property="og:title" content="{esc(title)}">'
+                  f'<meta property="og:description" content="{esc(d)}">'
+                  f'<meta property="og:url" content="{SITE_URL}/{"" if fn=="index.html" else fn}">'
+                  f'<meta name="twitter:card" content="summary">')
+    # 既存の先頭メタ・title・style は head に入れ、残りを body に置く
+    idx = html.find('<div class="wrap">')
+    head, body = (html[:idx], html[idx:]) if idx > 0 else ("", html)
+    return ("<!DOCTYPE html>\n<html lang=\"ja\">\n<head>\n"
+            + head + head_extra
+            + "\n</head>\n<body>\n"
+            + body
+            + "\n</body>\n</html>\n")
+
 # ---------- 全HTMLに文字コード・viewportメタを付与（スマホで正しく縮尺・折返しさせる） ----------
 META=('<meta charset="utf-8">\n'
       '<meta name="viewport" content="width=device-width, initial-scale=1">\n')
@@ -1063,7 +1102,12 @@ for _fn in os.listdir("site"):
             _s=_s+FOOTER
         if _fn!="mynote.html" and "id=\"kgfab\"" not in _s:
             _s=_s+FLOATNOTE
+        if "<!DOCTYPE" not in _s:
+            _s=wrap_document(_fn,_s)
         open(_p,"w",encoding="utf-8").write(_s)
+
+
+import gen_seo; gen_seo.generate('site')
 
 # ---------- zip ----------
 if os.path.exists("seisaku_site.zip"): os.remove("seisaku_site.zip")
