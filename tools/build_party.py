@@ -294,15 +294,12 @@ DOMAIN_SEARCH = {
 }
 # 会派名は会期で変わるため、検索は会派指定なし（議員名で辿れるよう発言リンクは別途ある）
 def domain_links(full, dname):
-    """この分野の『もっと見る』導線。ニュースは当サイト、発言は会議録検索システムへ。"""
-    kw = DOMAIN_SEARCH.get(dname, dname)
-    q = urllib.parse.urlencode({"keyword": kw, "from": "2026-01-01", "until": "2026-07-20"})
-    kokkai = f"https://kokkai.ndl.go.jp/#/result?{q}"
+    """この分野の『もっと見る』導線。いずれも当サイト内で党×分野を保ったまま辿れる。"""
     pid = PARTY_IDMAP.get(full, "")
-    news = "news.html?domain=" + urllib.parse.quote(dname) + ("&party=" + pid if pid else "")
+    qs = urllib.parse.quote(dname) + ("&party=" + pid if pid else "")
     return (f'<div class="dmore">'
-            f'<a href="{news}">▸ この党のこの分野のニュース</a>'
-            f'<a href="{esc(kokkai)}" target="_blank" rel="noopener">▸ この分野の発言を会議録で探す</a>'
+            f'<a href="news.html?domain={qs}">▸ この党のこの分野のニュース</a>'
+            f'<a href="speeches.html?domain={qs}">▸ この党のこの分野の発言をもっと見る</a>'
             f'</div>')
 
 def domain_row(dname, entry, votes, labels, cid, full):
