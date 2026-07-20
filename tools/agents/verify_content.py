@@ -24,7 +24,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 TOOLS = os.path.abspath(os.path.join(HERE, ".."))
 ROOT = os.path.abspath(os.path.join(TOOLS, ".."))
 API = "https://kokkai.ndl.go.jp/api/speech"
-UA = {"User-Agent": "seisaku-kurabe-verifier/1.0 (+https://tsuruwa2.netlify.app)"}
+UA = {"User-Agent": "seisaku-kurabe-verifier/1.0 (+https://ai-seisaku-kurabe.github.io)"}
 
 findings = []   # (レベル, 分類, 内容)
 def fail(cat, msg): findings.append(("FAIL", cat, msg))

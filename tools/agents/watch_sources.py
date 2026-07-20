@@ -19,7 +19,7 @@ import urllib.error, urllib.parse, urllib.request
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 STATE_PATH = os.path.join(HERE, "..", "state", "sources_state.json")
-UA = {"User-Agent": "seisaku-kurabe-watch/1.0 (+https://tsuruwa2.netlify.app)"}
+UA = {"User-Agent": "seisaku-kurabe-watch/1.0 (+https://ai-seisaku-kurabe.github.io)"}
 SANGIIN = "https://www.sangiin.go.jp/japanese/touhyoulist/{n}/vote_ind.htm"
 KOKKAI = "https://kokkai.ndl.go.jp/api/speech"
 

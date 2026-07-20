@@ -229,11 +229,11 @@ FEEDBACK_FORM = ('  <p class="eyebrow">ご意見・お問い合わせ</p>'
   '現在は<b>GitHubのIssue</b>で受け付けています。'
   '<p style="margin:16px 0 0">'
   '<a class="fb-btn" style="text-decoration:none;display:inline-block" '
-  'href="https://github.com/kodamaachiha/seisaku-kurabe/issues/new" '
+  'href="https://github.com/ai-seisaku-kurabe/ai-seisaku-kurabe.github.io/issues/new" '
   'target="_blank" rel="noopener">▸ ご意見を投稿する（GitHub）</a></p></div>'
   '<p class="fb-note">・GitHubのアカウントが必要です。お持ちでない方向けの入力フォームは準備中です。<br>'
   '・<b>このサイトのソースコードは公開しています。</b>掲載データ・生成スクリプト・'
-  '運用ルールのすべてを<a class="src" href="https://github.com/kodamaachiha/seisaku-kurabe" target="_blank" rel="noopener">'
+  '運用ルールのすべてを<a class="src" href="https://github.com/ai-seisaku-kurabe/ai-seisaku-kurabe.github.io" target="_blank" rel="noopener">'
   'リポジトリ</a>で確認でき、誤りがあればIssueやPull Requestで直接指摘できます。<br>'
   '・いただいた内容はサイト改善の目的でのみ利用します。</p>')
 FEEDBACK_JS = ""   # フォーム送信は廃止（GitHub Issue へ誘導）

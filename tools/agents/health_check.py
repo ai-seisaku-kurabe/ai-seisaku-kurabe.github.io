@@ -17,8 +17,8 @@
 """
 import argparse, datetime, json, re, sys, urllib.error, urllib.request
 
-BASE = "https://tsuruwa2.netlify.app"
-UA = {"User-Agent": "seisaku-kurabe-healthcheck/1.0 (+https://tsuruwa2.netlify.app)"}
+BASE = "https://ai-seisaku-kurabe.github.io"
+UA = {"User-Agent": "seisaku-kurabe-healthcheck/1.0 (+https://ai-seisaku-kurabe.github.io)"}
 
 PAGES = ["index.html", "guide.html", "oneissue.html", "shindan.html", "news.html",
          "shukei.html", "about.html", "mynote.html", "feedback.html"]
