@@ -14,14 +14,17 @@
 | ② 編集 | `agents/EDITOR.md`（AIへの指示書） | 人が起動 | **必要**（PRをマージ） |
 | ③ 検証 | `agents/verify_content.py` | PR時・週次 (Actions) | 不要（止めるだけ） |
 | ⑥ 運用 | `agents/health_check.py` | 日次 (Actions) | 不要（知らせるだけ） |
+| ⑧ 査読 | `agents/REVIEW_CHARTER.md` ＋ `agents/make_review_request.py` | 人がPRごとに起動 | **必要**（BLOCKを裁く） |
 
-設計の要点は3つです。
+設計の要点は4つです。
 
 1. **決定論的な処理はActionsへ、判断が要る処理だけAIへ。**
    ①③⑥はただのPythonで、AIもAPIキーも要りません（無料で動き、結果が再現します）。
-   ②だけがAIの仕事です。
+   ②⑧だけがAIの仕事です。
 2. **書いた本人に採点させない。** ②編集班の出力は必ず③検証班が点検します。
-3. **状態はGitに置く。** 受け渡しはPR。誰が何を変えたか全部追えます。
+3. **機械で落とせないものは、別のAIに点検させる。** ③をすり抜ける「判断の誤り」は、
+   ⑧査読班が複数のAIに独立して見せて拾います。**多数決はせず、最終判断は人**です。
+4. **状態はGitに置く。** 受け渡しはPR。誰が何を変えたか全部追えます。
 
 ## サイトの再生成
 
@@ -64,6 +67,9 @@ python agents/verify_content.py --offline       # 通信なしの項目だけ（
 
 # ⑥ 公開サイトが壊れていないか外から点検
 python agents/health_check.py
+
+# ⑧ 他のAIに貼る査読依頼文をつくる（憲法8条＋差分を一枚にまとめる）
+python agents/make_review_request.py --out review.txt
 ```
 
 ## データ取得スクリプト（②編集班が新会期を足すときの参考）
