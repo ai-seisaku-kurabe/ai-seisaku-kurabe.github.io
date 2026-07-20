@@ -4,7 +4,10 @@
 var FIREBASE_CONFIG = {
   apiKey: "AIzaSyDBZBjGT456mpQOgQF9cF4-mCB6r1TWPyA",
   authDomain: "aipolitics-9c657.firebaseapp.com",
-  projectId: "aipolitics-9c657"
+  projectId: "aipolitics-9c657",
+  // appId は App Check が「どのアプリからのリクエストか」を識別するために必須
+  // （Firestore だけなら無くても動くため、これが無いと App Check だけが 400 で落ちる）
+  appId: "1:976828834653:web:1f3ad28567a4e4b417beb4"
 };
 /* ======================== */
 /* App Check（bot・不正投稿対策・任意）。使う場合は reCAPTCHA v3 のサイトキーを入れる。空なら無効。
