@@ -1,0 +1,19 @@
+name: verify-content
+# ③検証班: 掲載内容がルールを守れているか点検する（PR時と週次）
+on:
+  pull_request:
+    paths: ['tools/**', '*.html']
+  schedule:
+    - cron: '30 22 * * 1'  # 毎週月曜 JST 7:30
+  workflow_dispatch:
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: 引用の原文一致・リンク・評価語・憲法を点検
+        working-directory: tools
+        run: python agents/verify_content.py

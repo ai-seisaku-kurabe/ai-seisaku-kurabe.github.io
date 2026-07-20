@@ -1,0 +1,6 @@
+# ビルド生成物（配布は deploy_to_repo.py が行う）
+site/
+seisaku_site.zip
+policy_guide.html
+shindan.html
+shukei.html

@@ -1,0 +1,16 @@
+name: watch-sources
+# ①収集班: 未掲載の新しい一次情報が出ていないか見張る
+on:
+  schedule:
+    - cron: '0 23 * * 1'   # 毎週月曜 JST 8:00
+  workflow_dispatch:
+jobs:
+  watch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: 新会期・新規発言の差分を検知
+        run: python tools/agents/watch_sources.py --fail-on-new
