@@ -3,6 +3,11 @@ name: verify-content
 on:
   pull_request:
     paths: ['tools/**', '*.html']
+  push:
+    # mainへ直接プッシュする運用のため、PRを経ない変更も必ず点検する。
+    # これが無いと、直プッシュした内容は次の週次実行まで検証されない。
+    branches: [main]
+    paths: ['tools/**', '*.html']
   schedule:
     - cron: '30 22 * * 1'  # 毎週月曜 JST 7:30
   workflow_dispatch:
