@@ -21,3 +21,6 @@ jobs:
           git add news.json news_archive.json
           git commit -m "chore: update news.json / news_archive.json" || echo "no changes"
           git push
+      # 更新を検索エンジンへ通知する（新規ドメインはクロール間隔が長いため）
+      - run: python tools/ping_indexnow.py
+        continue-on-error: true   # 通知の失敗でニュース更新まで赤くしない
