@@ -219,35 +219,21 @@ a.src{ color:var(--accent); text-decoration:none; } a.src:hover{ text-decoration
 """
 FEEDBACK_FORM = ('  <p class="eyebrow">ご意見・お問い合わせ</p>'
   '<h1>このサイトへのご意見をお寄せください</h1>'
-  '<p class="lede">誤りの指摘・機能の要望・感想など、なんでも歓迎です。いただいた声は<b>サイトの改善に活用</b>します。'
-  '返信をご希望の方のみ、メールアドレスを任意でご記入ください。</p>'
-  '<form class="fb" name="feedback" method="POST" data-netlify="true" netlify-honeypot="bot-field" id="fbform">'
-  '<input type="hidden" name="form-name" value="feedback">'
-  '<p class="fb-hp"><label>この欄は空のまま<input name="bot-field"></label></p>'
-  '<label>種類<select name="category">'
-  '<option>感想・応援</option><option>間違いの指摘</option>'
-  '<option>機能・改善の要望</option><option>その他</option></select></label>'
-  '<label>ご意見・ご要望<span class="req">必須</span>'
-  '<textarea name="message" required placeholder="お気づきの点、ご要望などをご記入ください"></textarea></label>'
-  '<label>返信用メールアドレス（任意）'
-  '<input type="email" name="email" placeholder="返信をご希望の方のみ"></label>'
-  '<button type="submit" class="fb-btn">送信する</button></form>'
-  '<div class="fb-thanks" id="fbthanks" hidden><b>送信ありがとうございました。</b><br>'
-  'いただいたご意見は今後の改善に活用させていただきます。'
-  '<p style="margin:12px 0 0"><a class="src" href="index.html">▸ トップにもどる</a></p></div>'
-  '<p class="fb-note">・いただいた内容はサイト改善の目的でのみ利用します。返信用メール以外に個人情報の入力は不要です。<br>'
-  '・スパム対策のため、まれに送信できない場合は時間をおいてお試しください。</p>')
-FEEDBACK_JS = ('<script>(function(){var f=document.getElementById("fbform");if(!f)return;'
-  'var sending=false;'
-  'f.addEventListener("submit",function(e){e.preventDefault();'
-  'if(sending)return;sending=true;'                       # 二重送信を無視
-  'var btn=f.querySelector(".fb-btn");'
-  'if(btn){btn.disabled=true;btn.textContent="送信中…";}' # ボタンをグレーアウト
-  'var body=new URLSearchParams(new FormData(f)).toString();'
-  'fetch("/",{method:"POST",headers:{"Content-Type":"application/x-www-form-urlencoded"},body:body})'
-  '.then(done).catch(done);'
-  'function done(){f.hidden=true;document.getElementById("fbthanks").hidden=false;'
-  'window.scrollTo({top:0,behavior:"smooth"});}});})();</script>')
+  '<p class="lede">誤りの指摘・機能の要望・感想など、なんでも歓迎です。いただいた声は<b>サイトの改善に活用</b>します。</p>'
+  '<div class="fb-thanks" style="margin-bottom:22px">'
+  '<b>ご意見の受付方法が変わりました。</b><br>'
+  'ホスティングの移行にともない、これまでの送信フォームが使えなくなりました。'
+  '現在は<b>GitHubのIssue</b>で受け付けています。'
+  '<p style="margin:16px 0 0">'
+  '<a class="fb-btn" style="text-decoration:none;display:inline-block" '
+  'href="https://github.com/kodamaachiha/seisaku-kurabe/issues/new" '
+  'target="_blank" rel="noopener">▸ ご意見を投稿する（GitHub）</a></p></div>'
+  '<p class="fb-note">・GitHubのアカウントが必要です。お持ちでない方向けの入力フォームは準備中です。<br>'
+  '・<b>このサイトのソースコードは公開しています。</b>掲載データ・生成スクリプト・'
+  '運用ルールのすべてを<a class="src" href="https://github.com/kodamaachiha/seisaku-kurabe" target="_blank" rel="noopener">'
+  'リポジトリ</a>で確認でき、誤りがあればIssueやPull Requestで直接指摘できます。<br>'
+  '・いただいた内容はサイト改善の目的でのみ利用します。</p>')
+FEEDBACK_JS = ""   # フォーム送信は廃止（GitHub Issue へ誘導）
 FEEDBACK = (f'<title>ご意見・お問い合わせ — 政策くらべ</title>\n<style>{INDEX_CSS}{FEEDBACK_CSS}</style>\n'
   f'<div class="wrap">{nav("feedback.html")}<div class="doc">' + FEEDBACK_FORM + '</div></div>' + FEEDBACK_JS)
 open("site/feedback.html","w",encoding="utf-8").write(FEEDBACK)
