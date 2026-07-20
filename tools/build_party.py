@@ -52,6 +52,7 @@ BILLS221 = {
                 ("221-0612-v009","産業技術力"), ("221-0612-v006","郵便法")],
 }
 S221 = json.load(open("221_speeches.json", encoding="utf-8"))   # 会期併記用の「言」
+META217 = json.load(open("217_speech_meta.json", encoding="utf-8"))  # 第217回の議院・会議名
 _raw221 = json.load(open("221_votes.json", encoding="utf-8"))
 _byid221 = {b["id"]: b for b in _raw221["bills"]}
 V221 = {}
@@ -81,24 +82,30 @@ def _chips(vkey, votes, labels):
                    f'{esc(labels[i])}<b>{esc(st or "—")}</b></a>')
     return "".join(out)
 
-def session_quote(ses, who, quote, url, where=""):
-    w = f'・{esc(where)}' if where else ""
+def session_quote(ses, who, quote, url, where="", date=""):
+    """発言は「いつ・どこで」を先に示す。切り抜きではなく、国会での一場面として読ませるため。"""
+    ctx = " ".join(x for x in (where, date) if x)
+    head = f'<span class="qctx">{esc(ctx)}</span>' if ctx else ""
     return (f'<div class="vses"><span class="vsl">{ses}</span>'
-            f'<blockquote>「{esc(quote)}」<cite>— {esc(who)}議員{w}</cite>'
-            f'<a class="evq" href="{esc(url)}" target="_blank" rel="noopener">全文→</a>'
-            f'</blockquote></div>')
+            f'<div class="qbox">{head}'
+            f'<p class="qtext">「{esc(quote)}」</p>'
+            f'<p class="qcite">— {esc(who)}議員'
+            f'<a class="evq" href="{esc(url)}" target="_blank" rel="noopener">全文→</a></p>'
+            f'</div></div>')
 
 def say_block(full, dname, entry):
     """第217回と第221回の発言を並べる。採決と同じく、変化に評価は与えない。"""
     if entry.get("quote"):
-        rows = [session_quote("第217回", entry["who"], clean_quote(entry["quote"]), entry["url"])]
+        _m = META217.get(f'{full}|{dname}', {})
+        rows = [session_quote("第217回", entry["who"], clean_quote(entry["quote"]), entry["url"],
+                              f'{_m.get("house","")}{_m.get("meeting","")}', _m.get("date",""))]
     else:
         rows = ['<div class="vses"><span class="vsl">第217回</span>'
                 '<span class="vna">この会期にはこの党の会派が存在せず、会派としての発言記録がありません</span></div>']
     e2 = S221.get(full, {}).get(dname)
     if e2:
         rows.append(session_quote("第221回", e2["who"], e2["quote"], e2["url"],
-                                  f'{e2.get("house","")}{e2.get("meeting","")}'))
+                                  f'{e2.get("house","")}{e2.get("meeting","")}', e2.get("date","")))
     else:
         rows.append('<div class="vses"><span class="vsl">第221回</span>'
                     '<span class="vna">この会期ではこの分野の会派代表発言を確認できませんでした</span></div>')
@@ -432,7 +439,13 @@ blockquote .evq:hover{ text-decoration:underline; }
   border-radius:10px; padding:11px 13px; }
 .vses{ display:flex; align-items:flex-start; gap:9px; padding:5px 0; }
 .vses + .vses{ border-top:1px dotted var(--line); }
-.vses blockquote{ flex:1; min-width:0; }
+.vses .qbox{ flex:1; min-width:0; }
+.qctx{ display:block; font-family:var(--mono); font-size:10.5px; font-weight:700;
+  color:var(--muted); letter-spacing:.02em; margin-bottom:3px; }
+.qtext{ margin:0; font-size:13.5px; line-height:1.75; color:var(--ink);
+  display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden; }
+.qcite{ margin:4px 0 0; font-family:var(--mono); font-size:10.5px; color:var(--muted); }
+.qcite .evq{ margin-left:8px; }
 .vsl{ flex:none; font-family:var(--mono); font-size:10px; font-weight:700; color:var(--muted);
   background:var(--card); border:1px solid var(--line); border-radius:6px; padding:3px 7px; margin-top:1px; }
 .vlbl{ display:block; font-family:var(--mono); font-size:10px; letter-spacing:.1em;

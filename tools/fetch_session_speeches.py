@@ -39,9 +39,18 @@ PARTY_KEYS = {
     "れいわ新選組": "れいわ", "参政党": "参政党",
 }
 
+# 委員長報告・趣旨説明・議事進行など、党の立場を示さない手続き的発言
+PROCEDURAL = ["委員会におきまして", "質疑を終局", "可決すべきもの", "御報告いたします",
+              "報告いたします", "趣旨を説明", "趣旨説明", "議事日程", "審査の経過",
+              "採決の結果", "全会一致をもって", "異議ないものと認めます"]
+
 def is_gov(rec):
     blob = (rec.get("speakerPosition") or "") + (rec.get("speech") or "")[:22]
     return any(m in blob for m in GOV)
+
+def is_procedural(body):
+    """委員長報告などの手続き的発言を除く。党の政策的立場を示さないため。"""
+    return any(m in body for m in PROCEDURAL)
 
 def fetch(term, date_from, date_until, n=90):
     q = urllib.parse.urlencode({"any": term, "from": date_from, "until": date_until,
@@ -88,7 +97,7 @@ def main():
                 if not hit:
                     continue
                 body = (rec.get("speech") or "").replace("\r\n", " ").strip()
-                if len(body) < 80 or "会議録情報" in body:
+                if len(body) < 80 or "会議録情報" in body or is_procedural(body):
                     continue
                 text = snippet(body, term)
                 if len(text) < 40:
