@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""政策くらべ v1.1 「政党で選ぶ」= 党タブ主体。
+"""AI政策くらべ v1.1 「政党で選ぶ」= 党タブ主体。
 既存 build_guide.py のデータ(46発言+投票)・整形関数を再利用し、行列を転置して党ごとに表示。
 各党に『ワンイシュー』(特に重視する1点)を新設。"""
 import html, json
@@ -415,7 +415,7 @@ var CLIP = __CLIP__;
 """
 JS = JS.replace("__CLIP__", json.dumps(CLIP_CAT, ensure_ascii=False))
 
-HTML = f'''<title>政策くらべ — 政党で選ぶ（比例区）v1.5</title>
+HTML = f'''<title>AI政策くらべ — 政党で選ぶ（比例区）v1.5</title>
 <style>{CSS}</style>
 <div class="wrap"><div class="doc">
   <p class="eyebrow">比例区・投票ガイド ／ v1.5「政党で選ぶ」</p>

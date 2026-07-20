@@ -124,7 +124,7 @@ h1{ font-family:var(--serif); font-weight:600; font-size:clamp(24px,4.4vw,36px);
 a.src{ color:var(--accent); text-decoration:none; } a.src:hover{ text-decoration:underline; }
 """
 
-HTML=f'''<title>みんなの結果（集計）— 政策で照らす ｜ 政策くらべ</title>
+HTML=f'''<title>みんなの結果（集計）— 政策で照らす ｜ AI政策くらべ</title>
 <style>{CSS}</style>
 <div class="wrap"><div class="doc">
   <p class="eyebrow">比例区・投票ガイド ／ みんなの結果</p>

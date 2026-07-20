@@ -51,7 +51,7 @@ def nav(cur):
            ("about.html","サイトについて"),("feedback.html","ご意見")]
     a="".join(f'<a href="{h}"{" class=\"cur\"" if h==cur else ""}>{t}</a>' for h,t in items)
     return (NAV_CSS+'<header class="sitehdr"><div class="sitehdr-in">'
-            '<a class="brand" href="index.html">政策<span>くらべ</span></a>'
+            '<a class="brand" href="index.html">AI政策<span>くらべ</span></a>'
             f'<nav class="topnav">{a}</nav></div></header>')
 def inject_nav(src, cur):
     return src.replace('<div class="wrap"><div class="doc">',
@@ -172,13 +172,16 @@ h1{font-family:var(--serif);font-weight:600;font-size:clamp(26px,5vw,42px);line-
 .poi{display:block;font-size:12px;color:var(--muted);margin-top:3px;}
 .note{margin-top:28px;font-size:12px;color:var(--muted);line-height:1.85;}
 """
-INDEX=f'''<title>政策くらべ — 中身で選ぶ投票ガイド</title>
+INDEX=f'''<title>AI政策くらべ — 中身で選ぶ投票ガイド</title>
 <style>{INDEX_CSS}</style>
 <div class="wrap">{nav("index.html")}<div class="doc">
   <p class="eyebrow">比例区・投票ガイド</p>
   <h1>知名度でなく、中身で選ぶ。</h1>
   <p class="lede">各党が国会で<b>何を論じ、どう投票したか（言と行）</b>を基に、政策で投票先を考えるためのサイトです。
-  第217回国会の一次情報にもとづき、<b>点数化も格付けもしません</b>。</p>
+  国会会議録と参議院の記名投票という<b>一次情報</b>にもとづき、<b>点数化も格付けもしません</b>。</p>
+  <p class="lede" style="margin-top:-14px"><b>AIの役割：</b>AIは膨大な国会の記録を<b>集めて整理し、並べる</b>ところまでを担います。
+  「どの党が優れているか」といった<b>評価はしません</b>。判断はあなたに返します。
+  そのために守っているルールは<a class="src" href="about.html" style="color:var(--accent);text-decoration:none">▸ 全文公開</a>しています。</p>
   <a class="big primary" href="shindan.html">
     <span class="k">▶ まずはこちらから</span><div class="t">政策で照らす</div>
     <div class="s">あなたの考えと、各党の言と行（実績）を照らし合わせ、どこが交差しどこがズレるかを表示（重視する争点は加重）。所要2〜3分・登録不要。</div>
@@ -234,7 +237,7 @@ FEEDBACK_FORM = ('  <p class="eyebrow">ご意見・お問い合わせ</p>'
   'リポジトリ</a>で確認でき、誤りがあればIssueやPull Requestで直接指摘できます。<br>'
   '・いただいた内容はサイト改善の目的でのみ利用します。</p>')
 FEEDBACK_JS = ""   # フォーム送信は廃止（GitHub Issue へ誘導）
-FEEDBACK = (f'<title>ご意見・お問い合わせ — 政策くらべ</title>\n<style>{INDEX_CSS}{FEEDBACK_CSS}</style>\n'
+FEEDBACK = (f'<title>ご意見・お問い合わせ — AI政策くらべ</title>\n<style>{INDEX_CSS}{FEEDBACK_CSS}</style>\n'
   f'<div class="wrap">{nav("feedback.html")}<div class="doc">' + FEEDBACK_FORM + '</div></div>' + FEEDBACK_JS)
 open("site/feedback.html","w",encoding="utf-8").write(FEEDBACK)
 
@@ -376,7 +379,7 @@ OI_FILTER_JS=('<script>(function(){var chips=document.querySelectorAll(".oi-fchi
   'document.querySelectorAll(".oi-ix,.oi-sec").forEach(function(el){'
   'var m=(th==="all"||el.getAttribute("data-theme")===th);el.classList.toggle("dim",!m);});'
   '});});})();</script>')
-ONEISSUE=(f'<title>ワンイシュー — 各党が最も重視する一点 ｜ 政策くらべ</title>\n'
+ONEISSUE=(f'<title>ワンイシュー — 各党が最も重視する一点 ｜ AI政策くらべ</title>\n'
   f'<style>{INDEX_CSS}{OI_CSS}</style>\n'
   f'<div class="wrap">{nav("oneissue.html")}<div class="doc" id="oi-top">'
   '<p class="eyebrow">ワンイシュー</p>'
@@ -434,7 +437,7 @@ ABOUT_CSS="""
 .ab-cta a.p{background:var(--accent);color:#fff;} .ab-cta a.s{border:1px solid var(--line);color:var(--accent);}
 .ab-cta a:hover{opacity:.92;}
 """
-ABOUT=(f'<title>このサイトについて（方法論と透明性）｜ 政策くらべ</title>\n'
+ABOUT=(f'<title>このサイトについて（方法論と透明性）｜ AI政策くらべ</title>\n'
   f'<style>{INDEX_CSS}{ABOUT_CSS}</style>\n'
   f'<div class="wrap">{nav("about.html")}<div class="doc">'
   '<p class="eyebrow">このサイトについて</p>'
@@ -589,7 +592,7 @@ MYNOTE_JS=("<script>(function(){"
   "root.querySelectorAll('.mn-x').forEach(function(b){b.addEventListener('click',function(){var n=get();delete n[b.dataset.id];save(n);render();if(window.KGNOTE)KGNOTE.refresh();});});}"
   "var cl=document.getElementById('noteClear');if(cl)cl.addEventListener('click',function(){if(confirm('保存した項目をすべて消しますか？')){localStorage.removeItem('kg_notes');render();if(window.KGNOTE)KGNOTE.refresh();}});"
   "render();})();</script>")
-MYNOTE=(f'<title>マイノート — 保存した言と行の比較 ｜ 政策くらべ</title>\n'
+MYNOTE=(f'<title>マイノート — 保存した言と行の比較 ｜ AI政策くらべ</title>\n'
   f'<style>{INDEX_CSS}{MYNOTE_CSS}</style>\n'
   f'<div class="wrap">{nav("mynote.html")}<div class="doc">'
   '<p class="eyebrow">マイノート</p>'
@@ -663,7 +666,7 @@ _dchips = "".join(f'<button type="button" class="nw-chip" data-g="d" data-v="{es
                   for d in NEWS_DOMAINS)
 _pchips = "".join(f'<button type="button" class="nw-chip" data-g="p" data-v="{ID[p["full"]]}" '
                   f'data-pc style="--pc:{PC[p["full"]]}">{esc(p["short"])}</button>' for p in PARTIES)
-NEWS=(f'<title>政策ニュース — 分野別のアーカイブ ｜ 政策くらべ</title>\n'
+NEWS=(f'<title>政策ニュース — 分野別のアーカイブ ｜ AI政策くらべ</title>\n'
   f'<style>{INDEX_CSS}{NEWS_CSS}</style>\n'
   f'<div class="wrap">{nav("news.html")}<div class="doc">'
   '<p class="eyebrow">ニュース</p>'
@@ -763,7 +766,7 @@ service cloud.firestore {
 open("site/firestore.rules","w",encoding="utf-8").write(RULES)
 
 # ---------- README ----------
-README='''# 政策くらべ（比例区・投票ガイド）デプロイ手順
+README='''# AI政策くらべ（比例区・投票ガイド）デプロイ手順
 
 静的サイト（index / guide / shindan / shukei）＋ Firestore(集計) の構成です。
 **Firebase未設定でも全ページ動きます**（結果送信と集計だけ無効）。

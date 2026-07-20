@@ -455,7 +455,7 @@ fetch('news.json').then(function(r){return r.ok?r.json():null;}).then(function(n
 }).catch(function(){});
 """
 
-HTML = f'''<title>政策で照らす — あなたの考えと各党の言と行を照らし合わせる ｜ 政策くらべ</title>
+HTML = f'''<title>政策で照らす — あなたの考えと各党の言と行を照らし合わせる ｜ AI政策くらべ</title>
 <style>{CSS}</style>
 <div class="wrap"><div class="doc">
   <p class="eyebrow">比例区・投票ガイド ／ 政策で照らす</p>
