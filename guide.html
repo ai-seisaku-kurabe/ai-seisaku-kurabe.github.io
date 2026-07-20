@@ -74,6 +74,7 @@ h1{ font-family:var(--serif); font-weight:600; font-size:clamp(24px,4.4vw,38px);
   box-shadow:var(--shadow); display:flex; flex-direction:column; gap:10px; }
 .drow-h{ display:flex; align-items:center; justify-content:space-between; gap:8px; }
 .dh-r{ display:flex; align-items:center; gap:8px; flex:none; }
+.drow.dfocus{ border-color:var(--pc,var(--accent)); box-shadow:0 0 0 2px var(--accent-soft); }
 .clip{ background:none; border:none; cursor:pointer; padding:2px; line-height:0; color:var(--line);
   transition:color .15s,transform .1s; -webkit-tap-highlight-color:transparent; }
 .clip svg{ fill:none; stroke:currentColor; stroke-width:2; }
@@ -153,6 +154,27 @@ a.src{ color:var(--accent); text-decoration:none; } a.src:hover{ text-decoration
     panes.forEach(function(p){ p.hidden=(p.dataset.pane!==t.dataset.d); });
     window.scrollTo({top:0,behavior:'smooth'});
   }); });
+})();
+// ニュースページから ?domain=<分野> で来たとき、その分野のカードへ案内する
+(function(){
+  var d=new URLSearchParams(location.search).get('domain');
+  if(!d) return;
+  function focus(){
+    var pane=document.querySelector('.pane:not([hidden])'); if(!pane) return;
+    var row=[].slice.call(pane.querySelectorAll('.drow')).filter(function(r){
+      var n=r.querySelector('.dname'); return n && n.textContent.trim()===d; })[0];
+    if(!row) return;
+    row.classList.add('dfocus');
+    row.scrollIntoView({behavior:'smooth', block:'center'});
+  }
+  setTimeout(focus, 300);
+  // 政党タブを切り替えても、同じ分野を追いかける
+  document.querySelectorAll('.dtab').forEach(function(t){
+    t.addEventListener('click', function(){
+      document.querySelectorAll('.drow.dfocus').forEach(function(r){r.classList.remove('dfocus');});
+      setTimeout(focus, 120);
+    });
+  });
 })();
 // 各党の最新ニュース(news.json の parties)を各党ペインに表示（同一フォルダ読み込み・無ければ何もしない）
 fetch('news.json').then(function(r){return r.ok?r.json():null;}).then(function(nd){
