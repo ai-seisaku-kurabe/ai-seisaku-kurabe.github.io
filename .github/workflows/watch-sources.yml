@@ -4,6 +4,8 @@ on:
   schedule:
     - cron: '0 23 * * 1'   # 毎週月曜 JST 8:00
   workflow_dispatch:
+permissions:
+  contents: write
 jobs:
   watch:
     runs-on: ubuntu-latest
@@ -12,5 +14,17 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
+      # 統一会派の議員名簿を更新する。所属判定が変わった議員がいると失敗して通知する
+      # （本当の移籍なら tools/roster_override.json に党名を書いて承認する）
+      - name: 統一会派の名簿を更新
+        working-directory: tools
+        run: python build_roster.py
+      - name: 名簿の差分をコミット
+        if: always()
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git add tools/roster.json
+          git diff --cached --quiet || (git commit -m "chore: 統一会派の議員名簿を更新" && git push)
       - name: 新会期・新規発言の差分を検知
         run: python tools/agents/watch_sources.py --fail-on-new

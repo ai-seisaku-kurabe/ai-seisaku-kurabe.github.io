@@ -36,7 +36,7 @@ def main():
     if len(sys.argv) < 4:
         raise SystemExit("使い方: python fetch_speech_list.py <会期> <from> <until>")
     session, dfrom, duntil = sys.argv[1], sys.argv[2], sys.argv[3]
-    keys = {**PARTY_KEYS, **NEW_PARTIES}
+    PARTY_KEYS.update(NEW_PARTIES)   # 新党2党も party_of() 側で判定する
     rows, seen = [], set()
     count = {}   # (党, 分野) -> 件数
 
@@ -50,15 +50,16 @@ def main():
             for rec in recs:
                 if is_gov(rec):
                     continue
-                grp = rec.get("speakerGroup") or ""
-                hit = [p for p, k in keys.items() if k in grp]
-                if not hit:
+                party, via_roster = party_of(rec)
+                if party is None:
                     continue
-                party = hit[0]
                 if count.get((party, dom), 0) >= PER:
                     continue
                 body = (rec.get("speech") or "").replace("\r\n", " ").strip()
                 if len(body) < 80 or "会議録情報" in body or is_procedural(body):
+                    continue
+                # 統一会派の議員は、会派を代表した発言を党の主張として扱えない
+                if via_roster and is_caucus_rep(body):
                     continue
                 text = snippet(body, term)
                 if len(text) < 40:

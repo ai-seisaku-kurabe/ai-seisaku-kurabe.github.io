@@ -21,7 +21,7 @@
   - 引用は原文のまま。争点キーワード周辺を抜き出し、挨拶・前置きは含めない。
   - 選定は編集判断であり、公開前に ③検証班（verify_content.py）で原文照合する。
 """
-import json, re, sys, time, unicodedata, urllib.parse, urllib.request
+import json, os, re, sys, time, unicodedata, urllib.parse, urllib.request
 
 API = "https://kokkai.ndl.go.jp/api/speech"
 UA = {"User-Agent": "seisaku-kurabe/1.0 (+https://ai-seisaku-kurabe.github.io)"}
@@ -45,9 +45,47 @@ PARTY_KEYS = {
 }
 
 # 委員長報告・趣旨説明・議事進行など、党の立場を示さない手続き的発言
+# 「趣旨を御説明」は実データで確認した定型句。「趣旨を説明」とは一致しないため別に持つ。
 PROCEDURAL = ["委員会におきまして", "質疑を終局", "可決すべきもの", "御報告いたします",
-              "報告いたします", "趣旨を説明", "趣旨説明", "議事日程", "審査の経過",
+              "報告いたします", "趣旨を説明", "趣旨説明", "趣旨を御説明", "提出者を代表",
+              "議事日程", "審査の経過",
               "採決の結果", "全会一致をもって", "異議ないものと認めます"]
+
+# 統一会派を代表した発言。会派の合意であって単独の党の主張ではないため、
+# 名簿で党を補った議員についてはこれを収集しない。
+# 実データの型: 「私は、会派を代表して、」「会派を代表し、」「中道改革連合・無所属を代表し、」
+# 会派名と「を代表」の間に「・無所属」などが挟まるため、直前の語を固定しない。
+# 冒頭に議長の指名や自己紹介が入るので、先頭固定ではなく冒頭160字を探す。
+CAUCUS_REP = re.compile(r"を代表(し|いたし)")
+
+def is_caucus_rep(body):
+    return bool(CAUCUS_REP.search(body[:160]))
+
+# 統一会派の議員名簿（build_roster.py が生成）。会派名から党を判定できない議員を補う。
+def _load_roster():
+    p = os.path.join(os.path.dirname(os.path.abspath(__file__)), "roster.json")
+    if not os.path.exists(p):
+        return {}
+    try:
+        return {k: v["party"] for k, v in json.load(open(p, encoding="utf-8"))["members"].items()}
+    except Exception:
+        return {}
+
+ROSTER = _load_roster()
+
+def party_of(rec):
+    """発言者の党を決める。戻り値は (党名, 名簿で補ったか)。判定できなければ (None, False)。
+
+    会派名に党名が入っていればそれを使う。入っていない統一会派の場合だけ名簿を引く。
+    名簿で補った議員には、会派を代表した発言の除外を追加で適用する（単独会派の
+    代表討論まで巻き添えで消さないため、この限定が要る）。
+    """
+    grp = rec.get("speakerGroup") or ""
+    for party, key in PARTY_KEYS.items():
+        if key in grp:
+            return party, False
+    p = ROSTER.get(rec.get("speaker") or "")
+    return (p, True) if p else (None, False)
 
 def is_gov(rec):
     blob = (rec.get("speakerPosition") or "") + (rec.get("speech") or "")[:22]
