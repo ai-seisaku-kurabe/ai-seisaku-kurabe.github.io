@@ -50,13 +50,28 @@ PROVIDERS = {
         "models": ["gpt-5.5", "gpt-5.1", "gpt-4.1"],
         "base": "https://api.openai.com/v1",
     },
+    # Groq（推論の高速配信。Llama/Qwen/gpt-oss等を無料枠で提供）。
+    # xAIの「Grok」とは別会社。鍵は Groq が gsk_… 、xAI が xai_… で見分けられる。
+    "Groq": {
+        "key_env": "GROQ_API_KEY",
+        "model_env": "GROQ_MODEL",
+        "models": ["openai/gpt-oss-120b", "llama-3.3-70b-versatile", "qwen/qwen3.6-27b"],
+        "base": "https://api.groq.com/openai/v1",   # OpenAI互換
+        "key_prefix": "gsk_",
+    },
     "Grok": {
         "key_env": "XAI_API_KEY",
         "model_env": "XAI_MODEL",
         "models": ["grok-4", "grok-3"],
         "base": "https://api.x.ai/v1",   # OpenAI互換
+        "key_prefix": "xai-",
     },
 }
+
+
+# urllib の既定のUser-Agentは、CDNに自動化とみなされて弾かれることがある
+# （Groqは 403 error code: 1010 を返した）。名乗れば通る。
+UA = "seisaku-kurabe-reviewer/1.0 (+https://ai-seisaku-kurabe.github.io)"
 
 
 def post(url, payload, headers, timeout=180):
@@ -65,7 +80,8 @@ def post(url, payload, headers, timeout=180):
     for attempt in (1, 2):
         try:
             req = urllib.request.Request(url, data=body, method="POST",
-                                         headers={"Content-Type": "application/json", **headers})
+                                         headers={"Content-Type": "application/json",
+                                                  "User-Agent": UA, **headers})
             with urllib.request.urlopen(req, timeout=timeout) as r:
                 return json.loads(r.read().decode("utf-8"))
         except urllib.error.HTTPError as e:
@@ -152,6 +168,13 @@ def main():
             results[name] = ("未実施", f"{cfg['key_env']} が未設定")
             nokey.append(name)
             continue
+
+        # GroqとGrokは名前が似ていて取り違えが起きる（実際に起きた）。
+        # 鍵の頭を見れば分かるので、送る前に知らせる。形式は変わりうるので警告に留める。
+        pref = cfg.get("key_prefix")
+        if pref and not key.startswith(pref):
+            print(f"⚠ {name}: {cfg['key_env']} が {pref}… で始まっていません"
+                  f"（別の提供元の鍵かもしれません。Groq={'gsk_'}／Grok(xAI)={'xai-'}）")
 
         override = os.environ.get(cfg["model_env"])
         models = [m.strip() for m in override.split(",")] if override else cfg["models"]
