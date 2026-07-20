@@ -1,0 +1,29 @@
+name: snapshot-archive
+# 集計スナップショットを毎月1日に archive/ へ保存する（研究用の保管）
+on:
+  schedule:
+    - cron: '0 20 1 * *'   # 毎月1日 JST 5:00
+  workflow_dispatch:        # 手動実行も可
+permissions:
+  contents: write
+jobs:
+  snapshot:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install --quiet google-auth
+      - name: 集計を取得してスナップショットを保存
+        env:
+          FIREBASE_SA_KEY: ${{ secrets.FIREBASE_SA_KEY }}
+        working-directory: tools
+        run: python agents/snapshot_archive.py
+      - name: 変更があればコミット
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git add archive/
+          git commit -m "chore: 集計スナップショットを保存" || echo "no changes"
+          git push
