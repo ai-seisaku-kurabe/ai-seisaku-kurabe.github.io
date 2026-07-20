@@ -33,6 +33,71 @@ def pc_on(hx):
     r,g,b=int(hx[1:3],16),int(hx[3:5],16),int(hx[5:7],16)
     return "#1b2130" if (0.299*r+0.587*g+0.114*b)>150 else "#ffffff"
 
+# ---- 第221回国会の記名投票（会期併記用） ----------------------------------
+# 各分野の代表議案は編集判断で選定。可能な限り第217回と同系統の法案を選び、
+# 会期を跨いだ立場の変化が読み取れるようにしている（評価はせず、事実を並べるだけ）。
+BILLS221 = {
+ "財政": [("221-0407-v001","予算"), ("221-0331-v012","所得税"),
+          ("221-0331-v002","交付税"), ("221-0605-v001","補正")],
+ "外交・安保": [("221-0626-v001","防衛省設置"), ("221-0619-v001","日比ACSA"),
+                ("221-0619-v002","蘭ACSA"), ("221-0610-v003","経済安保")],
+ "社会保障": [("221-0529-v005","健康保険"), ("221-0619-v006","社会福祉"),
+              ("221-0710-v003","労災保険")],
+ "エネルギー・環境": [("221-0717-v005","電気事業"), ("221-0612-v008","PCB処理"),
+                      ("221-0515-v006","環境省設置")],
+ "経済・産業": [("221-0715-v003","金商法"), ("221-0529-v009","産業競争力"),
+                ("221-0612-v009","産業技術力"), ("221-0612-v006","郵便法")],
+}
+_raw221 = json.load(open("221_votes.json", encoding="utf-8"))
+_byid221 = {b["id"]: b for b in _raw221["bills"]}
+V221 = {}
+for _dom, _sel in BILLS221.items():
+    _bs = [(_byid221[i], lab) for i, lab in _sel if i in _byid221]
+    V221[_dom] = ({"bills": [b for b, _ in _bs]}, [lab for _, lab in _bs])
+
+# 第221回の会派名（選挙を経て変わった）。参政党はこの会期で会派を結成した。
+VKEY221 = {"自由民主党":"自由民主党","立憲民主党":"立憲民主","日本維新の会":"日本維新の会",
+           "国民民主党":"国民民主","公明党":"公明党","日本共産党":"日本共産党",
+           "れいわ新選組":"れいわ","参政党":"参政党"}
+
+def vote_url(bid):
+    """議案IDの先頭3桁が会期番号なので、そこからURLを組み立てる。"""
+    return f"https://www.sangiin.go.jp/japanese/touhyoulist/{bid[:3]}/{bid}.htm"
+
+def _chips(vkey, votes, labels):
+    if votes is None or not vkey or not votes.get("bills"):
+        return None
+    out = []
+    for i, b in enumerate(votes["bills"]):
+        st = next((v["stance"] for name, v in b["parties"].items() if vkey in name), None)
+        cls = {"賛成":"yes","反対":"no"}.get(st or "", "na")
+        out.append(f'<a class="vchip {cls}" href="{esc(vote_url(b["id"]))}" target="_blank" '
+                   f'rel="noopener" title="{esc(b["label"])}：{esc(st or "—")}（原典へ）">'
+                   f'{esc(labels[i])}<b>{esc(st or "—")}</b></a>')
+    return "".join(out)
+
+def votes_block(full, dname, entry, votes, labels):
+    """第217回と第221回の賛否を並べて示す。どちらが良いという評価はしない。"""
+    v221, l221 = V221.get(dname, (None, None))
+    rows = []
+    for ses, vk, vv, ll in [("第217回", entry.get("vkey"), votes, labels),
+                            ("第221回", VKEY221.get(full), v221, l221)]:
+        chips = _chips(vk, vv, ll)
+        if chips:
+            rows.append(f'<div class="vses"><span class="vsl">{ses}</span>'
+                        f'<div class="vrow">{chips}</div></div>')
+            continue
+        if dname == "憲法":
+            reason = "憲法審査会は討議の場で、本会議の記名投票にかかる議案がありません"
+        elif not vk:
+            reason = "この会期では会派未結成のため、会派別の賛否記録がありません"
+        else:
+            reason = "この会期では該当する議案がありません"
+        rows.append(f'<div class="vses"><span class="vsl">{ses}</span>'
+                    f'<span class="vna">{reason}</span></div>')
+    return ('<div class="votes"><span class="vlbl">行 ／ 参院記名投票（会期別）</span>'
+            + "".join(rows) + "</div>")
+
 # 党→領域→(entry, votes, labels)
 PIDX = {full: {} for full,_ in PARTIES}
 for dname, lst, votes, labels in DOMAIN_ORDER:
@@ -141,22 +206,25 @@ CLIP_CAT = {}
 def build_clip(full, short, dname, entry, votes, labels):
     cid = PARTY_IDMAP[full] + "__" + dname
     vlist = []
-    vk = entry.get("vkey")
-    if votes is not None and vk:
-        for i, b in enumerate(votes["bills"]):
+    v221, l221 = V221.get(dname, (None, None))
+    for ses, vk, vv, ll in [("217", entry.get("vkey"), votes, labels),
+                            ("221", VKEY221.get(full), v221, l221)]:
+        if vv is None or not vk:
+            continue
+        for i, b in enumerate(vv["bills"]):
             st = next((v["stance"] for name, v in b["parties"].items() if vk in name), None)
-            vlist.append({"l": labels[i], "st": st or "—", "u": VBASE + b["id"] + ".htm"})
+            vlist.append({"l": f"{ses} {ll[i]}", "st": st or "—", "u": vote_url(b["id"])})
     CLIP_CAT[cid] = {"party": short, "pc": PARTY_COLOR[full], "dom": dname,
                      "point": entry["point"], "quote": clean_quote(entry["quote"]),
                      "who": entry["who"], "url": entry["url"], "votes": vlist}
     return cid
 
-def domain_row(dname, entry, votes, labels, cid):
+def domain_row(dname, entry, votes, labels, cid, full):
     tag = f'<span class="tag">◉ {esc(entry["tag"])}</span>' if entry.get("tag") else ""
     clip = (f'<button class="clip" type="button" data-clip="{cid}" aria-label="この分野をマイノートに保存" '
             f'title="マイノートに保存"><svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true">'
             f'<path d="M6 3.6h12a1 1 0 0 1 1 1v16.1l-7-4.1-7 4.1V4.6a1 1 0 0 1 1-1z"/></svg></button>')
-    vblock = NO_VOTE_BLOCK if votes is None else votes_html(entry["vkey"], votes, labels)
+    vblock = votes_block(full, dname, entry, votes, labels)
     return (f'<article class="drow"><div class="drow-h">'
             f'<span class="dname">{esc(dname)}</span><span class="dh-r">{tag}{clip}</span></div>'
             f'<div class="say"><span class="vlbl gen">言 ／ 国会での発言</span>'
@@ -172,7 +240,7 @@ for i,(full,short) in enumerate(PARTIES):
         if dn not in PIDX[full]: continue
         _e,_v,_l = PIDX[full][dn]
         _cid = build_clip(full, short, dn, _e, _v, _l)
-        _rows.append(domain_row(dn, _e, _v, _l, _cid))
+        _rows.append(domain_row(dn, _e, _v, _l, _cid, full))
     rows = "".join(_rows)
     missing = [dn for dn,_,_,_ in DOMAIN_ORDER if dn not in PIDX[full]]
     miss = (f'<p class="miss">※この党は当会期の {("・".join(missing))} 分野で会派としての代表発言・採決が確認できず、掲載を見送りました。</p>'
@@ -280,6 +348,10 @@ blockquote .evq:hover{ text-decoration:underline; }
 .say{ display:flex; flex-direction:column; gap:10px; }
 .votes{ margin-top:auto; background:var(--paper); border:1px solid var(--line);
   border-radius:10px; padding:11px 13px; }
+.vses{ display:flex; align-items:flex-start; gap:9px; padding:5px 0; }
+.vses + .vses{ border-top:1px dotted var(--line); }
+.vsl{ flex:none; font-family:var(--mono); font-size:10px; font-weight:700; color:var(--muted);
+  background:var(--card); border:1px solid var(--line); border-radius:6px; padding:3px 7px; margin-top:1px; }
 .vlbl{ display:block; font-family:var(--mono); font-size:10px; letter-spacing:.1em;
   font-weight:700; color:var(--muted); margin-bottom:7px; }
 .vlbl.gen{ color:var(--accent); }
@@ -359,11 +431,12 @@ HTML = f'''<title>政策くらべ — 政党で選ぶ（比例区）v1.5</title>
   <p class="note">
     <b>ワンイシューについて：</b>各党が特に重視する1点を、国会での言動から<b>編集の判断</b>で1つに絞ったものです（根拠となる実発言にリンク）。
     この項目への共感を第1問に、他の政策との整合も合わせて「どの党が自分に近いか」を照らし合わせる「政策で照らす」も用意しています。<br>
-    <b>データの出どころ：</b>言＝<a class="src" href="https://kokkai.ndl.go.jp/" target="_blank" rel="noopener">国会会議録検索システム</a>第217回国会。
-    行＝<a class="src" href="https://www.sangiin.go.jp/japanese/touhyoulist/217/vote_ind.htm" target="_blank" rel="noopener">参議院 記名投票の会派別賛否</a>。憲法分野は記名投票の議案が無く「行」は該当なし。<br>
+    <b>データの出どころ：</b>言＝<a class="src" href="https://kokkai.ndl.go.jp/" target="_blank" rel="noopener">国会会議録検索システム</a>（第217回国会）。
+    行＝参議院 記名投票の会派別賛否（<a class="src" href="https://www.sangiin.go.jp/japanese/touhyoulist/217/vote_ind.htm" target="_blank" rel="noopener">第217回</a>・<a class="src" href="https://www.sangiin.go.jp/japanese/touhyoulist/221/vote_ind.htm" target="_blank" rel="noopener">第221回</a>の2会期を併記）。憲法分野は記名投票の議案が無く「行」は該当なし。<br>
+    <b>会期を並べている理由：</b>同じ党でも会期によって賛否が変わることがあります。どちらが良いという評価はせず、事実として並べています。第217回と第221回の間に選挙があり、会派の構成も変わりました。<br>
     <b>賛否は「結果」であり「理由」ではありません：</b>各党は「方向性には賛成だが規定が不十分」等の複雑な理由で反対することもあります。
     賛否だけで是非を判断せず、反対・賛成の<b>理由や討論は原典（会議録・記名投票結果）</b>でご確認ください。<br>
-    <b>正直な断り：</b>「ワンイシュー」「力点」は編集要約で党の公式見解そのものではありません。参政党は会派未結成のため会派別の採決記録がありません。判断は必ず原典リンクで裏取りを。
+    <b>正直な断り：</b>「ワンイシュー」「力点」は編集要約で党の公式見解そのものではありません。参政党は第217回国会では会派未結成のため賛否記録がありませんが、第221回国会では会派を結成しており賛否が記録されています。判断は必ず原典リンクで裏取りを。
     データの作り方・選定基準・限界は<a class="src" href="about.html">▸ このサイトについて（方法論）</a>で公開しています。
   </p>
 </div></div>
