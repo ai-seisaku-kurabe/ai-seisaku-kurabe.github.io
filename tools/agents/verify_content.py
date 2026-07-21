@@ -443,12 +443,32 @@ def check_privacy_claims():
         warn("プライバシー", "firebase.js が見つからず、実装との照合を省いた")
         return
     js = open(root_fb, encoding="utf-8").read()
-    # 個別レコードを書く経路が増えていないか（増えたら privacy.html の記述が嘘になる）
-    for bad in ("addDoc(", ".add(", "collection("):
-        if bad in js:
+
+    # 個別レコードを書く経路（.add / addDoc）があるかどうか。
+    has_individual_write = bool(re.search(r"\.add\(|addDoc\(", js))
+    # 書き込み先のコレクション名を集める。
+    #   compat形式: collection("name")  /  modular形式: collection(db, "name")
+    collections = set(re.findall(r"collection\(\s*(?:[^,()\"']+,\s*)?[\"']([^\"']+)[\"']", js))
+
+    # 「個別レコードを書く経路が増えること」自体は禁止しない（ご意見フォームのように
+    # 正当な用途がある）。禁止するのは「開示なき個別保存」と「想定外の保存先」だけ。
+    # これにより .add( を消さずに、開示とセットなら通す・開示が無ければ止める番犬にする。
+    if has_individual_write or collections:
+        priv_path = os.path.join(ROOT, "privacy.html")
+        priv = open(priv_path, encoding="utf-8").read() if os.path.exists(priv_path) else ""
+        disclosed = ("ご意見" in priv) and ("個別に保存" in priv)
+        if not disclosed:
             fail("プライバシー",
-                 f"firebase.js に個別レコードを書きうる経路（{bad}）がある。"
-                 "privacy.html の「個別の記録として保存していません」と食い違う")
+                 "firebase.js に個別レコードを書きうる経路（.add(/addDoc(）があるが、"
+                 "privacy.html にご意見の個別保存についての開示が見当たらない")
+
+        allowed_collections = {"feedback"}
+        unexpected = collections - allowed_collections
+        if unexpected:
+            fail("プライバシー",
+                 f"firebase.js が想定外のコレクション（{', '.join(sorted(unexpected))}）に"
+                 "個別レコードを書いている。開示・レビューが必要")
+
     if "increment" not in js:
         fail("プライバシー", "firebase.js に increment が無い。集計方式が変わった可能性がある")
     # アクセス解析タグが入っていないか
