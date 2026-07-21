@@ -16,13 +16,20 @@ def _roster():
 ROSTER_MEMBERS, ROSTER_UNRESOLVED = _roster()
 
 def roster_note(short=False):
-    """発言の収集範囲についての開示。名簿の中身から毎回生成する。"""
+    """発言の収集範囲についての開示。名簿の中身から毎回生成する。
+
+    会派名も議員名も文面に書き込まない。会派は再編され、議員は入れ替わるので、
+    写しを作れば必ず実態とずれる（「衆議院には」と書いていた間に、参議院の
+    「立憲民主・社民・無所属」が対象に加わって記述が古びた）。
+    """
     if not ROSTER_MEMBERS:
         return ""
     n = len(ROSTER_MEMBERS)
     un = ROSTER_UNRESOLVED
-    body = (f"衆議院には党名を含まない統一会派（「中道改革連合・無所属」＝立憲民主党・公明党など）があり、"
-            f"会派名だけでは党を判定できません。そこで<b>同じ議員の過去の発言に付いている会派名</b>から"
+    caucuses = sorted({v.get("group", "") for v in ROSTER_MEMBERS.values() if v.get("group")})
+    names = "」「".join(esc(c) for c in caucuses)
+    body = (f"国会には、会派名だけでは所属党が分からない統一会派があります"
+            f"（現在は「{names}」）。そこで<b>同じ議員の過去の発言に付いている会派名</b>から"
             f"所属党を割り出し、{n}名を特定しています。")
     if un:
         body += ("過去の発言記録が無く党を特定できない"

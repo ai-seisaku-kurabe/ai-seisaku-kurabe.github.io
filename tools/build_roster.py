@@ -39,7 +39,7 @@ PARTY_KEYS = {
     "自由民主党": "自由民主党", "立憲民主": "立憲民主党", "日本維新の会": "日本維新の会",
     "国民民主": "国民民主党", "公明党": "公明党", "日本共産党": "日本共産党",
     "れいわ": "れいわ新選組", "参政党": "参政党",
-    "チームみらい": "チームみらい", "社会民主": "社会民主党",
+    "チームみらい": "チームみらい", "社会民主": "社会民主党", "社民": "社会民主党",
 }
 LOOKBACK_FROM = "2021-01-01"   # 逆引きの遡及開始。広く取り、降順で最初の一致を採る
 SAMPLE_PAGES = 8               # 会派の発言者を洗い出す標本ページ数(×100件)
@@ -52,60 +52,80 @@ def api(**kw):
 
 
 def party_of(group):
-    """会派名から党名を引く。判定できなければ None。"""
+    """会派名から党名を引く。判定できなければ None。
+
+    **複数の党名が一致する会派は「判定不能」として扱う。** 第217回の参議院会派
+    「立憲民主・社民・無所属」は立憲民主党と社会民主党が同居しており、辞書の
+    並び順で先に当たった方を採ると誤って帰属させる（実際に福島みずほ議員の発言が
+    立憲民主党として掲載されていた）。**曖昧なら黙って一方に決めず、名簿に回す。**
+    2026年に会派が分裂して党名が明確になっているため、名簿の逆引き（新しい順に
+    見る）でほとんどが正しく解決する。
+    """
     if not group:
         return None
-    for key, name in PARTY_KEYS.items():
-        if key in group:
-            return name
-    return None
+    hit = {name for key, name in PARTY_KEYS.items() if key in group}
+    return hit.pop() if len(hit) == 1 else None
 
 
-def unmatched_groups(house="衆議院", days=400):
-    """党を判定できない会派を検出する（会派名をコードに埋め込まないため）。"""
-    until = datetime.date.today()
-    frm = until - datetime.timedelta(days=days)
+# 会派ではないもの。名簿の対象にすると、無所属議員を党に帰属させてしまう。
+NOT_A_CAUCUS = ("各派に属しない議員",)
+
+def unmatched_groups(house="衆議院", years=2):
+    """党を判定できない会派を検出する（会派名をコードに埋め込まないため）。
+
+    **年ごとに区切って調べる。** APIは新しい順に返し、1回の窓では直近の年で
+    埋まってしまう。長い窓を1回で投げると、古い会期の会派（第217回=2025年の
+    「立憲民主・社民・無所属」）に到達しない。
+    """
     seen = collections.Counter()
-    for start in range(1, SAMPLE_PAGES * 100, 100):
-        try:
-            d = api(**{"from": frm.isoformat(), "until": until.isoformat()},
-                    nameOfHouse=house, maximumRecords=100, startRecord=start)
-        except Exception as e:
-            print(f"  WARN 会派の検出に失敗: {e}")
-            break
-        recs = d.get("speechRecord", [])
-        for r in recs:
-            g = r.get("speakerGroup")
-            if g and not party_of(g):
-                seen[g] += 1
-        if len(recs) < 100:
-            break
-        time.sleep(0.2)
+    this_year = datetime.date.today().year
+    for y in range(this_year, this_year - years - 1, -1):
+        for start in range(1, SAMPLE_PAGES * 100, 100):
+            try:
+                d = api(**{"from": f"{y}-01-01", "until": f"{y}-12-31"},
+                        nameOfHouse=house, maximumRecords=100, startRecord=start)
+            except Exception as e:
+                print(f"  WARN 会派の検出に失敗: {e}")
+                break
+            recs = d.get("speechRecord", [])
+            for r in recs:
+                g = r.get("speakerGroup")
+                if g and not party_of(g) and g not in NOT_A_CAUCUS:
+                    seen[g] += 1
+            if len(recs) < 100:
+                break
+            time.sleep(0.2)
     return seen
 
 
-def speakers_in(group, days=400):
-    """その会派で発言している議員を洗い出す。"""
-    until = datetime.date.today()
-    frm = until - datetime.timedelta(days=days)
+def speakers_in(group, years=2):
+    """その会派で発言している議員と、その院を洗い出す（年ごとに区切る）。
+
+    院を持ち帰るのは同姓同名を切り分けるため。衆議院の鬼木誠議員（自民）と
+    参議院の鬼木誠議員（立憲）のように、名前だけでは別人を取り違える。
+    """
     names = collections.Counter()
-    for start in range(1, SAMPLE_PAGES * 100, 100):
-        try:
-            d = api(speakerGroup=group, **{"from": frm.isoformat(), "until": until.isoformat()},
-                    maximumRecords=100, startRecord=start)
-        except Exception as e:
-            print(f"  WARN {group} の発言者取得に失敗: {e}")
-            break
-        recs = d.get("speechRecord", [])
-        for r in recs:
-            names[r["speaker"]] += 1
-        if len(recs) < 100:
-            break
-        time.sleep(0.2)
-    return names
+    houses = collections.defaultdict(collections.Counter)
+    this_year = datetime.date.today().year
+    for y in range(this_year, this_year - years - 1, -1):
+        for start in range(1, SAMPLE_PAGES * 100, 100):
+            try:
+                d = api(speakerGroup=group, **{"from": f"{y}-01-01", "until": f"{y}-12-31"},
+                        maximumRecords=100, startRecord=start)
+            except Exception as e:
+                print(f"  WARN {group} の発言者取得に失敗: {e}")
+                break
+            recs = d.get("speechRecord", [])
+            for r in recs:
+                names[r["speaker"]] += 1
+                houses[r["speaker"]][r.get("nameOfHouse") or ""] += 1
+            if len(recs) < 100:
+                break
+            time.sleep(0.2)
+    return {n: (houses[n].most_common(1)[0][0] if houses[n] else "") for n in names}
 
 
-def resolve(name):
+def resolve(name, house=""):
     """議員名から所属党を逆引きする。直近の「党名入り会派」に属していた時点を探す。
 
     APIは新しい順に返し、1回で取れるのは100件まで。よく発言する議員は直近100件が
@@ -117,8 +137,11 @@ def resolve(name):
     floor = int(LOOKBACK_FROM[:4])
     while year >= floor:
         try:
-            d = api(speaker=name, **{"from": LOOKBACK_FROM, "until": f"{year}-12-31"},
-                    maximumRecords=3)
+            q = {"speaker": name, "from": LOOKBACK_FROM, "until": f"{year}-12-31",
+                 "maximumRecords": 3}
+            if house:
+                q["nameOfHouse"] = house    # 同姓同名の別人を混ぜないため
+            d = api(**q)
         except Exception:
             return None
         recs = d.get("speechRecord", [])
@@ -148,15 +171,30 @@ def main():
     override = load(OVERRIDE, {})
 
     print("[名簿の解決状況]")
-    groups = unmatched_groups()
+    found = unmatched_groups("衆議院")
+    found.update(unmatched_groups("参議院"))   # 第217回の「立憲民主・社民・無所属」
+
+    # 検出は自動、参入は人が承認する。
+    # 自動で全部を対象にすると、「無所属」や掲載対象外の党の会派まで拾い、
+    # 離党した議員を元の党の発言として扱ってしまう（実測で自由民主党113名を誤って
+    # 解決した）。**誤って帰属させるより、載せない方がましである。**
+    allowed = set(override.get("_caucuses", {}))
+    rejected = set(override.get("_caucuses_rejected", {}))
+    groups = collections.Counter({g: n for g, n in found.items() if g in allowed})
+    pending = [g for g in found if g not in allowed and g not in rejected]
+
     if not groups:
-        print("  未判定の会派はありません。")
-        return 0
-    print("  対象会派 : " + " / ".join(f"{g}（{n}件）" for g, n in groups.most_common()))
+        print("  対象会派はありません（承認済みの会派が見つかりませんでした）。")
+    else:
+        print("  対象会派 : " + " / ".join(f"{g}（{n}件）" for g, n in groups.most_common()))
+    if pending:
+        print("  ★要承認 : " + " / ".join(f"{g}（{found[g]}件）" for g in pending))
+        print("           roster_override.json の _caucuses か _caucuses_rejected に"
+              "理由付きで追記してください。")
 
     members, unresolved = {}, []
     for group in groups:
-        for name in speakers_in(group):
+        for name, house in speakers_in(group).items():
             if name in override:
                 p = (override[name].get("party") or "").strip()
                 if p:
@@ -164,9 +202,9 @@ def main():
                 else:
                     unresolved.append(name)
                 continue
-            p = resolve(name)
+            p = resolve(name, house)
             if p:
-                members[name] = {"party": p, "group": group, "source": "api"}
+                members[name] = {"party": p, "group": group, "house": house, "source": "api"}
             else:
                 unresolved.append(name)
             time.sleep(0.15)

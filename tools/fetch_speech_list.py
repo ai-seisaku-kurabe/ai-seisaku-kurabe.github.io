@@ -29,14 +29,15 @@ LIST_TERMS = {
     "経済・産業":      ["賃上げ", "物価高", "中小企業", "手取り", "雇用", "産業政策"],
     "憲法":            ["憲法改正", "緊急事態条項", "憲法審査会", "立憲主義"],
 }
-NEW_PARTIES = {"チームみらい": "チームみらい", "社会民主党": "社会民主党"}
+# 新党2党は fetch_session_speeches.py の PARTY_KEYS に本採用済み。ここで再定義すると
+# 社民の複数鍵（「社会民主党」と「社民」）を単一鍵で上書きしてしまい、
+# 「立憲民主・社民・無所属」の曖昧判定が効かなくなる。
 
 
 def main():
     if len(sys.argv) < 4:
         raise SystemExit("使い方: python fetch_speech_list.py <会期> <from> <until>")
     session, dfrom, duntil = sys.argv[1], sys.argv[2], sys.argv[3]
-    PARTY_KEYS.update(NEW_PARTIES)   # 新党2党も party_of() 側で判定する
     rows, seen = [], set()
     count = {}   # (党, 分野) -> 件数
 

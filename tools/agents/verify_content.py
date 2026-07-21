@@ -180,10 +180,36 @@ def collect_urls(bp, oneissue):
         if pk.get("url"): urls.add(pk["url"])
     return sorted(urls)
 
+def check_kokkai_id(url):
+    """会議録URLの会議IDが実在するかを、APIで確かめる。
+
+    kokkai.ndl.go.jp/txt/<issueID>[/<order>] は、IDが出鱈目でも 301 でSPAの外枠へ
+    飛び、200 を返す。そのため到達性の検査では誤ったIDを見抜けない。実際、存在
+    しない `122115206X011...`（正しくは `X009`）が判定根拠として公開され、
+    「リンク103/103が到達可能」を通り抜けていた。
+    到達したかではなく、その会議が実在するかをAPIに問い合わせて確かめる。
+    """
+    m = re.search(r"kokkai\.ndl\.go\.jp/txt/([^/?#]+)(?:/(\d+))?", url or "")
+    if not m:
+        return True
+    sid = f"{m.group(1)}_{int(m.group(2)):03d}" if m.group(2) else f"{m.group(1)}_000"
+    try:
+        if fetch_speech(sid) is None:
+            fail("リンク", f"会議録IDが存在しない: {url}")
+            return False
+    except Exception as e:
+        warn("リンク", f"会議録IDを確認できず（一時的の可能性）: {url} ({e})")
+    return True
+
+
 def check_links(urls, limit=None):
     if limit: urls = urls[:limit]
     bad = 0
     for u in urls:
+        if not check_kokkai_id(u):
+            bad += 1
+            time.sleep(0.2)
+            continue
         try:
             req = urllib.request.Request(u, headers=UA)
             with urllib.request.urlopen(req, timeout=25) as r:
