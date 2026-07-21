@@ -42,7 +42,12 @@ def access_token(sa_json):
 
 
 def count_since(token, since_iso):
-    """since_iso より後に届いた件数を返す。本文は取得しない。"""
+    """since_iso より後に届いた件数と、集計の基準時刻(readTime)を返す。本文は取得しない。
+
+    readTime はレスポンスの各行に含まれる、その集計が「いつ時点のものか」を示す
+    時刻。これを次回の since として使えば、トークン取得からクエリ往復の間に届いた
+    ご意見を取りこぼしたり二重に数えたりしない。
+    """
     url = (f"https://firestore.googleapis.com/v1/projects/{PROJECT}"
            f"/databases/(default)/documents:runAggregationQuery")
     body = {"structuredAggregationQuery": {
@@ -60,17 +65,21 @@ def count_since(token, since_iso):
     for row in rows:
         r = row.get("result")
         if r:
-            return int(r["aggregateFields"]["n"]["integerValue"])
-    return 0
+            return int(r["aggregateFields"]["n"]["integerValue"]), row.get("readTime")
+    return 0, None
 
 
 def load_state():
     if os.path.exists(STATE):
         try:
-            return json.load(open(STATE, encoding="utf-8"))
+            data = json.load(open(STATE, encoding="utf-8"))
+            # last_checked キーが無い・文字列でない場合（手動編集で {} になった等）は
+            # 壊れたstateとみなし、初回と同じ既定値にフォールバックする。
+            if isinstance(data.get("last_checked"), str):
+                return data
         except Exception:
             pass
-    # 初回は7日前を起点にする（全期間だと過去のぶんが一度に新着として出るため）
+    # 初回（または壊れたstate）は7日前を起点にする（全期間だと過去のぶんが一度に新着として出るため）
     since = datetime.datetime.now(datetime.timezone.utc) - datetime.timedelta(days=7)
     return {"last_checked": since.strftime("%Y-%m-%dT%H:%M:%SZ"), "last_new": 0}
 
@@ -83,9 +92,16 @@ def main():
 
     state = load_state()
     since = state["last_checked"]
-    now = datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+    # クエリを投げる前の時刻をフォールバック用に控えておく。
+    fallback_now = datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
 
-    n = count_since(access_token(sa), since)
+    n, read_time = count_since(access_token(sa), since)
+    # readTime（集計の基準時刻）を last_checked として保存する。トークン取得や
+    # クエリ往復にかかった時間の分だけ取りこぼしたり二重に数えたりしないようにする
+    # ため。レスポンスに readTime が無かった場合のみ、クエリ送信前の時刻に
+    # フォールバックする。取りこぼす（新着を見逃す）より二重に数える方が、
+    # このスクリプトの用途（新着の見逃し防止）では安全なため。
+    now = read_time or fallback_now
     line = (f"ご意見の新着 {n} 件（{since} 以降）" if n
             else f"ご意見の新着はありません（{since} 以降）")
     print(line)
