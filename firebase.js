@@ -38,6 +38,18 @@ window.KG = (function(){
       if(!ready) return null;
       try{ var s=await db.doc("aggregates/summary").get(); return s.exists? s.data(): null; }
       catch(e){ return null; }
+    },
+    sendFeedback: function(text, from){
+      if(!ready) return Promise.reject(new Error("not-ready"));
+      var t = String(text||"").trim();
+      if(!t) return Promise.reject(new Error("empty"));
+      if(t.length > 2000) return Promise.reject(new Error("too-long"));
+      // 保存するのは本文と送信元ページ名だけ。個人を特定できる情報は受け取らない。
+      return db.collection("feedback").add({
+        text: t,
+        from: String(from||"").slice(0,40),
+        at: firebase.firestore.FieldValue.serverTimestamp()
+      });
     }
   };
 })();

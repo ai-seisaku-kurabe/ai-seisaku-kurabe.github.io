@@ -1,0 +1,30 @@
+name: feedback-count
+# ⑥運用班: ご意見の新着件数だけを数える（本文は取得しない）
+on:
+  schedule:
+    - cron: '0 21 * * 0'   # 毎週月曜 JST 6:00
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  count:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install --quiet google-auth requests
+      - name: 新着件数を数える
+        env:
+          FIREBASE_SA_KEY: ${{ secrets.FIREBASE_SA_KEY }}
+        working-directory: tools
+        run: python agents/feedback_count.py
+      - name: 件数をコミットに残す
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          N=$(python -c "import json;print(json.load(open('tools/state/feedback_state.json'))['last_new'])")
+          git add tools/state/feedback_state.json
+          git commit -m "chore(ご意見): 新着 ${N} 件" || echo "no changes"
+          git push
