@@ -55,7 +55,11 @@ PROVIDERS = {
     "Groq": {
         "key_env": "GROQ_API_KEY",
         "model_env": "GROQ_MODEL",
-        "models": ["openai/gpt-oss-120b", "llama-3.3-70b-versatile", "qwen/qwen3.6-27b"],
+        # 弱いモデルへ落とさない。llama-3.3-70b に落ちた回だけ、指摘が
+        # 「1行目」ばかりで具体箇所の無いBLOCKになり、検証できなかった。
+        # 中身の無いBLOCKは、本物の警告まで無視させるので、査読しない方がまし。
+        # 無料枠はトークン毎分8,000。超えるときは --paths で範囲を分ける。
+        "models": ["openai/gpt-oss-120b"],
         "base": "https://api.groq.com/openai/v1",   # OpenAI互換
         "key_prefix": "gsk_",
     },
