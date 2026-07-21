@@ -710,5 +710,12 @@ cd tools && PYTHONIOENCODING=utf-8 python agents/ask_reviewers.py --base origin/
 ## 実装後に残る手作業
 
 - **意見を読む**のは Firebase コンソール（`feedback` コレクション）。読んだら削除する。
-- **荒らされたとき**は `config.json` の `feedback_enabled` を `false` にしてコミットする。
-  再ビルドは不要で、次の読み込みから受付が止まる。
+- **荒らされたとき（緊急停止）** — `config.json` の `feedback_enabled` を `false` に
+  してコミットするのは**利用者への告知**であって防御ではない。`firebase.js` の
+  設定は公開HTMLに同梱されているため、`config.json` を false にしても Firestore への
+  書き込みは1件も止まらない（詳細は設計書「停止スイッチの限界」）。
+  **書き込みを実際に止めるには、Firebase コンソール → Firestore Database → ルール で
+  `feedback` の `allow create` を `if false` に書き換えて公開する。**
+  手順は 1) コンソールでルールを閉じる（唯一の確実な停止手段） 2) `config.json` の
+  `feedback_enabled` を `false` にしてコミットする（告知。fail-open のため即座には
+  全員に効かない） 3) 収束後にルールと `config.json` を元に戻す。
