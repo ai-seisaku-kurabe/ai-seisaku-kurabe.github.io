@@ -50,26 +50,12 @@ PROVIDERS = {
         "models": ["gpt-5.5", "gpt-5.1", "gpt-4.1"],
         "base": "https://api.openai.com/v1",
     },
-    # Groq（推論の高速配信。Llama/Qwen/gpt-oss等を無料枠で提供）。
-    # xAIの「Grok」とは別会社。鍵は Groq が gsk_… 、xAI が xai-… で見分けられる（実測）。
-    "Groq": {
-        "key_env": "GROQ_API_KEY",
-        "model_env": "GROQ_MODEL",
-        # 弱いモデルへ落とさない。llama-3.3-70b に落ちた回だけ、指摘が
-        # 「1行目」ばかりで具体箇所の無いBLOCKになり、検証できなかった。
-        # 中身の無いBLOCKは、本物の警告まで無視させるので、査読しない方がまし。
-        # 無料枠はトークン毎分8,000。超えるときは --paths で範囲を分ける。
-        "models": ["openai/gpt-oss-120b"],
-        "base": "https://api.groq.com/openai/v1",   # OpenAI互換
-        "key_prefix": "gsk_",
-    },
-    "Grok": {
-        "key_env": "XAI_API_KEY",
-        "model_env": "XAI_MODEL",
-        "models": ["grok-4", "grok-3"],
-        "base": "https://api.x.ai/v1",   # OpenAI互換
-        "key_prefix": "xai-",
-    },
+    # Groq と Grok は合議から外した（2026-07-21）。
+    #   Groq … 無料枠がトークン毎分8,000。実際の依頼文は約18,000で、範囲を分けない限り
+    #           送れない。分ければ全体を見た判断ができず、査読の意味が薄れる。
+    #   Grok … チームにクレジットが無く 403。課金しない限り応答しない。
+    # 鍵が余っているからと形だけ並べると、「4社に聞いた」ように見えて実際は2社という
+    # 誤解を生む。**動かない査読者は置かない。** 復帰させるときはここに戻す。
 }
 
 
