@@ -168,7 +168,10 @@ SHUKEI_JS=("<script>(function(){if(!window.KG)return;"
 shukei=open("shukei.html",encoding="utf-8").read()
 shukei=inject_nav(shukei,"shukei.html")
 # shindan/index への相対リンクは既に相対(shindan.html/index.html)
-shukei=shukei+FB_TAGS+SHUKEI_JS+("<script>(function(){""var META=" + SNAP_META + ";""fetch('config.json').then(function(r){return r.json();}).then(function(cfg){""if(!cfg||!cfg.election_mode)return;""var d=document.querySelector('.doc');if(!d)return;""var box=document.createElement('div');box.className='sk-pause';""box.innerHTML='<b>集計の公開を一時停止しています。</b><br>'+ (cfg.election_notice||'');""var keep=d.querySelector('.topnav');""[].slice.call(d.children).forEach(function(el){if(el!==keep&&!el.classList.contains('eyebrow')&&el.tagName!=='H1')el.remove();});""d.appendChild(box);""}).catch(function(){});""var btn=document.getElementById('snapBtn');""if(btn)btn.addEventListener('click',function(){""if(!window.KG||!KG.loadAgg){alert('集計を読み込めません');return;}""KG.loadAgg().then(function(agg){""var snap={captured_at:new Date().toISOString(),session:META.session,""responses:(agg&&agg.responses)||0,questions:META.questions,""aggregate:agg||{},caveat:META.caveat};""var b=new Blob([JSON.stringify(snap,null,1)],{type:'application/json'});""var a=document.createElement('a');a.href=URL.createObjectURL(b);""var t=new Date();a.download='snapshot-'+t.getFullYear()+'-'+String(t.getMonth()+1).padStart(2,'0')+'.json';""a.click();URL.revokeObjectURL(a.href);});});""})();</script>")
+shukei=shukei+FB_TAGS+SHUKEI_JS+("<script>(function(){""var META=" + SNAP_META + ";"
+  # GitHub Pages が config.json に10分のキャッシュ(Cache-Control: max-age=600)を付けるため、
+  # no-store で毎回取得しないと election_mode の停止スイッチが最大10分効かない。
+  "fetch('config.json', { cache: 'no-store' }).then(function(r){return r.json();}).then(function(cfg){""if(!cfg||!cfg.election_mode)return;""var d=document.querySelector('.doc');if(!d)return;""var box=document.createElement('div');box.className='sk-pause';""box.innerHTML='<b>集計の公開を一時停止しています。</b><br>'+ (cfg.election_notice||'');""var keep=d.querySelector('.topnav');""[].slice.call(d.children).forEach(function(el){if(el!==keep&&!el.classList.contains('eyebrow')&&el.tagName!=='H1')el.remove();});""d.appendChild(box);""}).catch(function(){});""var btn=document.getElementById('snapBtn');""if(btn)btn.addEventListener('click',function(){""if(!window.KG||!KG.loadAgg){alert('集計を読み込めません');return;}""KG.loadAgg().then(function(agg){""var snap={captured_at:new Date().toISOString(),session:META.session,""responses:(agg&&agg.responses)||0,questions:META.questions,""aggregate:agg||{},caveat:META.caveat};""var b=new Blob([JSON.stringify(snap,null,1)],{type:'application/json'});""var a=document.createElement('a');a.href=URL.createObjectURL(b);""var t=new Date();a.download='snapshot-'+t.getFullYear()+'-'+String(t.getMonth()+1).padStart(2,'0')+'.json';""a.click();URL.revokeObjectURL(a.href);});});""})();</script>")
 open("site/shukei.html","w",encoding="utf-8").write(shukei)
 
 # ---------- index.html ----------
@@ -319,7 +322,9 @@ FEEDBACK_JS = FB_TAGS + """
   // 取得が終わるまでは送信ボタンを無効にし、submit 側でも cfg を確認してから送信する。
   btn.disabled = true;
   say('設定を確認しています…');
-  fetch('config.json').then(function(r){ return r.json(); }).then(function(c){
+  // GitHub Pages が config.json に10分のキャッシュ(Cache-Control: max-age=600)を付けるため、
+  // no-store で毎回取得しないと停止スイッチが最大10分効かない。
+  fetch('config.json', { cache: 'no-store' }).then(function(r){ return r.json(); }).then(function(c){
     cfg = c;
   }).catch(function(){
     cfg = null;

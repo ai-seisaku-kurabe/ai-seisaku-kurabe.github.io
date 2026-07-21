@@ -97,7 +97,9 @@ a.src{ color:var(--accent); text-decoration:none; } a.src:hover{ text-decoration
   // 取得が終わるまでは送信ボタンを無効にし、submit 側でも cfg を確認してから送信する。
   btn.disabled = true;
   say('設定を確認しています…');
-  fetch('config.json').then(function(r){ return r.json(); }).then(function(c){
+  // GitHub Pages が config.json に10分のキャッシュ(Cache-Control: max-age=600)を付けるため、
+  // no-store で毎回取得しないと停止スイッチが最大10分効かない。
+  fetch('config.json', { cache: 'no-store' }).then(function(r){ return r.json(); }).then(function(c){
     cfg = c;
   }).catch(function(){
     cfg = null;
