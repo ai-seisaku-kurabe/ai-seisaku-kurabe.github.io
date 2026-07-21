@@ -87,19 +87,37 @@ a.src{ color:var(--accent); text-decoration:none; } a.src:hover{ text-decoration
       ta=document.getElementById('fbText'), btn=document.getElementById('fbBtn'),
       msg=document.getElementById('fbMsg'), cnt=document.getElementById('fbCount');
   var LIMIT=2000, WAIT=60*1000, KEY='kg_fb_last', sending=false;
+  var cfg=null, cfgReady=false;
   if(!form || !ta) return;
   function say(t, err){ msg.textContent=t; msg.className = err ? 'fb-msg err' : 'fb-msg'; }
   function done(html){ wrap.innerHTML='<div class="fb-thanks">'+html+'</div>'; }
+  function stopped(){ return !!(cfg && cfg.feedback_enabled === false); }
   ta.addEventListener('input', function(){ cnt.textContent = ta.value.length + ' / ' + LIMIT + ' 字'; });
-  // 受付の停止スイッチ（config.json を書き換えるだけで効く。再ビルド不要）
-  fetch('config.json').then(function(r){ return r.json(); }).then(function(cfg){
-    if(cfg && cfg.feedback_enabled === false){
+  // 受付の停止スイッチ（config.json を書き換えるだけで効く。再ビルド不要）。
+  // 取得が終わるまでは送信ボタンを無効にし、submit 側でも cfg を確認してから送信する。
+  btn.disabled = true;
+  say('設定を確認しています…');
+  fetch('config.json').then(function(r){ return r.json(); }).then(function(c){
+    cfg = c;
+  }).catch(function(){
+    cfg = null;
+  }).then(function(){
+    cfgReady = true;
+    if(stopped()){
       done('<b>ご意見の受付を一時停止しています。</b><br>' + (cfg.feedback_notice || ''));
+      return;
     }
-  }).catch(function(){});
+    btn.disabled = false;
+    say('');
+  });
   form.addEventListener('submit', function(e){
     e.preventDefault();
     if(sending) return;
+    if(!cfgReady){ say('設定を確認しています。しばらくお待ちください。', true); return; }
+    if(stopped()){
+      done('<b>ご意見の受付を一時停止しています。</b><br>' + (cfg.feedback_notice || ''));
+      return;
+    }
     var t=(ta.value||'').trim();
     if(!t){ say('本文が空です。', true); return; }
     if(t.length > LIMIT){ say(LIMIT+'字までです（現在 '+t.length+' 字）。', true); return; }
