@@ -173,20 +173,23 @@ def say_block(full, dname, entry):
 # 起立採決の議案は会議録に「起立多数」としか残らないので、財政以外は空欄になる。
 # 委員長解任決議案も記名投票だが、予算審議の進め方をめぐる政局案件であり、
 # 政策的立場として並べると誤読を招くため入れていない。
+# 収集していない会期と、収集した結果0件だった会期を区別する。
+# ファイルが無いだけなのに「採決がありません」と書くと、未取得を事実の不在として
+# 提示することになる（憲法6条）。0件のときも必ずファイルを作って裏づけを残す。
 SHUGIIN = {}
 for _s in ("217", "219", "221"):
     _p = f"{_s}_shugiin_votes.json"
-    if os.path.exists(_p):
-        SHUGIIN[f"第{_s}回"] = json.load(open(_p, encoding="utf-8"))["bills"]
+    SHUGIIN[f"第{_s}回"] = (json.load(open(_p, encoding="utf-8"))["bills"]
+                            if os.path.exists(_p) else None)
 
 
 def shugiin_rows(full, dname):
     """衆院の賛否。参院と違い会派別の公表が無いため、投票者の氏名から党を引いている。"""
     rows = []
     for ses in ("第217回", "第219回", "第221回"):
-        bills = SHUGIIN.get(ses, [])
-        chips = []
-        if dname == "財政":
+        bills = SHUGIIN.get(ses)
+        chips, notes = [], []
+        if dname == "財政" and bills:
             for b in bills:
                 c = b["parties"].get(full)
                 if not c:
@@ -196,18 +199,19 @@ def shugiin_rows(full, dname):
                          f'（氏名から党を特定できた分で 賛成{c["賛成"]}・反対{c["反対"]}）')
                 chips.append(f'<a class="vchip {cls}" href="{esc(b["url"])}" target="_blank" '
                              f'rel="noopener" title="{esc(title)}">予算<b>{esc(c["stance"])}</b></a>')
+                # 憲法4条は「引けない議員と無所属は数えず、人数を開示する」と定める。
+                # 方法論のページだけでなく、数字が出ているその場に、議案ごとに書く。
+                notes.append(f'※ 投票総数{b["reported"]["total"]}票のうち、'
+                             f'氏名から所属党を特定できなかった{b["unidentified"]}票と'
+                             f'無所属{b["independent"]}票は、どの党にも数えていません')
         if chips:
-            # 憲法4条は「引けない議員と無所属は数えず、**人数を開示する**」と定める。
-            # 方法論のページだけでなく、数字が出ているその場に書く。
-            b = bills[0]
-            note = (f'※ 投票総数{b["reported"]["total"]}票のうち、'
-                    f'氏名から所属党を特定できなかった{b["unidentified"]}票と'
-                    f'無所属{b["independent"]}票は、どの党にも数えていません')
             rows.append(f'<div class="vses"><span class="vsl">{ses}</span>'
                         f'<div class="vrow">{"".join(chips)}</div>'
-                        f'<span class="vna">{note}</span></div>')
+                        f'<span class="vna">{" ／ ".join(notes)}</span></div>')
             continue
-        if dname != "財政":
+        if bills is None:
+            reason = "この会期の衆議院の記名投票は、まだ収集していません"
+        elif dname != "財政":
             # 「記録が残らない」と断定できるのは、実際に数えたから。掲載3会期の衆院
             # 記名投票は予算2件と委員長解任決議案2件だけで、他分野の議案は無かった。
             reason = ("この3会期の衆議院の記名投票は予算と委員長解任決議案だけで、"
