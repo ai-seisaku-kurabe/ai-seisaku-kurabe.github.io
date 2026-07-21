@@ -293,6 +293,11 @@ PROMISES = [
     ("research.html", ["未確認"],                                 "先行研究：未確認の開示"),
     ("research.html", ["たどり着けたURLを持つものだけ"],          "先行研究：出典のルール"),
     ("research.html", ["良し悪しを論じてはいません"],             "先行研究：研究を格付けしない宣言"),
+    # 照合の全数検査（agents/audit_matching.py）で分かった癖の開示。
+    # 測ったうえで直しきれていない、という書き方が消えたら自己弁護に転じている。
+    ("research.html", ["自分たちで測ったこと"],                   "先行研究：全数検査の開示"),
+    ("research.html", ["直し方は決まっていません"],               "先行研究：未解決であることの明示"),
+    ("shindan.html",  ["これらの党を区別できません"],             "政策で照らす：同率の明示"),
     # 出典と権利／プライバシー — 事実として書いている以上、消えたら気づけるようにする
     ("about.html",    ["発言した議員ご本人"],                     "出典と権利：著作権の帰属"),
     ("about.html",    ["削除・訂正の申出"],                       "出典と権利：申出窓口"),
@@ -321,6 +326,43 @@ def check_constitution():
         if n != 8:
             fail("憲法", f"about.html: 運用ルールが8項目でない（{n}項目）")
     print(f"  憲法: {ok}/{len(PROMISES)} 項目を確認")
+
+
+# ------------------------------------------ 5b. 照合の全数検査が古びていないか
+# research.html には「政策で照らす」を全数検査した数字が載る。設問や政党を足したのに
+# 検査を回し直していないと、ページだけが古い設計の数字を語ることになる。
+# 数字そのものは検証できない（それは検査プログラムの仕事）ので、
+# 「何を検査した数字か」が今のサイトと一致しているかだけを見る。
+def check_matching_audit(bp):
+    p = os.path.join(TOOLS, "state", "matching_audit.json")
+    if not os.path.exists(p):
+        fail("全数検査", "state/matching_audit.json が無い（agents/audit_matching.py を実行する）")
+        return
+    a = json.load(open(p, encoding="utf-8"))
+    # build_shindan.py は import すると shindan.html を書き出すので、定義部分だけを取り出す
+    src_path = os.path.join(TOOLS, "build_shindan.py")
+    src = open(src_path, encoding="utf-8").read()
+    cut = src.find("\n# 各設問の")
+    ns = {}
+    exec(compile(src[:cut if cut > 0 else len(src)], src_path, "exec"), ns)
+    q, parties = len(ns["POLICY"]), len(ns["PARTIES"])
+    if a.get("questions") != q or a.get("parties") != parties:
+        fail("全数検査",
+             f"検査結果が今の設計と違う（検査時 {a.get('questions')}問/{a.get('parties')}党 → "
+             f"現在 {q}問/{parties}党）。agents/audit_matching.py を回し直す")
+        return
+    expect = 3 ** q * 2 ** q
+    if a.get("total_inputs") != expect:
+        fail("全数検査", f"全数になっていない（{a.get('total_inputs'):,} ≠ {expect:,}）")
+        return
+    # 立場が完全に同じ党の組があるときは、同率を明示できていないと片方が永久に埋もれる
+    same = a.get("identical_stance_pairs") or []
+    if same:
+        html = os.path.join(ROOT, "shindan.html")
+        if os.path.exists(html) and "これらの党を区別できません" not in open(html, encoding="utf-8").read():
+            fail("全数検査", f"立場が同じ党の組がある（{same}）のに、同率であることを画面に出していない")
+    print(f"  全数検査: {a['total_inputs']:,}通り／{q}問{parties}党で一致"
+          + (f"／立場が同じ組 {len(same)}" if same else ""))
 
 
 # ------------------------------------------- 6. 先行研究ページの引用リンク
@@ -390,6 +432,7 @@ def main():
     check_editorial_language(bp)
     check_vkey_uniqueness(bp)
     check_constitution()
+    check_matching_audit(bp)
     check_privacy_claims()
     collect_research_citations()
 

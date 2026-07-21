@@ -15,6 +15,7 @@
 | ③ 検証 | `agents/verify_content.py` | PR時・週次 (Actions) | 不要（止めるだけ） |
 | ⑥ 運用 | `agents/health_check.py` | 日次 (Actions) | 不要（知らせるだけ） |
 | ⑧ 査読 | `agents/REVIEW_CHARTER.md` ＋ `agents/make_review_request.py` | 人がPRごとに起動 | **必要**（BLOCKを裁く） |
+| ⑨ 文献調査 | `agents/SURVEY_CHARTER.md` ＋ `agents/audit_matching.py` | 人が起動（設問・政党を変えたら必ず） | 不要（測るだけ） |
 
 設計の要点は4つです。
 
@@ -102,6 +103,12 @@ python agents/watch_sources.py --update-state   # 確認済みとして記録
 # ③ 掲載内容がルールを守れているか点検（引用の原文照合・リンク・評価語・憲法）
 python agents/verify_content.py
 python agents/verify_content.py --offline       # 通信なしの項目だけ（速い）
+
+# ⑨ 「政策で照らす」の照合を、ありうる回答すべてで検査（15分ほどかかります）
+#    設問・政党・stance を変えたら必ず回し直す。結果は state/matching_audit.json、
+#    research.html の「04 ／ 自分たちで測ったこと」はこのJSONから数字を流し込みます。
+python agents/audit_matching.py
+python agents/audit_matching.py --print --weight-samples 8   # 下見（数十秒）
 
 # ⑥ 公開サイトが壊れていないか外から点検
 python agents/health_check.py

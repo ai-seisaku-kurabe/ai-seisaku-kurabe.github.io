@@ -142,6 +142,10 @@ details.arg[open]>summary{ margin-bottom:10px; }
   border-left:3px solid var(--pos); border-radius:0 10px 10px 0; padding:11px 15px;
   font-size:13px; line-height:1.8; margin-top:14px; }
 .matchwhy b{ color:var(--ink); }
+/* 同率1位の告知。評価ではなく事実の通知なので、色は付けず紙面と同系でおさえる */
+.tienote{ background:var(--paper); border:1px solid var(--line); border-radius:10px;
+  padding:11px 15px; font-size:13px; line-height:1.8; margin-top:14px; }
+.tienote b{ color:var(--ink); }
 .caveat{ font-size:12px; color:var(--muted); line-height:1.85; margin-top:14px; }
 .caveat b{ color:var(--ink); }
 a.src{ color:var(--accent); text-decoration:none; } a.src:hover{ text-decoration:underline; }
@@ -267,16 +271,29 @@ function render(res, pick, answered){
     a = '<p class="oi" style="margin:0">「特にない」を選択。ワンイシューにはこだわらず、下の政策整合で見ていきましょう。</p>';
   }
   // B: 政策整合ランキング
+  // 一致度が同じ党は「同率」として全部そろえて出す。先頭の1党だけを1位に見せると、
+  // 並べ替えの規則（判定に使われた設問数）が優劣に見えてしまうため。
   const scored=res.filter(r=>r.pct!==null);
   const top = scored.length?scored[0]:null;
+  const topPct = top?top.pct:null;
+  const tops = top?scored.filter(r=>r.pct===topPct):[];
   let rows = res.map((r,idx)=>{
-    const isTop = top && r.p.full===top.p.full && r.pct!==null;
+    const isTop = r.pct!==null && r.pct===topPct;
     const w = r.pct===null?0:Math.round(r.pct*100);
     const sc = r.pct===null?'判定材料なし':('一致度 '+w+'%');
     return '<div class="row'+(isTop?' top':'')+'"><div><span class="nm">'+esc(r.p.short)+'</span></div>'
       +'<div><div class="oi">'+esc(r.p.oneissue)+'</div><div class="bar"><i style="width:'+w+'%"></i></div></div>'
       +'<div class="sc">'+sc+'</div></div>';
   }).join('');
+  // 同率のときは、その事実を先に伝える（この設問数では区別できない、という情報のため）
+  let tie='';
+  if(tops.length>1){
+    tie='<p class="tienote"><b>一致度が同じ党が'+tops.length+'つあります（'
+      +tops.map(r=>esc(r.p.short)).join('・')+'）。</b>'
+      +'この'+DATA.policy.length+'問の範囲では、これらの党を区別できません。'
+      +'上下の並びは判定に使われた設問数の多い順で、優劣ではありません。'
+      +'設問を増やせば差がつくこともあります。</p>';
+  }
   // 個別フィードバック：一致度が最も高い党と、あなたの回答が一致した争点(重視した争点を優先)
   let why='';
   if(top){
@@ -289,28 +306,30 @@ function render(res, pick, answered){
     matched.sort((a,b)=>b.w-a.w);  // ◎重視した争点を先に
     if(matched.length){
       const names=matched.slice(0,3).map(m=>m.w>1?('<b>'+esc(m.label)+'</b>（重視）'):esc(m.label));
-      why='<p class="matchwhy"><b>'+esc(tp.short)+'</b>とは、'+names.join('・')
+      why='<p class="matchwhy">'+(tops.length>1?'同率のうち':'')+'<b>'+esc(tp.short)+'</b>とは、'+names.join('・')
         +(matched.length>3?(' ほか'+(matched.length-3)+'件'):'')
         +'であなたの回答と'+esc(tp.short)+'の投票・発言の傾向が一致しました。</p>';
     }
   }
   // 食い違い注意
   let div='';
-  if(top && pick && pick!=='none' && pick!==top.p.full){
+  if(top && pick && pick!=='none' && !tops.some(r=>r.p.full===pick)){
     div='<div class="diverge"><b>ワンイシューと政策整合が食い違っています。</b>'
       +'あなたが選んだワンイシューの党（'+esc(partyByFull(pick).short)
-      +'）と、政策全体の一致度が最も高い党（'+esc(top.p.short)+'）が異なります。'
+      +'）と、政策全体の一致度が最も高い党（'+tops.map(r=>esc(r.p.short)).join('・')+'）が異なります。'
       +'「1点で選ぶか、全体で選ぶか」を意識して考えてみてください。</div>';
   }
   const html_ = ''
    +'<div class="rcard"><span class="rlabel">結果 A ／ ワンイシューで惹かれた党</span>'
    +'<h3>あなたが共感した「1点」</h3><div class="pick-list">'+a+'</div></div>'
    +'<div class="rcard"><span class="rlabel">結果 B ／ 政策の整合が高い順</span>'
-   +'<h3>あなたの回答との一致度（'+answered+'問に回答）</h3><div class="rank">'+rows+'</div>'+why+div+'</div>'
+   +'<h3>あなたの回答との一致度（'+answered+'問に回答）</h3><div class="rank">'+rows+'</div>'+tie+why+div+'</div>'
    +'<div class="rcard"><span class="rlabel">この照合の限界</span>'
    +'<p class="caveat"><b>これは断定ではなく出発点です。</b>各党の賛否は、第217回・第221回国会の参院採決・国会発言や各党の公約にもとづく編集判断で、'
    +'「中立/不明(0)」も含みます。「◎ 特に重視」を選んだ争点は3倍で計算しています。'
-   +'必ず<a class="src" href="https://claude.ai/code/artifact/f8fbacb6-7efb-4f1e-b86f-7c556639379b" target="_blank" rel="noopener">政党で選ぶ（比例区ガイド）</a>で'
+   +'この照合の癖（どの党が1位に出やすいか、計算方法を変えると何％で1位が入れ替わるか）は、'
+   +'ありうる回答すべてを計算して<a class="src" href="research.html">先行研究と、この設計の根拠</a>で公開しています。'
+   +'必ず<a class="src" href="guide.html">政党で選ぶ</a>で'
    +'各党の実際の言と行（原典リンク付き）を確かめてください。</p></div>';
   const r=document.getElementById('result'); r.innerHTML=html_;
   r.scrollIntoView({behavior:'smooth',block:'start'});

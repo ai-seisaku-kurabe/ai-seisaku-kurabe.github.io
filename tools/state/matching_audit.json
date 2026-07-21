@@ -1,0 +1,215 @@
+{
+ "generated": "2026-07-21",
+ "questions": 10,
+ "parties": 10,
+ "answer_patterns": 59049,
+ "weight_patterns": 1024,
+ "total_inputs": 60466176,
+ "formulas": {
+  "current": {
+   "label": "現行式（符号一致率）",
+   "desc": "あなたも党も賛否がはっきりしている設問だけを分母にし、符号が一致した割合を出す。重視した設問は3倍。党が中立の設問は分母から落ちる。"
+  },
+  "proximity": {
+   "label": "近接性（距離）型",
+   "desc": "回答と党の立場の距離 |u−p| を足し上げ、近いほど高くする。党が中立の設問も距離1として数えるので、分母は回答したすべての設問になる。（3択では方向性モデル u×p と順位が完全に一致する。|u−p| = 1 − u×p が恒等的に成り立つため）"
+  },
+  "wahlomat": {
+   "label": "点数合計型",
+   "desc": "一致2点・どちらかが中立1点・不一致0点を足し上げる。割合にしない。ドイツ Wahl-O-Mat が採る型で、立場を多く示している党ほど点を積める。"
+  },
+  "current_noweight": {
+   "label": "現行式・重みなし",
+   "desc": "現行式から「◎ 重視する」の3倍を外したもの。"
+  }
+ },
+ "by_party": [
+  {
+   "short": "自民",
+   "full": "自由民主党",
+   "stance_nonzero": 9,
+   "stance_neutral": 1,
+   "top_share": {
+    "current": 10.01,
+    "proximity": 13.85,
+    "wahlomat": 13.85,
+    "current_noweight": 7.99
+   },
+   "shown_share": 13.56,
+   "tied_share": 14.04,
+   "mean_pct": 50.0,
+   "top_share_balanced": 14.12
+  },
+  {
+   "short": "立憲",
+   "full": "立憲民主党",
+   "stance_nonzero": 8,
+   "stance_neutral": 2,
+   "top_share": {
+    "current": 8.38,
+    "proximity": 10.56,
+    "wahlomat": 10.56,
+    "current_noweight": 7.24
+   },
+   "shown_share": 11.66,
+   "tied_share": 12.63,
+   "mean_pct": 50.0,
+   "top_share_balanced": 13.98
+  },
+  {
+   "short": "維新",
+   "full": "日本維新の会",
+   "stance_nonzero": 9,
+   "stance_neutral": 1,
+   "top_share": {
+    "current": 4.23,
+    "proximity": 7.17,
+    "wahlomat": 7.17,
+    "current_noweight": 3.5
+   },
+   "shown_share": 7.29,
+   "tied_share": 9.44,
+   "mean_pct": 50.0,
+   "top_share_balanced": 6.82
+  },
+  {
+   "short": "国民",
+   "full": "国民民主党",
+   "stance_nonzero": 8,
+   "stance_neutral": 2,
+   "top_share": {
+    "current": 4.42,
+    "proximity": 4.65,
+    "wahlomat": 4.65,
+    "current_noweight": 3.74
+   },
+   "shown_share": 6.58,
+   "tied_share": 9.85,
+   "mean_pct": 50.0,
+   "top_share_balanced": 7.02
+  },
+  {
+   "short": "公明",
+   "full": "公明党",
+   "stance_nonzero": 6,
+   "stance_neutral": 4,
+   "top_share": {
+    "current": 6.65,
+    "proximity": 1.83,
+    "wahlomat": 1.83,
+    "current_noweight": 6.36
+   },
+   "shown_share": 7.77,
+   "tied_share": 13.77,
+   "mean_pct": 50.0,
+   "top_share_balanced": 5.75
+  },
+  {
+   "short": "共産",
+   "full": "日本共産党",
+   "stance_nonzero": 10,
+   "stance_neutral": 0,
+   "top_share": {
+    "current": 0.0,
+    "proximity": 0.0,
+    "wahlomat": 0.0,
+    "current_noweight": 0.0
+   },
+   "shown_share": 18.62,
+   "tied_share": 19.26,
+   "mean_pct": 50.0,
+   "top_share_balanced": 11.47
+  },
+  {
+   "short": "れいわ",
+   "full": "れいわ新選組",
+   "stance_nonzero": 10,
+   "stance_neutral": 0,
+   "top_share": {
+    "current": 0.0,
+    "proximity": 0.0,
+    "wahlomat": 0.0,
+    "current_noweight": 0.0
+   },
+   "shown_share": 0.0,
+   "tied_share": 19.26,
+   "mean_pct": 50.0,
+   "top_share_balanced": 0.0
+  },
+  {
+   "short": "みらい",
+   "full": "チームみらい",
+   "stance_nonzero": 5,
+   "stance_neutral": 5,
+   "top_share": {
+    "current": 13.04,
+    "proximity": 3.59,
+    "wahlomat": 3.59,
+    "current_noweight": 11.73
+   },
+   "shown_share": 13.56,
+   "tied_share": 20.67,
+   "mean_pct": 50.0,
+   "top_share_balanced": 16.14
+  },
+  {
+   "short": "社民",
+   "full": "社会民主党",
+   "stance_nonzero": 9,
+   "stance_neutral": 1,
+   "top_share": {
+    "current": 10.72,
+    "proximity": 10.81,
+    "wahlomat": 10.81,
+    "current_noweight": 9.47
+   },
+   "shown_share": 11.22,
+   "tied_share": 15.92,
+   "mean_pct": 50.0,
+   "top_share_balanced": 13.44
+  },
+  {
+   "short": "参政",
+   "full": "参政党",
+   "stance_nonzero": 9,
+   "stance_neutral": 1,
+   "top_share": {
+    "current": 8.25,
+    "proximity": 11.82,
+    "wahlomat": 11.82,
+    "current_noweight": 7.15
+   },
+   "shown_share": 9.75,
+   "tied_share": 12.36,
+   "mean_pct": 50.0,
+   "top_share_balanced": 11.26
+  }
+ ],
+ "ties": {
+  "current": 20745594,
+  "proximity": 21601548,
+  "wahlomat": 21602572,
+  "current_noweight": 25897984
+ },
+ "undecidable": {
+  "current": 1024,
+  "proximity": 1024,
+  "wahlomat": 0,
+  "current_noweight": 1024
+ },
+ "flip_rate": {
+  "proximity": 22.1,
+  "wahlomat": 22.1,
+  "current_noweight": 21.8
+ },
+ "balanced_inputs": 9166848,
+ "identical_stance_pairs": [
+  [
+   "共産",
+   "れいわ"
+  ]
+ ],
+ "never_displayed": [
+  "れいわ"
+ ]
+}

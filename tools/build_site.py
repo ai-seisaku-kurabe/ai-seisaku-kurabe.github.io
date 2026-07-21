@@ -695,6 +695,14 @@ RESEARCH_CSS="""
 .rs-unv li{font-size:13px;line-height:1.85;color:var(--ink);padding-left:18px;position:relative;}
 .rs-unv li::before{content:"?";position:absolute;left:0;top:0;font-family:var(--mono);
   font-size:11px;font-weight:700;color:#b08d20;}
+.rs-item.meas{border-left:3px solid #3b6ea5;}
+.rs-tw{overflow-x:auto;margin:12px 0;}
+.rs-tbl{border-collapse:collapse;font-size:12.5px;min-width:520px;width:100%;}
+.rs-tbl th,.rs-tbl td{border-bottom:1px solid var(--line);padding:7px 10px;text-align:left;
+  line-height:1.6;white-space:nowrap;}
+.rs-tbl th{font-size:11px;color:var(--muted);font-weight:600;vertical-align:bottom;}
+.rs-tbl td.n{font-family:var(--mono);font-size:12px;}
+.rs-note{font-size:12px;line-height:1.85;color:var(--muted);margin:8px 0 0;}
 """
 
 def _cite(label, url, unverified=False):
@@ -703,10 +711,42 @@ def _cite(label, url, unverified=False):
     return ('<a class="' + cls + '" href="' + url + '" target="_blank" rel="noopener">'
             + label + '</a>')
 
+def _audit_load():
+    """照合の全数検査（agents/audit_matching.py）の結果を読む。
+
+    ページに出る数字はすべてこのJSONから流し込む。本文に数字を手で書くと、
+    設問や政党を変えたときにページだけが古いまま残るため。
+    """
+    p = "state/matching_audit.json"
+    if not os.path.exists(p):
+        raise SystemExit("state/matching_audit.json がありません。"
+                         "先に python agents/audit_matching.py を実行してください。")
+    return json.load(open(p, encoding="utf-8"))
+
+AUDIT = _audit_load()
+
+def _audit_table(a):
+    """党ごとの検査結果の表。順位表に見えないよう、一致度の平均は出さない。"""
+    rows = "".join(
+        '<tr><td>' + r["short"] + '</td>'
+        '<td class="n">' + str(r["stance_nonzero"]) + '/' + str(a["questions"]) + '</td>'
+        '<td class="n">' + str(r["shown_share"]) + '%</td>'
+        '<td class="n">' + str(r["tied_share"]) + '%</td>'
+        '<td class="n">' + str(r["top_share_balanced"]) + '%</td></tr>'
+        for r in sorted(a["by_party"], key=lambda r: -r["shown_share"]))
+    return ('<div class="rs-tw"><table class="rs-tbl">'
+            '<thead><tr><th>党</th><th>立場を示した設問</th><th>1位に出る割合</th>'
+            '<th>同率1位に含まれる割合</th><th>賛否が釣り合った回答で1位</th></tr></thead>'
+            '<tbody>' + rows + '</tbody></table></div>')
+
 def _rs(kind, title, finding, did, srcs):
-    """先行研究の1項目。kind = keep（採り入れた）/ drop（採らなかった）/ open（未手当て）。"""
+    """先行研究の1項目。
+
+    kind = keep（採り入れた）/ drop（採らなかった）/ open（未手当て）/
+           meas（自分で測った＝先行研究の指摘を数字で確かめた結果）。
+    """
     lab = {"keep": "このサイトでどうしたか", "drop": "このサイトでどうしたか",
-           "open": "現状"}[kind]
+           "open": "現状", "meas": "測った結果"}[kind]
     return ('<div class="rs-item ' + kind + '"><h3>' + title + '</h3>'
             '<p class="rs-f">' + finding + '</p>'
             '<p class="rs-do"><span>' + lab + '</span>' + did + '</p>'
@@ -902,7 +942,9 @@ RESEARCH=(f'<title>先行研究と、この設計の根拠｜ AI政策くらべ<
     "「政策で照らす」は、各設問の立場を+1／0／−1で表し、単純な一致数を数え、"
     "重視した争点を3倍にしています。<b>これは数ある計算方法のひとつにすぎず、"
     "別の計算法なら別の結果になりえます。</b>"
-    "計算方法は公開していますが、それが唯一の方法でないことの明示は、まだ十分ではありません。"
+    "この点は<b>04でありうる回答すべてを計算して測りました</b>"
+    "（割り方を変えると" + str(AUDIT["flip_rate"]["proximity"]) + "%の入力で1位の党が変わります）。"
+    "測っても<b>どの式が妥当かは決まらない</b>ので、この項目は解決済みにしていません。"
     "（なお国内の投票マッチング型サービスを調べた範囲では、<b>算出式を公開しているものは確認できませんでした</b>。公開していること自体は前進ですが、公開すれば恣意性が消えるわけではありません。）",
     _cite("Louwerse &amp; Rosema (2014) The design effects of voting advice applications (Acta Politica)", "https://link.springer.com/article/10.1057/ap.2013.30"))
 
@@ -912,8 +954,13 @@ RESEARCH=(f'<title>先行研究と、この設計の根拠｜ AI政策くらべ<
     "<b>中道的な立場の利用者が極右政党にマッチしやすく、ツールがポピュリスト政党・極右政党を"
     "不均衡に利しうる</b>と報告している。設問の作り方と一致度の計算のしかたから生じる効果であり、"
     "運営者がどの党を支持するかとは関係なく起きる。",
-    "「政策で照らす」でも同じことが起きていないかを、<b>私たちは確かめていません。</b>"
-    "各党の一致度がどう分布しているかを検証する仕組みを持っていないためです。"
+    "<b>04で、ありうる回答すべてについてどの党が1位に出るかを数えました。</b>"
+    "仕組みの癖（立場を示した設問が少ない党ほど1位に出やすい）は、そこで数字になっています。"
+    "ただし<b>この研究の指摘そのものは、まだ検証できていません。</b>"
+    "「ポピュリスト政党・極右政党を利する」かどうかを測るには、"
+    "各党を左右のような軸のどこに置くかを先に決める必要があり、"
+    "<b>このサイトは政党を軸の上に配置しません</b>（それ自体が格付けになるため）。"
+    "偏りの向きまでは、この設計では測れません。"
     "設計上どの党にも肩入れしていないことは、結果が偏らないことを意味しません。",
     _cite("Fr&ouml;hle et al. (2026) From Swipes to Votes (Policy &amp; Internet 18-1, DOI 10.1002/poi3.70028)", "https://doi.org/10.1002/poi3.70028")
     + "（本文は取得できず、抄録での確認）")
@@ -998,7 +1045,91 @@ RESEARCH=(f'<title>先行研究と、この設計の根拠｜ AI政策くらべ<
 
   + '</section>'
 
-  '<section class="ab-sec"><p class="ab-k">04 ／ 未確認</p>'
+  # ---- 03の指摘のうち、測れるものを実際に測った結果。数字はすべて state/matching_audit.json から。
+  + '<section class="ab-sec"><p class="ab-k">04 ／ 自分たちで測ったこと</p>'
+  '<h2 class="ab-h">「政策で照らす」の照合を、ありうる回答すべてで検査した</h2>'
+  '<p class="ab-b">03に挙げた指摘のうち2つ——<b>算出式の選び方が結果を左右する</b>と、'
+  '<b>照合の仕組み自体が特定の立場を押し上げうる</b>——は、'
+  '「そうかもしれません」と書くだけでは確かめたことになりません。'
+  'このサイトの「政策で照らす」は、入力できる回答が有限です'
+  '（' + str(AUDIT["questions"]) + '問 × 賛成／どちらでもない／反対の3択、それぞれに「◎重視する」の有無）。'
+  'だから標本を取る必要がなく、<b>ありうる入力を全部計算できます</b>。'
+  '<b>' + f'{AUDIT["total_inputs"]:,}' + '通り</b>すべてについて一致度を計算し、'
+  'どの党が1位に出るかを数えました。'
+  '検査するプログラムと結果の数値は、'
+  '<a class="src" href="https://github.com/ai-seisaku-kurabe/ai-seisaku-kurabe.github.io/blob/main/tools/agents/audit_matching.py" target="_blank" rel="noopener">'
+  'audit_matching.py</a> と '
+  '<a class="src" href="https://github.com/ai-seisaku-kurabe/ai-seisaku-kurabe.github.io/blob/main/tools/state/matching_audit.json" target="_blank" rel="noopener">'
+  'matching_audit.json</a> にあります。このページの数字は、そのファイルから直接流し込んでいます。</p>'
+
+  + _audit_table(AUDIT)
+  + '<p class="rs-note">※「1位に出る割合」は、'
+  + f'{AUDIT["total_inputs"]:,}' + '通りの入力のうち、その党が結果の先頭に表示される割合です。'
+  '党の優劣ではなく、<b>照合の仕組みの癖</b>を測った数字です。'
+  '「賛否が釣り合った回答」は、賛成と反対を同じ数だけ選んだ回答'
+  '（' + f'{AUDIT["balanced_inputs"]:,}' + '通り）に限った場合の割合です。</p>'
+
+  + _rs("meas",
+    "分かったこと①：立場を示した設問が少ない党ほど、1位に出やすい",
+    "現行の計算式は、<b>その党が賛成か反対かをはっきり示している設問だけを分母にする</b>。"
+    "そのため中立・不明の設問が多い党ほど分母が小さくなり、少ない一致で高い割合が出る。"
+    "設問の数を増やしても、この性質は消えない。",
+    "検査の結果、<b>立場を示した設問が" + str(min(r["stance_nonzero"] for r in AUDIT["by_party"]))
+    + "問の党と、" + str(max(r["stance_nonzero"] for r in AUDIT["by_party"]))
+    + "問の党が、同じ土俵で比べられていること</b>が数字で確認できました。"
+    + (lambda m: "立場を示した設問がいちばん少ない党（" + m["short"] + "・"
+       + str(m["stance_nonzero"]) + "問）は、割合で出す現行式では"
+       + str(m["top_share"]["current"]) + "%の入力で単独1位になりますが、"
+       + "割らずに点数を合計する式にすると" + str(m["top_share"]["proximity"]) + "%まで下がります。"
+       )(min(AUDIT["by_party"], key=lambda r: (r["stance_nonzero"], r["short"])))
+    + "これは公約や発言で立場を確認できなかった党を「中立(0)」にするという、"
+    "捏造しないための扱いから生じています。"
+    "<b>直し方は決まっていません。</b>中立を不一致として数えれば分母は揃いますが、"
+    "今度は「立場を確認できなかったこと」を「あなたと違うこと」として計算することになり、"
+    "別の歪みが入ります。現時点では、この癖があることを数字で開示することまでが対応です。",
+    "この検査は先行研究の追試ではなく、このサイト自身の測定です。"
+    "着想の元は " + _cite("Fr&ouml;hle et al. (2026) From Swipes to Votes (Policy &amp; Internet 18-1)",
+                          "https://doi.org/10.1002/poi3.70028") + " です。")
+
+  + _rs("meas",
+    "分かったこと②：割合にするか、点数の合計にするかで、1位の党が変わる",
+    "先行研究は、助言が空間モデルに依存することを指摘してきた。"
+    "そこで現行式のほかに、<b>近接性（距離）型・方向性（スカラー積）型・点数合計型</b>でも同じ検査を回した。"
+    "検査の途中で分かったことがひとつある。<b>賛成・どちらでもない・反対の3択では、"
+    "この3つはまったく同じ順位を出す</b>（|u−p| = 1 − u×p が恒等的に成り立つため）。"
+    "つまり本当の分かれ目は近接性か方向性かではなく、"
+    "<b>その党が立場を示した設問の数で割るかどうか</b>だった。",
+    "割らない式に替えると、<b>" + str(AUDIT["flip_rate"]["proximity"])
+    + "%の入力で1位の党が変わりました。</b>"
+    "「◎重視する」の3倍を外すだけでも、<b>" + str(AUDIT["flip_rate"]["current_noweight"])
+    + "%の入力で1位が変わります。</b>"
+    "どちらの式が正しいとは言えません。言えるのは、"
+    "<b>結果は回答だけで決まっているのではなく、私たちが選んだ計算方法にも左右されている</b>ということです。"
+    "この数字を出したので、「別の計算法なら別の結果になりえます」は"
+    "推測ではなく測定された事実として書けるようになりました。",
+    _cite("Louwerse &amp; Rosema (2014) The design effects of voting advice applications (Acta Politica)",
+          "https://link.springer.com/article/10.1057/ap.2013.30"))
+
+  + _rs("meas",
+    "分かったこと③：一度も1位に表示されない党があった（修正しました）",
+    "検査で、<b>" + ("・".join("＝".join(p) for p in AUDIT["identical_stance_pairs"])
+                     if AUDIT["identical_stance_pairs"] else "同じ立場の組")
+    + " が" + str(AUDIT["questions"]) + "問すべてで同じ立場</b>だと分かった。"
+    "立場が同じなら一致度は必ず等しくなり、どちらが上に出るかは"
+    "<b>同点のときの並べ替え規則だけで決まる</b>。"
+    "当時の規則は「判定に使われた設問数が多い順、それも同じなら元の並び順」だったため、"
+    "片方は<b>どんな回答をしても結果の先頭に出てこなかった</b>。",
+    "これは先行研究からの指摘ではなく、<b>この検査で見つけた自分たちの欠陥</b>です。"
+    "並べ替えの規則が、利用者には優劣に見えていました。"
+    "<b>同じ一致度の党は「同率」として明示し、区別できないことをその場で伝える形に直しました。</b>"
+    "結果の画面には「一致度が同じ党がいくつあるか」「この設問数では区別できないこと」"
+    "「上下の並びは優劣ではないこと」が出ます。"
+    "同じ見落としが再び入らないよう、③検証班の機械チェックにも項目を足しました。",
+    "この項目に対応する先行研究はありません。全数検査から出た結果です。")
+
+  + '</section>'
+
+  '<section class="ab-sec"><p class="ab-k">05 ／ 未確認</p>'
   '<h2 class="ab-h">まだ確かめられていないこと</h2>'
   '<p class="ab-b">調査の過程で手がかりは得たものの、'
   '一次資料に当たれていない、または記述が食い違っているものです。'
@@ -1010,7 +1141,7 @@ RESEARCH=(f'<title>先行研究と、この設計の根拠｜ AI政策くらべ<
   '本文を読めていません。他の研究と結論が食い違う可能性があります。</li>'
   '</ul></div></section>'
 
-  '<section class="ab-sec"><p class="ab-k">05 ／ この調査の作り方と限界</p>'
+  '<section class="ab-sec"><p class="ab-k">06 ／ この調査の作り方と限界</p>'
   '<h2 class="ab-h">誰が、どうやって調べたか</h2>'
   '<ul class="ab-list">'
   '<li>文献の収集はAI（Claude）に行わせました。'
