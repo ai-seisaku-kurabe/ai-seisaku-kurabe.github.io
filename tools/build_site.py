@@ -287,8 +287,9 @@ FEEDBACK_FORM = ('  <p class="eyebrow">ご意見・お問い合わせ</p>'
   '<div id="fbWrap">'
   '<form class="fb" id="fbForm">'
   '<label>ご意見<span class="req">必須</span>'
-  '<textarea id="fbText" maxlength="2000" required '
-  'placeholder="例：〇〇党の△△の分野で、引用されている発言が議事録と違うようです。"></textarea></label>'
+  # 例文は置かない。例を示すと、その種類の意見しか来なくなる（誤りの指摘に寄った例を
+  # 出していたため、感想や要望が送りにくくなっていた）。
+  '<textarea id="fbText" maxlength="2000" required></textarea></label>'
   '<span class="fb-count" id="fbCount">0 / 2000 字</span>'
   '<button class="fb-btn" id="fbBtn" type="submit">送信する</button>'
   '<p class="fb-msg" id="fbMsg"></p>'
