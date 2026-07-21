@@ -11,7 +11,7 @@ import os
 SITE_URL = "https://ai-seisaku-kurabe.github.io"
 
 PAGES = ["", "guide.html", "oneissue.html", "shindan.html", "news.html",
-         "speeches.html", "shukei.html", "about.html", "research.html",
+         "speeches.html", "shukei.html", "about.html", "research.html", "privacy.html",
          "mynote.html", "feedback.html"]
 
 
