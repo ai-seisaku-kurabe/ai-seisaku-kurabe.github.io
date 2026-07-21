@@ -1,12 +1,28 @@
 rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
-    // 集計カウンターのみ公開。読み取り自由 / aggregates/summary の更新のみ許可 / 削除禁止。
+    // 集計カウンター。読み取り自由 / aggregates/summary の更新のみ許可 / 削除禁止。
+    // 悪用対策は App Check（reCAPTCHA v3）を 2026-07-20 に適用済み。
     match /aggregates/summary {
       allow read: if true;
-      allow create, update: if true;   // ※テスト用。悪用対策は App Check の追加を推奨(README参照)
+      allow create, update: if true;
       allow delete: if false;
     }
+
+    // ご意見。書き込めるが、誰も読めない。
+    // 運営者が読む経路は Firebase コンソールと、ルールを迂回できる
+    // サービスアカウント（件数の集計）の2つだけ。
+    match /feedback/{id} {
+      allow create: if request.resource.data.keys().hasOnly(['text','from','at'])
+                 && request.resource.data.text is string
+                 && request.resource.data.text.size() > 0
+                 && request.resource.data.text.size() <= 2000
+                 && request.resource.data.from is string
+                 && request.resource.data.from.size() <= 40
+                 && request.resource.data.at == request.time;
+      allow read, update, delete: if false;
+    }
+
     match /{document=**} { allow read, write: if false; }
   }
 }
