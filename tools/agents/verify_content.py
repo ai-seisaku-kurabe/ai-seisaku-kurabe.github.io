@@ -91,6 +91,29 @@ def match_fragments(text, speech):
             problems.append(f"原文に存在しない断片 → 「{frag[:32]}…」")
     return problems
 
+def check_sentence_boundary(text, speech):
+    """引用が文の途中から始まっていないかを、原文の位置で確かめる。
+
+    固定幅で切り出していた頃、「しましては、…」と文の途中から始まる引用や、
+    「転換」の途中から始まって「換を進め、…」となる引用が生まれていた
+    （第219回で10/47件、第221回で13/55件）。原文の文字列ではあっても、
+    文の途中を切り出したものは読者に別の意味を与える。
+
+    語の形では判定できない。「しかし、」「そして、」で始まる文は正当なので、
+    **原文のどこから切り出したか**を見るのが唯一確実な方法になる。
+    """
+    body = norm(re.sub(r"^○[^　]{1,14}　", "", str(speech)))
+    frags = [f for f in (norm(x) for x in re.split(r"[…‥]+|\.{3,}", str(text))) if len(f) >= 6]
+    if not frags:
+        return []
+    i = body.find(frags[0])
+    if i < 0:
+        return []                       # 不一致は match_fragments が報告済み
+    if i > 0 and body[i - 1] not in "。？！」』":
+        return [f"文の途中から始まっている（原文では「{body[max(0,i-12):i]}」に続く箇所）"]
+    return []
+
+
 def check_quotes(bp, oneissue, limit=None):
     """掲載中の引用が原文に実在するかをAPIで直接照合する。"""
     clean = bp["clean_quote"]
@@ -105,10 +128,13 @@ def check_quotes(bp, oneissue, limit=None):
     for full, recs in oneissue.items():
         for r in recs:
             targets.append((f"oneissue/{full}", r.get("who"), r.get("text"), r.get("url")))
-    # 第221回の発言（会期併記で追加した分）
-    for full, doms in (bp.get("S221") or {}).items():
-        for dname, e in doms.items():
-            targets.append((f"guide221/{full}/{dname}", e.get("who"), e.get("quote"), e.get("url")))
+    # 会期併記で追加した分の発言。会期を足したらここにも足すこと
+    # （足し忘れると、その会期の引用は一度も原文照合されないまま公開される）。
+    for key, tag in (("S219", "guide219"), ("S221", "guide221")):
+        for full, doms in (bp.get(key) or {}).items():
+            for dname, e in doms.items():
+                targets.append((f"{tag}/{full}/{dname}", e.get("who"),
+                                e.get("quote"), e.get("url")))
 
     if limit: targets = targets[:limit]
     ok = 0
@@ -125,6 +151,8 @@ def check_quotes(bp, oneissue, limit=None):
         if who and norm(who) not in norm(rec.get("speaker", "")):
             fail("引用照合", f"{where}: 話者不一致 掲載『{who}』 / 原文『{rec.get('speaker')}』")
         problems = match_fragments(text, rec.get("speech", ""))
+        # 文の途中から切り出す欠陥は、全会期・ワンイシューを直し終えたので例外を置かない。
+        problems += check_sentence_boundary(text, rec.get("speech", ""))
         if problems:
             for p in problems:
                 fail("引用照合", f"{where}: {p}")

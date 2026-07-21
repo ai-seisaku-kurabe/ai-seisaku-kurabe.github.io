@@ -2,6 +2,7 @@
 """ワンイシュー深掘り用: 各党のワンイシューに関わる国会発言を複数取得。
 挨拶文でなく争点キーワード周辺を抜き出して oneissue_speech.json に保存。"""
 import urllib.request, urllib.parse, json, time, re
+import quote
 FROM, UNTIL = "2025-01-01", "2025-06-30"
 API = "https://kokkai.ndl.go.jp/api/speech"
 GOV = ["大臣","副大臣","大臣政務官","政府参考人","参考人","公述人","委員長","会長","局長","長官","主査","議長","副議長","事務総長"]
@@ -23,17 +24,12 @@ def fetch(term):
     q=urllib.parse.urlencode({"any":term,"from":FROM,"until":UNTIL,"recordPacking":"json","maximumRecords":90})
     return json.loads(urllib.request.urlopen(f"{API}?{q}",timeout=30).read().decode("utf-8")).get("speechRecord",[])
 def snippet(body, kws):
-    b=re.sub(r'^○[^　]{1,14}　','',body).strip()          # 話者マーカー除去
+    """争点キーワードを含む文を、文の切れ目で抜き出す（切り出しは quote.py に集約）。"""
     for kw in kws:
-        i=b.find(kw)
-        if i>=0:
-            seg=b[max(0,i-28):i-28+150]
-            d=seg.find('。')
-            if 0<=d<45: seg=seg[d+1:]                       # 直前の文末で切って読みやすく
-            return re.sub(r'\s+',' ',seg).strip()[:135], True
-    parts=b.split('。')                                     # 見つからなければ冒頭挨拶を1文飛ばす
-    tail=('。'.join(parts[1:]) if len(parts)>2 else b).strip()
-    return re.sub(r'\s+',' ',tail)[:135], False
+        if kw in quote.strip_speaker(body):
+            return quote.condense(quote.snippet(body, kw)), True
+    return quote.condense(quote.snippet(body)), False
+
 out={}
 for full,term,gkey,speaker,kws in JOBS:
     prim=[]; sub=[]; seen=set()

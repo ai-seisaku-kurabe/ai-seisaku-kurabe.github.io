@@ -21,6 +21,7 @@
   - 引用は原文のまま。争点キーワード周辺を抜き出し、挨拶・前置きは含めない。
   - 選定は編集判断であり、公開前に ③検証班（verify_content.py）で原文照合する。
 """
+import quote
 import json, os, re, sys, time, unicodedata, urllib.parse, urllib.request
 
 API = "https://kokkai.ndl.go.jp/api/speech"
@@ -42,6 +43,10 @@ PARTY_KEYS = {
     "自由民主党": "自由民主党", "立憲民主党": "立憲民主", "日本維新の会": "日本維新の会",
     "国民民主党": "国民民主", "公明党": "公明党", "日本共産党": "日本共産党",
     "れいわ新選組": "れいわ", "参政党": "参政党",
+    # 第221回で会派を持つようになった党。以前は対象から漏れていて、この2党だけ
+    # 別ファイルに手作業で足す運用になっており、取り直すたびに9件消えていた。
+    # 正規の対象に入れて解消済み（別ファイルは廃止）。
+    "チームみらい": "チームみらい", "社会民主党": "社会民主党",
 }
 
 # 委員長報告・趣旨説明・議事進行など、党の立場を示さない手続き的発言
@@ -103,18 +108,9 @@ def fetch(term, date_from, date_until, n=90):
                       .decode("utf-8")).get("speechRecord", [])
 
 def snippet(body, term):
-    """争点キーワードの周辺を抜き出す。挨拶・定型の前置きを避けるため。"""
-    b = re.sub(r"^○[^　]{1,14}　", "", body).strip()
-    i = b.find(term)
-    if i < 0:
-        i = 0
-        parts = b.split("。")
-        b = ("。".join(parts[1:]) if len(parts) > 2 else b).strip()
-    seg = b[max(0, i - 30):max(0, i - 30) + 150]
-    d = seg.find("。")
-    if 0 <= d < 45:
-        seg = seg[d + 1:]
-    return re.sub(r"\s+", " ", seg).strip()[:130]
+    """争点キーワードを含む文を、文の切れ目で抜き出す（切り出しは quote.py に集約）。"""
+    return quote.condense(quote.snippet(body, term))
+
 
 def main():
     if len(sys.argv) < 4:
@@ -152,7 +148,8 @@ def main():
                 need.discard(p)
             time.sleep(0.4)
         got = [p for p in PARTY_KEYS if dom in out[p]]
-        print(f"  取得: {len(got)}/8 党" + ("" if len(got) == 8 else f"  未取得={[p for p in PARTY_KEYS if dom not in out[p]]}"))
+        miss = [p for p in PARTY_KEYS if dom not in out[p]]
+        print(f"  取得: {len(got)}/{len(PARTY_KEYS)} 党" + (f"  未取得={miss}" if miss else ""))
 
     path = f"{session}_speeches.json"
     json.dump(out, open(path, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
