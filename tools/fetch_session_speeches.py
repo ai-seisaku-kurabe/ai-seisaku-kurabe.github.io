@@ -2,11 +2,11 @@
 """②編集班用: 指定期間の「言」（各党×各分野の代表発言）を会議録から集める。
 
 発言は衆参両院から取る（会議録検索システムは両院を収録している）。
-ただし党の判定は会派名の文字列一致で行うため、党名を含まない統一会派は拾えない。
-現に衆議院の「中道改革連合・無所属」（立憲民主党・公明党などの統一会派）が漏れており、
-この2党の発言は参議院のものだけになっている。about.html で開示済み。
-議員名から党を引く方式に変えれば拾えるが、統一会派を代表した発言を1党の主張として
-扱ってよいかという別の判断が要るため、結論が出るまでは対象外にしている。
+党の判定は party_of() に任せる。会派名に党名が入っていればそれを使い、
+党名を含まない統一会派（衆議院の「中道改革連合・無所属」＝立憲民主党・公明党など）は
+roster.json の名簿で補う。名簿で補った議員については、会派を代表した発言を除外する
+（会派としての合意であって、単独の党の主張ではないため）。
+この判定を使っていなかった間、立憲民主党と公明党の「言」は参議院のものだけだった。
 どちらの院の発言かは house に記録し、サイト上でも明示する。
 （採決は参院のみ。衆院は起立採決が原則で会派別の賛否が記録に残らないため。）
 
@@ -131,17 +131,22 @@ def main():
             for rec in recs:
                 if is_gov(rec):
                     continue
-                grp = rec.get("speakerGroup") or ""
-                hit = [p for p in need if PARTY_KEYS[p] in grp]
-                if not hit:
+                # 会派名の文字列一致だけでは、党名を含まない統一会派に属する議員を
+                # 全部取りこぼす（衆議院の「中道改革連合・無所属」に立憲・公明が入る）。
+                # party_of() は名簿で党を補う。発言一覧（fetch_speech_list.py）は
+                # 先にこちらへ移っており、ガイドの「言」だけが取り残されていた。
+                p, via_roster = party_of(rec)
+                if p is None or p not in need:
                     continue
                 body = (rec.get("speech") or "").replace("\r\n", " ").strip()
                 if len(body) < 80 or "会議録情報" in body or is_procedural(body):
                     continue
+                # 統一会派を代表した発言は、会派の合意であって1党の主張ではない
+                if via_roster and is_caucus_rep(body):
+                    continue
                 text = snippet(body, term)
                 if len(text) < 40:
                     continue
-                p = hit[0]
                 out[p][dom] = {"who": rec["speaker"], "quote": text, "url": rec["speechURL"],
                                "date": rec["date"], "house": rec.get("nameOfHouse", ""),
                                "meeting": rec["nameOfMeeting"], "term": term}
