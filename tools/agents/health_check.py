@@ -82,6 +82,8 @@ def check_firebase(base):
         bad("firebase.js: appId が無い（App Check が 400 で落ちる）")
     if not re.search(r'RECAPTCHA_SITE_KEY\s*=\s*"6L', js):
         bad("firebase.js: reCAPTCHA サイトキーが未設定（App Check が無効）")
+    if not re.search(r'sendFeedback\s*:', js):
+        bad("firebase.js: sendFeedback が無い（見た目は正常なままご意見フォームの送信だけ死んでいる）")
     ok("firebase.js: 本番設定を確認")
 
 def check_news(base, max_age_days):
