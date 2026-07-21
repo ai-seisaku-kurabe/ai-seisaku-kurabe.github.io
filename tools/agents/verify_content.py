@@ -288,6 +288,17 @@ PROMISES = [
     ("guide.html",    ["言 ／ 国会での発言（会期別）"],              "言の会期併記"),
     ("about.html",    ["第221回国会では会派を結成"],                "会派構成の変化を反映"),
     ("oneissue.html", ["会派を構成しておらず"],                     "ワンイシュー側の空白明示"),
+    # 先行研究ページ（⑨文献調査班）— 弱点の開示と、出典のルールが消えていないこと
+    ("research.html", ["まだ手当てできていないこと"],             "先行研究：未手当ての開示"),
+    ("research.html", ["未確認"],                                 "先行研究：未確認の開示"),
+    ("research.html", ["たどり着けたURLを持つものだけ"],          "先行研究：出典のルール"),
+    ("research.html", ["良し悪しを論じてはいません"],             "先行研究：研究を格付けしない宣言"),
+    # 出典と権利／プライバシー — 事実として書いている以上、消えたら気づけるようにする
+    ("about.html",    ["発言した議員ご本人"],                     "出典と権利：著作権の帰属"),
+    ("about.html",    ["削除・訂正の申出"],                       "出典と権利：申出窓口"),
+    ("privacy.html",  ["アクセス解析ツールを入れていません"],     "プライバシー：解析なしの明示"),
+    ("privacy.html",  ["個別の記録として保存していません"],       "プライバシー：個別記録なしの明示"),
+    ("privacy.html",  ["reCAPTCHA"],                              "プライバシー：外部送信の明示"),
 ]
 def check_constitution():
     ok = 0
@@ -333,6 +344,37 @@ def collect_research_citations():
     print(f"  先行研究: 検証対象の出典リンク {len(urls)} 件")
     return urls
 
+
+# ------------------------------- 7. プライバシーポリシーと実装の一致
+# 「開示と実態の食い違い」は、このプロジェクトが繰り返し踏んでいる型。
+# privacy.html は「個別の記録を保存しない」「アクセス解析を入れていない」と
+# 事実を宣言しているので、実装が変わったらここで止める。
+def check_privacy_claims():
+    root_fb = os.path.join(ROOT, "firebase.js")
+    if not os.path.exists(root_fb):
+        warn("プライバシー", "firebase.js が見つからず、実装との照合を省いた")
+        return
+    js = open(root_fb, encoding="utf-8").read()
+    # 個別レコードを書く経路が増えていないか（増えたら privacy.html の記述が嘘になる）
+    for bad in ("addDoc(", ".add(", "collection("):
+        if bad in js:
+            fail("プライバシー",
+                 f"firebase.js に個別レコードを書きうる経路（{bad}）がある。"
+                 "privacy.html の「個別の記録として保存していません」と食い違う")
+    if "increment" not in js:
+        fail("プライバシー", "firebase.js に increment が無い。集計方式が変わった可能性がある")
+    # アクセス解析タグが入っていないか
+    for f in ("index.html", "shindan.html", "guide.html", "privacy.html"):
+        p = os.path.join(ROOT, f)
+        if not os.path.exists(p): continue
+        html = open(p, encoding="utf-8").read()
+        for tag in ("googletagmanager", "google-analytics", "gtag(", "clarity.ms", "plausible.io"):
+            if tag in html:
+                fail("プライバシー",
+                     f"{f} に解析タグ（{tag}）がある。"
+                     "privacy.html の「アクセス解析ツールを入れていません」と食い違う")
+    print("  プライバシー: 記述と実装が一致")
+
 # ---------------------------------------------------------------- main
 def main():
     ap = argparse.ArgumentParser()
@@ -348,6 +390,7 @@ def main():
     check_editorial_language(bp)
     check_vkey_uniqueness(bp)
     check_constitution()
+    check_privacy_claims()
     collect_research_citations()
 
     if not a.offline:
