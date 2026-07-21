@@ -151,17 +151,12 @@ def check_quotes(bp, oneissue, limit=None):
         if who and norm(who) not in norm(rec.get("speaker", "")):
             fail("引用照合", f"{where}: 話者不一致 掲載『{who}』 / 原文『{rec.get('speaker')}』")
         problems = match_fragments(text, rec.get("speech", ""))
-        # 文の途中から切り出す欠陥は、抽出器を直した会期（219・221）では許さない。
-        # 第217回とワンイシューは別の取得スクリプトで作られており同じ欠陥を抱えるが、
-        # 取り直しには編集判断が要るため、いまはWARNで可視化だけしておく（既知の課題）。
-        strict = where.startswith(("guide219/", "guide221/"))
-        shape = check_sentence_boundary(text, rec.get("speech", ""))
-        for p in shape:
-            (fail if strict else warn)("引用の形", f"{where}: {p}")
+        # 文の途中から切り出す欠陥は、全会期・ワンイシューを直し終えたので例外を置かない。
+        problems += check_sentence_boundary(text, rec.get("speech", ""))
         if problems:
             for p in problems:
                 fail("引用照合", f"{where}: {p}")
-        elif not (strict and shape):
+        else:
             ok += 1
         time.sleep(0.25)
     print(f"  引用照合: {ok}/{len(targets)} 件が原文と一致")

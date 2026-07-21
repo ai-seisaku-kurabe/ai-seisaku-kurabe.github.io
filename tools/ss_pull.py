@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 """社会保障タブ用:①会議録の党別発言候補 ②参院の社保関連法案リスト"""
 import urllib.request, urllib.parse, json, time, collections, re
+import quote
 FROM, UNTIL = "2025-01-01", "2025-06-30"
 KEYWORDS = ["基礎年金","年金制度","高額療養費","診療報酬","介護報酬","少子化対策",
             "医療保険","後期高齢者","子育て支援"]
@@ -35,7 +36,7 @@ for s in by_id.values():
     p=norm(s.get("speakerGroup")); body=(s.get("speech") or "").replace("\r\n"," ").strip()
     if len(body)<40: continue
     party[p].append({"date":s["date"],"who":s["speaker"],"meeting":s["nameOfMeeting"],
-                     "text":body[:130],"url":s["speechURL"]})
+                     "text":quote.condense(quote.snippet(body)),"url":s["speechURL"]})
 out=[]
 for p,lst in sorted(party.items(),key=lambda kv:-len(kv[1])):
     out.append(f"\n### {p}  ({len(lst)}件)")

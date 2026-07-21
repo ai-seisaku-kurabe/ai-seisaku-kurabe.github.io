@@ -21,6 +21,7 @@
   - 引用は原文のまま。争点キーワード周辺を抜き出し、挨拶・前置きは含めない。
   - 選定は編集判断であり、公開前に ③検証班（verify_content.py）で原文照合する。
 """
+import quote
 import json, os, re, sys, time, unicodedata, urllib.parse, urllib.request
 
 API = "https://kokkai.ndl.go.jp/api/speech"
@@ -42,9 +43,9 @@ PARTY_KEYS = {
     "自由民主党": "自由民主党", "立憲民主党": "立憲民主", "日本維新の会": "日本維新の会",
     "国民民主党": "国民民主", "公明党": "公明党", "日本共産党": "日本共産党",
     "れいわ新選組": "れいわ", "参政党": "参政党",
-    # 第221回で会派を持つようになった党。対象から漏れていたため、この2党だけ
-    # 別ファイル（221_speeches_new.json）に手作業で足す運用になっており、
-    # 取り直すたびに消えていた。正規の経路に載せる。
+    # 第221回で会派を持つようになった党。以前は対象から漏れていて、この2党だけ
+    # 別ファイルに手作業で足す運用になっており、取り直すたびに9件消えていた。
+    # 正規の対象に入れて解消済み（別ファイルは廃止）。
     "チームみらい": "チームみらい", "社会民主党": "社会民主党",
 }
 
@@ -106,35 +107,10 @@ def fetch(term, date_from, date_until, n=90):
     return json.loads(urllib.request.urlopen(req, timeout=40).read()
                       .decode("utf-8")).get("speechRecord", [])
 
-MINLEN, MAXLEN = 60, 260   # 短すぎたら次の文を足し、長くても文の途中では切らない
-
-
 def snippet(body, term):
-    """争点キーワードを含む文を、文の切れ目で抜き出す。
+    """争点キーワードを含む文を、文の切れ目で抜き出す（切り出しは quote.py に集約）。"""
+    return quote.condense(quote.snippet(body, term))
 
-    以前は固定幅で切っていたため、「しましては、…」のように文の途中から始まったり、
-    「…というふうに」で途切れたりする引用が生まれていた（219で10/47件、221で13/55件）。
-    原文の文字列ではあっても、文の途中を切り出したものは読者に別の意味を与える。
-    ルール2（引用は原文のまま）は、文として成立していることまで含めて守る。
-    そのため、**文の途中では絶対に切らない**。
-    """
-    b = re.sub(r"^○[^　]{1,14}　", "", body)
-    b = re.sub(r"\s+", " ", b).strip()
-    sents = [s.strip() for s in re.split(r"(?<=。)", b) if s.strip()]
-    if not sents:
-        return ""
-
-    idx = next((k for k, s in enumerate(sents) if term in s), None)
-    if idx is None:
-        idx = 1 if len(sents) > 2 else 0   # 挨拶・前置きの1文目を避ける
-
-    out = sents[idx]
-    k = idx + 1
-    # 1文が短いときだけ、後ろの文を足す（順序は原文のまま。中略は挟まない）
-    while len(out) < MINLEN and k < len(sents) and len(out) + len(sents[k]) <= MAXLEN:
-        out += sents[k]
-        k += 1
-    return out
 
 def main():
     if len(sys.argv) < 4:
