@@ -1189,7 +1189,7 @@ RESEARCH=(f'<title>先行研究と、この設計の根拠｜ AI政策くらべ<
     "<b>" + str(QAUDIT["by_basis"]["採決"]) + "問</b>は参議院の記名採決での賛否から立場を判定し、"
     "<b>" + str(QAUDIT["by_basis"]["公約・発言"]) + "問</b>は各党の公約と国会での発言から判定しています"
     "（採決の賛否だけでは賛成・反対の理由を一意に決められない設問があるためです）。"
-    "掲載している2会期の記名投票は"
+    "掲載している" + str(len(QAUDIT["pool"])) + "会期の記名投票は"
     + "・".join("第" + s + "回" + str(v["roll_calls"]) + "件" for s, v in QAUDIT["pool"].items())
     + "の<b>あわせて" + str(QAUDIT["pool_total"]) + "件</b>あり、"
     "設問の根拠としてリンクしているのは<b>" + str(len(QAUDIT["vote_ids_used"])) + "件</b>です。"

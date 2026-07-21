@@ -19,12 +19,16 @@
    "roll_calls": 136,
    "used_as_basis": 4
   },
+  "219": {
+   "roll_calls": 31,
+   "used_as_basis": 0
+  },
   "221": {
    "roll_calls": 113,
    "used_as_basis": 3
   }
  },
- "pool_total": 249,
+ "pool_total": 280,
  "items": [
   {
    "short": "消費税減税",

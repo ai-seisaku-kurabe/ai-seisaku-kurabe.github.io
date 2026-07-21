@@ -390,11 +390,21 @@ def check_matching_audit(bp):
         fail("行の範囲", "state/rollcall_audit.json が無い（agents/audit_rollcall.py を実行する）")
         return
     ra = json.load(open(p3, encoding="utf-8"))
+    # 掲載会期は build_party.py の sessions_for() が唯一の出どころ。ここに書き持たない
+    # （⑧査読で「サイトは3会期、監査は2会期」の食い違いを指摘されたため）。
+    sys.path.insert(0, os.path.join(TOOLS, "agents"))
+    from _sessions import published_sessions
+    published = set(published_sessions())
     measured = set(ra.get("sessions", {}))
-    if measured != {"217", "221"}:      # 2会期ルール：最新＋直近の参院選より前
+    if measured != published:
         fail("行の範囲",
-             f"測定した会期が掲載会期と違う（測定 {sorted(measured)}）。"
-             "掲載会期を変えたら agents/audit_rollcall.py を回し直す")
+             f"測定した会期が掲載会期と違う（測定 {sorted(measured)} / 掲載 {sorted(published)}）。"
+             "掲載会期を変えたら fetch_bill_outcomes.py と agents/audit_rollcall.py を回し直す")
+        return
+    if set(qa.get("pool", {})) != published:
+        fail("設問の来歴",
+             f"母集団の会期が掲載会期と違う（{sorted(set(qa.get('pool', {})))} / "
+             f"{sorted(published)}）。agents/audit_questions.py を回し直す")
         return
     t = ra["total"]
     print(f"  行の範囲: 参院 議決{t['decided']}件中 記名{t['named']}件"

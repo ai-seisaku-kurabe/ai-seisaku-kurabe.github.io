@@ -39,9 +39,18 @@ EDITOR_MD = os.path.join(HERE, "EDITOR.md")
 # **査読に生成HTMLを送らない**のは運用の教訓なので、記憶ではなくここで落とす。
 # 生成物そのものを見せたいときは --paths で明示的に指定する。
 EXCLUDE = [":(exclude)news.json", ":(exclude)news_archive.json",
-           ":(exclude)tools/state/*", ":(exclude)*.pyc", ":(exclude)archive/*",
-           ":(exclude)*.html", ":(exclude)tools/site/*", ":(exclude)tools/*.json",
-           ":(exclude)tools/*.zip"]
+           ":(exclude)tools/state/*", ":(exclude)*.pyc", ":(exclude)archive/*"]
+
+# 生成物。既定では外すが、--paths で名指しされたら外さない。
+# git の pathspec は「明示した指定」と「除外」を同時に渡すと除外が勝つため、
+# 常に足すと --paths guide.html が何も返さなくなる（⑧査読の指摘で判明）。
+GENERATED = [":(exclude)*.html", ":(exclude)tools/site/*",
+             ":(exclude)tools/*.json", ":(exclude)tools/*.zip"]
+
+
+def exclude_for(paths):
+    """除外するもの。名指しの指定があるときは、生成物を落とさない。"""
+    return EXCLUDE if paths else EXCLUDE + GENERATED
 
 
 def git(*args, check=True):
@@ -81,7 +90,7 @@ def untracked(paths):
     「差分なし」に見えてしまうため、明示的に拾って差分の形に直す。
     """
     sel = list(paths) if paths else []
-    out = git("ls-files", "--others", "--exclude-standard", "--", *sel, *EXCLUDE)
+    out = git("ls-files", "--others", "--exclude-standard", "--", *sel, *exclude_for(paths))
     return [p for p in out.splitlines() if p.strip()]
 
 
@@ -94,7 +103,7 @@ def changed_files(base, paths):
     """
     sel = list(paths) if paths else ["."]
     units = []
-    listed = git("diff", base, "--name-only", "--", *sel, *EXCLUDE)
+    listed = git("diff", base, "--name-only", "--", *sel, *exclude_for(paths))
     for p in [x for x in listed.splitlines() if x.strip()]:
         units.append((p, git("diff", base, "--", p)))
     for p in untracked(paths):

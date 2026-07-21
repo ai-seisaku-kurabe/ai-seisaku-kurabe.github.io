@@ -1,0 +1,2113 @@
+{
+ "session": "219",
+ "bills": [
+  {
+   "label": "医療法等の一部を改正する法律案",
+   "kind": "法律案（内閣提出）",
+   "sangiin": {
+    "date": "令和7年12月5日",
+    "result": "可決",
+    "manner": "多数",
+    "method": "押しボタン"
+   },
+   "shugiin": {
+    "date": "令和7年11月27日",
+    "result": "修正",
+    "manner": "多数",
+    "method": "起立"
+   },
+   "page": "m219080217021.htm"
+  },
+  {
+   "label": "ストーカー行為等の規制等に関する法律の一部を改正する法律案",
+   "kind": "法律案（内閣提出）",
+   "sangiin": {
+    "date": "令和7年12月3日",
+    "result": "可決",
+    "manner": "全会一致",
+    "method": "押しボタン"
+   },
+   "shugiin": {
+    "date": "令和7年11月25日",
+    "result": "可決",
+    "manner": "全会一致",
+    "method": "異議の有無"
+   },
+   "page": "m219080219001.htm"
+  },
+  {
+   "label": "配偶者からの暴力の防止及び被害者の保護等に関する法律の一部を改正する法律案",
+   "kind": "法律案（内閣提出）",
+   "sangiin": {
+    "date": "令和7年12月3日",
+    "result": "可決",
+    "manner": "全会一致",
+    "method": "押しボタン"
+   },
+   "shugiin": {
+    "date": "令和7年11月25日",
+    "result": "可決",
+    "manner": "全会一致",
+    "method": "異議の有無"
+   },
+   "page": "m219080219002.htm"
+  },
+  {
+   "label": "更生保護制度の充実を図るための保護司法等の一部を改正する法律案",
+   "kind": "法律案（内閣提出）",
+   "sangiin": {
+    "date": "令和7年12月3日",
+    "result": "可決",
+    "manner": "全会一致",
+    "method": "押しボタン"
+   },
+   "shugiin": {
+    "date": "令和7年11月25日",
+    "result": "可決",
+    "manner": "全会一致",
+    "method": "異議の有無"
+   },
+   "page": "m219080219003.htm"
+  },
+  {
+   "label": "気象業務法及び水防法の一部を改正する法律案",
+   "kind": "法律案（内閣提出）",
+   "sangiin": {
+    "date": "令和7年12月5日",
+    "result": "可決",
+    "manner": "全会一致",
+    "method": "押しボタン"
+   },
+   "shugiin": {
+    "date": "令和7年11月27日",
+    "result": "可決",
+    "manner": "全会一致",
+    "method": "異議の有無"
+   },
+   "page": "m219080219004.htm"
+  },
+  {
+   "label": "一般職の職員の給与に関する法律等の一部を改正する法律案",
+   "kind": "法律案（内閣提出）",
+   "sangiin": {
+    "date": "令和7年12月16日",
+    "result": "可決",
+    "manner": "多数",
+    "method": "押しボタン"
+   },
+   "shugiin": {
+    "date": "令和7年12月11日",
+    "result": "可決",
+    "manner": "多数",
+    "method": "起立"
+   },
+   "page": "m219080219005.htm"
+  },
+  {
+   "label": "特別職の職員の給与に関する法律等の一部を改正する法律案",
+   "kind": "法律案（内閣提出）",
+   "sangiin": {
+    "date": "令和7年12月16日",
+    "result": "可決",
+    "manner": "多数",
+    "method": "押しボタン"
+   },
+   "shugiin": {
+    "date": "令和7年12月11日",
+    "result": "可決",
+    "manner": "多数",
+    "method": "起立"
+   },
+   "page": "m219080219006.htm"
+  },
+  {
+   "label": "地方交付税法及び特別会計に関する法律の一部を改正する法律案",
+   "kind": "法律案（内閣提出）",
+   "sangiin": {
+    "date": "令和7年12月16日",
+    "result": "可決",
+    "manner": "多数",
+    "method": "押しボタン"
+   },
+   "shugiin": {
+    "date": "令和7年12月11日",
+    "result": "可決",
+    "manner": "多数",
+    "method": "起立"
+   },
+   "page": "m219080219007.htm"
+  },
+  {
+   "label": "裁判官の報酬等に関する法律の一部を改正する法律案",
+   "kind": "法律案（内閣提出）",
+   "sangiin": {
+    "date": "令和7年12月16日",
+    "result": "可決",
+    "manner": "多数",
+    "method": "押しボタン"
+   },
+   "shugiin": {
+    "date": "令和7年12月11日",
+    "result": "可決",
+    "manner": "多数",
+    "method": "起立"
+   },
+   "page": "m219080219008.htm"
+  },
+  {
+   "label": "検察官の俸給等に関する法律の一部を改正する法律案",
+   "kind": "法律案（内閣提出）",
+   "sangiin": {
+    "date": "令和7年12月16日",
+    "result": "可決",
+    "manner": "多数",
+    "method": "押しボタン"
+   },
+   "shugiin": {
+    "date": "令和7年12月11日",
+    "result": "可決",
+    "manner": "多数",
+    "method": "起立"
+   },
+   "page": "m219080219009.htm"
+  },
+  {
+   "label": "防衛省の職員の給与等に関する法律の一部を改正する法律案",
+   "kind": "法律案（内閣提出）",
+   "sangiin": {
+    "date": "令和7年12月16日",
+    "result": "可決",
+    "manner": "多数",
+    "method": "押しボタン"
+   },
+   "shugiin": {
+    "date": "令和7年12月11日",
+    "result": "可決",
+    "manner": "多数",
+    "method": "起立"
+   },
+   "page": "m219080219010.htm"
+  },
+  {
+   "label": "就労支援給付制度の導入に関する法律案",
+   "kind": "法律案（衆法）",
+   "sangiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "shugiin": {
+    "date": "令和7年12月17日",
+    "result": "継続審査",
+    "manner": "全会一致",
+    "method": "異議の有無"
+   },
+   "page": "m219090215002.htm"
+  },
+  {
+   "label": "賃金上昇を上回る所得税の負担増加等に対処するために所得税に関し講ずべき措置に関する法律案",
+   "kind": "法律案（衆法）",
+   "sangiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "shugiin": {
+    "date": "令和7年12月17日",
+    "result": "継続審査",
+    "manner": "全会一致",
+    "method": "異議の有無"
+   },
+   "page": "m219090216001.htm"
+  },
+  {
+   "label": "一般会計からの自動車安全特別会計の自動車事故対策勘定への繰入れのために講ずべき措置に関する法律案",
+   "kind": "法律案（衆法）",
+   "sangiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "shugiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "page": "m219090216004.htm"
+  },
+  {
+   "label": "電気料金の高騰に対する当分の間の措置として電気の使用者に対して再生可能エネルギー電気に係る賦課金の請求が行われないようにするために講ずべき措置等に関する法律案",
+   "kind": "法律案（衆法）",
+   "sangiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "shugiin": {
+    "date": "令和7年12月17日",
+    "result": "継続審査",
+    "manner": "全会一致",
+    "method": "異議の有無"
+   },
+   "page": "m219090216005.htm"
+  },
+  {
+   "label": "政治資金規正法の一部を改正する法律案",
+   "kind": "法律案（衆法）",
+   "sangiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "shugiin": {
+    "date": "令和7年12月17日",
+    "result": "継続審査",
+    "manner": "全会一致",
+    "method": "異議の有無"
+   },
+   "page": "m219090216009.htm"
+  },
+  {
+   "label": "政党交付金の交付停止等に関する制度の創設に関する法律案",
+   "kind": "法律案（衆法）",
+   "sangiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "shugiin": {
+    "date": "令和7年12月17日",
+    "result": "継続審査",
+    "manner": "全会一致",
+    "method": "異議の有無"
+   },
+   "page": "m219090216012.htm"
+  },
+  {
+   "label": "政治資金規正法等の一部を改正する法律案",
+   "kind": "法律案（衆法）",
+   "sangiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "shugiin": {
+    "date": "令和7年12月17日",
+    "result": "継続審査",
+    "manner": "全会一致",
+    "method": "異議の有無"
+   },
+   "page": "m219090216013.htm"
+  },
+  {
+   "label": "財政法の一部を改正する法律案",
+   "kind": "法律案（衆法）",
+   "sangiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "shugiin": {
+    "date": "令和7年12月17日",
+    "result": "継続審査",
+    "manner": "全会一致",
+    "method": "異議の有無"
+   },
+   "page": "m219090216017.htm"
+  },
+  {
+   "label": "育児・介護二重負担者の支援に関する施策の推進に関する法律案",
+   "kind": "法律案（衆法）",
+   "sangiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "shugiin": {
+    "date": "令和7年12月17日",
+    "result": "継続審査",
+    "manner": "全会一致",
+    "method": "異議の有無"
+   },
+   "page": "m219090216019.htm"
+  },
+  {
+   "label": "被災者生活再建支援法の一部を改正する法律案",
+   "kind": "法律案（衆法）",
+   "sangiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "shugiin": {
+    "date": "令和7年12月17日",
+    "result": "継続審査",
+    "manner": "全会一致",
+    "method": "異議の有無"
+   },
+   "page": "m219090216022.htm"
+  },
+  {
+   "label": "健康保険法及び高齢者の医療の確保に関する法律の一部を改正する法律案",
+   "kind": "法律案（衆法）",
+   "sangiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "shugiin": {
+    "date": "令和7年12月17日",
+    "result": "継続審査",
+    "manner": "全会一致",
+    "method": "異議の有無"
+   },
+   "page": "m219090216023.htm"
+  },
+  {
+   "label": "我が国の総合的な安全保障の確保を図るための土地等の取得、利用及び管理の規制に関する施策の推進に関する法律案",
+   "kind": "法律案（衆法）",
+   "sangiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "shugiin": {
+    "date": "令和7年12月17日",
+    "result": "継続審査",
+    "manner": "多数",
+    "method": "起立"
+   },
+   "page": "m219090216024.htm"
+  },
+  {
+   "label": "学校給食法の一部を改正する法律案",
+   "kind": "法律案（衆法）",
+   "sangiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "shugiin": {
+    "date": "令和7年12月17日",
+    "result": "継続審査",
+    "manner": "全会一致",
+    "method": "異議の有無"
+   },
+   "page": "m219090216025.htm"
+  },
+  {
+   "label": "医療保険の被保険者証等の交付等の特例に関する法律案",
+   "kind": "法律案（衆法）",
+   "sangiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "shugiin": {
+    "date": "令和7年12月17日",
+    "result": "継続審査",
+    "manner": "全会一致",
+    "method": "異議の有無"
+   },
+   "page": "m219090217001.htm"
+  },
+  {
+   "label": "訪問介護事業者に対する緊急の支援に関する法律案",
+   "kind": "法律案（衆法）",
+   "sangiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "shugiin": {
+    "date": "令和7年12月17日",
+    "result": "継続審査",
+    "manner": "全会一致",
+    "method": "異議の有無"
+   },
+   "page": "m219090217002.htm"
+  },
+  {
+   "label": "介護・障害福祉従事者の人材確保に関する特別措置法案",
+   "kind": "法律案（衆法）",
+   "sangiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "shugiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "page": "m219090217003.htm"
+  },
+  {
+   "label": "政治資金規正法の一部を改正する法律案",
+   "kind": "法律案（衆法）",
+   "sangiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "shugiin": {
+    "date": "令和7年12月17日",
+    "result": "継続審査",
+    "manner": "全会一致",
+    "method": "異議の有無"
+   },
+   "page": "m219090217004.htm"
+  },
+  {
+   "label": "政治資金規正法の一部を改正する法律案",
+   "kind": "法律案（衆法）",
+   "sangiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "shugiin": {
+    "date": "令和7年12月17日",
+    "result": "継続審査",
+    "manner": "全会一致",
+    "method": "異議の有無"
+   },
+   "page": "m219090217005.htm"
+  },
+  {
+   "label": "高等学校等就学支援金の支給に関する法律の一部を改正する法律案",
+   "kind": "法律案（衆法）",
+   "sangiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "shugiin": {
+    "date": "令和7年12月17日",
+    "result": "継続審査",
+    "manner": "全会一致",
+    "method": "異議の有無"
+   },
+   "page": "m219090217006.htm"
+  },
+  {
+   "label": "義務教育諸学校等の施設費の国庫負担等に関する法律の一部を改正する法律案",
+   "kind": "法律案（衆法）",
+   "sangiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "shugiin": {
+    "date": "令和7年12月17日",
+    "result": "継続審査",
+    "manner": "全会一致",
+    "method": "異議の有無"
+   },
+   "page": "m219090217007.htm"
+  },
+  {
+   "label": "健康保険法等の一部を改正する法律案",
+   "kind": "法律案（衆法）",
+   "sangiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "shugiin": {
+    "date": "令和7年12月17日",
+    "result": "継続審査",
+    "manner": "全会一致",
+    "method": "異議の有無"
+   },
+   "page": "m219090217008.htm"
+  },
+  {
+   "label": "中小企業正規労働者雇入臨時助成金の支給に関する法律案",
+   "kind": "法律案（衆法）",
+   "sangiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "shugiin": {
+    "date": "令和7年12月17日",
+    "result": "継続審査",
+    "manner": "全会一致",
+    "method": "異議の有無"
+   },
+   "page": "m219090217011.htm"
+  },
+  {
+   "label": "軽油引取税の税率の特例の廃止に関する法律案",
+   "kind": "法律案（衆法）",
+   "sangiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "shugiin": {
+    "date": "令和7年12月17日",
+    "result": "継続審査",
+    "manner": "全会一致",
+    "method": "異議の有無"
+   },
+   "page": "m219090217012.htm"
+  },
+  {
+   "label": "政治資金規正法及び租税特別措置法の一部を改正する法律案",
+   "kind": "法律案（衆法）",
+   "sangiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "shugiin": {
+    "date": "令和7年12月17日",
+    "result": "継続審査",
+    "manner": "全会一致",
+    "method": "異議の有無"
+   },
+   "page": "m219090217021.htm"
+  },
+  {
+   "label": "子ども・子育て支援法等の一部を改正する法律案",
+   "kind": "法律案（衆法）",
+   "sangiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "shugiin": {
+    "date": "令和7年12月17日",
+    "result": "継続審査",
+    "manner": "全会一致",
+    "method": "異議の有無"
+   },
+   "page": "m219090217022.htm"
+  },
+  {
+   "label": "若者の就労所得に係る所得税の負担を軽減するための所得控除の拡充に関し講ずべき措置に関する法律案",
+   "kind": "法律案（衆法）",
+   "sangiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "shugiin": {
+    "date": "令和7年12月17日",
+    "result": "継続審査",
+    "manner": "全会一致",
+    "method": "異議の有無"
+   },
+   "page": "m219090217023.htm"
+  },
+  {
+   "label": "ライドシェア事業に係る制度の導入に関する法律案",
+   "kind": "法律案（衆法）",
+   "sangiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "shugiin": {
+    "date": "令和7年12月17日",
+    "result": "継続審査",
+    "manner": "多数",
+    "method": "起立"
+   },
+   "page": "m219090217024.htm"
+  },
+  {
+   "label": "外国為替資金特別会計の在り方の見直しに関する法律案",
+   "kind": "法律案（衆法）",
+   "sangiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "shugiin": {
+    "date": "令和7年12月17日",
+    "result": "継続審査",
+    "manner": "全会一致",
+    "method": "異議の有無"
+   },
+   "page": "m219090217025.htm"
+  },
+  {
+   "label": "地方税法の一部を改正する法律案",
+   "kind": "法律案（衆法）",
+   "sangiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "shugiin": {
+    "date": "令和7年12月17日",
+    "result": "継続審査",
+    "manner": "全会一致",
+    "method": "異議の有無"
+   },
+   "page": "m219090217027.htm"
+  },
+  {
+   "label": "民法の一部を改正する法律案",
+   "kind": "法律案（衆法）",
+   "sangiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "shugiin": {
+    "date": "令和7年12月17日",
+    "result": "継続審査",
+    "manner": "多数",
+    "method": "起立"
+   },
+   "page": "m219090217029.htm"
+  },
+  {
+   "label": "婚姻前の氏の通称使用に関する法律案",
+   "kind": "法律案（衆法）",
+   "sangiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "shugiin": {
+    "date": "令和7年12月17日",
+    "result": "継続審査",
+    "manner": "多数",
+    "method": "起立"
+   },
+   "page": "m219090217030.htm"
+  },
+  {
+   "label": "自動車盗難対策等の推進に関する法律案",
+   "kind": "法律案（衆法）",
+   "sangiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "shugiin": {
+    "date": "令和7年12月17日",
+    "result": "継続審査",
+    "manner": "全会一致",
+    "method": "異議の有無"
+   },
+   "page": "m219090217031.htm"
+  },
+  {
+   "label": "組織的な犯罪の処罰及び犯罪収益の規制等に関する法律及び刑事訴訟法の一部を改正する法律案",
+   "kind": "法律案（衆法）",
+   "sangiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "shugiin": {
+    "date": "令和7年12月17日",
+    "result": "継続審査",
+    "manner": "全会一致",
+    "method": "異議の有無"
+   },
+   "page": "m219090217032.htm"
+  },
+  {
+   "label": "民法の一部を改正する法律案",
+   "kind": "法律案（衆法）",
+   "sangiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "shugiin": {
+    "date": "令和7年12月17日",
+    "result": "継続審査",
+    "manner": "多数",
+    "method": "起立"
+   },
+   "page": "m219090217035.htm"
+  },
+  {
+   "label": "国有林野事業に従事する職員の労働関係を円滑に調整するための行政執行法人の労働関係に関する法律の一部を改正する法律案",
+   "kind": "法律案（衆法）",
+   "sangiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "shugiin": {
+    "date": "令和7年12月17日",
+    "result": "継続審査",
+    "manner": "全会一致",
+    "method": "異議の有無"
+   },
+   "page": "m219090217038.htm"
+  },
+  {
+   "label": "国有林野事業に従事する職員の給与等に関する特例法案",
+   "kind": "法律案（衆法）",
+   "sangiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "shugiin": {
+    "date": "令和7年12月17日",
+    "result": "継続審査",
+    "manner": "全会一致",
+    "method": "異議の有無"
+   },
+   "page": "m219090217039.htm"
+  },
+  {
+   "label": "農業用植物の優良な品種を確保するための公的新品種育成の促進等に関する法律案",
+   "kind": "法律案（衆法）",
+   "sangiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "shugiin": {
+    "date": "令和7年12月17日",
+    "result": "継続審査",
+    "manner": "全会一致",
+    "method": "異議の有無"
+   },
+   "page": "m219090217040.htm"
+  },
+  {
+   "label": "地域在来品種等の種苗の保存及び利用等の促進に関する法律案",
+   "kind": "法律案（衆法）",
+   "sangiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "shugiin": {
+    "date": "令和7年12月17日",
+    "result": "継続審査",
+    "manner": "全会一致",
+    "method": "異議の有無"
+   },
+   "page": "m219090217041.htm"
+  },
+  {
+   "label": "食料供給困難事態対策法の一部を改正する法律案",
+   "kind": "法律案（衆法）",
+   "sangiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "shugiin": {
+    "date": "令和7年12月17日",
+    "result": "継続審査",
+    "manner": "全会一致",
+    "method": "異議の有無"
+   },
+   "page": "m219090217042.htm"
+  },
+  {
+   "label": "国家公務員法等の一部を改正する法律案",
+   "kind": "法律案（衆法）",
+   "sangiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "shugiin": {
+    "date": "令和7年12月17日",
+    "result": "継続審査",
+    "manner": "全会一致",
+    "method": "異議の有無"
+   },
+   "page": "m219090217043.htm"
+  },
+  {
+   "label": "国家公務員の労働関係に関する法律案",
+   "kind": "法律案（衆法）",
+   "sangiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "shugiin": {
+    "date": "令和7年12月17日",
+    "result": "継続審査",
+    "manner": "全会一致",
+    "method": "異議の有無"
+   },
+   "page": "m219090217044.htm"
+  },
+  {
+   "label": "公務員庁設置法案",
+   "kind": "法律案（衆法）",
+   "sangiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "shugiin": {
+    "date": "令和7年12月17日",
+    "result": "継続審査",
+    "manner": "全会一致",
+    "method": "異議の有無"
+   },
+   "page": "m219090217045.htm"
+  },
+  {
+   "label": "地方公務員法等の一部を改正する法律案",
+   "kind": "法律案（衆法）",
+   "sangiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "shugiin": {
+    "date": "令和7年12月17日",
+    "result": "継続審査",
+    "manner": "全会一致",
+    "method": "異議の有無"
+   },
+   "page": "m219090217046.htm"
+  },
+  {
+   "label": "地方公務員の労働関係に関する法律案",
+   "kind": "法律案（衆法）",
+   "sangiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "shugiin": {
+    "date": "令和7年12月17日",
+    "result": "継続審査",
+    "manner": "全会一致",
+    "method": "異議の有無"
+   },
+   "page": "m219090217047.htm"
+  },
+  {
+   "label": "公職選挙法及び地方自治法の一部を改正する法律案",
+   "kind": "法律案（衆法）",
+   "sangiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "shugiin": {
+    "date": "令和7年12月17日",
+    "result": "継続審査",
+    "manner": "全会一致",
+    "method": "異議の有無"
+   },
+   "page": "m219090217050.htm"
+  },
+  {
+   "label": "衆議院の解散に係る手続等に関する法律案",
+   "kind": "法律案（衆法）",
+   "sangiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "shugiin": {
+    "date": "令和7年12月17日",
+    "result": "継続審査",
+    "manner": "全会一致",
+    "method": "異議の有無"
+   },
+   "page": "m219090217051.htm"
+  },
+  {
+   "label": "租税特別措置の適用状況の透明化等に関する法律及び地方税法の一部を改正する法律案",
+   "kind": "法律案（衆法）",
+   "sangiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "shugiin": {
+    "date": "令和7年12月17日",
+    "result": "継続審査",
+    "manner": "全会一致",
+    "method": "異議の有無"
+   },
+   "page": "m219090217052.htm"
+  },
+  {
+   "label": "自動車産業における脱炭素化の推進に関する法律案",
+   "kind": "法律案（衆法）",
+   "sangiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "shugiin": {
+    "date": "令和7年12月17日",
+    "result": "継続審査",
+    "manner": "全会一致",
+    "method": "異議の有無"
+   },
+   "page": "m219090217054.htm"
+  },
+  {
+   "label": "政治団体における複式簿記の導入に関する法律案",
+   "kind": "法律案（衆法）",
+   "sangiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "shugiin": {
+    "date": "令和7年12月17日",
+    "result": "継続審査",
+    "manner": "全会一致",
+    "method": "異議の有無"
+   },
+   "page": "m219090217055.htm"
+  },
+  {
+   "label": "児童扶養手当法の一部を改正する等の法律案",
+   "kind": "法律案（衆法）",
+   "sangiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "shugiin": {
+    "date": "令和7年12月17日",
+    "result": "継続審査",
+    "manner": "全会一致",
+    "method": "異議の有無"
+   },
+   "page": "m219090217056.htm"
+  },
+  {
+   "label": "保育等従業者の人材確保のための処遇の改善等に関する特別措置法案",
+   "kind": "法律案（衆法）",
+   "sangiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "shugiin": {
+    "date": "令和7年12月17日",
+    "result": "継続審査",
+    "manner": "全会一致",
+    "method": "異議の有無"
+   },
+   "page": "m219090217057.htm"
+  },
+  {
+   "label": "郵政民営化法等の一部を改正する法律案",
+   "kind": "法律案（衆法）",
+   "sangiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "shugiin": {
+    "date": "令和7年12月17日",
+    "result": "継続審査",
+    "manner": "多数",
+    "method": "起立"
+   },
+   "page": "m219090217058.htm"
+  },
+  {
+   "label": "新型コロナウイルス感染症対策検証委員会等の設置等に関する法律案",
+   "kind": "法律案（衆法）",
+   "sangiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "shugiin": {
+    "date": "令和7年12月17日",
+    "result": "継続審査",
+    "manner": "全会一致",
+    "method": "異議の有無"
+   },
+   "page": "m219090217059.htm"
+  },
+  {
+   "label": "有人国境離島地域の保全及び特定有人国境離島地域に係る地域社会の維持に関する特別措置法の一部を改正する法律案",
+   "kind": "法律案（衆法）",
+   "sangiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "shugiin": {
+    "date": "令和7年12月17日",
+    "result": "継続審査",
+    "manner": "全会一致",
+    "method": "異議の有無"
+   },
+   "page": "m219090217060.htm"
+  },
+  {
+   "label": "刑事訴訟法の一部を改正する法律案",
+   "kind": "法律案（衆法）",
+   "sangiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "shugiin": {
+    "date": "令和7年12月17日",
+    "result": "継続審査",
+    "manner": "全会一致",
+    "method": "異議の有無"
+   },
+   "page": "m219090217061.htm"
+  },
+  {
+   "label": "主要食糧の需給及び価格の安定に関する法律の一部を改正する法律案",
+   "kind": "法律案（衆法）",
+   "sangiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "shugiin": {
+    "date": "令和7年12月17日",
+    "result": "継続審査",
+    "manner": "全会一致",
+    "method": "異議の有無"
+   },
+   "page": "m219090217062.htm"
+  },
+  {
+   "label": "特定空港周辺航空機騒音対策特別措置法の一部を改正する法律案",
+   "kind": "法律案（衆法）",
+   "sangiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "shugiin": {
+    "date": "令和7年12月17日",
+    "result": "継続審査",
+    "manner": "全会一致",
+    "method": "異議の有無"
+   },
+   "page": "m219090217063.htm"
+  },
+  {
+   "label": "民法の一部を改正する法律案",
+   "kind": "法律案（衆法）",
+   "sangiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "shugiin": {
+    "date": "令和7年12月17日",
+    "result": "継続審査",
+    "manner": "多数",
+    "method": "起立"
+   },
+   "page": "m219090217064.htm"
+  },
+  {
+   "label": "性同一性障害者の性別の取扱いの特例に関する法律の一部を改正する法律案",
+   "kind": "法律案（衆法）",
+   "sangiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "shugiin": {
+    "date": "令和7年12月17日",
+    "result": "継続審査",
+    "manner": "多数",
+    "method": "起立"
+   },
+   "page": "m219090217065.htm"
+  },
+  {
+   "label": "国による全ての水俣病の被害者の救済の実現に向けた給付金等の支給に係る制度の創設に関する法律案",
+   "kind": "法律案（衆法）",
+   "sangiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "shugiin": {
+    "date": "令和7年12月17日",
+    "result": "継続審査",
+    "manner": "全会一致",
+    "method": "異議の有無"
+   },
+   "page": "m219090217066.htm"
+  },
+  {
+   "label": "租税特別措置法及び東日本大震災の被災者等に係る国税関係法律の臨時特例に関する法律の一部を改正する法律案",
+   "kind": "法律案（衆法）",
+   "sangiin": {
+    "date": "令和7年11月28日",
+    "result": "可決",
+    "manner": "全会一致",
+    "method": "押しボタン"
+   },
+   "shugiin": {
+    "date": "令和7年11月25日",
+    "result": "修正",
+    "manner": "全会一致",
+    "method": "異議の有無"
+   },
+   "page": "m219090218001.htm"
+  },
+  {
+   "label": "飲食料品に係る消費税の税率を引き下げて零とする臨時特例の創設及び給付付き税額控除の導入に関する法律案",
+   "kind": "法律案（衆法）",
+   "sangiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "shugiin": {
+    "date": "令和7年12月17日",
+    "result": "継続審査",
+    "manner": "多数",
+    "method": "起立"
+   },
+   "page": "m219090219001.htm"
+  },
+  {
+   "label": "政治資金規正法の一部を改正する法律案",
+   "kind": "法律案（衆法）",
+   "sangiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "shugiin": {
+    "date": "令和7年12月17日",
+    "result": "継続審査",
+    "manner": "全会一致",
+    "method": "異議の有無"
+   },
+   "page": "m219090219002.htm"
+  },
+  {
+   "label": "自動車税及び軽自動車税の環境性能割並びに自動車税及び軽自動車税の",
+   "kind": "割の税率の上乗せに係る特例の廃止に関する法律案 種別 法律案（衆法）",
+   "sangiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "shugiin": {
+    "date": "令和7年12月17日",
+    "result": "継続審査",
+    "manner": "全会一致",
+    "method": "異議の有無"
+   },
+   "page": "m219090219003.htm"
+  },
+  {
+   "label": "自動車重量税率の上乗せに係る特例の廃止に関する法律案",
+   "kind": "法律案（衆法）",
+   "sangiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "shugiin": {
+    "date": "令和7年12月17日",
+    "result": "継続審査",
+    "manner": "全会一致",
+    "method": "異議の有無"
+   },
+   "page": "m219090219004.htm"
+  },
+  {
+   "label": "愛知・名古屋アジア競技大会及び愛知・名古屋アジアパラ競技大会に関する特別措置法案",
+   "kind": "法律案（衆法）",
+   "sangiin": {
+    "date": "令和7年12月3日",
+    "result": "可決",
+    "manner": "多数",
+    "method": "押しボタン"
+   },
+   "shugiin": {
+    "date": "令和7年11月27日",
+    "result": "可決",
+    "manner": "多数",
+    "method": "起立"
+   },
+   "page": "m219090219005.htm"
+  },
+  {
+   "label": "インテリジェンスに係る態勢の整備の推進に関する法律案",
+   "kind": "法律案（衆法）",
+   "sangiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "shugiin": {
+    "date": "令和7年12月17日",
+    "result": "継続審査",
+    "manner": "多数",
+    "method": "起立"
+   },
+   "page": "m219090219006.htm"
+  },
+  {
+   "label": "国土の適切な利用及び管理を確保するための施策の推進に関する法律案",
+   "kind": "法律案（衆法）",
+   "sangiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "shugiin": {
+    "date": "令和7年12月17日",
+    "result": "継続審査",
+    "manner": "全会一致",
+    "method": "異議の有無"
+   },
+   "page": "m219090219007.htm"
+  },
+  {
+   "label": "政党等の政治資金の収入に関する制度の在り方に係る措置に関する法律案",
+   "kind": "法律案（衆法）",
+   "sangiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "shugiin": {
+    "date": "令和7年12月17日",
+    "result": "継続審査",
+    "manner": "多数",
+    "method": "起立"
+   },
+   "page": "m219090219008.htm"
+  },
+  {
+   "label": "特別児童扶養手当等の支給に関する法律の一部を改正する法律案",
+   "kind": "法律案（衆法）",
+   "sangiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "shugiin": {
+    "date": "令和7年12月17日",
+    "result": "継続審査",
+    "manner": "多数",
+    "method": "起立"
+   },
+   "page": "m219090219009.htm"
+  },
+  {
+   "label": "高次脳機能障害者支援法案",
+   "kind": "法律案（衆法）",
+   "sangiin": {
+    "date": "令和7年12月16日",
+    "result": "可決",
+    "manner": "全会一致",
+    "method": "押しボタン"
+   },
+   "shugiin": {
+    "date": "令和7年12月8日",
+    "result": "可決",
+    "manner": "全会一致",
+    "method": "異議の有無"
+   },
+   "page": "m219090219010.htm"
+  },
+  {
+   "label": "衆議院議員の定数削減等に関する法律案",
+   "kind": "法律案（衆法）",
+   "sangiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "shugiin": {
+    "date": "令和7年12月17日",
+    "result": "継続審査",
+    "manner": "多数",
+    "method": "起立"
+   },
+   "page": "m219090219011.htm"
+  },
+  {
+   "label": "刑法及び児童買春、児童ポルノに係る行為等の規制及び処罰並びに児童の保護等に関する法律の一部を改正する法律案",
+   "kind": "法律案（衆法）",
+   "sangiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "shugiin": {
+    "date": "令和7年12月17日",
+    "result": "継続審査",
+    "manner": "全会一致",
+    "method": "異議の有無"
+   },
+   "page": "m219090219012.htm"
+  },
+  {
+   "label": "非居住住宅税及び超短期所有住宅等の譲渡に係る事業所得等の課税の特例の創設等に関する法律案",
+   "kind": "法律案（衆法）",
+   "sangiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "shugiin": {
+    "date": "令和7年12月17日",
+    "result": "継続審査",
+    "manner": "全会一致",
+    "method": "異議の有無"
+   },
+   "page": "m219090219013.htm"
+  },
+  {
+   "label": "国会議員の歳費、旅費及び手当等に関する法律の一部を改正する法律案",
+   "kind": "法律案（衆法）",
+   "sangiin": {
+    "date": "令和7年12月16日",
+    "result": "可決",
+    "manner": "多数",
+    "method": "押しボタン"
+   },
+   "shugiin": {
+    "date": "令和7年12月11日",
+    "result": "可決",
+    "manner": "多数",
+    "method": "起立"
+   },
+   "page": "m219090219014.htm"
+  },
+  {
+   "label": "国会議員の秘書の給与等に関する法律の一部を改正する法律案",
+   "kind": "法律案（衆法）",
+   "sangiin": {
+    "date": "令和7年12月16日",
+    "result": "可決",
+    "manner": "多数",
+    "method": "押しボタン"
+   },
+   "shugiin": {
+    "date": "令和7年12月11日",
+    "result": "可決",
+    "manner": "多数",
+    "method": "起立"
+   },
+   "page": "m219090219015.htm"
+  },
+  {
+   "label": "盗難自動車等の処分の防止に関する法律案",
+   "kind": "法律案（衆法）",
+   "sangiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "shugiin": {
+    "date": "令和7年12月17日",
+    "result": "継続審査",
+    "manner": "全会一致",
+    "method": "異議の有無"
+   },
+   "page": "m219090219016.htm"
+  },
+  {
+   "label": "障害者及びその家族に対する福祉、教育等に係る支援に関する施策の総合的な推進に関する法律案",
+   "kind": "法律案（衆法）",
+   "sangiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "shugiin": {
+    "date": "令和7年12月17日",
+    "result": "継続審査",
+    "manner": "多数",
+    "method": "起立"
+   },
+   "page": "m219090219017.htm"
+  },
+  {
+   "label": "令和七年に開催される国際博覧会の準備及び運営のために必要な特別措置に関する法律の一部を改正する法律案",
+   "kind": "法律案（衆法）",
+   "sangiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "shugiin": {
+    "date": "令和7年12月17日",
+    "result": "継続審査",
+    "manner": "多数",
+    "method": "起立"
+   },
+   "page": "m219090219018.htm"
+  },
+  {
+   "label": "運輸事業の振興の助成に関する法律の一部を改正する法律案",
+   "kind": "法律案（衆法）",
+   "sangiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "shugiin": {
+    "date": "令和7年12月17日",
+    "result": "継続審査",
+    "manner": "全会一致",
+    "method": "異議の有無"
+   },
+   "page": "m219090219019.htm"
+  },
+  {
+   "label": "所得税法の一部を改正する法律案",
+   "kind": "法律案（参法）",
+   "sangiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "shugiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "page": "m219100219001.htm"
+  },
+  {
+   "label": "地方税法の一部を改正する法律案",
+   "kind": "法律案（参法）",
+   "sangiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "shugiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "page": "m219100219002.htm"
+  },
+  {
+   "label": "刑法の一部を改正する法律案",
+   "kind": "法律案（参法）",
+   "sangiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "shugiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "page": "m219100219003.htm"
+  },
+  {
+   "label": "防諜に関する施策の推進に関する法律案",
+   "kind": "法律案（参法）",
+   "sangiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "shugiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "page": "m219100219004.htm"
+  },
+  {
+   "label": "特定秘密の保護に関する法律及び重要経済安保情報の保護及び活用に関する法律の一部を改正する法律案",
+   "kind": "法律案（参法）",
+   "sangiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "shugiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "page": "m219100219005.htm"
+  },
+  {
+   "label": "新型コロナウイルス感染症対策及びｍＲＮＡワクチン施策等検証委員会の設置等に関する法律案",
+   "kind": "法律案（参法）",
+   "sangiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "shugiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "page": "m219100219006.htm"
+  },
+  {
+   "label": "政党交付金の交付を受ける政党の組織及び管理運営の透明性及び公正性の向上を図るための制度の導入に関する法律案",
+   "kind": "法律案（参法）",
+   "sangiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "shugiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "page": "m219100219007.htm"
+  },
+  {
+   "label": "令和七年度一般会計補正予算（第１号）",
+   "kind": "予算",
+   "sangiin": {
+    "date": "令和7年12月16日",
+    "result": "可決",
+    "manner": "多数",
+    "method": "押しボタン"
+   },
+   "shugiin": {
+    "date": "令和7年12月11日",
+    "result": "可決",
+    "manner": "多数",
+    "method": "起立"
+   },
+   "page": "m219150219001.htm"
+  },
+  {
+   "label": "令和七年度特別会計補正予算（特第１号）",
+   "kind": "予算",
+   "sangiin": {
+    "date": "令和7年12月16日",
+    "result": "可決",
+    "manner": "多数",
+    "method": "押しボタン"
+   },
+   "shugiin": {
+    "date": "令和7年12月11日",
+    "result": "可決",
+    "manner": "多数",
+    "method": "起立"
+   },
+   "page": "m219150219002.htm"
+  },
+  {
+   "label": "令和六年度一般会計原油価格・物価高騰対策及び賃上げ促進環境整備対応予備費使用総調書及び各省各庁所管使用調書（その１）",
+   "kind": "予備費等支出承諾",
+   "sangiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "shugiin": {
+    "date": "令和7年12月17日",
+    "result": "継続審査",
+    "manner": "全会一致",
+    "method": "異議の有無"
+   },
+   "page": "m219250217001.htm"
+  },
+  {
+   "label": "令和六年度一般会計予備費使用総調書及び各省各庁所管使用調書（その１）",
+   "kind": "予備費等支出承諾",
+   "sangiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "shugiin": {
+    "date": "令和7年12月17日",
+    "result": "継続審査",
+    "manner": "全会一致",
+    "method": "異議の有無"
+   },
+   "page": "m219250217002.htm"
+  },
+  {
+   "label": "令和六年度一般会計予備費使用総調書及び各省各庁所管使用調書（その２）",
+   "kind": "予備費等支出承諾",
+   "sangiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "shugiin": {
+    "date": "令和7年12月17日",
+    "result": "継続審査",
+    "manner": "全会一致",
+    "method": "異議の有無"
+   },
+   "page": "m219250217003.htm"
+  },
+  {
+   "label": "食品安全委員会委員に春日文子君を任命することについて同意を求めるの件",
+   "kind": "人事案件",
+   "sangiin": {
+    "date": "令和7年11月28日",
+    "result": "同意",
+    "manner": "多数",
+    "method": "押しボタン"
+   },
+   "shugiin": {
+    "date": "令和7年11月27日",
+    "result": "同意",
+    "manner": "多数",
+    "method": "起立"
+   },
+   "page": "m219400219001.htm"
+  },
+  {
+   "label": "個人情報保護委員会委員に藤村明子君、木田俊昭君、藤井英治君及び新保史生君を任命することについて同意を求めるの件",
+   "kind": "人事案件",
+   "sangiin": {
+    "date": "令和7年11月28日",
+    "result": "同意",
+    "manner": "多数",
+    "method": "押しボタン"
+   },
+   "shugiin": {
+    "date": "令和7年11月27日",
+    "result": "同意",
+    "manner": "多数",
+    "method": "起立"
+   },
+   "page": "m219400219002.htm"
+  },
+  {
+   "label": "証券取引等監視委員会委員長に中原亮一君を、同委員に加藤さゆり君及び橋本尚君を任命することについて同意を求めるの件",
+   "kind": "人事案件",
+   "sangiin": {
+    "date": "令和7年11月28日",
+    "result": "同意",
+    "manner": "全会一致",
+    "method": "押しボタン"
+   },
+   "shugiin": {
+    "date": "令和7年11月27日",
+    "result": "同意",
+    "manner": "多数",
+    "method": "起立"
+   },
+   "page": "m219400219003.htm"
+  },
+  {
+   "label": "電気通信紛争処理委員会委員に笠井之彦君、三尾美枝子君、小塚荘一郎君、中條祐介君及び前原賀代君を任命することについて同意を求めるの件",
+   "kind": "人事案件",
+   "sangiin": {
+    "date": "令和7年11月28日",
+    "result": "同意",
+    "manner": "全会一致",
+    "method": "押しボタン"
+   },
+   "shugiin": {
+    "date": "令和7年11月27日",
+    "result": "同意",
+    "manner": "全会一致",
+    "method": "異議の有無"
+   },
+   "page": "m219400219004.htm"
+  },
+  {
+   "label": "電波監理審議会委員に大久保哲夫君を任命することについて同意を求めるの件",
+   "kind": "人事案件",
+   "sangiin": {
+    "date": "令和7年11月28日",
+    "result": "同意",
+    "manner": "多数",
+    "method": "押しボタン"
+   },
+   "shugiin": {
+    "date": "令和7年11月27日",
+    "result": "同意",
+    "manner": "多数",
+    "method": "起立"
+   },
+   "page": "m219400219005.htm"
+  },
+  {
+   "label": "日本放送協会経営委員会委員に岩井睦雄君、前田香織君及び榊原陽子君を任命することについて同意を求めるの件",
+   "kind": "人事案件",
+   "sangiin": {
+    "date": "令和7年11月28日",
+    "result": "同意",
+    "manner": "多数",
+    "method": "押しボタン"
+   },
+   "shugiin": {
+    "date": "令和7年11月27日",
+    "result": "同意",
+    "manner": "多数",
+    "method": "起立"
+   },
+   "page": "m219400219006.htm"
+  },
+  {
+   "label": "中央更生保護審査会委員に久保美紀君を任命することについて同意を求めるの件",
+   "kind": "人事案件",
+   "sangiin": {
+    "date": "令和7年11月28日",
+    "result": "同意",
+    "manner": "全会一致",
+    "method": "押しボタン"
+   },
+   "shugiin": {
+    "date": "令和7年11月27日",
+    "result": "同意",
+    "manner": "全会一致",
+    "method": "異議の有無"
+   },
+   "page": "m219400219007.htm"
+  },
+  {
+   "label": "運輸審議会委員に堀川義弘君及び大石美奈子君を任命することについて同意を求めるの件",
+   "kind": "人事案件",
+   "sangiin": {
+    "date": "令和7年11月28日",
+    "result": "同意",
+    "manner": "多数",
+    "method": "押しボタン"
+   },
+   "shugiin": {
+    "date": "令和7年11月27日",
+    "result": "同意",
+    "manner": "多数",
+    "method": "起立"
+   },
+   "page": "m219400219008.htm"
+  },
+  {
+   "label": "運輸安全委員会委員に堂園正人君、古川敦君、大野寛之君、鈴木美緒君及び新妻実保子君を任命することについて同意を求めるの件",
+   "kind": "人事案件",
+   "sangiin": {
+    "date": "令和7年11月28日",
+    "result": "同意",
+    "manner": "全会一致",
+    "method": "押しボタン"
+   },
+   "shugiin": {
+    "date": "令和7年11月27日",
+    "result": "同意",
+    "manner": "全会一致",
+    "method": "異議の有無"
+   },
+   "page": "m219400219009.htm"
+  },
+  {
+   "label": "公害健康被害補償不服審査会委員に星景子君を任命することについて同意を求めるの件",
+   "kind": "人事案件",
+   "sangiin": {
+    "date": "令和7年11月28日",
+    "result": "同意",
+    "manner": "多数",
+    "method": "押しボタン"
+   },
+   "shugiin": {
+    "date": "令和7年11月27日",
+    "result": "同意",
+    "manner": "多数",
+    "method": "起立"
+   },
+   "page": "m219400219010.htm"
+  },
+  {
+   "label": "令和五年度一般会計歳入歳出決算、令和五年度特別会計歳入歳出決算、令和五年度国税収納金整理資金受払計算書、令和五年度政府関係機関決算書",
+   "kind": "歳入歳出決算",
+   "sangiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "shugiin": {
+    "date": "令和7年12月17日",
+    "result": "継続審査",
+    "manner": "全会一致",
+    "method": "異議の有無"
+   },
+   "page": "m219450216001.htm"
+  },
+  {
+   "label": "令和六年度一般会計歳入歳出決算、令和六年度特別会計歳入歳出決算、令和六年度国税収納金整理資金受払計算書、令和六年度政府関係機関決算書",
+   "kind": "歳入歳出決算",
+   "sangiin": {
+    "date": "令和7年12月17日",
+    "result": "継続審査",
+    "manner": "全会一致",
+    "method": "異議の有無"
+   },
+   "shugiin": {
+    "date": "令和7年12月17日",
+    "result": "継続審査",
+    "manner": "全会一致",
+    "method": "異議の有無"
+   },
+   "page": "m219450219001.htm"
+  },
+  {
+   "label": "令和五年度国有財産増減及び現在額総計算書",
+   "kind": "国有財産増減等計算書",
+   "sangiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "shugiin": {
+    "date": "令和7年12月17日",
+    "result": "継続審査",
+    "manner": "全会一致",
+    "method": "異議の有無"
+   },
+   "page": "m219500216001.htm"
+  },
+  {
+   "label": "令和六年度国有財産増減及び現在額総計算書",
+   "kind": "国有財産増減等計算書",
+   "sangiin": {
+    "date": "令和7年12月17日",
+    "result": "継続審査",
+    "manner": "全会一致",
+    "method": "異議の有無"
+   },
+   "shugiin": {
+    "date": "令和7年12月17日",
+    "result": "継続審査",
+    "manner": "全会一致",
+    "method": "異議の有無"
+   },
+   "page": "m219500219001.htm"
+  },
+  {
+   "label": "令和五年度国有財産無償貸付状況総計算書",
+   "kind": "国有財産無償貸付状況",
+   "sangiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "shugiin": {
+    "date": "令和7年12月17日",
+    "result": "継続審査",
+    "manner": "全会一致",
+    "method": "異議の有無"
+   },
+   "page": "m219525216001.htm"
+  },
+  {
+   "label": "令和六年度国有財産無償貸付状況総計算書",
+   "kind": "国有財産無償貸付状況",
+   "sangiin": {
+    "date": "令和7年12月17日",
+    "result": "継続審査",
+    "manner": "全会一致",
+    "method": "異議の有無"
+   },
+   "shugiin": {
+    "date": "令和7年12月17日",
+    "result": "継続審査",
+    "manner": "全会一致",
+    "method": "異議の有無"
+   },
+   "page": "m219525219001.htm"
+  },
+  {
+   "label": "日本放送協会令和二年度財産目録、貸借対照表、損益計算書、資本等変動計算書及びキャッシュ・フロー計算書並びにこれらに関する説明書",
+   "kind": "ＮＨＫ決算",
+   "sangiin": {
+    "date": "令和7年12月3日",
+    "result": "是認",
+    "manner": "多数",
+    "method": "押しボタン"
+   },
+   "shugiin": {
+    "date": "令和7年12月8日",
+    "result": "異議がない",
+    "manner": "多数",
+    "method": "起立"
+   },
+   "page": "m219550207001.htm"
+  },
+  {
+   "label": "日本放送協会令和三年度財産目録、貸借対照表、損益計算書、資本等変動計算書及びキャッシュ・フロー計算書並びにこれらに関する説明書",
+   "kind": "ＮＨＫ決算",
+   "sangiin": {
+    "date": "令和7年12月3日",
+    "result": "是認",
+    "manner": "多数",
+    "method": "押しボタン"
+   },
+   "shugiin": {
+    "date": "令和7年12月8日",
+    "result": "異議がない",
+    "manner": "多数",
+    "method": "起立"
+   },
+   "page": "m219550210001.htm"
+  },
+  {
+   "label": "日本放送協会令和四年度財産目録、貸借対照表、損益計算書、資本等変動計算書及びキャッシュ・フロー計算書並びにこれらに関する説明書",
+   "kind": "ＮＨＫ決算",
+   "sangiin": {
+    "date": "令和7年12月3日",
+    "result": "是認",
+    "manner": "多数",
+    "method": "押しボタン"
+   },
+   "shugiin": {
+    "date": "令和7年12月8日",
+    "result": "異議がない",
+    "manner": "多数",
+    "method": "起立"
+   },
+   "page": "m219550212001.htm"
+  },
+  {
+   "label": "日本放送協会令和五年度財産目録、貸借対照表、損益計算書、資本等変動計算書及びキャッシュ・フロー計算書並びにこれらに関する説明書",
+   "kind": "ＮＨＫ決算",
+   "sangiin": {
+    "date": "令和7年12月3日",
+    "result": "是認",
+    "manner": "多数",
+    "method": "押しボタン"
+   },
+   "shugiin": {
+    "date": "令和7年12月8日",
+    "result": "異議がない",
+    "manner": "多数",
+    "method": "起立"
+   },
+   "page": "m219550216001.htm"
+  },
+  {
+   "label": "日本放送協会令和六年度財産目録、貸借対照表、損益計算書、資本等変動計算書及びキャッシュ・フロー計算書並びにこれらに関する説明書",
+   "kind": "ＮＨＫ決算",
+   "sangiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "shugiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "page": "m219550219001.htm"
+  }
+ ]
+}

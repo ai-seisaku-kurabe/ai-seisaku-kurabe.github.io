@@ -25,10 +25,13 @@ sys.stdout.reconfigure(encoding="utf-8")
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 TOOLS = os.path.dirname(HERE)
+sys.path.insert(0, HERE)
+from _sessions import published_sessions   # noqa: E402
+
 OUT_JSON = os.path.join(TOOLS, "state", "question_audit.json")
 
-# 掲載中の2会期（2会期ルール：最新の会期＋直近の参院選より前の会期）
-SESSIONS = ["217", "221"]
+# 掲載中の会期は build_party.py の sessions_for() が唯一の出どころ。ここに書き持たない。
+SESSIONS = published_sessions()
 VOTE_URL = re.compile(r"sangiin\.go\.jp/japanese/touhyoulist/(\d{3})/(\d{3}-\d{4}-v\d{3})\.htm")
 
 

@@ -28,8 +28,12 @@ sys.stdout.reconfigure(encoding="utf-8")
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 TOOLS = os.path.dirname(HERE)
+sys.path.insert(0, HERE)
+from _sessions import published_sessions   # noqa: E402
+
 OUT_JSON = os.path.join(TOOLS, "state", "rollcall_audit.json")
-SESSIONS = ["217", "221"]        # 掲載中の2会期
+# 掲載中の会期は build_party.py の sessions_for() が唯一の出どころ。ここに書き持たない。
+SESSIONS = published_sessions()
 
 # 「採決方法」欄に現れる値。個人別の賛否が記録に残るのは押しボタン（参議院の電子投票）と
 # 記名（木札投票）の2つ。起立と異議の有無は、誰がどう投じたかが残らない。
@@ -117,7 +121,7 @@ def main():
               f"（{sg['named_pct']}%）")
         print(f"    採決方法の内訳: {sg['by_method']}")
         print(f"    記名のうち: {sg['named_by_manner']}")
-    print(f"  2会期あわせて: 議決 {tot['decided']}件 ／ 記名 {tot['named']}件"
+    print(f"  {len(res['sessions'])}会期あわせて: 議決 {tot['decided']}件 ／ 記名 {tot['named']}件"
           f"（{tot['named_pct']}%）／ うち賛否が分かれたもの {tot['named_majority']}件"
           f"（{tot['named_majority_pct']}%）")
     print("\n■ 衆議院 本会議（同じ議案の衆議院側）")

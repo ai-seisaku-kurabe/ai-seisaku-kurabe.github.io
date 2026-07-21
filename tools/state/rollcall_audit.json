@@ -44,6 +44,45 @@
     "matched": 102
    }
   },
+  "219": {
+   "bills_listed": 124,
+   "sangiin": {
+    "decided": 35,
+    "by_method": {
+     "押しボタン": 32,
+     "異議の有無": 3
+    },
+    "by_manner": {
+     "多数": 22,
+     "全会一致": 13
+    },
+    "named": 32,
+    "named_pct": 91.4,
+    "named_by_manner": {
+     "多数": 22,
+     "全会一致": 10
+    }
+   },
+   "shugiin": {
+    "decided": 114,
+    "by_method": {
+     "起立": 38,
+     "異議の有無": 76
+    },
+    "by_manner": {
+     "多数": 38,
+     "全会一致": 76
+    },
+    "named": 0,
+    "named_pct": 0.0,
+    "named_by_manner": {}
+   },
+   "crosscheck": {
+    "vote_list": 30,
+    "bill_index": 32,
+    "matched": 22
+   }
+  },
   "221": {
    "bills_listed": 172,
    "sangiin": {
@@ -90,14 +129,14 @@
   }
  },
  "total": {
-  "decided": 255,
-  "named": 253,
-  "named_majority": 215,
-  "named_unanimous": 38,
-  "shugiin_decided": 318,
+  "decided": 290,
+  "named": 285,
+  "named_majority": 237,
+  "named_unanimous": 48,
+  "shugiin_decided": 432,
   "shugiin_named": 6,
-  "named_pct": 99.2,
-  "named_majority_pct": 84.3,
-  "shugiin_named_pct": 1.9
+  "named_pct": 98.3,
+  "named_majority_pct": 81.7,
+  "shugiin_named_pct": 1.4
  }
 }
