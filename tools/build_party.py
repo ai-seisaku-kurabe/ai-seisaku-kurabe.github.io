@@ -13,12 +13,15 @@ votes_html   = ns["votes_html"]
 NO_VOTE_BLOCK= ns["NO_VOTE_BLOCK"]
 VBASE        = ns.get("VBASE", "https://www.sangiin.go.jp/japanese/touhyoulist/217/")
 
+# 並び順は読みやすさのための編集判断で、重要度の順位ではない（about.html に明記）。
+# 物価高・消費税減税が「経済・産業」と「財政」にまたがるので隣接させて上に置く。
+# 憲法は記名投票の議案が無く「行」が空になるため最後。
 DOMAIN_ORDER = [
-    ("財政",          ns["FISCAL"], ns["FVOTES"], ns["FLABEL"]),
-    ("外交・安保",     ns["DIPLO"],  ns["DVOTES"], ns["DLABEL"]),
-    ("社会保障",       ns["SOCIAL"], ns["SVOTES"], ns["SLABEL"]),
-    ("エネルギー・環境", ns["ENERGY"], ns["EVOTES"], ns["ELABEL"]),
     ("経済・産業",     ns["ECON"],   ns["CVOTES"], ns["CLABEL"]),
+    ("財政",          ns["FISCAL"], ns["FVOTES"], ns["FLABEL"]),
+    ("社会保障",       ns["SOCIAL"], ns["SVOTES"], ns["SLABEL"]),
+    ("外交・安保",     ns["DIPLO"],  ns["DVOTES"], ns["DLABEL"]),
+    ("エネルギー・環境", ns["ENERGY"], ns["EVOTES"], ns["ELABEL"]),
     ("憲法",          ns["KENPO"],  None,         None),
 ]
 PARTIES = [("自由民主党","自民"),("立憲民主党","立憲"),("日本維新の会","維新"),
