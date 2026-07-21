@@ -2,7 +2,7 @@
 """AI政策くらべ v1.1 「政党で選ぶ」= 党タブ主体。
 既存 build_guide.py のデータ(46発言+投票)・整形関数を再利用し、行列を転置して党ごとに表示。
 各党に『ワンイシュー』(特に重視する1点)を新設。"""
-import html, json, urllib.parse
+import html, json, urllib.parse, os
 
 # --- 既存ファイルを実行して、データと関数を取り込む(policy_guide.htmlは後で上書き) ---
 ns = {}
@@ -169,6 +169,61 @@ def say_block(full, dname, entry):
             + (f'<p class="point">{esc(entry["point"])}</p>' if entry.get("point") else "")
             + "".join(rows) + '</div>')
 
+# 衆議院の記名投票。予算だけを扱う（fetch_shugiin_votes.py --budget-only）。
+# 起立採決の議案は会議録に「起立多数」としか残らないので、財政以外は空欄になる。
+# 委員長解任決議案も記名投票だが、予算審議の進め方をめぐる政局案件であり、
+# 政策的立場として並べると誤読を招くため入れていない。
+SHUGIIN = {}
+for _s in ("217", "219", "221"):
+    _p = f"{_s}_shugiin_votes.json"
+    if os.path.exists(_p):
+        SHUGIIN[f"第{_s}回"] = json.load(open(_p, encoding="utf-8"))["bills"]
+
+
+def shugiin_rows(full, dname):
+    """衆院の賛否。参院と違い会派別の公表が無いため、投票者の氏名から党を引いている。"""
+    rows = []
+    for ses in ("第217回", "第219回", "第221回"):
+        bills = SHUGIIN.get(ses, [])
+        chips = []
+        if dname == "財政":
+            for b in bills:
+                c = b["parties"].get(full)
+                if not c:
+                    continue
+                cls = {"賛成": "yes", "反対": "no"}.get(c["stance"], "na")
+                title = (f'{b["label"]}：{c["stance"]}'
+                         f'（氏名から党を特定できた分で 賛成{c["賛成"]}・反対{c["反対"]}）')
+                chips.append(f'<a class="vchip {cls}" href="{esc(b["url"])}" target="_blank" '
+                             f'rel="noopener" title="{esc(title)}">予算<b>{esc(c["stance"])}</b></a>')
+        if chips:
+            # 憲法4条は「引けない議員と無所属は数えず、**人数を開示する**」と定める。
+            # 方法論のページだけでなく、数字が出ているその場に書く。
+            b = bills[0]
+            note = (f'※ 投票総数{b["reported"]["total"]}票のうち、'
+                    f'氏名から所属党を特定できなかった{b["unidentified"]}票と'
+                    f'無所属{b["independent"]}票は、どの党にも数えていません')
+            rows.append(f'<div class="vses"><span class="vsl">{ses}</span>'
+                        f'<div class="vrow">{"".join(chips)}</div>'
+                        f'<span class="vna">{note}</span></div>')
+            continue
+        if dname != "財政":
+            # 「記録が残らない」と断定できるのは、実際に数えたから。掲載3会期の衆院
+            # 記名投票は予算2件と委員長解任決議案2件だけで、他分野の議案は無かった。
+            reason = ("この3会期の衆議院の記名投票は予算と委員長解任決議案だけで、"
+                      "この分野の議案は起立採決のため賛否が記録に残っていません")
+        elif not bills:
+            reason = "この会期に衆議院の記名投票による予算の採決がありません"
+        else:
+            # 議席が無かったのか、氏名から特定できなかったのかは、この段では区別できない。
+            # 区別できないことを、区別できたように書かない。
+            reason = ("この会期の予算の記名投票で、この党の議員の投票を確認できませんでした"
+                      "（議席が無かったか、氏名から所属を特定できなかったかのいずれかです）")
+        rows.append(f'<div class="vses"><span class="vsl">{ses}</span>'
+                    f'<span class="vna">{reason}</span></div>')
+    return "".join(rows)
+
+
 def votes_block(full, dname, entry, votes, labels):
     """各会期の賛否を並べて示す。どちらが良いという評価はしない。"""
     rows = []
@@ -189,8 +244,10 @@ def votes_block(full, dname, entry, votes, labels):
             reason = "この会期では該当する議案がありません"
         rows.append(f'<div class="vses"><span class="vsl">{ses}</span>'
                     f'<span class="vna">{reason}</span></div>')
-    return ('<div class="votes"><span class="vlbl">行 ／ 参院記名投票（会期別）</span>'
-            + "".join(rows) + "</div>")
+    return ('<div class="votes"><span class="vlbl">行 ／ 参院 記名投票（会期別）</span>'
+            + "".join(rows)
+            + '<span class="vlbl">行 ／ 衆院 記名投票（会期別）</span>'
+            + shugiin_rows(full, dname) + "</div>")
 
 # 党→領域→(entry, votes, labels)
 PIDX = {full: {} for full,_ in PARTIES}
