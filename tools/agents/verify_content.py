@@ -302,6 +302,8 @@ PROMISES = [
     ("shindan.html",  ["どうやって選んだのか", "多段階の手続きは踏んでいません"],
                                                                   "政策で照らす：設問の選び方の開示"),
     ("research.html", ["検討そのものをしていません"],             "先行研究：設問の母集団の開示"),
+    # 自分の誤りを見つけたときの訂正の記録。都合が悪いので消したくなる種類の記述。
+    ("research.html", ["私たちの側の事実誤りがありました"],       "先行研究：誤りの訂正の記録"),
     # 出典と権利／プライバシー — 事実として書いている以上、消えたら気づけるようにする
     ("about.html",    ["発言した議員ご本人"],                     "出典と権利：著作権の帰属"),
     ("about.html",    ["削除・訂正の申出"],                       "出典と権利：申出窓口"),
@@ -381,6 +383,22 @@ def check_matching_audit(bp):
         return
     print(f"  設問の来歴: {q}問（採決 {qa['by_basis']['採決']}／"
           f"公約・発言 {qa['by_basis']['公約・発言']}）、母集団 {qa['pool_total']}件")
+
+    # 「行」の覆っている範囲（agents/audit_rollcall.py）。掲載会期と一致しているか。
+    p3 = os.path.join(TOOLS, "state", "rollcall_audit.json")
+    if not os.path.exists(p3):
+        fail("行の範囲", "state/rollcall_audit.json が無い（agents/audit_rollcall.py を実行する）")
+        return
+    ra = json.load(open(p3, encoding="utf-8"))
+    measured = set(ra.get("sessions", {}))
+    if measured != {"217", "221"}:      # 2会期ルール：最新＋直近の参院選より前
+        fail("行の範囲",
+             f"測定した会期が掲載会期と違う（測定 {sorted(measured)}）。"
+             "掲載会期を変えたら agents/audit_rollcall.py を回し直す")
+        return
+    t = ra["total"]
+    print(f"  行の範囲: 参院 議決{t['decided']}件中 記名{t['named']}件"
+          f"（{t['named_pct']}%）／衆院 {t['shugiin_named_pct']}%")
 
 
 # ------------------------------------------- 6. 先行研究ページの引用リンク

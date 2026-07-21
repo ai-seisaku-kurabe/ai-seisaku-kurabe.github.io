@@ -735,6 +735,16 @@ def _qaudit_load():
 
 QAUDIT = _qaudit_load()
 
+def _rcaudit_load():
+    """記名投票がどれだけを覆っているかの測定（agents/audit_rollcall.py）の結果を読む。"""
+    p = "state/rollcall_audit.json"
+    if not os.path.exists(p):
+        raise SystemExit("state/rollcall_audit.json がありません。"
+                         "先に python agents/audit_rollcall.py を実行してください。")
+    return json.load(open(p, encoding="utf-8"))
+
+RCAUDIT = _rcaudit_load()
+
 def _audit_table(a):
     """党ごとの検査結果の表。順位表に見えないよう、一致度の平均は出さない。"""
     rows = "".join(
@@ -1008,11 +1018,17 @@ RESEARCH=(f'<title>先行研究と、この設計の根拠｜ AI政策くらべ<
   + _rs("open",
     "記名投票は、代表的な標本ではない",
     "強い党議拘束の下では、議員個人の投票は本人の選好の表明ではなく、政党としての行動である。"
-    "さらに<b>記名投票にかけられる議案は、参議院の採決全体のごく一部</b>であり、"
-    "どの議案が記名投票になるか自体に偏りが乗る。",
-    "起立採決になった議案は個人別の賛否が残らないため、ここには出てきません。"
-    "その点は公開していますが、<b>どの議案を記名投票にするかという選び方そのものに偏りが乗る</b>ことは、"
-    "まだ十分に明示できていません。"
+    "また、どの議案を記名投票にかけるかに偏りがあれば、"
+    "<b>記録に残った投票は議会の行動の代表的な標本ではなくなる</b>。",
+    "<b>ここには、私たちの側の事実誤りがありました。</b>"
+    "この項目には以前「記名投票にかけられる議案は参議院の採決全体のごく一部だ」と書いていましたが、"
+    "04で数えたところ<b>参議院の本会議で議決された議案の"
+    + str(RCAUDIT["total"]["named_pct"]) + "％が記名投票</b>でした。"
+    "『ごく一部』は誤りだったので訂正します。"
+    "<b>ただし、この研究の指摘そのものが消えたわけではありません。</b>"
+    "党議拘束の下で政党としての行動を見ているという点は変わらず、"
+    "本会議の外（委員会での採決）や、衆議院のほとんどの議決は、"
+    "いまも個人別・会派別には残りません。"
     "「行」は各党の行動の全体像ではなく、記録に残った一部です。",
     _cite("Hix, Noury &amp; Roland (2018) Is there a selection bias in roll call votes? Evidence from the European Parliament", "https://ideas.repec.org/p/ehl/lserod/87696.html"))
 
@@ -1165,6 +1181,43 @@ RESEARCH=(f'<title>先行研究と、この設計の根拠｜ AI政策くらべ<
     _cite("Walgrave, Nuytemans &amp; Pepermans (2009) Voting Aid Applications and the Effect of Statement Selection (West European Politics)",
           "https://medialibrary.uantwerpen.be/oldcontent/container2608/files/Walgrave%20et%20al%202009%20-%20voting%20aid%20applications.pdf")
     + " ／ " + _cite("Wahl-O-Mat（連邦政治教育センター）", "https://www.wahl-o-mat.de/"))
+
+  + _rs("meas",
+    "分かったこと⑤：「記名投票はごく一部」は、参議院については私たちの誤りだった",
+    "記名投票を材料にする研究は、<b>どの議案を記名投票にかけるかに偏りが乗る</b>ことを指摘してきた。"
+    "このサイトの「行」は参議院の記名投票だけでできているので、この指摘は設計の根幹に当たる。"
+    "参議院の議案情報は<b>議案ごとに採決方法（押しボタン／記名／起立／異議の有無）を公表している</b>ため、"
+    "程度は数えられる。"
+    + "・".join("第" + s + "回" + str(v["bills_listed"]) + "件"
+                for s, v in RCAUDIT["sessions"].items())
+    + "の明細を集めて数えた。",
+    "<b>参議院の本会議で議決された" + str(RCAUDIT["total"]["decided"]) + "件のうち、"
+    + str(RCAUDIT["total"]["named"]) + "件（" + str(RCAUDIT["total"]["named_pct"])
+    + "％）が、誰がどう投じたかの残る採決でした。</b>"
+    "私たちはこのページに「記名投票は参議院の採決全体のごく一部」と書いていましたが、"
+    "<b>これは誤りだったので訂正しました。</b>"
+    "一方で、同じ議案を衆議院がどう採決したかを見ると、"
+    + str(RCAUDIT["total"]["shugiin_decided"]) + "件中"
+    + str(RCAUDIT["total"]["shugiin_named"]) + "件（"
+    + str(RCAUDIT["total"]["shugiin_named_pct"]) + "％）しか個人別の記録が残っていません。"
+    "<b>「一部しか残らない」のは衆議院の側でした。</b>"
+    "残る限界は3つあります。"
+    "①記名投票" + str(RCAUDIT["total"]["named"]) + "件のうち"
+    + str(RCAUDIT["total"]["named_unanimous"]) + "件は<b>全会一致</b>で、"
+    "党の違いは読み取れません（差が出るのは"
+    + str(RCAUDIT["total"]["named_majority"]) + "件）。"
+    "②数えたのは<b>本会議だけ</b>で、委員会での採決は個人別・会派別に残りません。"
+    "③党議拘束の下では、投票は議員本人の選好ではなく政党としての行動です。"
+    "なお、記名投票の一覧と議案情報は出どころが違うため件数が少しずれます"
+    "（人事案件や決算の件名の付け方が資料によって異なるためで、差は"
+    + "・".join("第" + s + "回" + str(v["crosscheck"]["vote_list"]) + "件と"
+                + str(v["crosscheck"]["bill_index"]) + "件"
+                for s, v in RCAUDIT["sessions"].items() if v.get("crosscheck"))
+    + "）。",
+    _cite("Hix, Noury &amp; Roland (2018) Is there a selection bias in roll call votes? Evidence from the European Parliament",
+          "https://ideas.repec.org/p/ehl/lserod/87696.html")
+    + " ／ " + _cite("参議院 議案情報（第217回国会）",
+                     "https://www.sangiin.go.jp/japanese/joho1/kousei/gian/217/gian.htm"))
 
   + '</section>'
 

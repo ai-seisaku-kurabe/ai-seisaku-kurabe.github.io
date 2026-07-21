@@ -1,0 +1,103 @@
+{
+ "generated": "2026-07-21",
+ "sessions": {
+  "217": {
+   "bills_listed": 226,
+   "sangiin": {
+    "decided": 139,
+    "by_method": {
+     "押しボタン": 135,
+     "記名": 3,
+     "起立": 1
+    },
+    "by_manner": {
+     "多数": 116,
+     "全会一致": 23
+    },
+    "named": 138,
+    "named_pct": 99.3,
+    "named_by_manner": {
+     "多数": 115,
+     "全会一致": 23
+    }
+   },
+   "shugiin": {
+    "decided": 198,
+    "by_method": {
+     "起立": 109,
+     "異議の有無": 86,
+     "記名": 3
+    },
+    "by_manner": {
+     "多数": 112,
+     "全会一致": 86
+    },
+    "named": 3,
+    "named_pct": 1.5,
+    "named_by_manner": {
+     "多数": 3
+    }
+   },
+   "crosscheck": {
+    "vote_list": 132,
+    "bill_index": 136,
+    "matched": 102
+   }
+  },
+  "221": {
+   "bills_listed": 172,
+   "sangiin": {
+    "decided": 116,
+    "by_method": {
+     "押しボタン": 112,
+     "記名": 3,
+     "異議の有無": 1
+    },
+    "by_manner": {
+     "多数": 100,
+     "全会一致": 16
+    },
+    "named": 115,
+    "named_pct": 99.1,
+    "named_by_manner": {
+     "多数": 100,
+     "全会一致": 15
+    }
+   },
+   "shugiin": {
+    "decided": 120,
+    "by_method": {
+     "起立": 100,
+     "異議の有無": 17,
+     "記名": 3
+    },
+    "by_manner": {
+     "多数": 99,
+     "全会一致": 18,
+     "少数": 3
+    },
+    "named": 3,
+    "named_pct": 2.5,
+    "named_by_manner": {
+     "多数": 3
+    }
+   },
+   "crosscheck": {
+    "vote_list": 112,
+    "bill_index": 115,
+    "matched": 98
+   }
+  }
+ },
+ "total": {
+  "decided": 255,
+  "named": 253,
+  "named_majority": 215,
+  "named_unanimous": 38,
+  "shugiin_decided": 318,
+  "shugiin_named": 6,
+  "named_pct": 99.2,
+  "named_majority_pct": 84.3,
+  "shugiin_named_pct": 1.9
+ }
+}

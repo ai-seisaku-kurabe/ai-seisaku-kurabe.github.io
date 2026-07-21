@@ -1,0 +1,2929 @@
+{
+ "session": "221",
+ "bills": [
+  {
+   "label": "財政運営に必要な財源の確保を図るための公債の発行の特例に関する法律の一部を改正する法律案",
+   "kind": "法律案（内閣提出）",
+   "sangiin": {
+    "date": "令和8年3月31日",
+    "result": "可決",
+    "manner": "多数",
+    "method": "押しボタン"
+   },
+   "shugiin": {
+    "date": "令和8年3月13日",
+    "result": "可決",
+    "manner": "多数",
+    "method": "起立"
+   },
+   "page": "m221080221001.htm"
+  },
+  {
+   "label": "東日本大震災からの復興のための施策を実施するために必要な財源の確保に関する特別措置法の一部を改正する法律案",
+   "kind": "法律案（内閣提出）",
+   "sangiin": {
+    "date": "令和8年3月31日",
+    "result": "可決",
+    "manner": "多数",
+    "method": "押しボタン"
+   },
+   "shugiin": {
+    "date": "令和8年3月13日",
+    "result": "可決",
+    "manner": "多数",
+    "method": "起立"
+   },
+   "page": "m221080221002.htm"
+  },
+  {
+   "label": "所得税法等の一部を改正する法律案",
+   "kind": "法律案（内閣提出）",
+   "sangiin": {
+    "date": "令和8年3月31日",
+    "result": "可決",
+    "manner": "多数",
+    "method": "押しボタン"
+   },
+   "shugiin": {
+    "date": "令和8年3月13日",
+    "result": "可決",
+    "manner": "多数",
+    "method": "起立"
+   },
+   "page": "m221080221003.htm"
+  },
+  {
+   "label": "地方税法等の一部を改正する法律案",
+   "kind": "法律案（内閣提出）",
+   "sangiin": {
+    "date": "令和8年3月31日",
+    "result": "可決",
+    "manner": "多数",
+    "method": "押しボタン"
+   },
+   "shugiin": {
+    "date": "令和8年3月13日",
+    "result": "可決",
+    "manner": "多数",
+    "method": "起立"
+   },
+   "page": "m221080221004.htm"
+  },
+  {
+   "label": "地方交付税法等の一部を改正する法律案",
+   "kind": "法律案（内閣提出）",
+   "sangiin": {
+    "date": "令和8年3月31日",
+    "result": "可決",
+    "manner": "多数",
+    "method": "押しボタン"
+   },
+   "shugiin": {
+    "date": "令和8年3月13日",
+    "result": "可決",
+    "manner": "多数",
+    "method": "起立"
+   },
+   "page": "m221080221005.htm"
+  },
+  {
+   "label": "関税定率法等の一部を改正する法律案",
+   "kind": "法律案（内閣提出）",
+   "sangiin": {
+    "date": "令和8年3月31日",
+    "result": "可決",
+    "manner": "多数",
+    "method": "押しボタン"
+   },
+   "shugiin": {
+    "date": "令和8年3月13日",
+    "result": "可決",
+    "manner": "多数",
+    "method": "起立"
+   },
+   "page": "m221080221006.htm"
+  },
+  {
+   "label": "金融機能の強化のための特別措置に関する法律等の一部を改正する法律案",
+   "kind": "法律案（内閣提出）",
+   "sangiin": {
+    "date": "令和8年4月24日",
+    "result": "可決",
+    "manner": "多数",
+    "method": "押しボタン"
+   },
+   "shugiin": {
+    "date": "令和8年4月16日",
+    "result": "可決",
+    "manner": "多数",
+    "method": "起立"
+   },
+   "page": "m221080221007.htm"
+  },
+  {
+   "label": "高等学校等就学支援金の支給に関する法律の一部を改正する法律案",
+   "kind": "法律案（内閣提出）",
+   "sangiin": {
+    "date": "令和8年3月31日",
+    "result": "可決",
+    "manner": "多数",
+    "method": "押しボタン"
+   },
+   "shugiin": {
+    "date": "令和8年3月13日",
+    "result": "可決",
+    "manner": "多数",
+    "method": "起立"
+   },
+   "page": "m221080221008.htm"
+  },
+  {
+   "label": "公立義務教育諸学校の学級編制及び教職員定数の標準に関する法律の一部を改正する法律案",
+   "kind": "法律案（内閣提出）",
+   "sangiin": {
+    "date": "令和8年3月31日",
+    "result": "可決",
+    "manner": "多数",
+    "method": "押しボタン"
+   },
+   "shugiin": {
+    "date": "令和8年3月13日",
+    "result": "可決",
+    "manner": "多数",
+    "method": "起立"
+   },
+   "page": "m221080221009.htm"
+  },
+  {
+   "label": "在外公館の名称及び位置並びに在外公館に勤務する外務公務員の給与に関する法律の一部を改正する法律案",
+   "kind": "法律案（内閣提出）",
+   "sangiin": {
+    "date": "令和8年3月31日",
+    "result": "可決",
+    "manner": "全会一致",
+    "method": "押しボタン"
+   },
+   "shugiin": {
+    "date": "令和8年3月13日",
+    "result": "可決",
+    "manner": "全会一致",
+    "method": "異議の有無"
+   },
+   "page": "m221080221010.htm"
+  },
+  {
+   "label": "農業構造転換の推進に必要な施策の集中的な実施の財源に充てるための日本中央競馬会の国庫納付金の納付に関する臨時措置法案",
+   "kind": "法律案（内閣提出）",
+   "sangiin": {
+    "date": "令和8年3月31日",
+    "result": "可決",
+    "manner": "多数",
+    "method": "押しボタン"
+   },
+   "shugiin": {
+    "date": "令和8年3月13日",
+    "result": "可決",
+    "manner": "多数",
+    "method": "起立"
+   },
+   "page": "m221080221011.htm"
+  },
+  {
+   "label": "日本中央競馬会法の一部を改正する法律案",
+   "kind": "法律案（内閣提出）",
+   "sangiin": {
+    "date": "令和8年3月31日",
+    "result": "可決",
+    "manner": "多数",
+    "method": "押しボタン"
+   },
+   "shugiin": {
+    "date": "令和8年3月13日",
+    "result": "可決",
+    "manner": "多数",
+    "method": "起立"
+   },
+   "page": "m221080221012.htm"
+  },
+  {
+   "label": "防災庁設置法案",
+   "kind": "法律案（内閣提出）",
+   "sangiin": {
+    "date": "令和8年7月13日",
+    "result": "可決",
+    "manner": "多数",
+    "method": "押しボタン"
+   },
+   "shugiin": {
+    "date": "令和8年5月19日",
+    "result": "可決",
+    "manner": "多数",
+    "method": "起立"
+   },
+   "page": "m221080221013.htm"
+  },
+  {
+   "label": "防災庁設置法の施行に伴う関係法律の整備等に関する法律案",
+   "kind": "法律案（内閣提出）",
+   "sangiin": {
+    "date": "令和8年7月13日",
+    "result": "可決",
+    "manner": "多数",
+    "method": "押しボタン"
+   },
+   "shugiin": {
+    "date": "令和8年5月19日",
+    "result": "可決",
+    "manner": "多数",
+    "method": "起立"
+   },
+   "page": "m221080221014.htm"
+  },
+  {
+   "label": "経済社会情勢の変化を踏まえた企業の事業活動の持続的な発展を図るための産業競争力強化法等の一部を改正する法律案",
+   "kind": "法律案（内閣提出）",
+   "sangiin": {
+    "date": "令和8年5月29日",
+    "result": "可決",
+    "manner": "多数",
+    "method": "押しボタン"
+   },
+   "shugiin": {
+    "date": "令和8年5月14日",
+    "result": "可決",
+    "manner": "多数",
+    "method": "起立"
+   },
+   "page": "m221080221015.htm"
+  },
+  {
+   "label": "物資の流通の効率化に関する法律の一部を改正する法律案",
+   "kind": "法律案（内閣提出）",
+   "sangiin": {
+    "date": "令和8年5月13日",
+    "result": "可決",
+    "manner": "多数",
+    "method": "押しボタン"
+   },
+   "shugiin": {
+    "date": "令和8年4月14日",
+    "result": "可決",
+    "manner": "多数",
+    "method": "起立"
+   },
+   "page": "m221080221016.htm"
+  },
+  {
+   "label": "環境省設置法の一部を改正する法律案",
+   "kind": "法律案（内閣提出）",
+   "sangiin": {
+    "date": "令和8年5月15日",
+    "result": "可決",
+    "manner": "多数",
+    "method": "押しボタン"
+   },
+   "shugiin": {
+    "date": "令和8年4月16日",
+    "result": "可決",
+    "manner": "多数",
+    "method": "起立"
+   },
+   "page": "m221080221017.htm"
+  },
+  {
+   "label": "防衛省設置法等の一部を改正する法律案",
+   "kind": "法律案（内閣提出）",
+   "sangiin": {
+    "date": "令和8年6月26日",
+    "result": "可決",
+    "manner": "多数",
+    "method": "押しボタン"
+   },
+   "shugiin": {
+    "date": "令和8年4月28日",
+    "result": "可決",
+    "manner": "多数",
+    "method": "起立"
+   },
+   "page": "m221080221018.htm"
+  },
+  {
+   "label": "裁判所職員定員法の一部を改正する法律案",
+   "kind": "法律案（内閣提出）",
+   "sangiin": {
+    "date": "令和8年4月24日",
+    "result": "可決",
+    "manner": "多数",
+    "method": "押しボタン"
+   },
+   "shugiin": {
+    "date": "令和8年4月16日",
+    "result": "可決",
+    "manner": "多数",
+    "method": "起立"
+   },
+   "page": "m221080221019.htm"
+  },
+  {
+   "label": "出入国管理及び難民認定法及び出入国管理及び難民認定法第二条第五号ロの旅券を所持する外国人の上陸申請の特例に関する法律の一部を改正する法律案",
+   "kind": "法律案（内閣提出）",
+   "sangiin": {
+    "date": "令和8年5月29日",
+    "result": "可決",
+    "manner": "多数",
+    "method": "押しボタン"
+   },
+   "shugiin": {
+    "date": "令和8年4月28日",
+    "result": "可決",
+    "manner": "多数",
+    "method": "起立"
+   },
+   "page": "m221080221020.htm"
+  },
+  {
+   "label": "旅券法の一部を改正する法律案",
+   "kind": "法律案（内閣提出）",
+   "sangiin": {
+    "date": "令和8年4月24日",
+    "result": "可決",
+    "manner": "全会一致",
+    "method": "押しボタン"
+   },
+   "shugiin": {
+    "date": "令和8年4月14日",
+    "result": "可決",
+    "manner": "全会一致",
+    "method": "異議の有無"
+   },
+   "page": "m221080221021.htm"
+  },
+  {
+   "label": "都市再生特別措置法等の一部を改正する法律案",
+   "kind": "法律案（内閣提出）",
+   "sangiin": {
+    "date": "令和8年5月20日",
+    "result": "可決",
+    "manner": "多数",
+    "method": "押しボタン"
+   },
+   "shugiin": {
+    "date": "令和8年4月23日",
+    "result": "可決",
+    "manner": "多数",
+    "method": "起立"
+   },
+   "page": "m221080221022.htm"
+  },
+  {
+   "label": "地域公共交通の活性化及び再生に関する法律の一部を改正する法律案",
+   "kind": "法律案（内閣提出）",
+   "sangiin": {
+    "date": "令和8年6月3日",
+    "result": "可決",
+    "manner": "多数",
+    "method": "押しボタン"
+   },
+   "shugiin": {
+    "date": "令和8年5月14日",
+    "result": "可決",
+    "manner": "多数",
+    "method": "起立"
+   },
+   "page": "m221080221023.htm"
+  },
+  {
+   "label": "国家情報会議設置法案",
+   "kind": "法律案（内閣提出）",
+   "sangiin": {
+    "date": "令和8年5月27日",
+    "result": "可決",
+    "manner": "多数",
+    "method": "押しボタン"
+   },
+   "shugiin": {
+    "date": "令和8年4月23日",
+    "result": "可決",
+    "manner": "多数",
+    "method": "起立"
+   },
+   "page": "m221080221024.htm"
+  },
+  {
+   "label": "健康保険法等の一部を改正する法律案",
+   "kind": "法律案（内閣提出）",
+   "sangiin": {
+    "date": "令和8年5月29日",
+    "result": "可決",
+    "manner": "多数",
+    "method": "押しボタン"
+   },
+   "shugiin": {
+    "date": "令和8年4月28日",
+    "result": "可決",
+    "manner": "多数",
+    "method": "起立"
+   },
+   "page": "m221080221025.htm"
+  },
+  {
+   "label": "産業技術力強化法の一部を改正する法律案",
+   "kind": "法律案（内閣提出）",
+   "sangiin": {
+    "date": "令和8年6月12日",
+    "result": "可決",
+    "manner": "多数",
+    "method": "押しボタン"
+   },
+   "shugiin": {
+    "date": "令和8年6月2日",
+    "result": "可決",
+    "manner": "多数",
+    "method": "起立"
+   },
+   "page": "m221080221026.htm"
+  },
+  {
+   "label": "外国為替及び外国貿易法の一部を改正する法律案",
+   "kind": "法律案（内閣提出）",
+   "sangiin": {
+    "date": "令和8年5月29日",
+    "result": "可決",
+    "manner": "多数",
+    "method": "押しボタン"
+   },
+   "shugiin": {
+    "date": "令和8年5月14日",
+    "result": "可決",
+    "manner": "多数",
+    "method": "起立"
+   },
+   "page": "m221080221027.htm"
+  },
+  {
+   "label": "農林中央金庫法の一部を改正する法律案",
+   "kind": "法律案（内閣提出）",
+   "sangiin": {
+    "date": "令和8年4月24日",
+    "result": "可決",
+    "manner": "多数",
+    "method": "押しボタン"
+   },
+   "shugiin": {
+    "date": "令和8年4月16日",
+    "result": "可決",
+    "manner": "多数",
+    "method": "起立"
+   },
+   "page": "m221080221028.htm"
+  },
+  {
+   "label": "農業近代化資金融通法の一部を改正する法律案",
+   "kind": "法律案（内閣提出）",
+   "sangiin": {
+    "date": "令和8年4月24日",
+    "result": "可決",
+    "manner": "多数",
+    "method": "押しボタン"
+   },
+   "shugiin": {
+    "date": "令和8年4月16日",
+    "result": "可決",
+    "manner": "多数",
+    "method": "起立"
+   },
+   "page": "m221080221029.htm"
+  },
+  {
+   "label": "経済施策を一体的に講ずることによる安全保障の確保の推進に関する法律及び株式会社国際協力銀行法の一部を改正する法律案",
+   "kind": "法律案（内閣提出）",
+   "sangiin": {
+    "date": "令和8年6月10日",
+    "result": "可決",
+    "manner": "多数",
+    "method": "押しボタン"
+   },
+   "shugiin": {
+    "date": "令和8年5月19日",
+    "result": "修正",
+    "manner": "多数",
+    "method": "起立"
+   },
+   "page": "m221080221030.htm"
+  },
+  {
+   "label": "重要施設の周辺地域の上空における小型無人機等の飛行の禁止に関する法律の一部を改正する法律案",
+   "kind": "法律案（内閣提出）",
+   "sangiin": {
+    "date": "令和8年6月17日",
+    "result": "可決",
+    "manner": "多数",
+    "method": "押しボタン"
+   },
+   "shugiin": {
+    "date": "令和8年5月26日",
+    "result": "可決",
+    "manner": "多数",
+    "method": "起立"
+   },
+   "page": "m221080221031.htm"
+  },
+  {
+   "label": "株式会社海外通信・放送・郵便事業支援機構法の一部を改正する法律案",
+   "kind": "法律案（内閣提出）",
+   "sangiin": {
+    "date": "令和8年4月24日",
+    "result": "可決",
+    "manner": "多数",
+    "method": "押しボタン"
+   },
+   "shugiin": {
+    "date": "令和8年4月16日",
+    "result": "可決",
+    "manner": "多数",
+    "method": "起立"
+   },
+   "page": "m221080221032.htm"
+  },
+  {
+   "label": "携帯音声通信事業者による契約者等の本人確認等及び携帯音声通信役務の不正な利用の防止に関する法律の一部を改正する法律案",
+   "kind": "法律案（内閣提出）",
+   "sangiin": {
+    "date": "令和8年5月22日",
+    "result": "可決",
+    "manner": "多数",
+    "method": "押しボタン"
+   },
+   "shugiin": {
+    "date": "令和8年5月14日",
+    "result": "可決",
+    "manner": "多数",
+    "method": "起立"
+   },
+   "page": "m221080221033.htm"
+  },
+  {
+   "label": "郵便法及び民間事業者による信書の送達に関する法律の一部を改正する法律案",
+   "kind": "法律案（内閣提出）",
+   "sangiin": {
+    "date": "令和8年6月12日",
+    "result": "可決",
+    "manner": "多数",
+    "method": "押しボタン"
+   },
+   "shugiin": {
+    "date": "令和8年6月2日",
+    "result": "可決",
+    "manner": "多数",
+    "method": "起立"
+   },
+   "page": "m221080221034.htm"
+  },
+  {
+   "label": "家畜伝染病予防法の一部を改正する法律案",
+   "kind": "法律案（内閣提出）",
+   "sangiin": {
+    "date": "令和8年5月15日",
+    "result": "可決",
+    "manner": "多数",
+    "method": "押しボタン"
+   },
+   "shugiin": {
+    "date": "令和8年4月23日",
+    "result": "可決",
+    "manner": "多数",
+    "method": "起立"
+   },
+   "page": "m221080221035.htm"
+  },
+  {
+   "label": "電気事業法の一部を改正する法律案",
+   "kind": "法律案（内閣提出）",
+   "sangiin": {
+    "date": "令和8年7月17日",
+    "result": "可決",
+    "manner": "多数",
+    "method": "押しボタン"
+   },
+   "shugiin": {
+    "date": "令和8年6月25日",
+    "result": "可決",
+    "manner": "多数",
+    "method": "起立"
+   },
+   "page": "m221080221036.htm"
+  },
+  {
+   "label": "地域の自主性及び自立性を高めるための改革の推進を図るための関係法律の整備に関する法律案",
+   "kind": "法律案（内閣提出）",
+   "sangiin": {
+    "date": "令和8年5月27日",
+    "result": "可決",
+    "manner": "多数",
+    "method": "押しボタン"
+   },
+   "shugiin": {
+    "date": "令和8年4月28日",
+    "result": "可決",
+    "manner": "多数",
+    "method": "起立"
+   },
+   "page": "m221080221037.htm"
+  },
+  {
+   "label": "下水道法等の一部を改正する法律案",
+   "kind": "法律案（内閣提出）",
+   "sangiin": {
+    "date": "令和8年7月15日",
+    "result": "可決",
+    "manner": "多数",
+    "method": "押しボタン"
+   },
+   "shugiin": {
+    "date": "令和8年5月26日",
+    "result": "可決",
+    "manner": "多数",
+    "method": "起立"
+   },
+   "page": "m221080221038.htm"
+  },
+  {
+   "label": "建築物のエネルギー消費性能の向上等に関する法律の一部を改正する法律案",
+   "kind": "法律案（内閣提出）",
+   "sangiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "shugiin": {
+    "date": "令和8年6月4日",
+    "result": "可決",
+    "manner": "多数",
+    "method": "起立"
+   },
+   "page": "m221080221039.htm"
+  },
+  {
+   "label": "人工衛星等の打上げ及び人工衛星の管理に関する法律等の一部を改正する法律案",
+   "kind": "法律案（内閣提出）",
+   "sangiin": {
+    "date": "令和8年4月24日",
+    "result": "可決",
+    "manner": "多数",
+    "method": "押しボタン"
+   },
+   "shugiin": {
+    "date": "令和8年6月11日",
+    "result": "可決",
+    "manner": "多数",
+    "method": "起立"
+   },
+   "page": "m221080221040.htm"
+  },
+  {
+   "label": "科学技術・イノベーション創出の活性化に関する法律の一部を改正する法律案",
+   "kind": "法律案（内閣提出）",
+   "sangiin": {
+    "date": "令和8年7月13日",
+    "result": "可決",
+    "manner": "多数",
+    "method": "押しボタン"
+   },
+   "shugiin": {
+    "date": "令和8年6月25日",
+    "result": "修正",
+    "manner": "多数",
+    "method": "起立"
+   },
+   "page": "m221080221041.htm"
+  },
+  {
+   "label": "自動車の運転により人を死傷させる行為等の処罰に関する法律及び道路交通法の一部を改正する法律案",
+   "kind": "法律案（内閣提出）",
+   "sangiin": {
+    "date": "令和8年4月17日",
+    "result": "可決",
+    "manner": "全会一致",
+    "method": "押しボタン"
+   },
+   "shugiin": {
+    "date": "令和8年6月25日",
+    "result": "可決",
+    "manner": "全会一致",
+    "method": "異議の有無"
+   },
+   "page": "m221080221042.htm"
+  },
+  {
+   "label": "民法等の一部を改正する法律案",
+   "kind": "法律案（内閣提出）",
+   "sangiin": {
+    "date": "令和8年6月17日",
+    "result": "可決",
+    "manner": "多数",
+    "method": "押しボタン"
+   },
+   "shugiin": {
+    "date": "令和8年5月26日",
+    "result": "可決",
+    "manner": "多数",
+    "method": "起立"
+   },
+   "page": "m221080221043.htm"
+  },
+  {
+   "label": "民法等の一部を改正する法律の施行に伴う関係法律の整備等に関する法律案",
+   "kind": "法律案（内閣提出）",
+   "sangiin": {
+    "date": "令和8年6月17日",
+    "result": "可決",
+    "manner": "多数",
+    "method": "押しボタン"
+   },
+   "shugiin": {
+    "date": "令和8年5月26日",
+    "result": "可決",
+    "manner": "多数",
+    "method": "起立"
+   },
+   "page": "m221080221044.htm"
+  },
+  {
+   "label": "社会福祉法等の一部を改正する法律案",
+   "kind": "法律案（内閣提出）",
+   "sangiin": {
+    "date": "令和8年6月19日",
+    "result": "可決",
+    "manner": "多数",
+    "method": "押しボタン"
+   },
+   "shugiin": {
+    "date": "令和8年5月26日",
+    "result": "可決",
+    "manner": "多数",
+    "method": "起立"
+   },
+   "page": "m221080221045.htm"
+  },
+  {
+   "label": "重要品種の育成及びその種苗の生産の振興に関する法律案",
+   "kind": "法律案（内閣提出）",
+   "sangiin": {
+    "date": "令和8年7月17日",
+    "result": "可決",
+    "manner": "多数",
+    "method": "押しボタン"
+   },
+   "shugiin": {
+    "date": "令和8年6月19日",
+    "result": "可決",
+    "manner": "多数",
+    "method": "起立"
+   },
+   "page": "m221080221046.htm"
+  },
+  {
+   "label": "種苗法の一部を改正する法律案",
+   "kind": "法律案（内閣提出）",
+   "sangiin": {
+    "date": "令和8年7月17日",
+    "result": "可決",
+    "manner": "多数",
+    "method": "押しボタン"
+   },
+   "shugiin": {
+    "date": "令和8年6月19日",
+    "result": "可決",
+    "manner": "多数",
+    "method": "起立"
+   },
+   "page": "m221080221047.htm"
+  },
+  {
+   "label": "主要食糧の需給及び価格の安定に関する法律の一部を改正する法律案",
+   "kind": "法律案（内閣提出）",
+   "sangiin": {
+    "date": "令和8年7月8日",
+    "result": "可決",
+    "manner": "多数",
+    "method": "押しボタン"
+   },
+   "shugiin": {
+    "date": "令和8年6月3日",
+    "result": "可決",
+    "manner": "多数",
+    "method": "起立"
+   },
+   "page": "m221080221048.htm"
+  },
+  {
+   "label": "太陽電池廃棄物の再資源化等の推進に関する法律案",
+   "kind": "法律案（内閣提出）",
+   "sangiin": {
+    "date": "令和8年5月29日",
+    "result": "可決",
+    "manner": "多数",
+    "method": "押しボタン"
+   },
+   "shugiin": {
+    "date": "令和8年5月12日",
+    "result": "可決",
+    "manner": "多数",
+    "method": "起立"
+   },
+   "page": "m221080221049.htm"
+  },
+  {
+   "label": "予備自衛官等の職務の円滑な遂行を図るための国家公務員及び地方公務員の兼業の特例に関する法律案",
+   "kind": "法律案（内閣提出）",
+   "sangiin": {
+    "date": "令和8年6月10日",
+    "result": "可決",
+    "manner": "多数",
+    "method": "押しボタン"
+   },
+   "shugiin": {
+    "date": "令和8年5月19日",
+    "result": "可決",
+    "manner": "多数",
+    "method": "起立"
+   },
+   "page": "m221080221050.htm"
+  },
+  {
+   "label": "犯罪による収益の移転防止に関する法律の一部を改正する法律案",
+   "kind": "法律案（内閣提出）",
+   "sangiin": {
+    "date": "令和8年4月17日",
+    "result": "可決",
+    "manner": "多数",
+    "method": "押しボタン"
+   },
+   "shugiin": {
+    "date": "令和8年6月2日",
+    "result": "可決",
+    "manner": "多数",
+    "method": "起立"
+   },
+   "page": "m221080221051.htm"
+  },
+  {
+   "label": "南極地域の環境の保護に関する法律の一部を改正する法律案",
+   "kind": "法律案（内閣提出）",
+   "sangiin": {
+    "date": "令和8年4月17日",
+    "result": "可決",
+    "manner": "全会一致",
+    "method": "押しボタン"
+   },
+   "shugiin": {
+    "date": "令和8年6月2日",
+    "result": "可決",
+    "manner": "全会一致",
+    "method": "異議の有無"
+   },
+   "page": "m221080221052.htm"
+  },
+  {
+   "label": "情報通信技術を活用した行政の推進等に関する法律及び情報処理の促進に関する法律の一部を改正する法律案",
+   "kind": "法律案（内閣提出）",
+   "sangiin": {
+    "date": "令和8年7月10日",
+    "result": "可決",
+    "manner": "多数",
+    "method": "押しボタン"
+   },
+   "shugiin": {
+    "date": "令和8年5月26日",
+    "result": "可決",
+    "manner": "多数",
+    "method": "起立"
+   },
+   "page": "m221080221053.htm"
+  },
+  {
+   "label": "個人情報の保護に関する法律等の一部を改正する法律案",
+   "kind": "法律案（内閣提出）",
+   "sangiin": {
+    "date": "令和8年7月10日",
+    "result": "可決",
+    "manner": "多数",
+    "method": "押しボタン"
+   },
+   "shugiin": {
+    "date": "令和8年5月26日",
+    "result": "可決",
+    "manner": "多数",
+    "method": "起立"
+   },
+   "page": "m221080221054.htm"
+  },
+  {
+   "label": "学校教育法等の一部を改正する法律案",
+   "kind": "法律案（内閣提出）",
+   "sangiin": {
+    "date": "令和8年6月10日",
+    "result": "可決",
+    "manner": "多数",
+    "method": "押しボタン"
+   },
+   "shugiin": {
+    "date": "令和8年4月28日",
+    "result": "可決",
+    "manner": "多数",
+    "method": "起立"
+   },
+   "page": "m221080221055.htm"
+  },
+  {
+   "label": "労働者災害補償保険法等の一部を改正する法律案",
+   "kind": "法律案（内閣提出）",
+   "sangiin": {
+    "date": "令和8年7月10日",
+    "result": "可決",
+    "manner": "多数",
+    "method": "押しボタン"
+   },
+   "shugiin": {
+    "date": "令和8年6月2日",
+    "result": "可決",
+    "manner": "多数",
+    "method": "起立"
+   },
+   "page": "m221080221056.htm"
+  },
+  {
+   "label": "金融商品取引法及び資金決済に関する法律の一部を改正する法律案",
+   "kind": "法律案（内閣提出）",
+   "sangiin": {
+    "date": "令和8年7月15日",
+    "result": "可決",
+    "manner": "多数",
+    "method": "押しボタン"
+   },
+   "shugiin": {
+    "date": "令和8年6月11日",
+    "result": "可決",
+    "manner": "多数",
+    "method": "起立"
+   },
+   "page": "m221080221057.htm"
+  },
+  {
+   "label": "ヒトゲノム編集胚等の取扱いの規制に関する法律案",
+   "kind": "法律案（内閣提出）",
+   "sangiin": {
+    "date": "令和8年7月17日",
+    "result": "可決",
+    "manner": "多数",
+    "method": "押しボタン"
+   },
+   "shugiin": {
+    "date": "令和8年6月16日",
+    "result": "可決",
+    "manner": "多数",
+    "method": "起立"
+   },
+   "page": "m221080221058.htm"
+  },
+  {
+   "label": "廃棄物の処理及び清掃に関する法律等の一部を改正する法律案",
+   "kind": "法律案（内閣提出）",
+   "sangiin": {
+    "date": "令和8年6月12日",
+    "result": "可決",
+    "manner": "多数",
+    "method": "押しボタン"
+   },
+   "shugiin": {
+    "date": "令和8年5月26日",
+    "result": "可決",
+    "manner": "多数",
+    "method": "起立"
+   },
+   "page": "m221080221059.htm"
+  },
+  {
+   "label": "ポリ塩化ビフェニル廃棄物の適正な処理の推進に関する特別措置法及び中間貯蔵・環境安全事業株式会社法の一部を改正する法律案",
+   "kind": "法律案（内閣提出）",
+   "sangiin": {
+    "date": "令和8年6月12日",
+    "result": "可決",
+    "manner": "多数",
+    "method": "押しボタン"
+   },
+   "shugiin": {
+    "date": "令和8年5月26日",
+    "result": "可決",
+    "manner": "多数",
+    "method": "起立"
+   },
+   "page": "m221080221060.htm"
+  },
+  {
+   "label": "刑事訴訟法の一部を改正する法律案",
+   "kind": "法律案（内閣提出）",
+   "sangiin": {
+    "date": "令和8年7月17日",
+    "result": "可決",
+    "manner": "多数",
+    "method": "押しボタン"
+   },
+   "shugiin": {
+    "date": "令和8年6月16日",
+    "result": "修正",
+    "manner": "多数",
+    "method": "起立"
+   },
+   "page": "m221080221061.htm"
+  },
+  {
+   "label": "著作権法の一部を改正する法律案",
+   "kind": "法律案（内閣提出）",
+   "sangiin": {
+    "date": "令和8年6月17日",
+    "result": "可決",
+    "manner": "多数",
+    "method": "押しボタン"
+   },
+   "shugiin": {
+    "date": "令和8年6月4日",
+    "result": "可決",
+    "manner": "全会一致",
+    "method": "異議の有無"
+   },
+   "page": "m221080221062.htm"
+  },
+  {
+   "label": "予防接種法の一部を改正する法律案",
+   "kind": "法律案（内閣提出）",
+   "sangiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "shugiin": {
+    "date": "令和8年6月30日",
+    "result": "可決",
+    "manner": "全会一致",
+    "method": "起立"
+   },
+   "page": "m221080221063.htm"
+  },
+  {
+   "label": "皇室典範等の一部を改正する法律案",
+   "kind": "法律案（内閣提出）",
+   "sangiin": {
+    "date": "令和8年7月17日",
+    "result": "可決",
+    "manner": "多数",
+    "method": "押しボタン"
+   },
+   "shugiin": {
+    "date": "令和8年7月10日",
+    "result": "可決",
+    "manner": "多数",
+    "method": "起立"
+   },
+   "page": "m221080221064.htm"
+  },
+  {
+   "label": "政治資金規正法の一部を改正する法律案",
+   "kind": "法律案（衆法）",
+   "sangiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "shugiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "page": "m221090221001.htm"
+  },
+  {
+   "label": "令和八年度における公債の発行の特例に関する法律案",
+   "kind": "法律案（衆法）",
+   "sangiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "shugiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "page": "m221090221002.htm"
+  },
+  {
+   "label": "インテリジェンスに係る態勢の整備の推進に関する法律案",
+   "kind": "法律案（衆法）",
+   "sangiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "shugiin": {
+    "date": "令和8年4月23日",
+    "result": "否決",
+    "manner": "少数",
+    "method": "起立"
+   },
+   "page": "m221090221003.htm"
+  },
+  {
+   "label": "運輸事業の振興の助成に関する法律の一部を改正する法律案",
+   "kind": "法律案（衆法）",
+   "sangiin": {
+    "date": "令和8年3月31日",
+    "result": "可決",
+    "manner": "全会一致",
+    "method": "押しボタン"
+   },
+   "shugiin": {
+    "date": "令和8年3月13日",
+    "result": "可決",
+    "manner": "全会一致",
+    "method": "異議の有無"
+   },
+   "page": "m221090221004.htm"
+  },
+  {
+   "label": "地震防災対策特別措置法の一部を改正する法律案",
+   "kind": "法律案（衆法）",
+   "sangiin": {
+    "date": "令和8年3月31日",
+    "result": "可決",
+    "manner": "多数",
+    "method": "押しボタン"
+   },
+   "shugiin": {
+    "date": "令和8年3月13日",
+    "result": "可決",
+    "manner": "多数",
+    "method": "起立"
+   },
+   "page": "m221090221005.htm"
+  },
+  {
+   "label": "障害者及びその家族に対する福祉、教育等に係る支援に関する施策の総合的な推進に関する法律案",
+   "kind": "法律案（衆法）",
+   "sangiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "shugiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "page": "m221090221006.htm"
+  },
+  {
+   "label": "全ての国民が安心して医療を受けられる環境の整備を図るための高額療養費等の制度の在り方に係る措置に関する法律案",
+   "kind": "法律案（衆法）",
+   "sangiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "shugiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "page": "m221090221007.htm"
+  },
+  {
+   "label": "食育基本法の一部を改正する法律案",
+   "kind": "法律案（衆法）",
+   "sangiin": {
+    "date": "令和8年5月20日",
+    "result": "可決",
+    "manner": "多数",
+    "method": "押しボタン"
+   },
+   "shugiin": {
+    "date": "令和8年4月23日",
+    "result": "可決",
+    "manner": "多数",
+    "method": "起立"
+   },
+   "page": "m221090221008.htm"
+  },
+  {
+   "label": "刑事訴訟法の一部を改正する法律案",
+   "kind": "法律案（衆法）",
+   "sangiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "shugiin": {
+    "date": "令和8年6月16日",
+    "result": "否決",
+    "manner": "少数",
+    "method": "起立"
+   },
+   "page": "m221090221009.htm"
+  },
+  {
+   "label": "国会議員の歳費、旅費及び手当等に関する法律の一部を改正する法律案",
+   "kind": "法律案（衆法）",
+   "sangiin": {
+    "date": "令和8年5月29日",
+    "result": "可決",
+    "manner": "多数",
+    "method": "押しボタン"
+   },
+   "shugiin": {
+    "date": "令和8年5月26日",
+    "result": "可決",
+    "manner": "多数",
+    "method": "起立"
+   },
+   "page": "m221090221010.htm"
+  },
+  {
+   "label": "日本国憲法の改正手続に関する法律の一部を改正する法律案",
+   "kind": "法律案（衆法）",
+   "sangiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "shugiin": {
+    "date": "令和8年6月19日",
+    "result": "可決",
+    "manner": "多数",
+    "method": "起立"
+   },
+   "page": "m221090221011.htm"
+  },
+  {
+   "label": "政党等の政治資金の収入に関する制度の在り方に係る措置に関する法律案",
+   "kind": "法律案（衆法）",
+   "sangiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "shugiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "page": "m221090221012.htm"
+  },
+  {
+   "label": "郵政民営化法等の一部を改正する法律案",
+   "kind": "法律案（衆法）",
+   "sangiin": {
+    "date": "令和8年6月19日",
+    "result": "可決",
+    "manner": "多数",
+    "method": "押しボタン"
+   },
+   "shugiin": {
+    "date": "令和8年6月16日",
+    "result": "可決",
+    "manner": "多数",
+    "method": "起立"
+   },
+   "page": "m221090221013.htm"
+  },
+  {
+   "label": "政治資金規正法の一部を改正する法律案",
+   "kind": "法律案（衆法）",
+   "sangiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "shugiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "page": "m221090221014.htm"
+  },
+  {
+   "label": "国立国会図書館法及び国立国会図書館法の規定により行政各部門に置かれる支部図書館及びその職員に関する法律の一部を改正する法律案",
+   "kind": "法律案（衆法）",
+   "sangiin": {
+    "date": "令和8年6月19日",
+    "result": "可決",
+    "manner": "多数",
+    "method": "押しボタン"
+   },
+   "shugiin": {
+    "date": "令和8年6月16日",
+    "result": "可決",
+    "manner": "多数",
+    "method": "起立"
+   },
+   "page": "m221090221015.htm"
+  },
+  {
+   "label": "自動車税及び軽自動車税の税率の上乗せに係る特例の廃止に関する法律案",
+   "kind": "法律案（衆法）",
+   "sangiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "shugiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "page": "m221090221016.htm"
+  },
+  {
+   "label": "自動車重量税率の上乗せに係る特例の廃止に関する法律案",
+   "kind": "法律案（衆法）",
+   "sangiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "shugiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "page": "m221090221017.htm"
+  },
+  {
+   "label": "国旗の損壊等の処罰に関する法律案",
+   "kind": "法律案（衆法）",
+   "sangiin": {
+    "date": "令和8年7月17日",
+    "result": "可決",
+    "manner": "多数",
+    "method": "押しボタン"
+   },
+   "shugiin": {
+    "date": "令和8年6月30日",
+    "result": "可決",
+    "manner": "多数",
+    "method": "起立"
+   },
+   "page": "m221090221018.htm"
+  },
+  {
+   "label": "自動車盗難対策等の推進に関する法律案",
+   "kind": "法律案（衆法）",
+   "sangiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "shugiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "page": "m221090221019.htm"
+  },
+  {
+   "label": "盗難自動車等の処分の防止に関する法律案",
+   "kind": "法律案（衆法）",
+   "sangiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "shugiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "page": "m221090221020.htm"
+  },
+  {
+   "label": "組織的な犯罪の処罰及び犯罪収益の規制等に関する法律及び刑事訴訟法の一部を改正する法律案",
+   "kind": "法律案（衆法）",
+   "sangiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "shugiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "page": "m221090221021.htm"
+  },
+  {
+   "label": "有人国境離島地域の保全及び特定有人国境離島地域に係る地域社会の維持に関する特別措置法の一部を改正する法律案",
+   "kind": "法律案（衆法）",
+   "sangiin": {
+    "date": "令和8年7月8日",
+    "result": "可決",
+    "manner": "多数",
+    "method": "押しボタン"
+   },
+   "shugiin": {
+    "date": "令和8年6月25日",
+    "result": "可決",
+    "manner": "多数",
+    "method": "起立"
+   },
+   "page": "m221090221022.htm"
+  },
+  {
+   "label": "高等学校の定時制教育及び通信教育振興法の一部を改正する法律案",
+   "kind": "法律案（衆法）",
+   "sangiin": {
+    "date": "令和8年7月15日",
+    "result": "可決",
+    "manner": "多数",
+    "method": "押しボタン"
+   },
+   "shugiin": {
+    "date": "令和8年6月25日",
+    "result": "可決",
+    "manner": "多数",
+    "method": "起立"
+   },
+   "page": "m221090221023.htm"
+  },
+  {
+   "label": "特別市の設置に係る制度の整備の推進に関する法律案",
+   "kind": "法律案（衆法）",
+   "sangiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "shugiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "page": "m221090221024.htm"
+  },
+  {
+   "label": "大都市地域における特別区の設置に関する法律の一部を改正する法律案",
+   "kind": "法律案（衆法）",
+   "sangiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "shugiin": {
+    "date": "令和8年7月15日",
+    "result": "否決",
+    "manner": "少数",
+    "method": "起立"
+   },
+   "page": "m221090221025.htm"
+  },
+  {
+   "label": "公職選挙法及び特定電気通信による情報の流通によって発生する権利侵害等への対処に関する法律の一部を改正する法律案",
+   "kind": "法律案（衆法）",
+   "sangiin": {
+    "date": "令和8年7月13日",
+    "result": "可決",
+    "manner": "多数",
+    "method": "押しボタン"
+   },
+   "shugiin": {
+    "date": "令和8年6月26日",
+    "result": "可決",
+    "manner": "多数",
+    "method": "起立"
+   },
+   "page": "m221090221026.htm"
+  },
+  {
+   "label": "国家社会機能継続性確保施策及び副首都の整備に係る施策の推進に関する法律案",
+   "kind": "法律案（衆法）",
+   "sangiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "shugiin": {
+    "date": "令和8年7月15日",
+    "result": "修正",
+    "manner": "多数",
+    "method": "起立"
+   },
+   "page": "m221090221027.htm"
+  },
+  {
+   "label": "衆議院議員の選挙制度改革及び定数削減に関する法律案",
+   "kind": "法律案（衆法）",
+   "sangiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "shugiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "page": "m221090221028.htm"
+  },
+  {
+   "label": "医療的ケア児及びその家族に対する支援に関する法律の一部を改正する法律案",
+   "kind": "法律案（衆法）",
+   "sangiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "shugiin": {
+    "date": "令和8年7月14日",
+    "result": "可決",
+    "manner": "全会一致",
+    "method": "異議の有無"
+   },
+   "page": "m221090221029.htm"
+  },
+  {
+   "label": "賃金上昇を上回る所得税の負担増加に対処するために所得税に関し講ずべき措置に関する法律案",
+   "kind": "法律案（衆法）",
+   "sangiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "shugiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "page": "m221090221030.htm"
+  },
+  {
+   "label": "賃金上昇を上回る個人住民税の負担増加等に対処するために個人住民税に関し講ずべき措置に関する法律案",
+   "kind": "法律案（衆法）",
+   "sangiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "shugiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "page": "m221090221031.htm"
+  },
+  {
+   "label": "受託中小企業振興法の一部を改正する法律案",
+   "kind": "法律案（衆法）",
+   "sangiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "shugiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "page": "m221090221032.htm"
+  },
+  {
+   "label": "ものづくり基盤技術振興基本法の一部を改正する法律案",
+   "kind": "法律案（衆法）",
+   "sangiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "shugiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "page": "m221090221033.htm"
+  },
+  {
+   "label": "新型コロナウイルス感染症対策検証委員会等の設置等に関する法律案",
+   "kind": "法律案（衆法）",
+   "sangiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "shugiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "page": "m221090221034.htm"
+  },
+  {
+   "label": "公職選挙法の一部を改正する法律案",
+   "kind": "法律案（衆法）",
+   "sangiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "shugiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "page": "m221090221035.htm"
+  },
+  {
+   "label": "非居住住宅税及び超短期所有住宅等の譲渡に係る事業所得等の課税の特例の創設等に関する法律案",
+   "kind": "法律案（衆法）",
+   "sangiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "shugiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "page": "m221090221036.htm"
+  },
+  {
+   "label": "自動車産業における脱炭素化の推進に関する法律案",
+   "kind": "法律案（衆法）",
+   "sangiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "shugiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "page": "m221090221037.htm"
+  },
+  {
+   "label": "政党交付金の交付を受ける政党の組織及び管理運営の透明性及び公正性の向上を図るための制度の導入に関する法律案",
+   "kind": "法律案（参法）",
+   "sangiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "shugiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "page": "m221100221001.htm"
+  },
+  {
+   "label": "特別児童扶養手当等の支給に関する法律の一部を改正する法律案",
+   "kind": "法律案（参法）",
+   "sangiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "shugiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "page": "m221100221002.htm"
+  },
+  {
+   "label": "所得税法の一部を改正する法律案",
+   "kind": "法律案（参法）",
+   "sangiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "shugiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "page": "m221100221003.htm"
+  },
+  {
+   "label": "地方税法の一部を改正する法律案",
+   "kind": "法律案（参法）",
+   "sangiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "shugiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "page": "m221100221004.htm"
+  },
+  {
+   "label": "防諜に関する施策の推進に関する法律案",
+   "kind": "法律案（参法）",
+   "sangiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "shugiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "page": "m221100221005.htm"
+  },
+  {
+   "label": "特定秘密の保護に関する法律及び重要経済安保情報の保護及び活用に関する法律の一部を改正する法律案",
+   "kind": "法律案（参法）",
+   "sangiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "shugiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "page": "m221100221006.htm"
+  },
+  {
+   "label": "刑法の一部を改正する法律案",
+   "kind": "法律案（参法）",
+   "sangiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "shugiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "page": "m221100221007.htm"
+  },
+  {
+   "label": "内密出産に対応するための体制の整備等の促進に関する法律案",
+   "kind": "法律案（参法）",
+   "sangiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "shugiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "page": "m221100221008.htm"
+  },
+  {
+   "label": "外国人総合政策庁の設置等による外国人政策の総合的な推進に関する法律案",
+   "kind": "法律案（参法）",
+   "sangiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "shugiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "page": "m221100221009.htm"
+  },
+  {
+   "label": "児童扶養手当法の一部を改正する等の法律案",
+   "kind": "法律案（参法）",
+   "sangiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "shugiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "page": "m221100221010.htm"
+  },
+  {
+   "label": "主要農作物の優良な品種を確保するための公的新品種育成の促進等に関する法律案",
+   "kind": "法律案（参法）",
+   "sangiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "shugiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "page": "m221100221011.htm"
+  },
+  {
+   "label": "政治資金規正法の一部を改正する法律案",
+   "kind": "法律案（参法）",
+   "sangiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "shugiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "page": "m221100221012.htm"
+  },
+  {
+   "label": "公職選挙法及び地方自治法の一部を改正する法律案",
+   "kind": "法律案（参法）",
+   "sangiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "shugiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "page": "m221100221013.htm"
+  },
+  {
+   "label": "特別児童扶養手当等の支給に関する法律の一部を改正する法律案",
+   "kind": "法律案（参法）",
+   "sangiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "shugiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "page": "m221100221014.htm"
+  },
+  {
+   "label": "特定空襲等被害者に対する一時金の支給等に関する法律案",
+   "kind": "法律案（参法）",
+   "sangiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "shugiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "page": "m221100221015.htm"
+  },
+  {
+   "label": "国による全ての水俣病の被害者の救済の実現に向けた給付金等の支給に係る制度の創設に関する法律案",
+   "kind": "法律案（参法）",
+   "sangiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "shugiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "page": "m221100221016.htm"
+  },
+  {
+   "label": "少額投資非課税制度における国債に係る所得に対する所得税の非課税に関する措置等に関する法律案",
+   "kind": "法律案（参法）",
+   "sangiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "shugiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "page": "m221100221017.htm"
+  },
+  {
+   "label": "大都市地域における特別区の設置に関する法律の一部を改正する法律案",
+   "kind": "法律案（参法）",
+   "sangiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "shugiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "page": "m221100221018.htm"
+  },
+  {
+   "label": "青少年が安全に安心してインターネットを利用できる環境の整備等に関する法律の一部を改正する法律案",
+   "kind": "法律案（参法）",
+   "sangiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "shugiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "page": "m221100221019.htm"
+  },
+  {
+   "label": "特別市の設置に係る制度の整備の推進に関する法律案",
+   "kind": "法律案（参法）",
+   "sangiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "shugiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "page": "m221100221020.htm"
+  },
+  {
+   "label": "国の出資を通じた特定民間賃貸住宅の供給の促進を図るための措置に関する法律案",
+   "kind": "法律案（参法）",
+   "sangiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "shugiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "page": "m221100221021.htm"
+  },
+  {
+   "label": "令和八年度一般会計予算",
+   "kind": "予算",
+   "sangiin": {
+    "date": "令和8年4月7日",
+    "result": "可決",
+    "manner": "多数",
+    "method": "記名"
+   },
+   "shugiin": {
+    "date": "令和8年3月13日",
+    "result": "可決",
+    "manner": "多数",
+    "method": "記名"
+   },
+   "page": "m221150221001.htm"
+  },
+  {
+   "label": "令和八年度特別会計予算",
+   "kind": "予算",
+   "sangiin": {
+    "date": "令和8年4月7日",
+    "result": "可決",
+    "manner": "多数",
+    "method": "記名"
+   },
+   "shugiin": {
+    "date": "令和8年3月13日",
+    "result": "可決",
+    "manner": "多数",
+    "method": "記名"
+   },
+   "page": "m221150221002.htm"
+  },
+  {
+   "label": "令和八年度政府関係機関予算",
+   "kind": "予算",
+   "sangiin": {
+    "date": "令和8年4月7日",
+    "result": "可決",
+    "manner": "多数",
+    "method": "記名"
+   },
+   "shugiin": {
+    "date": "令和8年3月13日",
+    "result": "可決",
+    "manner": "多数",
+    "method": "記名"
+   },
+   "page": "m221150221003.htm"
+  },
+  {
+   "label": "令和八年度一般会計暫定予算",
+   "kind": "予算",
+   "sangiin": {
+    "date": "令和8年3月30日",
+    "result": "可決",
+    "manner": "多数",
+    "method": "押しボタン"
+   },
+   "shugiin": {
+    "date": "令和8年3月30日",
+    "result": "可決",
+    "manner": "多数",
+    "method": "起立"
+   },
+   "page": "m221150221004.htm"
+  },
+  {
+   "label": "令和八年度特別会計暫定予算",
+   "kind": "予算",
+   "sangiin": {
+    "date": "令和8年3月30日",
+    "result": "可決",
+    "manner": "多数",
+    "method": "押しボタン"
+   },
+   "shugiin": {
+    "date": "令和8年3月30日",
+    "result": "可決",
+    "manner": "多数",
+    "method": "起立"
+   },
+   "page": "m221150221005.htm"
+  },
+  {
+   "label": "令和八年度政府関係機関暫定予算",
+   "kind": "予算",
+   "sangiin": {
+    "date": "令和8年3月30日",
+    "result": "可決",
+    "manner": "多数",
+    "method": "押しボタン"
+   },
+   "shugiin": {
+    "date": "令和8年3月30日",
+    "result": "可決",
+    "manner": "多数",
+    "method": "起立"
+   },
+   "page": "m221150221006.htm"
+  },
+  {
+   "label": "令和八年度一般会計補正予算（第１号）",
+   "kind": "予算",
+   "sangiin": {
+    "date": "令和8年6月5日",
+    "result": "可決",
+    "manner": "多数",
+    "method": "押しボタン"
+   },
+   "shugiin": {
+    "date": "令和8年6月4日",
+    "result": "可決",
+    "manner": "多数",
+    "method": "起立"
+   },
+   "page": "m221150221007.htm"
+  },
+  {
+   "label": "令和八年度特別会計補正予算（特第１号）",
+   "kind": "予算",
+   "sangiin": {
+    "date": "令和8年6月5日",
+    "result": "可決",
+    "manner": "多数",
+    "method": "押しボタン"
+   },
+   "shugiin": {
+    "date": "令和8年6月4日",
+    "result": "可決",
+    "manner": "多数",
+    "method": "起立"
+   },
+   "page": "m221150221008.htm"
+  },
+  {
+   "label": "日本国の自衛隊とフィリピンの軍隊との間における物品又は役務の相互の提供に関する日本国政府とフィリピン共和国政府との間の協定の締結について承認を求めるの件",
+   "kind": "条約",
+   "sangiin": {
+    "date": "令和8年6月19日",
+    "result": "承認",
+    "manner": "多数",
+    "method": "押しボタン"
+   },
+   "shugiin": {
+    "date": "令和8年6月2日",
+    "result": "承認",
+    "manner": "多数",
+    "method": "起立"
+   },
+   "page": "m221200221001.htm"
+  },
+  {
+   "label": "日本国の自衛隊とオランダ王国の軍隊との間における物品又は役務の相互の提供に関する日本国政府とオランダ王国政府との間の協定の締結について承認を求めるの件",
+   "kind": "条約",
+   "sangiin": {
+    "date": "令和8年6月19日",
+    "result": "承認",
+    "manner": "多数",
+    "method": "押しボタン"
+   },
+   "shugiin": {
+    "date": "令和8年6月2日",
+    "result": "承認",
+    "manner": "多数",
+    "method": "起立"
+   },
+   "page": "m221200221002.htm"
+  },
+  {
+   "label": "日本国の自衛隊とニュージーランド国防軍との間における物品又は役務の相互の提供に関する日本国政府とニュージーランド政府との間の協定の締結について承認を求めるの件",
+   "kind": "条約",
+   "sangiin": {
+    "date": "令和8年6月19日",
+    "result": "承認",
+    "manner": "多数",
+    "method": "押しボタン"
+   },
+   "shugiin": {
+    "date": "令和8年6月2日",
+    "result": "承認",
+    "manner": "多数",
+    "method": "起立"
+   },
+   "page": "m221200221003.htm"
+  },
+  {
+   "label": "投資の促進及び保護に関する日本国とセルビア共和国との間の協定の締結について承認を求めるの件",
+   "kind": "条約",
+   "sangiin": {
+    "date": "令和8年5月15日",
+    "result": "承認",
+    "manner": "多数",
+    "method": "押しボタン"
+   },
+   "shugiin": {
+    "date": "令和8年4月23日",
+    "result": "承認",
+    "manner": "多数",
+    "method": "起立"
+   },
+   "page": "m221200221004.htm"
+  },
+  {
+   "label": "投資の促進及び保護に関する日本国とパラグアイ共和国との間の協定の締結について承認を求めるの件",
+   "kind": "条約",
+   "sangiin": {
+    "date": "令和8年5月15日",
+    "result": "承認",
+    "manner": "多数",
+    "method": "押しボタン"
+   },
+   "shugiin": {
+    "date": "令和8年4月23日",
+    "result": "承認",
+    "manner": "多数",
+    "method": "起立"
+   },
+   "page": "m221200221005.htm"
+  },
+  {
+   "label": "投資の促進及び保護に関する日本国とザンビア共和国との間の協定の締結について承認を求めるの件",
+   "kind": "条約",
+   "sangiin": {
+    "date": "令和8年5月15日",
+    "result": "承認",
+    "manner": "多数",
+    "method": "押しボタン"
+   },
+   "shugiin": {
+    "date": "令和8年4月23日",
+    "result": "承認",
+    "manner": "多数",
+    "method": "起立"
+   },
+   "page": "m221200221006.htm"
+  },
+  {
+   "label": "投資の自由化、促進及び保護に関する日本国とタジキスタン共和国との間の協定の締結について承認を求めるの件",
+   "kind": "条約",
+   "sangiin": {
+    "date": "令和8年5月15日",
+    "result": "承認",
+    "manner": "多数",
+    "method": "押しボタン"
+   },
+   "shugiin": {
+    "date": "令和8年4月23日",
+    "result": "承認",
+    "manner": "多数",
+    "method": "起立"
+   },
+   "page": "m221200221007.htm"
+  },
+  {
+   "label": "刑事に関する共助に関する日本国とカナダとの間の条約の締結について承認を求めるの件",
+   "kind": "条約",
+   "sangiin": {
+    "date": "令和8年6月19日",
+    "result": "承認",
+    "manner": "全会一致",
+    "method": "押しボタン"
+   },
+   "shugiin": {
+    "date": "令和8年6月2日",
+    "result": "承認",
+    "manner": "全会一致",
+    "method": "異議の有無"
+   },
+   "page": "m221200221008.htm"
+  },
+  {
+   "label": "所得に対する租税に関する二重課税の除去並びに脱税及び租税回避の防止のための日本国とキルギス共和国との間の協定の締結について承認を求めるの件",
+   "kind": "条約",
+   "sangiin": {
+    "date": "令和8年5月29日",
+    "result": "承認",
+    "manner": "多数",
+    "method": "押しボタン"
+   },
+   "shugiin": {
+    "date": "令和8年5月19日",
+    "result": "承認",
+    "manner": "多数",
+    "method": "起立"
+   },
+   "page": "m221200221009.htm"
+  },
+  {
+   "label": "環境保護に関する南極条約議定書の附属書Ⅵの締結について承認を求めるの件",
+   "kind": "条約",
+   "sangiin": {
+    "date": "令和8年5月29日",
+    "result": "承認",
+    "manner": "全会一致",
+    "method": "押しボタン"
+   },
+   "shugiin": {
+    "date": "令和8年5月19日",
+    "result": "承認",
+    "manner": "全会一致",
+    "method": "異議の有無"
+   },
+   "page": "m221200221010.htm"
+  },
+  {
+   "label": "国際民間航空条約第五十条（ａ）の改正に関する二千十六年十月六日にモントリオールで署名された議定書及び国際民間航空条約第五十六条の改正に関する二千十六年十月六日にモントリオールで署名された議定書の締結について承認を求めるの件",
+   "kind": "条約",
+   "sangiin": {
+    "date": "令和8年5月29日",
+    "result": "承認",
+    "manner": "全会一致",
+    "method": "押しボタン"
+   },
+   "shugiin": {
+    "date": "令和8年5月19日",
+    "result": "承認",
+    "manner": "全会一致",
+    "method": "異議の有無"
+   },
+   "page": "m221200221011.htm"
+  },
+  {
+   "label": "万国郵便連合憲章の第十二追加議定書、万国郵便連合一般規則の第四追加議定書、万国郵便連合一般規則の第五追加議定書、万国郵便条約の第一追加議定書及び万国郵便条約の第二追加議定書の締結について承認を求めるの件",
+   "kind": "条約",
+   "sangiin": {
+    "date": "令和8年5月29日",
+    "result": "承認",
+    "manner": "全会一致",
+    "method": "押しボタン"
+   },
+   "shugiin": {
+    "date": "令和8年5月19日",
+    "result": "承認",
+    "manner": "全会一致",
+    "method": "異議の有無"
+   },
+   "page": "m221200221012.htm"
+  },
+  {
+   "label": "令和六年度一般会計原油価格・物価高騰対策及び賃上げ促進環境整備対応予備費使用総調書及び各省各庁所管使用調書",
+   "kind": "予備費等支出承諾",
+   "sangiin": {
+    "date": "令和8年6月17日",
+    "result": "承諾",
+    "manner": "多数",
+    "method": "押しボタン"
+   },
+   "shugiin": {
+    "date": "令和8年6月4日",
+    "result": "承諾",
+    "manner": "多数",
+    "method": "起立"
+   },
+   "page": "m221250221001.htm"
+  },
+  {
+   "label": "令和六年度一般会計予備費使用総調書及び各省各庁所管使用調書",
+   "kind": "予備費等支出承諾",
+   "sangiin": {
+    "date": "令和8年6月17日",
+    "result": "承諾",
+    "manner": "多数",
+    "method": "押しボタン"
+   },
+   "shugiin": {
+    "date": "令和8年6月4日",
+    "result": "承諾",
+    "manner": "多数",
+    "method": "起立"
+   },
+   "page": "m221250221002.htm"
+  },
+  {
+   "label": "令和七年度一般会計予備費使用総調書及び各省各庁所管使用調書（その１）",
+   "kind": "予備費等支出承諾",
+   "sangiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "shugiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "page": "m221250221003.htm"
+  },
+  {
+   "label": "令和七年度一般会計予備費使用総調書及び各省各庁所管使用調書（その２）",
+   "kind": "予備費等支出承諾",
+   "sangiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "shugiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "page": "m221250221004.htm"
+  },
+  {
+   "label": "令和七年度特別会計予算総則第二十二条第一項の規定による経費増額総調書及び各省各庁所管経費増額調書",
+   "kind": "予備費等支出承諾",
+   "sangiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "shugiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "page": "m221250221005.htm"
+  },
+  {
+   "label": "放送法第七十条第二項の規定に基づき、承認を求めるの件",
+   "kind": "国会の承認・承諾案件",
+   "sangiin": {
+    "date": "令和8年3月31日",
+    "result": "承認",
+    "manner": "多数",
+    "method": "押しボタン"
+   },
+   "shugiin": {
+    "date": "令和8年3月13日",
+    "result": "承認",
+    "manner": "多数",
+    "method": "起立"
+   },
+   "page": "m221350221001.htm"
+  },
+  {
+   "label": "人事官に菅原晶子君を任命することについて同意を求めるの件",
+   "kind": "人事案件",
+   "sangiin": {
+    "date": "令和8年3月23日",
+    "result": "同意",
+    "manner": "多数",
+    "method": "押しボタン"
+   },
+   "shugiin": {
+    "date": "令和8年3月19日",
+    "result": "同意",
+    "manner": "多数",
+    "method": "起立"
+   },
+   "page": "m221400221001.htm"
+  },
+  {
+   "label": "公正取引委員会委員に若林亜理砂君及び矢尾和子君を任命することについて同意を求めるの件",
+   "kind": "人事案件",
+   "sangiin": {
+    "date": "令和8年3月23日",
+    "result": "同意",
+    "manner": "全会一致",
+    "method": "押しボタン"
+   },
+   "shugiin": {
+    "date": "令和8年3月19日",
+    "result": "同意",
+    "manner": "全会一致",
+    "method": "異議の有無"
+   },
+   "page": "m221400221002.htm"
+  },
+  {
+   "label": "国家公安委員会委員に佐古和惠君を任命することについて同意を求めるの件",
+   "kind": "人事案件",
+   "sangiin": {
+    "date": "令和8年3月23日",
+    "result": "同意",
+    "manner": "多数",
+    "method": "押しボタン"
+   },
+   "shugiin": {
+    "date": "令和8年3月19日",
+    "result": "同意",
+    "manner": "多数",
+    "method": "起立"
+   },
+   "page": "m221400221003.htm"
+  },
+  {
+   "label": "サイバー通信情報監理委員会委員長に近藤宏子君を、同委員に新井悠君、田邊國昭君、上沼紫野君及び福田健介君を任命することについて同意を求めるの件",
+   "kind": "人事案件",
+   "sangiin": {
+    "date": "令和8年3月23日",
+    "result": "同意",
+    "manner": "多数",
+    "method": "押しボタン"
+   },
+   "shugiin": {
+    "date": "令和8年3月19日",
+    "result": "同意",
+    "manner": "多数",
+    "method": "起立"
+   },
+   "page": "m221400221004.htm"
+  },
+  {
+   "label": "情報公開・個人情報保護審査会委員に市木政昭君、石川千晶君及び大江裕幸君を任命することについて同意を求めるの件",
+   "kind": "人事案件",
+   "sangiin": {
+    "date": "令和8年3月23日",
+    "result": "同意",
+    "manner": "全会一致",
+    "method": "押しボタン"
+   },
+   "shugiin": {
+    "date": "令和8年3月19日",
+    "result": "同意",
+    "manner": "全会一致",
+    "method": "異議の有無"
+   },
+   "page": "m221400221005.htm"
+  },
+  {
+   "label": "日本銀行政策委員会審議委員に佐藤綾野君及び浅田統一郎君を任命することについて同意を求めるの件",
+   "kind": "人事案件",
+   "sangiin": {
+    "date": "令和8年3月23日",
+    "result": "同意",
+    "manner": "多数",
+    "method": "押しボタン"
+   },
+   "shugiin": {
+    "date": "令和8年3月19日",
+    "result": "同意",
+    "manner": "多数",
+    "method": "起立"
+   },
+   "page": "m221400221006.htm"
+  },
+  {
+   "label": "労働保険審査会委員に飯島淳子君及び永野仁美君を任命することについて同意を求めるの件",
+   "kind": "人事案件",
+   "sangiin": {
+    "date": "令和8年3月23日",
+    "result": "同意",
+    "manner": "全会一致",
+    "method": "押しボタン"
+   },
+   "shugiin": {
+    "date": "令和8年3月19日",
+    "result": "同意",
+    "manner": "全会一致",
+    "method": "異議の有無"
+   },
+   "page": "m221400221007.htm"
+  },
+  {
+   "label": "中央社会保険医療協議会公益委員に菅原琢磨君及び井深陽子君を任命することについて同意を求めるの件",
+   "kind": "人事案件",
+   "sangiin": {
+    "date": "令和8年3月23日",
+    "result": "同意",
+    "manner": "全会一致",
+    "method": "押しボタン"
+   },
+   "shugiin": {
+    "date": "令和8年3月19日",
+    "result": "同意",
+    "manner": "全会一致",
+    "method": "異議の有無"
+   },
+   "page": "m221400221008.htm"
+  },
+  {
+   "label": "社会保険審査会委員長に高橋譲君を、同委員に鈴木ひろみ君を任命することについて同意を求めるの件",
+   "kind": "人事案件",
+   "sangiin": {
+    "date": "令和8年3月23日",
+    "result": "同意",
+    "manner": "多数",
+    "method": "押しボタン"
+   },
+   "shugiin": {
+    "date": "令和8年3月19日",
+    "result": "同意",
+    "manner": "多数",
+    "method": "起立"
+   },
+   "page": "m221400221009.htm"
+  },
+  {
+   "label": "運輸審議会委員に二村真理子君を任命することについて同意を求めるの件",
+   "kind": "人事案件",
+   "sangiin": {
+    "date": "令和8年3月23日",
+    "result": "同意",
+    "manner": "多数",
+    "method": "押しボタン"
+   },
+   "shugiin": {
+    "date": "令和8年3月19日",
+    "result": "同意",
+    "manner": "多数",
+    "method": "起立"
+   },
+   "page": "m221400221010.htm"
+  },
+  {
+   "label": "公害健康被害補償不服審査会委員に山下直美君を任命することについて同意を求めるの件",
+   "kind": "人事案件",
+   "sangiin": {
+    "date": "令和8年3月23日",
+    "result": "同意",
+    "manner": "多数",
+    "method": "押しボタン"
+   },
+   "shugiin": {
+    "date": "令和8年3月19日",
+    "result": "同意",
+    "manner": "多数",
+    "method": "起立"
+   },
+   "page": "m221400221011.htm"
+  },
+  {
+   "label": "情報公開・個人情報保護審査会委員に小野瀬厚君、徳本広孝君及び野田崇君を任命することについて同意を求めるの件",
+   "kind": "人事案件",
+   "sangiin": {
+    "date": "令和8年6月12日",
+    "result": "同意",
+    "manner": "多数",
+    "method": "押しボタン"
+   },
+   "shugiin": {
+    "date": "令和8年6月11日",
+    "result": "同意",
+    "manner": "多数",
+    "method": "起立"
+   },
+   "page": "m221400221012.htm"
+  },
+  {
+   "label": "公害等調整委員会委員に横田信孝君及び大橋洋一君を任命することについて同意を求めるの件",
+   "kind": "人事案件",
+   "sangiin": {
+    "date": "令和8年6月12日",
+    "result": "同意",
+    "manner": "多数",
+    "method": "押しボタン"
+   },
+   "shugiin": {
+    "date": "令和8年6月11日",
+    "result": "同意",
+    "manner": "多数",
+    "method": "起立"
+   },
+   "page": "m221400221013.htm"
+  },
+  {
+   "label": "中央更生保護審査会委員長に小川秀樹君を任命することについて同意を求めるの件",
+   "kind": "人事案件",
+   "sangiin": {
+    "date": "令和8年6月12日",
+    "result": "同意",
+    "manner": "全会一致",
+    "method": "押しボタン"
+   },
+   "shugiin": {
+    "date": "令和8年6月11日",
+    "result": "同意",
+    "manner": "全会一致",
+    "method": "異議の有無"
+   },
+   "page": "m221400221014.htm"
+  },
+  {
+   "label": "土地鑑定委員会委員に横山美夏君、永山篤史君、浅見裕子君、川添義弘君、藤澤美惠子君、坂本圭君及び杉浦綾子君を任命することについて同意を求めるの件",
+   "kind": "人事案件",
+   "sangiin": {
+    "date": "令和8年6月12日",
+    "result": "同意",
+    "manner": "多数",
+    "method": "押しボタン"
+   },
+   "shugiin": {
+    "date": "令和8年6月11日",
+    "result": "同意",
+    "manner": "多数",
+    "method": "起立"
+   },
+   "page": "m221400221015.htm"
+  },
+  {
+   "label": "運輸安全委員会委員に伊藤裕康君、田口晴邦君及び高橋明子君を任命することについて同意を求めるの件",
+   "kind": "人事案件",
+   "sangiin": {
+    "date": "令和8年6月12日",
+    "result": "同意",
+    "manner": "全会一致",
+    "method": "押しボタン"
+   },
+   "shugiin": {
+    "date": "令和8年6月11日",
+    "result": "同意",
+    "manner": "全会一致",
+    "method": "異議の有無"
+   },
+   "page": "m221400221016.htm"
+  },
+  {
+   "label": "令和五年度一般会計歳入歳出決算、令和五年度特別会計歳入歳出決算、令和五年度国税収納金整理資金受払計算書、令和五年度政府関係機関決算書",
+   "kind": "歳入歳出決算",
+   "sangiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "shugiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "page": "m221450216001.htm"
+  },
+  {
+   "label": "令和六年度一般会計歳入歳出決算、令和六年度特別会計歳入歳出決算、令和六年度国税収納金整理資金受払計算書、令和六年度政府関係機関決算書",
+   "kind": "歳入歳出決算",
+   "sangiin": {
+    "date": "令和8年7月8日",
+    "result": "是認",
+    "manner": "多数",
+    "method": "押しボタン"
+   },
+   "shugiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "page": "m221450219001.htm"
+  },
+  {
+   "label": "令和五年度国有財産増減及び現在額総計算書",
+   "kind": "国有財産増減等計算書",
+   "sangiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "shugiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "page": "m221500216001.htm"
+  },
+  {
+   "label": "令和六年度国有財産増減及び現在額総計算書",
+   "kind": "国有財産増減等計算書",
+   "sangiin": {
+    "date": "令和8年7月8日",
+    "result": "是認",
+    "manner": "多数",
+    "method": "押しボタン"
+   },
+   "shugiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "page": "m221500219001.htm"
+  },
+  {
+   "label": "令和五年度国有財産無償貸付状況総計算書",
+   "kind": "国有財産無償貸付状況",
+   "sangiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "shugiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "page": "m221525216001.htm"
+  },
+  {
+   "label": "令和六年度国有財産無償貸付状況総計算書",
+   "kind": "国有財産無償貸付状況",
+   "sangiin": {
+    "date": "令和8年7月8日",
+    "result": "是認",
+    "manner": "多数",
+    "method": "押しボタン"
+   },
+   "shugiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "page": "m221525219001.htm"
+  },
+  {
+   "label": "日本放送協会令和六年度財産目録、貸借対照表、損益計算書、資本等変動計算書及びキャッシュ・フロー計算書並びにこれらに関する説明書",
+   "kind": "ＮＨＫ決算",
+   "sangiin": {
+    "date": "令和8年7月15日",
+    "result": "是認",
+    "manner": "多数",
+    "method": "押しボタン"
+   },
+   "shugiin": {
+    "date": "令和8年6月26日",
+    "result": "異議がない",
+    "manner": "多数",
+    "method": "起立"
+   },
+   "page": "m221550219001.htm"
+  },
+  {
+   "label": "参議院事務局職員定員規程の一部を改正する規程案",
+   "kind": "規程案",
+   "sangiin": {
+    "date": "令和8年4月7日",
+    "result": "可決",
+    "manner": "全会一致",
+    "method": "異議の有無"
+   },
+   "shugiin": {
+    "date": null,
+    "result": null,
+    "manner": null,
+    "method": null
+   },
+   "page": "m221725221001.htm"
+  }
+ ]
+}
