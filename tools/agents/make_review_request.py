@@ -32,8 +32,16 @@ ROOT = os.path.abspath(os.path.join(TOOLS, ".."))
 EDITOR_MD = os.path.join(HERE, "EDITOR.md")
 
 # 差分に出ても査読の意味がないもの（自動更新・生成物・バイナリ）
+#
+# ルート直下の *.html は build_site.py の出力そのもので、公開文言は
+# tools/build_*.py の文字列として差分に必ず写る。生成物まで送ると
+# 1行が極端に長いHTMLで依頼文が数十万字になり、分割で止まる（PR #6 で実際に起きた）。
+# **査読に生成HTMLを送らない**のは運用の教訓なので、記憶ではなくここで落とす。
+# 生成物そのものを見せたいときは --paths で明示的に指定する。
 EXCLUDE = [":(exclude)news.json", ":(exclude)news_archive.json",
-           ":(exclude)tools/state/*", ":(exclude)*.pyc", ":(exclude)archive/*"]
+           ":(exclude)tools/state/*", ":(exclude)*.pyc", ":(exclude)archive/*",
+           ":(exclude)*.html", ":(exclude)tools/site/*", ":(exclude)tools/*.json",
+           ":(exclude)tools/*.zip"]
 
 
 def git(*args, check=True):
