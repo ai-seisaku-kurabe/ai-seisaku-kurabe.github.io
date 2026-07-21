@@ -763,7 +763,7 @@ RESEARCH=(f'<title>先行研究と、この設計の根拠｜ AI政策くらべ<
     "議員の座標がイデオロギーだけでなく政党組織からの圧力や選挙区の要求など複数の要因の関数であることが指摘されている。",
     "軸の上に配置することはしません。尺度化した時点で、それは格付けになります。"
     "採決は「どの党がどの議案に賛成・反対したか」という生のかたちのまま示します。",
-    "Caughey &amp; Schickler, Substance and Change in Congressional Ideology: NOMINATE and Its Alternatives（Studies in American Political Development）※本文URL未確認")
+    _cite("Caughey &amp; Schickler (2016) Substance and Change in Congressional Ideology: NOMINATE and Its Alternatives (Studies in American Political Development 30)", "https://devincaughey.github.io/files/caughey_schickler_2016_nominate/caughey_schickler_2016_nominate.pdf"))
 
   + _rs("keep",
     "AIに評価の結論を出力させない",
