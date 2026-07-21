@@ -202,7 +202,12 @@ def check_kokkai_id(url):
     return True
 
 
-def check_links(urls, limit=None):
+# 学術出版社は自動アクセスを 403/429 で弾く。これは「その論文が存在しない」ことを
+# 意味しない（存在しないDOI/パスなら 404 が返る）。リンク切れと遮断を混同すると、
+# 実在する出典まで落としてしまうので、先行研究ページでは 403/429 を WARN として扱う。
+BLOCKED_CODES = {401, 403, 429}
+
+def check_links(urls, limit=None, soft_blocked=False):
     if limit: urls = urls[:limit]
     bad = 0
     for u in urls:
@@ -216,7 +221,10 @@ def check_links(urls, limit=None):
                 if r.status >= 400:
                     fail("リンク", f"{r.status} {u}"); bad += 1
         except urllib.error.HTTPError as e:
-            fail("リンク", f"{e.code} {u}"); bad += 1
+            if soft_blocked and e.code in BLOCKED_CODES:
+                warn("リンク", f"{e.code} 自動アクセスを遮断（存在は否定されない）: {u}")
+            else:
+                fail("リンク", f"{e.code} {u}"); bad += 1
         except Exception as e:
             warn("リンク", f"到達不可（一時的の可能性）: {u} ({e})")
         time.sleep(0.2)
@@ -303,6 +311,28 @@ def check_constitution():
             fail("憲法", f"about.html: 運用ルールが8項目でない（{n}項目）")
     print(f"  憲法: {ok}/{len(PROMISES)} 項目を確認")
 
+
+# ------------------------------------------- 6. 先行研究ページの引用リンク
+# research.html は外部の学術文献を引く唯一のページ。AIが生成した文献情報を扱うため、
+# 架空の出典が混ざると、このサイトが売っている検証可能性そのものが壊れる。
+# よって class="cite" のURLは全件、到達できることを機械的に確かめる。
+# class="cite unv" は未確認文献＝到達性チェックの対象外（本文の根拠には使わない）。
+def collect_research_citations():
+    p = os.path.join(ROOT, "research.html")
+    if not os.path.exists(p):
+        fail("先行研究", "research.html が存在しない")
+        return []
+    html = open(p, encoding="utf-8").read()
+    if "未確認" not in html:
+        fail("先行研究", "research.html に「未確認」の節が無い（確認できていない事柄の開示は必須）")
+    cited = re.findall(r'<a class="cite"\s+href="([^"]+)"', html)
+    unv = re.findall(r'<a class="cite unv"\s+href="([^"]+)"', html)
+    if unv:
+        print(f"  先行研究: 未確認扱いの出典 {len(unv)} 件は到達性チェックの対象外")
+    urls = sorted(set(h.replace("&amp;", "&") for h in cited))
+    print(f"  先行研究: 検証対象の出典リンク {len(urls)} 件")
+    return urls
+
 # ---------------------------------------------------------------- main
 def main():
     ap = argparse.ArgumentParser()
@@ -318,11 +348,13 @@ def main():
     check_editorial_language(bp)
     check_vkey_uniqueness(bp)
     check_constitution()
+    collect_research_citations()
 
     if not a.offline:
         print("\n[通信を伴う点検]")
         check_quotes(bp, oneissue, a.quotes_limit)
         check_links(collect_urls(bp, oneissue), a.links_limit)
+        check_links(collect_research_citations(), a.links_limit, soft_blocked=True)
     else:
         print("\n[--offline のため 引用照合・リンク到達性 は省略]")
 
