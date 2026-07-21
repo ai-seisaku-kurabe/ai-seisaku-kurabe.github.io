@@ -274,24 +274,74 @@ form.fb .req{ color:#c1704f; font-weight:700; font-size:11px; margin-left:4px; }
   font-size:14px; line-height:1.8; }
 .fb-note{ font-size:12px; color:var(--muted); line-height:1.9; margin-top:22px; }
 a.src{ color:var(--accent); text-decoration:none; } a.src:hover{ text-decoration:underline; }
+.fb-msg{ font-size:13px; color:var(--muted); margin:0; min-height:1.2em; }
+.fb-msg.err{ color:#c1704f; font-weight:600; }
+.fb-count{ font-size:11.5px; color:var(--muted); align-self:flex-end; }
 """
 FEEDBACK_FORM = ('  <p class="eyebrow">ご意見・お問い合わせ</p>'
   '<h1>このサイトへのご意見をお寄せください</h1>'
   '<p class="lede">誤りの指摘・機能の要望・感想など、なんでも歓迎です。いただいた声は<b>サイトの改善に活用</b>します。</p>'
-  '<div class="fb-thanks" style="margin-bottom:22px">'
-  '<b>ご意見の受付方法が変わりました。</b><br>'
-  'ホスティングの移行にともない、これまでの送信フォームが使えなくなりました。'
-  '現在は<b>GitHubのIssue</b>で受け付けています。'
-  '<p style="margin:16px 0 0">'
-  '<a class="fb-btn" style="text-decoration:none;display:inline-block" '
-  'href="https://github.com/ai-seisaku-kurabe/ai-seisaku-kurabe.github.io/issues/new" '
-  'target="_blank" rel="noopener">▸ ご意見を投稿する（GitHub）</a></p></div>'
-  '<p class="fb-note">・GitHubのアカウントが必要です。お持ちでない方向けの入力フォームは準備中です。<br>'
+  '<div id="fbWrap">'
+  '<form class="fb" id="fbForm">'
+  '<label>ご意見<span class="req">必須</span>'
+  '<textarea id="fbText" maxlength="2000" required '
+  'placeholder="例：〇〇党の△△の分野で、引用されている発言が議事録と違うようです。"></textarea></label>'
+  '<span class="fb-count" id="fbCount">0 / 2000 字</span>'
+  '<button class="fb-btn" id="fbBtn" type="submit">送信する</button>'
+  '<p class="fb-msg" id="fbMsg"></p>'
+  '</form></div>'
+  '<p class="fb-note">'
+  '・<b>いただいた内容は公開しません。</b>運営者だけが読み、サイトの改善に使います。<br>'
+  '・<b>お名前・メールアドレス・電話番号などは書かないでください。</b>'
+  'このフォームは本文と送信元のページ名しか保存せず、連絡先を受け取る作りになっていません。'
+  'そのため<b>個別の返信はできません</b>。<br>'
+  '・公開の場で議論したい場合や、返信のやり取りが必要な場合は'
+  '<a class="src" href="https://github.com/ai-seisaku-kurabe/ai-seisaku-kurabe.github.io/issues/new" '
+  'target="_blank" rel="noopener">GitHub の Issue</a>をお使いください（GitHubのアカウントが必要です）。<br>'
   '・<b>このサイトのソースコードは公開しています。</b>掲載データ・生成スクリプト・'
   '運用ルールのすべてを<a class="src" href="https://github.com/ai-seisaku-kurabe/ai-seisaku-kurabe.github.io" target="_blank" rel="noopener">'
-  'リポジトリ</a>で確認でき、誤りがあればIssueやPull Requestで直接指摘できます。<br>'
-  '・いただいた内容はサイト改善の目的でのみ利用します。</p>''<div class="fb-thanks" style="margin-top:22px">''<b>権利に関する申出も、この窓口で受け付けます。</b><br>''国会での発言の著作権は、<b>発言した議員ご本人</b>に帰属します。''このサイトは発言の一部を引用し、全文は会議録の原典リンクに委ねる形で掲載しています。''掲載のしかたについて<b>削除・訂正のご要望がある場合</b>は、上のIssueか''リポジトリ経由でお知らせください。確認のうえ対応します。''詳しくは<a class="src" href="about.html">このサイトについて</a>の「出典と権利」をご覧ください。</div>')
-FEEDBACK_JS = ""   # フォーム送信は廃止（GitHub Issue へ誘導）
+  'リポジトリ</a>で確認でき、誤りがあればIssueやPull Requestで直接指摘できます。</p>'
+  '<div class="fb-thanks" style="margin-top:22px">''<b>権利に関する申出も、この窓口で受け付けます。</b><br>''国会での発言の著作権は、<b>発言した議員ご本人</b>に帰属します。''このサイトは発言の一部を引用し、全文は会議録の原典リンクに委ねる形で掲載しています。''掲載のしかたについて<b>削除・訂正のご要望がある場合</b>は、上のIssueか''リポジトリ経由でお知らせください。確認のうえ対応します。''詳しくは<a class="src" href="about.html">このサイトについて</a>の「出典と権利」をご覧ください。</div>')
+FEEDBACK_JS = FB_TAGS + """
+<script>(function(){
+  var wrap=document.getElementById('fbWrap'), form=document.getElementById('fbForm'),
+      ta=document.getElementById('fbText'), btn=document.getElementById('fbBtn'),
+      msg=document.getElementById('fbMsg'), cnt=document.getElementById('fbCount');
+  var LIMIT=2000, WAIT=60*1000, KEY='kg_fb_last', sending=false;
+  if(!form || !ta) return;
+  function say(t, err){ msg.textContent=t; msg.className = err ? 'fb-msg err' : 'fb-msg'; }
+  function done(html){ wrap.innerHTML='<div class="fb-thanks">'+html+'</div>'; }
+  ta.addEventListener('input', function(){ cnt.textContent = ta.value.length + ' / ' + LIMIT + ' 字'; });
+  // 受付の停止スイッチ（config.json を書き換えるだけで効く。再ビルド不要）
+  fetch('config.json').then(function(r){ return r.json(); }).then(function(cfg){
+    if(cfg && cfg.feedback_enabled === false){
+      done('<b>ご意見の受付を一時停止しています。</b><br>' + (cfg.feedback_notice || ''));
+    }
+  }).catch(function(){});
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    if(sending) return;
+    var t=(ta.value||'').trim();
+    if(!t){ say('本文が空です。', true); return; }
+    if(t.length > LIMIT){ say(LIMIT+'字までです（現在 '+t.length+' 字）。', true); return; }
+    var last = Number(localStorage.getItem(KEY) || 0);
+    if(Date.now() - last < WAIT){
+      say('続けて送信することはできません。1分ほどおいてからお試しください。', true); return;
+    }
+    if(!window.KG || !KG.enabled() || !KG.sendFeedback){
+      say('送信できませんでした。下の GitHub の Issue からお送りください。', true); return;
+    }
+    sending=true; btn.disabled=true; say('送信しています…');
+    KG.sendFeedback(t, 'feedback').then(function(){
+      localStorage.setItem(KEY, String(Date.now()));
+      done('<b>お送りいただき、ありがとうございます。</b><br>'
+         + 'いただいた内容はサイトの改善に使わせていただきます。個別の返信はできません。');
+    }).catch(function(){
+      sending=false; btn.disabled=false;
+      say('送信できませんでした。時間をおいて試すか、下の GitHub の Issue からお送りください。', true);
+    });
+  });
+})();</script>"""
 FEEDBACK = (f'<title>ご意見・お問い合わせ — AI政策くらべ</title>\n<style>{INDEX_CSS}{FEEDBACK_CSS}</style>\n'
   f'<div class="wrap">{nav("feedback.html")}<div class="doc">' + FEEDBACK_FORM + '</div></div>' + FEEDBACK_JS)
 open("site/feedback.html","w",encoding="utf-8").write(FEEDBACK)
