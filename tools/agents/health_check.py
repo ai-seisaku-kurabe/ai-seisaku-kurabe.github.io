@@ -34,8 +34,8 @@ MARKERS = {
     "news.html":     ["nwList", "nw-chip", "政策ニュース"],
     "speeches.html": ["nwList", "sp-q", "発言一覧"],
     "mynote.html":   ["noteRoot", "マイノート"],
-    # data-netlify は Netlify がデプロイ時に除去するため、公開HTMLでは目印にできない
-    "feedback.html": ["fbform", 'name="form-name"', "ご意見"],
+    # ご意見フォームが生成から抜け落ちると、受付が黙って消える
+    "feedback.html": ["fbForm", "fbText", "ご意見"],
 }
 
 problems, notes = [], []
