@@ -181,6 +181,35 @@ for i,q in enumerate(POLICY):
            f'<div class="newsbox" data-qi="{i}"></div>'
            f'</details></div>')
 
+# 設問の選び方の開示。
+# 先行研究（Walgrave ら 2009）は、設問の選択そのものが一致度を左右することを実証している。
+# 選び方を書かずに結果だけ出すのは、いちばん効く編集判断を隠すことになるので、
+# 設問の直前に置く（研究の詳しい話と数字は research.html へ）。
+_n_vote = sum(1 for q in POLICY if q.get("basis_url"))
+HOWPICKED = (
+  '<details class="howpicked"><summary>この' + str(len(POLICY) + 1)
+  + '問は、どうやって選んだのか</summary>'
+  '<p><b>設問を選ぶこと自体が、いちばん大きな編集判断です。</b>'
+  '設問の選び方によって、どの党と一致しやすいかは変わります。'
+  'そのため、選び方を隠さずに書いておきます。</p>'
+  '<ul>'
+  '<li><b>誰が選んだか：</b>運営者が選びました。'
+  'ドイツの Wahl-O-Mat のように、混成チームが多数の案を作り、'
+  '<b>全政党に回答させたうえで絞り込むといった多段階の手続きは踏んでいません。</b></li>'
+  '<li><b>何から作ったか：</b>' + str(len(POLICY)) + '問のうち<b>' + str(_n_vote)
+  + '問</b>は参議院の記名採決での各党の賛否から立場を判定し、'
+  '<b>' + str(len(POLICY) - _n_vote) + '問</b>は各党の公約と国会での発言から判定しています。'
+  '設問ごとの根拠は、各設問の「この争点の対立軸」を開くと書いてあります。</li>'
+  '<li><b>選ばなかった争点：</b>掲載している2会期の記名投票は数百件あり、'
+  'そのほとんどは設問になっていません。'
+  '<b>検討して外したのではなく、多くは検討そのものをしていません。</b></li>'
+  '<li><b>選定の基準は、選んだ時点で文書になっていませんでした。</b>'
+  'いま公開しているのは事後に洗い出した記録で、当時の議事録ではありません。'
+  '件数と内訳は'
+  '<a class="src" href="research.html">先行研究と、この設計の根拠</a>の'
+  '「04 ／ 自分たちで測ったこと」に出しています。</li>'
+  '</ul></details>')
+
 CSS = """
 :root{ --paper:#f3f4f7; --card:#fbfbfd; --ink:#1b2130; --muted:#5c6675; --line:#dcdfe6;
   --accent:#3a4d8f; --accent-soft:#e6e9f4; --pos:#2f8f7f; --neg:#c1704f;
@@ -323,6 +352,13 @@ details.arg[open]>summary{ margin-bottom:10px; }
 .tienote{ background:var(--paper); border:1px solid var(--line); border-radius:10px;
   padding:11px 15px; font-size:13px; line-height:1.8; margin-top:14px; }
 .tienote b{ color:var(--ink); }
+/* 設問の選び方の開示。目立たせすぎず、しかし設問の前に必ず置く */
+.howpicked{ background:var(--card); border:1px solid var(--line); border-radius:12px;
+  padding:11px 15px; margin:0 0 16px; font-size:13px; }
+.howpicked summary{ cursor:pointer; color:var(--accent); font-weight:600; }
+.howpicked p{ line-height:1.85; margin:10px 0 0; }
+.howpicked ul{ margin:8px 0 0; padding-left:18px; }
+.howpicked li{ line-height:1.85; margin:6px 0; }
 .caveat{ font-size:12px; color:var(--muted); line-height:1.85; margin-top:14px; }
 .caveat b{ color:var(--ink); }
 a.src{ color:var(--accent); text-decoration:none; } a.src:hover{ text-decoration:underline; }
@@ -517,6 +553,7 @@ HTML = f'''<title>政策で照らす — あなたの考えと各党の言と行
   <p class="qhead">第2問〜　主要政策への賛否</p>
   <p class="qsub">賛成・反対がはっきりしない設問は「どちらでもない」で構いません。
   特に大事だと思う争点は <b>「◎ この争点を特に重視する」</b> を押すと、一致度の計算で3倍の重みになります。</p>
+  {HOWPICKED}
   {pq}
 
   <div class="actions">

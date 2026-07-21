@@ -725,6 +725,16 @@ def _audit_load():
 
 AUDIT = _audit_load()
 
+def _qaudit_load():
+    """設問の来歴の洗い出し（agents/audit_questions.py）の結果を読む。"""
+    p = "state/question_audit.json"
+    if not os.path.exists(p):
+        raise SystemExit("state/question_audit.json がありません。"
+                         "先に python agents/audit_questions.py を実行してください。")
+    return json.load(open(p, encoding="utf-8"))
+
+QAUDIT = _qaudit_load()
+
 def _audit_table(a):
     """党ごとの検査結果の表。順位表に見えないよう、一致度の平均は出さない。"""
     rows = "".join(
@@ -927,9 +937,15 @@ RESEARCH=(f'<title>先行研究と、この設計の根拠｜ AI政策くらべ<
     "これは点数化するかどうかとは独立に、マッチング機能を持つ限り必ず生じる。"
     "ドイツの Wahl-O-Mat は、混成チームが80〜100案を作り、全政党に回答させたうえで38問に絞る"
     "多段階の編集過程を公開している。",
-    "「政策で照らす」の11問を<b>誰がどういう手続きで選んだかを、まだ公開していません。</b>"
-    "現状は運営者が国会の争点から選んだもので、Wahl-O-Mat のような多段階の手続きは踏んでいません。"
-    "設問数が少ないことは、この問題を緩和しません（1問あたりの影響が大きくなります）。",
+    "設問の来歴は<b>04で洗い出して公開しました</b>"
+    "（採決から判定した設問が" + str(QAUDIT["by_basis"]["採決"]) + "問、"
+    "公約・発言から判定した設問が" + str(QAUDIT["by_basis"]["公約・発言"]) + "問、"
+    "設問になりえた記名投票は" + str(QAUDIT["pool_total"]) + "件）。"
+    "<b>ただし手続きそのものは、いまも踏んでいません。</b>"
+    "設問は運営者が選んだもので、Wahl-O-Mat のように全政党に回答させて絞り込む多段階の過程はありません。"
+    "選定の基準も、選んだ時点では文書になっていませんでした。"
+    "<b>来歴を数えたことは、選び方が妥当であることの証明にはなりません。</b>"
+    "設問数が少ないことも、この問題を緩和しません（1問あたりの影響が大きくなります）。",
     _cite("Walgrave, Nuytemans &amp; Pepermans (2009) Voting Aid Applications and the Effect of Statement Selection (West European Politics)", "https://medialibrary.uantwerpen.be/oldcontent/container2608/files/Walgrave%20et%20al%202009%20-%20voting%20aid%20applications.pdf")
     + " ／ " + _cite("Wahl-O-Mat（連邦政治教育センター）", "https://www.wahl-o-mat.de/"))
 
@@ -1126,6 +1142,29 @@ RESEARCH=(f'<title>先行研究と、この設計の根拠｜ AI政策くらべ<
     "「上下の並びは優劣ではないこと」が出ます。"
     "同じ見落としが再び入らないよう、③検証班の機械チェックにも項目を足しました。",
     "この項目に対応する先行研究はありません。全数検査から出た結果です。")
+
+  + _rs("meas",
+    "分かったこと④：設問がどこから来たかを数えた（手続きは踏んでいないままです）",
+    "投票支援ツール批判の最も基礎的な研究は、<b>設問の選択が一致度に深甚な影響を与える</b>ことを実証した。"
+    "そこで、良い設問かどうかではなく（それは機械には決められない）、"
+    "<b>設問が何から作られ、何が使われなかったか</b>を数えた。",
+    "「政策で照らす」の" + str(QAUDIT["questions"]) + "問のうち、"
+    "<b>" + str(QAUDIT["by_basis"]["採決"]) + "問</b>は参議院の記名採決での賛否から立場を判定し、"
+    "<b>" + str(QAUDIT["by_basis"]["公約・発言"]) + "問</b>は各党の公約と国会での発言から判定しています"
+    "（採決の賛否だけでは賛成・反対の理由を一意に決められない設問があるためです）。"
+    "掲載している2会期の記名投票は"
+    + "・".join("第" + s + "回" + str(v["roll_calls"]) + "件" for s, v in QAUDIT["pool"].items())
+    + "の<b>あわせて" + str(QAUDIT["pool_total"]) + "件</b>あり、"
+    "設問の根拠としてリンクしているのは<b>" + str(len(QAUDIT["vote_ids_used"])) + "件</b>です。"
+    "<b>残りは検討して外したのではなく、多くは検討そのものをしていません。</b>"
+    "選定の基準は、選んだ時点で文書になっていませんでした。"
+    "ここに出しているのは事後に洗い出した記録で、当時の議事録ではありません。"
+    "<b>Wahl-O-Mat のような多段階の手続きは、いまも踏んでいません。</b>"
+    "この開示は問題を解消するものではなく、問題の大きさを見えるようにするものです。"
+    "設問の直前にも、同じ内容の短い説明を置きました。",
+    _cite("Walgrave, Nuytemans &amp; Pepermans (2009) Voting Aid Applications and the Effect of Statement Selection (West European Politics)",
+          "https://medialibrary.uantwerpen.be/oldcontent/container2608/files/Walgrave%20et%20al%202009%20-%20voting%20aid%20applications.pdf")
+    + " ／ " + _cite("Wahl-O-Mat（連邦政治教育センター）", "https://www.wahl-o-mat.de/"))
 
   + '</section>'
 

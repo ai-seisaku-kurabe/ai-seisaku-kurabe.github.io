@@ -298,6 +298,10 @@ PROMISES = [
     ("research.html", ["自分たちで測ったこと"],                   "先行研究：全数検査の開示"),
     ("research.html", ["直し方は決まっていません"],               "先行研究：未解決であることの明示"),
     ("shindan.html",  ["これらの党を区別できません"],             "政策で照らす：同率の明示"),
+    # 設問の選び方の開示。いちばん大きな編集判断なので、消えたら止める。
+    ("shindan.html",  ["どうやって選んだのか", "多段階の手続きは踏んでいません"],
+                                                                  "政策で照らす：設問の選び方の開示"),
+    ("research.html", ["検討そのものをしていません"],             "先行研究：設問の母集団の開示"),
     # 出典と権利／プライバシー — 事実として書いている以上、消えたら気づけるようにする
     ("about.html",    ["発言した議員ご本人"],                     "出典と権利：著作権の帰属"),
     ("about.html",    ["削除・訂正の申出"],                       "出典と権利：申出窓口"),
@@ -363,6 +367,20 @@ def check_matching_audit(bp):
             fail("全数検査", f"立場が同じ党の組がある（{same}）のに、同率であることを画面に出していない")
     print(f"  全数検査: {a['total_inputs']:,}通り／{q}問{parties}党で一致"
           + (f"／立場が同じ組 {len(same)}" if same else ""))
+
+    # 設問の来歴（agents/audit_questions.py）も、設問数が変わったら数え直す
+    p2 = os.path.join(TOOLS, "state", "question_audit.json")
+    if not os.path.exists(p2):
+        fail("設問の来歴", "state/question_audit.json が無い（agents/audit_questions.py を実行する）")
+        return
+    qa = json.load(open(p2, encoding="utf-8"))
+    if qa.get("questions") != q:
+        fail("設問の来歴",
+             f"洗い出しが今の設計と違う（{qa.get('questions')}問 → 現在 {q}問）。"
+             "agents/audit_questions.py を回し直す")
+        return
+    print(f"  設問の来歴: {q}問（採決 {qa['by_basis']['採決']}／"
+          f"公約・発言 {qa['by_basis']['公約・発言']}）、母集団 {qa['pool_total']}件")
 
 
 # ------------------------------------------- 6. 先行研究ページの引用リンク
