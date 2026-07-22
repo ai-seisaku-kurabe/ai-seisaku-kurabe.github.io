@@ -314,6 +314,9 @@ PROMISES = [
     # 顕出性理論でワンイシューに足場を与えつつ、強調/賛否/重視度を混ぜない明示。消えたら止める。
     ("research.html", ["顕出性理論そのものの実装ではありません"], "先行研究：ワンイシューの顕出性理論の位置づけ"),
     ("research.html", ["投票行動を予測する係数ではありません"],   "先行研究：◎重視は投票予測でない明示"),
+    # 話題の配分の測定（候補D）。「本質ではない」の但し書きが消えたら止める。
+    ("research.html", ["6分野の外にある争点も測ってみた"],       "先行研究：話題の配分の測定"),
+    ("research.html", ["党の重点や本質を断定するものではありません"], "先行研究：話題の配分は本質でない明示"),
     # 出典と権利／プライバシー — 事実として書いている以上、消えたら気づけるようにする
     ("about.html",    ["発言した議員ご本人"],                     "出典と権利：著作権の帰属"),
     ("about.html",    ["削除・訂正の申出"],                       "出典と権利：申出窓口"),
@@ -443,6 +446,20 @@ def check_matching_audit(bp):
     xt = xa["total"]
     print(f"  抽出の選択比: 候補{xt['candidate_total']}件／表示{xt['shown']}枠"
           f"（枠あたり中央値{xt['median_candidates_per_shown_cell']}件）")
+
+    # 話題の配分（agents/audit_saliency.py）。掲載会期と一致するか。
+    p5 = os.path.join(TOOLS, "state", "saliency_audit.json")
+    if not os.path.exists(p5):
+        fail("話題の配分", "state/saliency_audit.json が無い（agents/audit_saliency.py を実行する）")
+        return
+    sa = json.load(open(p5, encoding="utf-8"))
+    if set(sa.get("windows", {})) != published:
+        fail("話題の配分",
+             f"測定した会期が掲載会期と違う（{sorted(set(sa.get('windows', {})))} / "
+             f"{sorted(published)}）。agents/audit_saliency.py を回し直す")
+        return
+    print(f"  話題の配分: {len(sa.get('by_party', []))}党／横断争点が上位に出た例 "
+          f"{len(sa.get('cross_signal', []))}件")
 
 
 # ------------------------------------------- 6. 先行研究ページの引用リンク
