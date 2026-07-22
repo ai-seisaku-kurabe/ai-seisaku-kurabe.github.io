@@ -1512,9 +1512,10 @@ open("site/privacy.html","w",encoding="utf-8").write(PRIVACY)
 # ご意見フォームは匿名・連絡先なしで個別返信ができない。その代わりに、届いたご意見が
 # どう扱われたか(要旨・採否・理由)をこのページで公開する。取り決めは agents/FEEDBACK_CHARTER.md。
 # 元データ= feedback_log.json。要旨は運営者が書き直したものだけ(原文をJSONに書いてはならない)。
-FBLOG = (json.load(open("feedback_log.json", encoding="utf-8"))
-         if os.path.exists("feedback_log.json")
-         else {"policy_boundary_utc": None, "entries": []})
+# パスはスクリプト位置基準で解決し、無ければ即エラーにする(カレントディレクトリ依存で
+# 黙って空データにフォールバックすると、記録が欠けたページを公開しうる — ⑧査読の指摘)。
+_FBLOG_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "feedback_log.json")
+FBLOG = json.load(open(_FBLOG_PATH, encoding="utf-8"))
 FBLOG_DECISIONS = {"採用", "一部採用", "不採用", "確認中"}
 for _e in FBLOG["entries"]:
     _miss = [k for k in ("date", "category", "decision", "reason") if not _e.get(k)]
