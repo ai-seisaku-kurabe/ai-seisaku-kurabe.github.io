@@ -332,6 +332,11 @@ PROMISES = [
                                                                   "ご意見：プライバシー側の開示と不遡及"),
     ("kiroku.html",   ["原文は公開しません", "採否の根拠にしません", "変更を完結させません"],
                                                                   "記録：原文非公開・件数非根拠・AI非完結の宣言"),
+    # 採決トリアージ(agents/TRIAGE_CRITERIA.md) — 全件判定の開示。
+    # 「重要度の格付けではない」「編集判断を含む」が消えると、分類が格付けに見え始める。
+    ("votes.html",    ["判定の基準", "重要度の格付けではありません", "編集判断を含みます"],
+                                                                  "採決一覧：全件判定と非格付けの明示"),
+    ("shindan.html",  ["設問候補になるか・ならないなら理由は何か"], "政策で照らす：全件判定の開示"),
 ]
 def check_constitution():
     ok = 0
@@ -484,6 +489,67 @@ def collect_research_citations():
     return urls
 
 
+# ------------------------------- 6b. 採決トリアージが全件・現在の掲載と一致しているか
+# votes.html は「全件に設問候補性の判定を付けています」と約束する(agents/TRIAGE_CRITERIA.md)。
+# 判定表が母集団・設問根拠・基準の版と食い違ったまま公開されると約束が嘘になるので機械で止める。
+def check_vote_triage():
+    from _sessions import published_sessions
+    tp = os.path.join(TOOLS, "vote_triage.json")
+    cp = os.path.join(TOOLS, "vote_triage_criteria.json")
+    if not (os.path.exists(tp) and os.path.exists(cp)):
+        fail("トリアージ", "vote_triage.json / vote_triage_criteria.json が無い"
+             "（agents/triage_votes.py を実行する）")
+        return
+    tri = json.load(open(tp, encoding="utf-8"))
+    crit = json.load(open(cp, encoding="utf-8"))
+    if tri.get("criteria_version") != crit.get("criteria_version"):
+        fail("トリアージ", f"判定表の版 {tri.get('criteria_version')} が"
+             f"基準の版 {crit.get('criteria_version')} と違う（triage_votes.py を回し直す）")
+    ses = published_sessions()
+    if tri.get("sessions") != ses:
+        fail("トリアージ", f"判定した会期 {tri.get('sessions')} が掲載会期 {ses} と違う"
+             "（triage_votes.py を回し直す）")
+        return
+    by_id = {r["id"]: r for r in tri["items"]}
+    pool = {}
+    for s in ses:
+        for b in json.load(open(os.path.join(TOOLS, f"{s}_votes.json"), encoding="utf-8"))["bills"]:
+            pool[b["id"]] = b
+    missing = [i for i in pool if i not in by_id]
+    extra = [i for i in by_id if i not in pool]
+    if missing:
+        fail("トリアージ", f"判定の無い採決が {len(missing)} 件ある（例 {missing[:3]}）")
+    if extra:
+        fail("トリアージ", f"母集団に無い判定が {len(extra)} 件ある（例 {extra[:3]}）")
+    bad = [r["id"] for r in tri["items"] if r["code"] not in crit["codes"]]
+    if bad:
+        fail("トリアージ", f"基準に無いコードの判定がある（{bad[:3]}）")
+    # USED が今の設問根拠と一致しているか（設問を変えたら判定表も回し直す）
+    qa_p = os.path.join(TOOLS, "state", "question_audit.json")
+    if os.path.exists(qa_p):
+        used_now = set(json.load(open(qa_p, encoding="utf-8"))["vote_ids_used"])
+        used_tri = {r["id"] for r in tri["items"] if r["code"] == "USED"}
+        if used_now != used_tri:
+            fail("トリアージ", f"USED {sorted(used_tri)} が設問根拠 {sorted(used_now)} と一致しない")
+    # 機械段の再現性：全会一致の採決が人間コードに紛れていないか
+    for vid, b in pool.items():
+        r = by_id.get(vid)
+        if not r or not b.get("parties"):
+            continue
+        una = all(v.get("no", 0) == 0 for v in b["parties"].values())
+        if una and r["code"] in ("CANDIDATE", "TOO_NARROW", "AMBIGUOUS", "REPRESENTED"):
+            fail("トリアージ", f"{vid} は全会一致なのに {r['code']}（機械段が回っていない）")
+    # REPRESENTED の代表採決が実在し、連鎖していないか
+    for r in tri["items"]:
+        if r["code"] == "REPRESENTED":
+            t = by_id.get(r.get("rep"))
+            if not t:
+                fail("トリアージ", f"{r['id']} の代表採決 {r.get('rep')} が存在しない")
+            elif t["code"] == "REPRESENTED":
+                fail("トリアージ", f"{r['id']} の代表採決 {t['id']} も REPRESENTED（連鎖は不可）")
+    print(f"  トリアージ: {len(pool)} 件の判定を確認（版 {tri.get('criteria_version')}）")
+
+
 # ------------------------------- 7. プライバシーポリシーと実装の一致
 # 「開示と実態の食い違い」は、このプロジェクトが繰り返し踏んでいる型。
 # privacy.html は「個別の記録を保存しない」「アクセス解析を入れていない」と
@@ -583,6 +649,7 @@ def main():
     check_vkey_uniqueness(bp)
     check_constitution()
     check_matching_audit(bp)
+    check_vote_triage()
     check_privacy_claims()
     check_feedback_log()
     collect_research_citations()
