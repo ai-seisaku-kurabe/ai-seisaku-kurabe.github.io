@@ -304,6 +304,8 @@ PROMISES = [
     ("research.html", ["検討そのものをしていません"],             "先行研究：設問の母集団の開示"),
     # 自分の誤りを見つけたときの訂正の記録。都合が悪いので消したくなる種類の記述。
     ("research.html", ["私たちの側の事実誤りがありました"],       "先行研究：誤りの訂正の記録"),
+    ("research.html", ["多くのうちの1つ"],                        "先行研究：抽出の選択比の開示"),
+    ("research.html", ["個人が非営利で運営"],                     "先行研究：運営主体の明示"),
     # 出典と権利／プライバシー — 事実として書いている以上、消えたら気づけるようにする
     ("about.html",    ["発言した議員ご本人"],                     "出典と権利：著作権の帰属"),
     ("about.html",    ["削除・訂正の申出"],                       "出典と権利：申出窓口"),
@@ -409,6 +411,21 @@ def check_matching_audit(bp):
     t = ra["total"]
     print(f"  行の範囲: 参院 議決{t['decided']}件中 記名{t['named']}件"
           f"（{t['named_pct']}%）／衆院 {t['shugiin_named_pct']}%")
+
+    # 「言」の抽出でどれだけ選んでいるか（agents/audit_extraction.py）。掲載会期と一致するか。
+    p4 = os.path.join(TOOLS, "state", "extraction_audit.json")
+    if not os.path.exists(p4):
+        fail("抽出の選択比", "state/extraction_audit.json が無い（agents/audit_extraction.py を実行する）")
+        return
+    xa = json.load(open(p4, encoding="utf-8"))
+    if set(xa.get("windows", {})) != published:
+        fail("抽出の選択比",
+             f"測定した会期が掲載会期と違う（{sorted(set(xa.get('windows', {})))} / "
+             f"{sorted(published)}）。agents/audit_extraction.py を回し直す")
+        return
+    xt = xa["total"]
+    print(f"  抽出の選択比: 候補{xt['candidate_total']}件／表示{xt['shown']}枠"
+          f"（枠あたり中央値{xt['median_candidates_per_shown_cell']}件）")
 
 
 # ------------------------------------------- 6. 先行研究ページの引用リンク

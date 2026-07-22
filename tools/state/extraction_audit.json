@@ -1,0 +1,1091 @@
+{
+ "generated": "2026-07-22",
+ "windows": {
+  "217": [
+   "2025-01-24",
+   "2025-06-22"
+  ],
+  "219": [
+   "2025-10-21",
+   "2025-12-17"
+  ],
+  "221": [
+   "2026-02-18",
+   "2026-07-22"
+  ]
+ },
+ "sessions": {
+  "217": {
+   "candidate_total": 883,
+   "shown": 46
+  },
+  "219": {
+   "candidate_total": 659,
+   "shown": 47
+  },
+  "221": {
+   "candidate_total": 862,
+   "shown": 56
+  }
+ },
+ "cells": [
+  {
+   "session": "217",
+   "party": "自由民主党",
+   "domain": "財政",
+   "candidates": 14,
+   "shown": true
+  },
+  {
+   "session": "217",
+   "party": "自由民主党",
+   "domain": "外交・安保",
+   "candidates": 20,
+   "shown": true
+  },
+  {
+   "session": "217",
+   "party": "自由民主党",
+   "domain": "社会保障",
+   "candidates": 12,
+   "shown": true
+  },
+  {
+   "session": "217",
+   "party": "自由民主党",
+   "domain": "エネルギー・環境",
+   "candidates": 20,
+   "shown": true
+  },
+  {
+   "session": "217",
+   "party": "自由民主党",
+   "domain": "経済・産業",
+   "candidates": 11,
+   "shown": true
+  },
+  {
+   "session": "217",
+   "party": "自由民主党",
+   "domain": "憲法",
+   "candidates": 25,
+   "shown": true
+  },
+  {
+   "session": "217",
+   "party": "立憲民主党",
+   "domain": "財政",
+   "candidates": 57,
+   "shown": true
+  },
+  {
+   "session": "217",
+   "party": "立憲民主党",
+   "domain": "外交・安保",
+   "candidates": 35,
+   "shown": true
+  },
+  {
+   "session": "217",
+   "party": "立憲民主党",
+   "domain": "社会保障",
+   "candidates": 47,
+   "shown": true
+  },
+  {
+   "session": "217",
+   "party": "立憲民主党",
+   "domain": "エネルギー・環境",
+   "candidates": 25,
+   "shown": true
+  },
+  {
+   "session": "217",
+   "party": "立憲民主党",
+   "domain": "経済・産業",
+   "candidates": 61,
+   "shown": true
+  },
+  {
+   "session": "217",
+   "party": "立憲民主党",
+   "domain": "憲法",
+   "candidates": 24,
+   "shown": true
+  },
+  {
+   "session": "217",
+   "party": "日本維新の会",
+   "domain": "財政",
+   "candidates": 23,
+   "shown": true
+  },
+  {
+   "session": "217",
+   "party": "日本維新の会",
+   "domain": "外交・安保",
+   "candidates": 34,
+   "shown": true
+  },
+  {
+   "session": "217",
+   "party": "日本維新の会",
+   "domain": "社会保障",
+   "candidates": 31,
+   "shown": true
+  },
+  {
+   "session": "217",
+   "party": "日本維新の会",
+   "domain": "エネルギー・環境",
+   "candidates": 20,
+   "shown": true
+  },
+  {
+   "session": "217",
+   "party": "日本維新の会",
+   "domain": "経済・産業",
+   "candidates": 19,
+   "shown": true
+  },
+  {
+   "session": "217",
+   "party": "日本維新の会",
+   "domain": "憲法",
+   "candidates": 34,
+   "shown": true
+  },
+  {
+   "session": "217",
+   "party": "国民民主党",
+   "domain": "財政",
+   "candidates": 14,
+   "shown": true
+  },
+  {
+   "session": "217",
+   "party": "国民民主党",
+   "domain": "外交・安保",
+   "candidates": 15,
+   "shown": true
+  },
+  {
+   "session": "217",
+   "party": "国民民主党",
+   "domain": "社会保障",
+   "candidates": 13,
+   "shown": true
+  },
+  {
+   "session": "217",
+   "party": "国民民主党",
+   "domain": "エネルギー・環境",
+   "candidates": 29,
+   "shown": true
+  },
+  {
+   "session": "217",
+   "party": "国民民主党",
+   "domain": "経済・産業",
+   "candidates": 23,
+   "shown": true
+  },
+  {
+   "session": "217",
+   "party": "国民民主党",
+   "domain": "憲法",
+   "candidates": 8,
+   "shown": true
+  },
+  {
+   "session": "217",
+   "party": "公明党",
+   "domain": "財政",
+   "candidates": 7,
+   "shown": true
+  },
+  {
+   "session": "217",
+   "party": "公明党",
+   "domain": "外交・安保",
+   "candidates": 14,
+   "shown": true
+  },
+  {
+   "session": "217",
+   "party": "公明党",
+   "domain": "社会保障",
+   "candidates": 5,
+   "shown": true
+  },
+  {
+   "session": "217",
+   "party": "公明党",
+   "domain": "エネルギー・環境",
+   "candidates": 13,
+   "shown": true
+  },
+  {
+   "session": "217",
+   "party": "公明党",
+   "domain": "経済・産業",
+   "candidates": 16,
+   "shown": true
+  },
+  {
+   "session": "217",
+   "party": "公明党",
+   "domain": "憲法",
+   "candidates": 10,
+   "shown": true
+  },
+  {
+   "session": "217",
+   "party": "日本共産党",
+   "domain": "財政",
+   "candidates": 29,
+   "shown": true
+  },
+  {
+   "session": "217",
+   "party": "日本共産党",
+   "domain": "外交・安保",
+   "candidates": 19,
+   "shown": true
+  },
+  {
+   "session": "217",
+   "party": "日本共産党",
+   "domain": "社会保障",
+   "candidates": 22,
+   "shown": true
+  },
+  {
+   "session": "217",
+   "party": "日本共産党",
+   "domain": "エネルギー・環境",
+   "candidates": 17,
+   "shown": true
+  },
+  {
+   "session": "217",
+   "party": "日本共産党",
+   "domain": "経済・産業",
+   "candidates": 27,
+   "shown": true
+  },
+  {
+   "session": "217",
+   "party": "日本共産党",
+   "domain": "憲法",
+   "candidates": 8,
+   "shown": true
+  },
+  {
+   "session": "217",
+   "party": "れいわ新選組",
+   "domain": "財政",
+   "candidates": 26,
+   "shown": true
+  },
+  {
+   "session": "217",
+   "party": "れいわ新選組",
+   "domain": "外交・安保",
+   "candidates": 4,
+   "shown": true
+  },
+  {
+   "session": "217",
+   "party": "れいわ新選組",
+   "domain": "社会保障",
+   "candidates": 13,
+   "shown": true
+  },
+  {
+   "session": "217",
+   "party": "れいわ新選組",
+   "domain": "エネルギー・環境",
+   "candidates": 8,
+   "shown": true
+  },
+  {
+   "session": "217",
+   "party": "れいわ新選組",
+   "domain": "経済・産業",
+   "candidates": 10,
+   "shown": true
+  },
+  {
+   "session": "217",
+   "party": "れいわ新選組",
+   "domain": "憲法",
+   "candidates": 12,
+   "shown": true
+  },
+  {
+   "session": "217",
+   "party": "参政党",
+   "domain": "財政",
+   "candidates": 0,
+   "shown": true
+  },
+  {
+   "session": "217",
+   "party": "参政党",
+   "domain": "外交・安保",
+   "candidates": 0,
+   "shown": true
+  },
+  {
+   "session": "217",
+   "party": "参政党",
+   "domain": "エネルギー・環境",
+   "candidates": 4,
+   "shown": true
+  },
+  {
+   "session": "217",
+   "party": "参政党",
+   "domain": "経済・産業",
+   "candidates": 0,
+   "shown": true
+  },
+  {
+   "session": "217",
+   "party": "社会民主党",
+   "domain": "憲法",
+   "candidates": 5,
+   "shown": false
+  },
+  {
+   "session": "219",
+   "party": "自由民主党",
+   "domain": "財政",
+   "candidates": 3,
+   "shown": true
+  },
+  {
+   "session": "219",
+   "party": "自由民主党",
+   "domain": "外交・安保",
+   "candidates": 19,
+   "shown": true
+  },
+  {
+   "session": "219",
+   "party": "自由民主党",
+   "domain": "社会保障",
+   "candidates": 13,
+   "shown": true
+  },
+  {
+   "session": "219",
+   "party": "自由民主党",
+   "domain": "エネルギー・環境",
+   "candidates": 5,
+   "shown": true
+  },
+  {
+   "session": "219",
+   "party": "自由民主党",
+   "domain": "経済・産業",
+   "candidates": 18,
+   "shown": true
+  },
+  {
+   "session": "219",
+   "party": "自由民主党",
+   "domain": "憲法",
+   "candidates": 5,
+   "shown": true
+  },
+  {
+   "session": "219",
+   "party": "立憲民主党",
+   "domain": "財政",
+   "candidates": 53,
+   "shown": true
+  },
+  {
+   "session": "219",
+   "party": "立憲民主党",
+   "domain": "外交・安保",
+   "candidates": 24,
+   "shown": true
+  },
+  {
+   "session": "219",
+   "party": "立憲民主党",
+   "domain": "社会保障",
+   "candidates": 51,
+   "shown": true
+  },
+  {
+   "session": "219",
+   "party": "立憲民主党",
+   "domain": "エネルギー・環境",
+   "candidates": 7,
+   "shown": true
+  },
+  {
+   "session": "219",
+   "party": "立憲民主党",
+   "domain": "経済・産業",
+   "candidates": 45,
+   "shown": true
+  },
+  {
+   "session": "219",
+   "party": "立憲民主党",
+   "domain": "憲法",
+   "candidates": 5,
+   "shown": true
+  },
+  {
+   "session": "219",
+   "party": "日本維新の会",
+   "domain": "財政",
+   "candidates": 5,
+   "shown": true
+  },
+  {
+   "session": "219",
+   "party": "日本維新の会",
+   "domain": "外交・安保",
+   "candidates": 14,
+   "shown": true
+  },
+  {
+   "session": "219",
+   "party": "日本維新の会",
+   "domain": "社会保障",
+   "candidates": 7,
+   "shown": true
+  },
+  {
+   "session": "219",
+   "party": "日本維新の会",
+   "domain": "エネルギー・環境",
+   "candidates": 6,
+   "shown": true
+  },
+  {
+   "session": "219",
+   "party": "日本維新の会",
+   "domain": "経済・産業",
+   "candidates": 9,
+   "shown": true
+  },
+  {
+   "session": "219",
+   "party": "日本維新の会",
+   "domain": "憲法",
+   "candidates": 7,
+   "shown": true
+  },
+  {
+   "session": "219",
+   "party": "国民民主党",
+   "domain": "財政",
+   "candidates": 28,
+   "shown": true
+  },
+  {
+   "session": "219",
+   "party": "国民民主党",
+   "domain": "外交・安保",
+   "candidates": 7,
+   "shown": true
+  },
+  {
+   "session": "219",
+   "party": "国民民主党",
+   "domain": "社会保障",
+   "candidates": 29,
+   "shown": true
+  },
+  {
+   "session": "219",
+   "party": "国民民主党",
+   "domain": "エネルギー・環境",
+   "candidates": 18,
+   "shown": true
+  },
+  {
+   "session": "219",
+   "party": "国民民主党",
+   "domain": "経済・産業",
+   "candidates": 44,
+   "shown": true
+  },
+  {
+   "session": "219",
+   "party": "国民民主党",
+   "domain": "憲法",
+   "candidates": 6,
+   "shown": true
+  },
+  {
+   "session": "219",
+   "party": "公明党",
+   "domain": "財政",
+   "candidates": 11,
+   "shown": true
+  },
+  {
+   "session": "219",
+   "party": "公明党",
+   "domain": "外交・安保",
+   "candidates": 12,
+   "shown": true
+  },
+  {
+   "session": "219",
+   "party": "公明党",
+   "domain": "社会保障",
+   "candidates": 24,
+   "shown": true
+  },
+  {
+   "session": "219",
+   "party": "公明党",
+   "domain": "エネルギー・環境",
+   "candidates": 8,
+   "shown": true
+  },
+  {
+   "session": "219",
+   "party": "公明党",
+   "domain": "経済・産業",
+   "candidates": 20,
+   "shown": true
+  },
+  {
+   "session": "219",
+   "party": "公明党",
+   "domain": "憲法",
+   "candidates": 3,
+   "shown": true
+  },
+  {
+   "session": "219",
+   "party": "日本共産党",
+   "domain": "財政",
+   "candidates": 3,
+   "shown": true
+  },
+  {
+   "session": "219",
+   "party": "日本共産党",
+   "domain": "外交・安保",
+   "candidates": 11,
+   "shown": true
+  },
+  {
+   "session": "219",
+   "party": "日本共産党",
+   "domain": "社会保障",
+   "candidates": 10,
+   "shown": true
+  },
+  {
+   "session": "219",
+   "party": "日本共産党",
+   "domain": "経済・産業",
+   "candidates": 6,
+   "shown": true
+  },
+  {
+   "session": "219",
+   "party": "日本共産党",
+   "domain": "憲法",
+   "candidates": 3,
+   "shown": true
+  },
+  {
+   "session": "219",
+   "party": "れいわ新選組",
+   "domain": "財政",
+   "candidates": 17,
+   "shown": true
+  },
+  {
+   "session": "219",
+   "party": "れいわ新選組",
+   "domain": "外交・安保",
+   "candidates": 4,
+   "shown": true
+  },
+  {
+   "session": "219",
+   "party": "れいわ新選組",
+   "domain": "社会保障",
+   "candidates": 10,
+   "shown": true
+  },
+  {
+   "session": "219",
+   "party": "れいわ新選組",
+   "domain": "エネルギー・環境",
+   "candidates": 9,
+   "shown": true
+  },
+  {
+   "session": "219",
+   "party": "れいわ新選組",
+   "domain": "経済・産業",
+   "candidates": 13,
+   "shown": true
+  },
+  {
+   "session": "219",
+   "party": "れいわ新選組",
+   "domain": "憲法",
+   "candidates": 7,
+   "shown": true
+  },
+  {
+   "session": "219",
+   "party": "参政党",
+   "domain": "財政",
+   "candidates": 24,
+   "shown": true
+  },
+  {
+   "session": "219",
+   "party": "参政党",
+   "domain": "外交・安保",
+   "candidates": 5,
+   "shown": true
+  },
+  {
+   "session": "219",
+   "party": "参政党",
+   "domain": "社会保障",
+   "candidates": 5,
+   "shown": true
+  },
+  {
+   "session": "219",
+   "party": "参政党",
+   "domain": "エネルギー・環境",
+   "candidates": 15,
+   "shown": true
+  },
+  {
+   "session": "219",
+   "party": "参政党",
+   "domain": "経済・産業",
+   "candidates": 8,
+   "shown": true
+  },
+  {
+   "session": "219",
+   "party": "参政党",
+   "domain": "憲法",
+   "candidates": 3,
+   "shown": true
+  },
+  {
+   "session": "221",
+   "party": "自由民主党",
+   "domain": "財政",
+   "candidates": 17,
+   "shown": true
+  },
+  {
+   "session": "221",
+   "party": "自由民主党",
+   "domain": "外交・安保",
+   "candidates": 19,
+   "shown": true
+  },
+  {
+   "session": "221",
+   "party": "自由民主党",
+   "domain": "社会保障",
+   "candidates": 17,
+   "shown": true
+  },
+  {
+   "session": "221",
+   "party": "自由民主党",
+   "domain": "エネルギー・環境",
+   "candidates": 12,
+   "shown": true
+  },
+  {
+   "session": "221",
+   "party": "自由民主党",
+   "domain": "経済・産業",
+   "candidates": 21,
+   "shown": true
+  },
+  {
+   "session": "221",
+   "party": "自由民主党",
+   "domain": "憲法",
+   "candidates": 35,
+   "shown": true
+  },
+  {
+   "session": "221",
+   "party": "立憲民主党",
+   "domain": "財政",
+   "candidates": 25,
+   "shown": true
+  },
+  {
+   "session": "221",
+   "party": "立憲民主党",
+   "domain": "外交・安保",
+   "candidates": 21,
+   "shown": true
+  },
+  {
+   "session": "221",
+   "party": "立憲民主党",
+   "domain": "社会保障",
+   "candidates": 24,
+   "shown": true
+  },
+  {
+   "session": "221",
+   "party": "立憲民主党",
+   "domain": "エネルギー・環境",
+   "candidates": 14,
+   "shown": true
+  },
+  {
+   "session": "221",
+   "party": "立憲民主党",
+   "domain": "経済・産業",
+   "candidates": 26,
+   "shown": true
+  },
+  {
+   "session": "221",
+   "party": "立憲民主党",
+   "domain": "憲法",
+   "candidates": 11,
+   "shown": true
+  },
+  {
+   "session": "221",
+   "party": "日本維新の会",
+   "domain": "財政",
+   "candidates": 12,
+   "shown": true
+  },
+  {
+   "session": "221",
+   "party": "日本維新の会",
+   "domain": "外交・安保",
+   "candidates": 16,
+   "shown": true
+  },
+  {
+   "session": "221",
+   "party": "日本維新の会",
+   "domain": "社会保障",
+   "candidates": 9,
+   "shown": true
+  },
+  {
+   "session": "221",
+   "party": "日本維新の会",
+   "domain": "エネルギー・環境",
+   "candidates": 6,
+   "shown": true
+  },
+  {
+   "session": "221",
+   "party": "日本維新の会",
+   "domain": "経済・産業",
+   "candidates": 13,
+   "shown": true
+  },
+  {
+   "session": "221",
+   "party": "日本維新の会",
+   "domain": "憲法",
+   "candidates": 25,
+   "shown": true
+  },
+  {
+   "session": "221",
+   "party": "国民民主党",
+   "domain": "財政",
+   "candidates": 28,
+   "shown": true
+  },
+  {
+   "session": "221",
+   "party": "国民民主党",
+   "domain": "外交・安保",
+   "candidates": 19,
+   "shown": true
+  },
+  {
+   "session": "221",
+   "party": "国民民主党",
+   "domain": "社会保障",
+   "candidates": 32,
+   "shown": true
+  },
+  {
+   "session": "221",
+   "party": "国民民主党",
+   "domain": "エネルギー・環境",
+   "candidates": 30,
+   "shown": true
+  },
+  {
+   "session": "221",
+   "party": "国民民主党",
+   "domain": "経済・産業",
+   "candidates": 43,
+   "shown": true
+  },
+  {
+   "session": "221",
+   "party": "国民民主党",
+   "domain": "憲法",
+   "candidates": 17,
+   "shown": true
+  },
+  {
+   "session": "221",
+   "party": "公明党",
+   "domain": "財政",
+   "candidates": 24,
+   "shown": true
+  },
+  {
+   "session": "221",
+   "party": "公明党",
+   "domain": "外交・安保",
+   "candidates": 18,
+   "shown": true
+  },
+  {
+   "session": "221",
+   "party": "公明党",
+   "domain": "社会保障",
+   "candidates": 22,
+   "shown": true
+  },
+  {
+   "session": "221",
+   "party": "公明党",
+   "domain": "エネルギー・環境",
+   "candidates": 8,
+   "shown": true
+  },
+  {
+   "session": "221",
+   "party": "公明党",
+   "domain": "経済・産業",
+   "candidates": 27,
+   "shown": true
+  },
+  {
+   "session": "221",
+   "party": "公明党",
+   "domain": "憲法",
+   "candidates": 8,
+   "shown": true
+  },
+  {
+   "session": "221",
+   "party": "日本共産党",
+   "domain": "財政",
+   "candidates": 14,
+   "shown": true
+  },
+  {
+   "session": "221",
+   "party": "日本共産党",
+   "domain": "外交・安保",
+   "candidates": 12,
+   "shown": true
+  },
+  {
+   "session": "221",
+   "party": "日本共産党",
+   "domain": "社会保障",
+   "candidates": 15,
+   "shown": true
+  },
+  {
+   "session": "221",
+   "party": "日本共産党",
+   "domain": "エネルギー・環境",
+   "candidates": 9,
+   "shown": true
+  },
+  {
+   "session": "221",
+   "party": "日本共産党",
+   "domain": "経済・産業",
+   "candidates": 11,
+   "shown": true
+  },
+  {
+   "session": "221",
+   "party": "日本共産党",
+   "domain": "憲法",
+   "candidates": 9,
+   "shown": true
+  },
+  {
+   "session": "221",
+   "party": "れいわ新選組",
+   "domain": "財政",
+   "candidates": 3,
+   "shown": true
+  },
+  {
+   "session": "221",
+   "party": "れいわ新選組",
+   "domain": "外交・安保",
+   "candidates": 6,
+   "shown": true
+  },
+  {
+   "session": "221",
+   "party": "れいわ新選組",
+   "domain": "社会保障",
+   "candidates": 3,
+   "shown": true
+  },
+  {
+   "session": "221",
+   "party": "れいわ新選組",
+   "domain": "経済・産業",
+   "candidates": 2,
+   "shown": true
+  },
+  {
+   "session": "221",
+   "party": "れいわ新選組",
+   "domain": "憲法",
+   "candidates": 1,
+   "shown": true
+  },
+  {
+   "session": "221",
+   "party": "参政党",
+   "domain": "財政",
+   "candidates": 18,
+   "shown": true
+  },
+  {
+   "session": "221",
+   "party": "参政党",
+   "domain": "外交・安保",
+   "candidates": 21,
+   "shown": true
+  },
+  {
+   "session": "221",
+   "party": "参政党",
+   "domain": "社会保障",
+   "candidates": 21,
+   "shown": true
+  },
+  {
+   "session": "221",
+   "party": "参政党",
+   "domain": "エネルギー・環境",
+   "candidates": 29,
+   "shown": true
+  },
+  {
+   "session": "221",
+   "party": "参政党",
+   "domain": "経済・産業",
+   "candidates": 17,
+   "shown": true
+  },
+  {
+   "session": "221",
+   "party": "参政党",
+   "domain": "憲法",
+   "candidates": 16,
+   "shown": true
+  },
+  {
+   "session": "221",
+   "party": "チームみらい",
+   "domain": "財政",
+   "candidates": 7,
+   "shown": true
+  },
+  {
+   "session": "221",
+   "party": "チームみらい",
+   "domain": "外交・安保",
+   "candidates": 5,
+   "shown": true
+  },
+  {
+   "session": "221",
+   "party": "チームみらい",
+   "domain": "社会保障",
+   "candidates": 6,
+   "shown": true
+  },
+  {
+   "session": "221",
+   "party": "チームみらい",
+   "domain": "エネルギー・環境",
+   "candidates": 3,
+   "shown": true
+  },
+  {
+   "session": "221",
+   "party": "チームみらい",
+   "domain": "経済・産業",
+   "candidates": 13,
+   "shown": true
+  },
+  {
+   "session": "221",
+   "party": "チームみらい",
+   "domain": "憲法",
+   "candidates": 8,
+   "shown": true
+  },
+  {
+   "session": "221",
+   "party": "社会民主党",
+   "domain": "財政",
+   "candidates": 9,
+   "shown": true
+  },
+  {
+   "session": "221",
+   "party": "社会民主党",
+   "domain": "社会保障",
+   "candidates": 4,
+   "shown": true
+  },
+  {
+   "session": "221",
+   "party": "社会民主党",
+   "domain": "憲法",
+   "candidates": 1,
+   "shown": true
+  }
+ ],
+ "total": {
+  "candidate_total": 2404,
+  "shown": 149,
+  "median_candidates_per_shown_cell": 14,
+  "max_candidates": 61,
+  "shown_cells_with_multiple_candidates": 144,
+  "shown_cells_counted": 146
+ }
+}

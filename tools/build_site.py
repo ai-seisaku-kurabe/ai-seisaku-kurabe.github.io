@@ -594,6 +594,16 @@ def _rcaudit_load():
 
 RCAUDIT = _rcaudit_load()
 
+def _xaudit_load():
+    """「言」の抽出でどれだけ選んでいるかの測定（agents/audit_extraction.py）の結果を読む。"""
+    p = "state/extraction_audit.json"
+    if not os.path.exists(p):
+        raise SystemExit("state/extraction_audit.json がありません。"
+                         "先に python agents/audit_extraction.py を実行してください。")
+    return json.load(open(p, encoding="utf-8"))
+
+XAUDIT = _xaudit_load()
+
 ABOUT_CSS="""
 .ab-lede{color:var(--muted);font-size:15.5px;line-height:1.85;max-width:64ch;margin:0 0 8px;}
 .ab-lede b{color:var(--ink);}
@@ -1161,7 +1171,10 @@ RESEARCH=(f'<title>先行研究と、この設計の根拠｜ AI政策くらべ<
     "ただし発言の抽出・分野への割り当てにはAIが関与しています。"
     "<b>その工程の精度を、数値で測ってはいません。</b>"
     "現状は全件の引用を原文と機械照合することで担保していますが、これは「引用が正確か」を見ているだけで、"
-    "<b>「拾うべき発言を拾えているか」は測れていません</b>。国会向けの物差しが無いことは言い訳になりません。",
+    "<b>「拾うべき発言を拾えているか」は測れていません</b>。国会向けの物差しが無いことは言い訳になりません。"
+    "せめて<b>どれだけ選んでいるかは04で数えました</b>"
+    "（表示している発言は、条件を通った候補の中央値" + str(XAUDIT["total"]["median_candidates_per_shown_cell"])
+    + "件のうちの1件）。ただし精度そのものは、これでも測れていません。",
     _cite("NTCIR-15 QA Lab-PoliInfo-2 データセット", "https://github.com/poliinfo2/NTCIR15-QA-Lab-PoliInfo-2-Dataset")
     + " ／ " + _cite("Kaneko, Asano &amp; Miwa (2026) Extracting ideological dimensions from legislative speeches in the Japanese Diet (Social Science Japan Journal 29-1)", "https://academic.oup.com/ssjj/article/29/1/jyag001/8507400"))
 
@@ -1170,9 +1183,15 @@ RESEARCH=(f'<title>先行研究と、この設計の根拠｜ AI政策くらべ<
     "アムステルダムとヘルシンキが2020年に公開した公的AI登録簿は、"
     "行政が使うアルゴリズムについて<b>使用データ／用途／人間がどう関与するか／リスク評価／"
     "責任者と連絡先／フィードバック経路</b>の開示を項目としている。",
-    "このサイトは6項目のうち5項目を公開していますが、"
-    "<b>責任者の氏名と連絡先は公開していません</b>（現在の窓口はGitHubのIssuesのみです）。"
-    "個人運営であることとの兼ね合いで、どこまで開示するかは検討中です。",
+    "6項目のうち、<b>使用データ／用途／人の関与／限界（リスク）／フィードバック経路の5つは公開しています。</b>"
+    "残る「責任者と連絡先」について、<b>運営主体は明示することにしました</b>——"
+    "このサイトは<b>「AI政策くらべ」として、個人が非営利で運営</b>しています。"
+    "連絡の窓口は、<a class=\"src\" href=\"feedback.html\">ご意見フォーム</a>"
+    "（GitHubのアカウントは不要です）と、GitHubのIssuesです。"
+    "一方で<b>運営者の氏名や個人の連絡先（メール・住所）は、公開しません。</b>"
+    "個人が運営しているためで、その分の説明責任は"
+    "「誰が見ても同じ一次情報が並び、作り方をすべて公開する」ことで果たす方針です。"
+    "組織としての責任者名を出せないことは、この登録簿の水準には届いていません。",
     _cite("Amsterdam AI Register（OECD.AI）", "https://oecd.ai/en/dashboards/policy-initiatives/amsterdams-ai-register-8123")
     + " ／ " + _cite("Public AI Registers（Amsterdam Open Research）", "https://openresearch.amsterdam/en/page/73074/public-ai-registers"))
 
@@ -1319,6 +1338,29 @@ RESEARCH=(f'<title>先行研究と、この設計の根拠｜ AI政策くらべ<
           "https://ideas.repec.org/p/ehl/lserod/87696.html")
     + " ／ " + _cite("参議院 議案情報（第217回国会）",
                      "https://www.sangiin.go.jp/japanese/joho1/kousei/gian/217/gian.htm"))
+
+  + _rs("meas",
+    "分かったこと⑥：発言は「候補のうち1件」で、その選択の度合いを数えた",
+    "「言」の各発言は、会議録を争点キーワードで検索し、答弁側・手続き的発言・"
+    "統一会派の代表討論などを除いたうえで、<b>最初に条件を満たした1件</b>を採ったものである。"
+    "国会向けの精度の物差し（拾うべき発言を拾えたか）は無く、正解を作ればそれ自体が編集判断になる。"
+    "そこで精度の代わりに、<b>どれだけ選んでいるか</b>を数えた。"
+    "各党×分野×会期について、同じ検索と同じ除外条件を通る発言が何件あるかを、"
+    "各会期の会期期間にわたって数えた。",
+    "<b>条件を通った候補の発言は、掲載" + str(len(XAUDIT["windows"]))
+    + "会期であわせて" + f'{XAUDIT["total"]["candidate_total"]:,}' + "件</b>ありました。"
+    "このサイトが見せているのは、そのうち<b>各枠1件だけ</b>です。"
+    "表示している枠あたりの候補は<b>中央値" + str(XAUDIT["total"]["median_candidates_per_shown_cell"])
+    + "件、最も多い枠で" + str(XAUDIT["total"]["max_candidates"]) + "件</b>で、"
+    "<b>" + str(XAUDIT["total"]["shown_cells_with_multiple_candidates"]) + "／"
+    + str(XAUDIT["total"]["shown_cells_counted"]) + "枠で候補が2件以上</b>ありました。"
+    "<b>つまり表示している発言は「多くのうちの1つ」で、別の1件を選べば違って見えます。</b>"
+    "どれが最も代表的かを決める物差しは無いので、これは精度の測定ではありません。"
+    "測れたのは選択の度合いだけで、<b>「拾うべきものを拾えているか」は依然として測れていません。</b>"
+    "並べている発言が力点の要約でなく一次情報への入口であること、"
+    "各分野の全発言は<a class=\"src\" href=\"speeches.html\">発言一覧</a>から辿れることが、"
+    "この選択への歯止めです。",
+    _cite("NTCIR-15 QA Lab-PoliInfo-2 データセット", "https://github.com/poliinfo2/NTCIR15-QA-Lab-PoliInfo-2-Dataset"))
 
   + '</section>'
 
