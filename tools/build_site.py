@@ -867,6 +867,15 @@ RESEARCH_CSS="""
 .rs-unv li::before{content:"?";position:absolute;left:0;top:0;font-family:var(--mono);
   font-size:11px;font-weight:700;color:#b08d20;}
 .rs-item.meas{border-left:3px solid #3b6ea5;}
+.rs-tabs{display:flex;flex-wrap:wrap;gap:7px;margin:20px 0 4px;}
+.rs-tab{font-size:12.5px;line-height:1.5;padding:7px 13px;border:1px solid var(--line);
+  border-left-width:3px;border-radius:9px;background:var(--card);color:var(--muted);cursor:pointer;}
+.rs-tab:hover{color:var(--ink);}
+.rs-tab.on{color:var(--ink);font-weight:700;background:var(--accent-soft);border-color:var(--accent);}
+.rs-tab.k-01{border-left-color:#2f8f7f;}
+.rs-tab.k-02{border-left-color:#c1704f;}
+.rs-tab.k-03{border-left-color:#b08d20;}
+.rs-tab.k-04{border-left-color:#3b6ea5;}
 .rs-tw{overflow-x:auto;margin:12px 0;}
 .rs-tbl{border-collapse:collapse;font-size:12.5px;min-width:520px;width:100%;}
 .rs-tbl th,.rs-tbl td{border-bottom:1px solid var(--line);padding:7px 10px;text-align:left;
@@ -929,6 +938,39 @@ def _saliency_table(s):
             '「%」は、その党が<b>いずれかの話題に触れた質問側発言</b>のうち、その話題に触れた割合'
             '（1つの発言が複数の話題に当たりうるので、合計は100%を超えます）。'
             '<b>党の重点や本質を表すものではなく、会議録での話題の配分の粗い目安</b>です。</p>')
+
+# 縦に長すぎる（7セクション直列）ため、「政党で選ぶ」の政党タブと同じ発想で
+# 01〜06 をタブ切替にする。00（読み方＝このページの規約）は常時表示。
+# タブはJSがセクション見出し(.ab-k)から自動生成する（Python側に見出しの写しを持たない）。
+# JSが無効なら従来どおり全文が縦に並ぶ（内容は隠さない、表示の切替だけ）。
+# 「すべて表示」を必ず置く（ページ内検索と印刷、および開示を畳んで見えなくしない保険）。
+RS_TABS_JS = ("<script>(function(){"
+  "var secs=[].slice.call(document.querySelectorAll('.doc > .ab-sec'));"
+  "if(secs.length<3)return;"
+  "secs.shift();"
+  "var items=secs.map(function(s){"
+  "var k=(s.querySelector('.ab-k')||{textContent:''}).textContent;"
+  "var m=k.match(/^(\\d+)\\s*／\\s*(.+)$/);"
+  "var n=s.querySelectorAll('.rs-item').length||s.querySelectorAll('.rs-unv li').length;"
+  "return {sec:s,num:m?m[1]:k,ttl:m?m[2]:k,n:n};});"
+  "var tabs=document.createElement('div');tabs.className='rs-tabs';"
+  "function select(num){"
+  "items.forEach(function(it){it.sec.style.display=(num==='all'||it.num===num)?'':'none';});"
+  "[].slice.call(tabs.children).forEach(function(b){"
+  "b.classList.toggle('on',b.getAttribute('data-r')===num);});}"
+  "function mk(num,text,kind){"
+  "var b=document.createElement('button');b.type='button';"
+  "b.className='rs-tab'+(kind?' k-'+kind:'');b.setAttribute('data-r',num);b.textContent=text;"
+  "b.addEventListener('click',function(){select(num);"
+  "history.replaceState(null,'','#tab-'+num);});tabs.appendChild(b);}"
+  "items.forEach(function(it){mk(it.num,it.ttl+(it.n?'（'+it.n+'）':''),it.num);});"
+  "mk('all','すべて表示','');"
+  "items[0].sec.parentNode.insertBefore(tabs,items[0].sec);"
+  "var h=(location.hash.match(/^#tab-([0-9a-z]+)/)||[])[1];"
+  "var ok=h==='all'||items.some(function(it){return it.num===h;});"
+  "select(ok?h:'01');"
+  "})();</script>")
+
 
 def _rs(kind, title, finding, did, srcs):
     """先行研究の1項目。
@@ -1556,7 +1598,7 @@ RESEARCH=(f'<title>先行研究と、この設計の根拠｜ AI政策くらべ<
 
   '<p class="note" style="margin-top:36px">このページは、サイトの設計判断の根拠を示すものです。'
   'データの作り方そのものは<a class="src" href="about.html">サイトについて</a>で公開しています。</p>'
-  '</div></div>')
+  '</div></div>' + RS_TABS_JS)
 open("site/research.html","w",encoding="utf-8").write(RESEARCH)
 
 # ---------- privacy.html (プライバシーポリシー) ----------
