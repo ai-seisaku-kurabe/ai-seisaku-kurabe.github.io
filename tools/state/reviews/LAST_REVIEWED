@@ -1,3 +1,9 @@
 # ⑧査読班が「ここまで査読した」コミット。次回はこの続きから査読する。
 # 手で書き換えないこと（未査読の範囲が分からなくなる）。
-e8e7f82cc5d4382f430e50ce9ee006be75a31845 20260721-235336
+# 2026-07-22: e8e7f82..1fc64ed の20コミットを chunk A/B/C に分けて査読（151k字で一度に回せず）。
+#   A(build_site/build_party/build_shindan)=BLOCK→修正 23ade07（憲法5条：話題の配分の順位・割合表示を撤去）
+#   B(audits/verify/tooling)=BLOCK→修正 99583bc（順位・割合を出す集計スクリプトごと撤去）
+#   C(feedback/triage/config)=PASS。記録=state/reviews/20260722-232150.md / -233430.md / -234020.md。
+#   非対象=specs/*.md（非公開の計画書）・firebase.js（公開埋込設定）・README.md(2行)。
+#   修正2件(23ade07/99583bc)は査読後の対応（内容は撤去・③CIで検証済み）。印は下記=現HEAD。
+99583bcb293abdecde5216f99a58dff04f0bc142 20260722-234205
