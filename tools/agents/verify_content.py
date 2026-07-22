@@ -314,6 +314,15 @@ PROMISES = [
     ("privacy.html",  ["アクセス解析ツールを入れていません"],     "プライバシー：解析なしの明示"),
     ("privacy.html",  ["個別の記録として保存していません"],       "プライバシー：個別記録なしの明示"),
     ("privacy.html",  ["reCAPTCHA"],                              "プライバシー：外部送信の明示"),
+    # ⑦応答班(FEEDBACK_CHARTER.md) — ご意見の取り扱いの開示。
+    # 「補助AIが読む」「要旨を公開することがある」が消えたまま運用が続くと、
+    # 開示なき実態(過去2回査読で刺された型)に戻るので機械で止める。
+    ("feedback.html", ["補助するAI", "書き直した要旨", "30日以内"],
+                                                                  "ご意見：AI関与・要旨公開・削除期限の開示"),
+    ("privacy.html",  ["補助するAI", "30日以内", "AIにも渡しません"],
+                                                                  "ご意見：プライバシー側の開示と不遡及"),
+    ("kiroku.html",   ["原文は公開しません", "採否の根拠にしません", "変更を完結させません"],
+                                                                  "記録：原文非公開・件数非根拠・AI非完結の宣言"),
 ]
 def check_constitution():
     ok = 0
@@ -502,6 +511,39 @@ def check_privacy_claims():
                      "privacy.html の「アクセス解析ツールを入れていません」と食い違う")
     print("  プライバシー: 記述と実装が一致")
 
+
+# ------------------------------- 7b. ご意見と対応の記録(⑦応答班)の整合
+# 取り決めは agents/FEEDBACK_CHARTER.md。ここで見るのは:
+#   ①記録の必須フィールド ②境界時刻(policy_boundary_utc)が無いまま記録が増えていないか
+#   (境界時刻より前の投稿は新運用の対象外なので、境界未設定で記録が存在するのは矛盾)。
+# 原文の混入は機械では判定できない(それは人間とAIの規律)。
+def check_feedback_log():
+    p = os.path.join(TOOLS, "feedback_log.json")
+    if not os.path.exists(p):
+        fail("ご意見の記録", "tools/feedback_log.json が無い")
+        return
+    log = json.load(open(p, encoding="utf-8"))
+    boundary = log.get("policy_boundary_utc")
+    entries = log.get("entries", [])
+    decisions = {"採用", "一部採用", "不採用", "確認中"}
+    for i, e in enumerate(entries):
+        miss = [k for k in ("date", "category", "decision", "reason") if not e.get(k)]
+        if miss:
+            fail("ご意見の記録", f"記録{i}: 必須フィールドが無い {miss}")
+        if e.get("decision") not in decisions:
+            fail("ご意見の記録", f"記録{i}: 採否の値が不正（{e.get('decision')}）")
+    if entries and not boundary:
+        fail("ご意見の記録",
+             "境界時刻(policy_boundary_utc)が未設定なのに記録が存在する。"
+             "新運用は開示改定の公開時刻を記録してからしか始められない(憲章 段階0)")
+    if boundary:
+        k = os.path.join(ROOT, "kiroku.html")
+        if os.path.exists(k) and boundary not in open(k, encoding="utf-8").read():
+            fail("ご意見の記録",
+                 f"kiroku.html に境界時刻（{boundary}）が表示されていない。再生成が必要")
+    print(f"  ご意見の記録: {len(entries)} 件"
+          + (f"／境界時刻 {boundary}" if boundary else "／新運用は未開始(境界時刻なし)"))
+
 # ---------------------------------------------------------------- main
 def main():
     ap = argparse.ArgumentParser()
@@ -519,6 +561,7 @@ def main():
     check_constitution()
     check_matching_audit(bp)
     check_privacy_claims()
+    check_feedback_log()
     collect_research_citations()
 
     if not a.offline:

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ご意見と対応の記録 ｜ AI政策くらべ</title><style>
+:root{ --paper:#f3f4f7; --card:#fbfbfd; --ink:#1b2130; --muted:#5c6675; --line:#dcdfe6;
+  --accent:#3a4d8f; --accent-soft:#e6e9f4; --shadow:0 1px 2px rgba(20,28,50,.05),0 8px 24px rgba(20,28,50,.05); }
+@media(prefers-color-scheme:dark){ :root{ --paper:#12151d; --card:#191d27; --ink:#e7eaf1; --muted:#98a1b2;
+  --line:#282e3b; --accent:#8ea2e6; --accent-soft:#222a40; --shadow:0 1px 2px rgba(0,0,0,.3),0 10px 30px rgba(0,0,0,.35);} }
+:root[data-theme="dark"]{ --paper:#12151d;--card:#191d27;--ink:#e7eaf1;--muted:#98a1b2;--line:#282e3b;--accent:#8ea2e6;--accent-soft:#222a40; }
+:root[data-theme="light"]{ --paper:#f3f4f7;--card:#fbfbfd;--ink:#1b2130;--muted:#5c6675;--line:#dcdfe6;--accent:#3a4d8f;--accent-soft:#e6e9f4; }
+*{box-sizing:border-box;}
+.wrap{ --serif:"Hiragino Mincho ProN","Yu Mincho",YuMincho,"Noto Serif JP",serif;
+  --sans:"Hiragino Kaku Gothic ProN","Yu Gothic",YuGothic,"Noto Sans JP",Meiryo,sans-serif;
+  --mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+  background:var(--paper);color:var(--ink);font-family:var(--sans);line-height:1.7;
+  -webkit-font-smoothing:antialiased;padding:clamp(20px,5vw,56px) clamp(16px,5vw,40px);}
+.doc{max-width:900px;margin:0 auto;}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin:0 0 12px;}
+h1{font-family:var(--serif);font-weight:600;font-size:clamp(26px,5vw,42px);line-height:1.28;text-wrap:balance;margin:0 0 14px;}
+.lede{color:var(--muted);font-size:15px;max-width:62ch;margin:0 0 26px;}
+.lede b{color:var(--ink);}
+.nav2{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:34px;}
+@media(max-width:640px){.nav2{grid-template-columns:1fr;}}
+.big{position:relative;display:block;text-decoration:none;color:inherit;background:var(--card);border:1px solid var(--line);
+  border-radius:16px;padding:22px 44px 22px 22px;box-shadow:var(--shadow);transition:transform .1s,border-color .15s;}
+.big:hover{transform:translateY(-2px);border-color:var(--accent);}
+.big .k{font-family:var(--mono);font-size:11px;letter-spacing:.1em;color:var(--accent);text-transform:uppercase;}
+.big .t{font-family:var(--serif);font-size:21px;font-weight:600;margin:8px 0 4px;}
+.big .s{font-size:12.5px;color:var(--muted);line-height:1.7;}
+.big .arw{position:absolute;right:18px;top:50%;transform:translateY(-50%);font-family:var(--mono);
+  font-size:18px;color:var(--line);transition:.15s;}
+.big:hover .arw{color:var(--accent);right:14px;}
+.big.primary{margin-bottom:14px;padding:24px 26px;border:2px solid var(--accent);background:var(--accent-soft);
+  display:flex;flex-direction:column;align-items:flex-start;}
+.big.primary .t{font-size:clamp(22px,4vw,27px);color:var(--accent);margin:6px 0 6px;}
+.big.primary .s{font-size:13.5px;}
+.big.primary .go{margin-top:16px;font-family:var(--mono);font-size:13.5px;font-weight:700;color:#fff;
+  background:var(--accent);border-radius:24px;padding:11px 24px;transition:.15s;}
+.big.primary:hover .go{padding-left:28px;padding-right:28px;}
+.sec{font-family:var(--serif);font-size:20px;font-weight:600;margin:0 0 4px;}
+.sec-s{color:var(--muted);font-size:13px;margin:0 0 16px;}
+.pgrid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+@media(max-width:600px){.pgrid{grid-template-columns:1fr;}}
+.pcard{position:relative;display:block;text-decoration:none;color:inherit;background:var(--card);border:1px solid var(--line);
+  border-left:4px solid var(--pc,var(--accent));border-radius:14px;padding:15px 34px 15px 18px;transition:border-color .15s,transform .1s;}
+.pcard:hover{border-color:var(--pc,var(--accent));transform:translateY(-2px);box-shadow:var(--shadow);}
+.pcard::after{content:"›";position:absolute;right:15px;top:50%;transform:translateY(-50%);
+  font-size:22px;line-height:1;color:var(--line);transition:.15s;}
+.pcard:hover::after{color:var(--pc,var(--accent));right:11px;}
+.ps{display:flex;align-items:center;gap:8px;font-family:var(--serif);font-weight:600;font-size:16px;}
+.pdot{flex:none;width:10px;height:10px;border-radius:50%;background:var(--pc,var(--accent));}
+.poi{display:block;font-size:12px;color:var(--muted);margin-top:3px;}
+.note{margin-top:28px;font-size:12px;color:var(--muted);line-height:1.85;}
+
+.ab-lede{color:var(--muted);font-size:15.5px;line-height:1.85;max-width:64ch;margin:0 0 8px;}
+.ab-lede b{color:var(--ink);}
+.ab-sec{border-top:1px solid var(--line);padding-top:24px;margin-top:30px;}
+.ab-k{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin:0 0 7px;}
+.ab-h{font-family:var(--serif);font-weight:600;font-size:clamp(18px,3.2vw,23px);line-height:1.4;margin:0 0 12px;text-wrap:balance;}
+.ab-b{font-size:14px;line-height:1.95;color:var(--ink);max-width:70ch;margin:0 0 12px;}
+.ab-b a.src{color:var(--accent);text-decoration:none;} .ab-b a.src:hover{text-decoration:underline;}
+.ab-list{list-style:none;padding:0;margin:4px 0 0;display:flex;flex-direction:column;gap:10px;}
+.ab-list li{position:relative;padding-left:20px;font-size:14px;line-height:1.85;color:var(--ink);max-width:70ch;}
+.ab-list li::before{content:"";position:absolute;left:2px;top:9px;width:7px;height:7px;border-radius:2px;background:var(--accent);}
+.ab-list b{font-weight:700;}
+.ab-two{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:6px;}
+@media(max-width:640px){.ab-two{grid-template-columns:1fr;}}
+.ab-card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 18px;}
+.ab-card.do{border-top:3px solid #2f8f7f;} .ab-card.dont{border-top:3px solid #c1704f;}
+.ab-card h3{font-family:var(--mono);font-size:12px;letter-spacing:.06em;margin:0 0 10px;}
+.ab-card.do h3{color:#2f8f7f;} .ab-card.dont h3{color:#c1704f;}
+.ab-card ul{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:8px;}
+.ab-card li{font-size:13.5px;line-height:1.7;color:var(--ink);padding-left:16px;position:relative;}
+.ab-card li::before{position:absolute;left:0;top:0;} .ab-card.do li::before{content:"○";color:#2f8f7f;} .ab-card.dont li::before{content:"×";color:#c1704f;}
+.rulebook{counter-reset:rb;list-style:none;padding:18px 20px;margin:8px 0 0;display:flex;flex-direction:column;gap:11px;
+  background:var(--card);border:1px solid var(--line);border-radius:14px;}
+.rulebook li{counter-increment:rb;position:relative;padding-left:34px;font-size:13.5px;line-height:1.85;color:var(--ink);}
+.rulebook li::before{content:counter(rb);position:absolute;left:0;top:2px;width:22px;height:22px;
+  display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:11px;font-weight:700;
+  background:var(--accent);color:#fff;border-radius:7px;}
+.rulebook b{font-weight:700;}
+.ab-limit{background:var(--card);border:1px solid var(--line);border-left:3px solid #c1704f;border-radius:0 12px 12px 0;padding:13px 18px;margin:10px 0;}
+.ab-limit p{margin:0;font-size:13.5px;line-height:1.8;color:var(--ink);} .ab-limit b{font-weight:700;}
+.ab-cta{display:flex;gap:12px;flex-wrap:wrap;margin:34px 0 0;}
+.ab-cta a{text-decoration:none;font-family:var(--mono);font-size:13px;font-weight:600;border-radius:22px;padding:10px 20px;}
+.ab-cta a.p{background:var(--accent);color:#fff;} .ab-cta a.s{border:1px solid var(--line);color:var(--accent);}
+.ab-cta a:hover{opacity:.92;}
+</style><meta name="google-site-verification" content="5MZhggn_go-F1KWBR-mDVs2F6fG3wO9S0UdiSt53XKM"><meta name="description" content="各党が国会で何を論じ、どう投票したか（言と行）を一次情報で比べる投票ガイド。点数化も格付けもしません。"><link rel="canonical" href="https://ai-seisaku-kurabe.github.io/kiroku.html"><meta property="og:type" content="website"><meta property="og:site_name" content="AI政策くらべ"><meta property="og:title" content="ご意見と対応の記録 ｜ AI政策くらべ"><meta property="og:description" content="各党が国会で何を論じ、どう投票したか（言と行）を一次情報で比べる投票ガイド。点数化も格付けもしません。"><meta property="og:url" content="https://ai-seisaku-kurabe.github.io/kiroku.html"><meta name="twitter:card" content="summary">
+</head>
+<body>
+<div class="wrap"><style>html{scroll-padding-top:64px;}.sitehdr{position:sticky;top:0;z-index:100;background:var(--paper);margin:calc(-1*clamp(20px,5vw,56px)) calc(-1*clamp(16px,5vw,40px)) 26px;padding:10px clamp(16px,5vw,40px);border-bottom:1px solid var(--line);}.sitehdr-in{max-width:900px;margin:0 auto;display:flex;align-items:center;gap:12px;}.brand{font-family:var(--serif);font-weight:600;font-size:15px;color:var(--ink);text-decoration:none;white-space:nowrap;}.brand span{color:var(--accent);}.topnav{display:flex;flex-wrap:wrap;gap:6px;margin-left:auto;font-family:var(--mono);font-size:12px}.topnav a{color:var(--muted);text-decoration:none;border:1px solid var(--line);border-radius:20px;padding:5px 11px}.topnav a:hover{border-color:var(--accent);color:var(--accent)}.topnav a.cur{background:var(--accent);color:#fff;border-color:var(--accent)}@media(max-width:600px){.sitehdr{padding:8px clamp(16px,5vw,40px);}.sitehdr-in{gap:10px;}.brand{flex:none;font-size:14px;}.topnav{flex:1;min-width:0;margin-left:6px;flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;font-size:11.5px;gap:5px;}.topnav::-webkit-scrollbar{display:none;}.topnav a{flex:none;white-space:nowrap;padding:5px 10px;}}</style><header class="sitehdr"><div class="sitehdr-in"><a class="brand" href="index.html">AI政策<span>くらべ</span></a><nav class="topnav"><a href="index.html">トップ</a><a href="guide.html">政党で選ぶ</a><a href="oneissue.html">ワンイシュー</a><a href="shindan.html">政策で照らす</a><a href="news.html">ニュース</a></nav></div></header><div class="doc"><p class="eyebrow">ご意見と対応の記録</p><h1>いただいたご意見が、どう扱われたか。</h1><p class="ab-lede">ご意見フォームは連絡先を受け取らないため、個別の返信ができません。その代わりに、サイトの変更につながりうるご意見について、<b>要旨・採否・理由</b>をこのページに残します。</p><section class="ab-sec"><p class="ab-k">01 ／ このページのルール</p><h2 class="ab-h">何を載せ、何を載せないか</h2><ul class="ab-list"><li><b>原文は公開しません。</b>載せるのは運営者が書き直した要旨だけです。要旨には、送った方や第三者の推測につながる要素（固有名詞・地域・所属・具体的な事情）を入れません。落としきれない場合は、要旨を載せず分類と採否だけを記録します。</li><li><b>採否の理由は、掲載基準・運用ルールへの当てはめだけを書きます。</b>ご意見やその送り主を評価する言葉は使いません。</li><li><b>同じ趣旨のご意見が何件届いたかは、採否の根拠にしません。</b>件数で判断すると、数を装った投稿で結論を動かせてしまうためです。</li><li><b>採否の初期値は不採用です。</b>サイトの目的に照らして改善だと積極的に説明でき、公開前の機械検証を通るものだけを採用します。</li><li><b>AIは変更を完結させません。</b>補助AI（Claude）が行うのは分類・事実確認・修正案や採否案の下書きまでで、内容に関わる採否の決定は運営者が行い、すべての変更はPull Requestと機械検証を経て公開されます。取り決めの全文は<a class="src" href="https://github.com/ai-seisaku-kurabe/ai-seisaku-kurabe.github.io/blob/main/tools/agents/FEEDBACK_CHARTER.md" target="_blank" rel="noopener">リポジトリで公開</a>しています。</li><li><b>掲載済みの要旨の削除・ぼかしのご要望は、<a class="src" href="feedback.html">ご意見フォーム</a>で受け付けます。</b>公開している情報を減らす方向のご要望には、本人確認なしで原則応じます。</li></ul></section><section class="ab-sec"><p class="ab-k">02 ／ 適用の範囲</p><h2 class="ab-h">いつからのご意見が対象か</h2><p class="ab-b">この運用の適用開始日時は、取り扱いの説明（ご意見のページ・プライバシーポリシー）の公開後に確定し、ここに記載します。<b>確定するまで、届いたご意見を新しい運用で扱うことはありません。</b></p></section><section class="ab-sec"><p class="ab-k">03 ／ 記録</p><h2 class="ab-h">要旨と採否</h2><div class="mn-empty" style="background:var(--card);border:1px dashed var(--line);border-radius:14px;padding:26px 22px;font-size:14px;color:var(--muted);line-height:1.9;text-align:center;">まだ記録はありません。</div></section><div class="ab-cta"><a class="p" href="feedback.html">ご意見を送る</a><a class="s" href="about.html">サイトについて</a></div></div></div><style>.sitefoot{--sf-sans:"Hiragino Kaku Gothic ProN","Yu Gothic",YuGothic,"Noto Sans JP",Meiryo,sans-serif;--sf-mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace;background:var(--paper);border-top:1px solid var(--line);padding:26px clamp(16px,5vw,40px) 40px;font-family:var(--sf-sans);}.sitefoot-in{max-width:900px;margin:0 auto;display:flex;flex-wrap:wrap;gap:26px;}.sf-group{display:flex;flex-direction:column;gap:7px;}.sf-l{font-family:var(--sf-mono);font-size:10.5px;letter-spacing:.12em;color:var(--muted);text-transform:uppercase;}.sf-group a{font-size:13px;color:var(--ink);text-decoration:none;}.sf-group a:hover{color:var(--accent);text-decoration:underline;}.sf-note{flex:1 1 260px;min-width:220px;font-size:11.5px;line-height:1.85;color:var(--muted);margin:0;}</style><footer class="sitefoot"><div class="sitefoot-in"><div class="sf-group"><span class="sf-l">さらに詳しく</span><a href="speeches.html">発言一覧</a><a href="votes.html">採決一覧</a><a href="shukei.html">みんなの結果</a><a href="mynote.html">マイノート</a></div><div class="sf-group"><span class="sf-l">このサイト</span><a href="about.html">サイトについて</a><a href="research.html">先行研究</a><a href="privacy.html">プライバシー</a><a href="feedback.html">ご意見</a><a href="kiroku.html">ご意見と対応の記録</a></div><p class="sf-note">出典：国会会議録検索システム／参議院 記名投票結果（第217回・第219回・第221回国会）。要約は編集判断を含みます。<b>点数化も格付けもしません。</b>判断は原典リンクで裏取りしてください。</p></div></footer>
+<style>.kgfab{position:fixed;right:16px;bottom:16px;z-index:95;display:inline-flex;align-items:center;gap:8px;background:var(--accent);color:#fff;text-decoration:none;border-radius:26px;padding:11px 17px;box-shadow:0 6px 22px rgba(20,28,50,.28);font-family:var(--mono),monospace;font-size:13px;font-weight:700;}.kgfab svg{fill:#fff;width:15px;height:15px;}@media(max-width:600px){.kgfab{right:12px;bottom:12px;padding:10px 15px;font-size:12px;}}</style><a class="kgfab" id="kgfab" href="mynote.html" hidden aria-label="マイノートを開く"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3.6h12a1 1 0 0 1 1 1v16.1l-7-4.1-7 4.1V4.6a1 1 0 0 1 1-1z"/></svg><span>マイノート <b id="kgfabn"></b></span></a><script>window.KGNOTE=(function(){function n(){try{return Object.keys(JSON.parse(localStorage.getItem('kg_notes')||'{}')).length;}catch(e){return 0;}}function refresh(){var f=document.getElementById('kgfab');if(!f)return;var c=n();if(c>0){f.hidden=false;document.getElementById('kgfabn').textContent=c;}else{f.hidden=true;}}if(document.readyState!=='loading')refresh();else document.addEventListener('DOMContentLoaded',refresh);return {refresh:refresh};})();</script>
+</body>
+</html>

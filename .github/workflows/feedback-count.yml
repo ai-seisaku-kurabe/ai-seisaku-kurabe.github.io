@@ -2,7 +2,7 @@ name: feedback-count
 # ⑥運用班: ご意見の新着件数だけを数える（本文は取得しない）
 on:
   schedule:
-    - cron: '0 21 * * 0'   # 毎週月曜 JST 6:00
+    - cron: '0 21,9 * * *'   # 半日ごと(毎日 JST 6:00 / 18:00)。⑦応答班の検知に使う
   workflow_dispatch:
 permissions:
   contents: write
