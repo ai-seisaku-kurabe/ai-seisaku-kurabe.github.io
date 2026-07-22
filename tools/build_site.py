@@ -1212,6 +1212,38 @@ RESEARCH=(f'<title>先行研究と、この設計の根拠｜ AI政策くらべ<
     _cite("Amsterdam AI Register（OECD.AI）", "https://oecd.ai/en/dashboards/policy-initiatives/amsterdams-ai-register-8123")
     + " ／ " + _cite("Public AI Registers（Amsterdam Open Research）", "https://openresearch.amsterdam/en/page/73074/public-ai-registers"))
 
+  + _rs("open",
+    "6つの分野の枠が、少数政党の「際立ち」を埋もれさせているかもしれない",
+    "政治学のニッチ政党研究は、<b>ニッチ政党を「主流政党が無視する、左右の軸に乗らない"
+    "少数の争点に特化した政党」</b>と定義する。挑戦者政党が既存の政党システムを揺るがすのは、"
+    "<b>大政党が見落としている新しい争点</b>を持ち込むからだ、という研究もある。"
+    "つまり、少数政党を少数政党たらしめているのは、<b>ふつうの分野分けに収まらない争点</b>であることが多い。",
+    "このサイトは、各党の言と行を<b>6つの分野（財政・外交安保・社会保障・エネルギー環境・"
+    "経済産業・憲法）に振り分けて</b>並べています。しかしこの6分野は、<b>まさに大政党が争う"
+    "主流の争点軸</b>でもあります。そのため、少数政党の看板になっている争点"
+    "（たとえば外国人政策、放送の受信料、デジタル・ガバナンス改革など、6分野に素直に収まらないもの）は、"
+    "<b>「他党と同じ6分野」の中に均され、その党を際立たせている当のものが見えにくくなる</b>おそれがあります。"
+    "分野の分け方自体が編集判断であることは04で書いていますが、"
+    "<b>その分け方が、特定の党の争点を構造的に不利にしていないかは、まだ確かめていません。</b>",
+    _cite("Wagner（ニッチ政党／著者公開）", "https://www.wagnermarkus.net/uploads/7/2/9/8/72983017/niche_parties_chapter_web.pdf")
+    + " ／ " + _cite("Meyer &amp; Miller (2015) The niche party concept and its measurement (Party Politics 21-2)", "https://pmc.ncbi.nlm.nih.gov/articles/PMC5180693/")
+    + " ／ " + _cite("De Vries &amp; Hobolt (2020) Political Entrepreneurs (Princeton University Press)", "https://press.princeton.edu/books/hardcover/9780691194752/political-entrepreneurs"))
+
+  + _rs("open",
+    "「政策で照らす」は賛否を測るが、争点には「賛否で表せないもの」がある",
+    "政治学は争点を2種類に分ける。<b>位置争点</b>（目的そのものについて賛成・反対が割れる争点）と、"
+    "<b>valence 争点</b>（目的には皆が賛成で、どの党が上手に実現できるかという能力で競う争点）だ。"
+    "「汚職を減らす」「経済を成長させる」のように、<b>誰も反対しない争点</b>がこれにあたる。",
+    "「政策で照らす」の設問は、すべて<b>賛成／どちらでもない／反対</b>という位置争点の形をしています。"
+    "ところが、各党のワンイシューとしてこのサイトが記録している"
+    "「手取りを増やす」「行政の透明化」「身を切る改革」などは、<b>誰も正面から反対しない valence 争点</b>で、"
+    "賛否では表せません（透明化に「反対」する人はいません。競争は能力と優先順位です）。"
+    "<b>照合の軸が位置争点ひとつであることは、valence で競うワンイシュー政党を、"
+    "構造的にうまく表現できないことを意味します。</b>"
+    "設問によっては賛否から立場を一意に導けないことは既に開示していますが、"
+    "その背景にこの区別があることは、まだ十分に説明できていません。",
+    _cite("Stokes (1963) Spatial Models of Party Competition (American Political Science Review 57-2)", "https://doi.org/10.2307/1952828"))
+
   + '</section>'
 
   # ---- 03の指摘のうち、測れるものを実際に測った結果。数字はすべて state/matching_audit.json から。
