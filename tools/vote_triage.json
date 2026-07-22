@@ -1,0 +1,1189 @@
+{
+ "criteria_version": "2026-07-v1",
+ "generated": "2026-07-22",
+ "sessions": [
+  "217",
+  "219",
+  "221"
+ ],
+ "total": 280,
+ "counts": {
+  "CANDIDATE": 128,
+  "NO_DIFF": 29,
+  "USED": 7,
+  "ACCOUNTS": 21,
+  "REPRESENTED": 6,
+  "TOO_NARROW": 11,
+  "PERSONNEL": 51,
+  "AMBIGUOUS": 22,
+  "PROCEDURAL": 5
+ },
+ "items": [
+  {
+   "id": "217-0620-v001",
+   "code": "CANDIDATE"
+  },
+  {
+   "id": "217-0620-v002",
+   "code": "CANDIDATE"
+  },
+  {
+   "id": "217-0618-v001",
+   "code": "CANDIDATE"
+  },
+  {
+   "id": "217-0618-v002",
+   "code": "CANDIDATE"
+  },
+  {
+   "id": "217-0613-v001",
+   "code": "CANDIDATE"
+  },
+  {
+   "id": "217-0613-v002",
+   "code": "CANDIDATE",
+   "note": "対北朝鮮制裁(輸出入禁止)の継続承認。「制裁を継続すべきか」として設問化しうるが未採用。"
+  },
+  {
+   "id": "217-0613-v003",
+   "code": "CANDIDATE"
+  },
+  {
+   "id": "217-0613-v004",
+   "code": "CANDIDATE"
+  },
+  {
+   "id": "217-0613-v005",
+   "code": "NO_DIFF"
+  },
+  {
+   "id": "217-0613-v006",
+   "code": "CANDIDATE"
+  },
+  {
+   "id": "217-0613-v007",
+   "code": "USED"
+  },
+  {
+   "id": "217-0611-v001",
+   "code": "ACCOUNTS"
+  },
+  {
+   "id": "217-0611-v002",
+   "code": "ACCOUNTS"
+  },
+  {
+   "id": "217-0611-v003",
+   "code": "ACCOUNTS"
+  },
+  {
+   "id": "217-0611-v004",
+   "code": "ACCOUNTS"
+  },
+  {
+   "id": "217-0611-v005",
+   "code": "CANDIDATE"
+  },
+  {
+   "id": "217-0611-v006",
+   "code": "CANDIDATE"
+  },
+  {
+   "id": "217-0611-v007",
+   "code": "CANDIDATE"
+  },
+  {
+   "id": "217-0606-v001",
+   "code": "USED"
+  },
+  {
+   "id": "217-0606-v002",
+   "code": "REPRESENTED",
+   "note": "同一争点(自衛隊と他国軍の物品役務相互提供=ACSA)。設問に使用した比ACSAで立場が読めます。",
+   "rep": "221-0619-v001"
+  },
+  {
+   "id": "217-0606-v003",
+   "code": "NO_DIFF"
+  },
+  {
+   "id": "217-0606-v004",
+   "code": "CANDIDATE"
+  },
+  {
+   "id": "217-0606-v005",
+   "code": "CANDIDATE"
+  },
+  {
+   "id": "217-0604-v001",
+   "code": "CANDIDATE"
+  },
+  {
+   "id": "217-0604-v002",
+   "code": "CANDIDATE"
+  },
+  {
+   "id": "217-0604-v003",
+   "code": "CANDIDATE"
+  },
+  {
+   "id": "217-0604-v004",
+   "code": "CANDIDATE"
+  },
+  {
+   "id": "217-0604-v005",
+   "code": "CANDIDATE"
+  },
+  {
+   "id": "217-0530-v001",
+   "code": "NO_DIFF"
+  },
+  {
+   "id": "217-0530-v002",
+   "code": "NO_DIFF"
+  },
+  {
+   "id": "217-0530-v003",
+   "code": "CANDIDATE"
+  },
+  {
+   "id": "217-0530-v004",
+   "code": "CANDIDATE"
+  },
+  {
+   "id": "217-0528-v001",
+   "code": "TOO_NARROW",
+   "note": "国際協同組合年に当たっての記念決議。"
+  },
+  {
+   "id": "217-0528-v002",
+   "code": "CANDIDATE"
+  },
+  {
+   "id": "217-0528-v003",
+   "code": "CANDIDATE"
+  },
+  {
+   "id": "217-0528-v004",
+   "code": "ACCOUNTS"
+  },
+  {
+   "id": "217-0528-v005",
+   "code": "ACCOUNTS"
+  },
+  {
+   "id": "217-0528-v006",
+   "code": "ACCOUNTS"
+  },
+  {
+   "id": "217-0528-v007",
+   "code": "ACCOUNTS"
+  },
+  {
+   "id": "217-0528-v008",
+   "code": "USED"
+  },
+  {
+   "id": "217-0528-v009",
+   "code": "CANDIDATE"
+  },
+  {
+   "id": "217-0523-v001",
+   "code": "NO_DIFF"
+  },
+  {
+   "id": "217-0523-v002",
+   "code": "NO_DIFF"
+  },
+  {
+   "id": "217-0523-v003",
+   "code": "NO_DIFF"
+  },
+  {
+   "id": "217-0523-v004",
+   "code": "CANDIDATE"
+  },
+  {
+   "id": "217-0523-v005",
+   "code": "CANDIDATE"
+  },
+  {
+   "id": "217-0523-v006",
+   "code": "CANDIDATE"
+  },
+  {
+   "id": "217-0521-v001",
+   "code": "PERSONNEL"
+  },
+  {
+   "id": "217-0521-v002",
+   "code": "PERSONNEL"
+  },
+  {
+   "id": "217-0521-v003",
+   "code": "PERSONNEL"
+  },
+  {
+   "id": "217-0521-v004",
+   "code": "PERSONNEL"
+  },
+  {
+   "id": "217-0521-v005",
+   "code": "PERSONNEL"
+  },
+  {
+   "id": "217-0521-v006",
+   "code": "PERSONNEL"
+  },
+  {
+   "id": "217-0521-v007",
+   "code": "PERSONNEL"
+  },
+  {
+   "id": "217-0521-v008",
+   "code": "PERSONNEL"
+  },
+  {
+   "id": "217-0521-v009",
+   "code": "PERSONNEL"
+  },
+  {
+   "id": "217-0521-v010",
+   "code": "CANDIDATE"
+  },
+  {
+   "id": "217-0521-v011",
+   "code": "USED"
+  },
+  {
+   "id": "217-0516-v001",
+   "code": "CANDIDATE"
+  },
+  {
+   "id": "217-0516-v002",
+   "code": "AMBIGUOUS",
+   "note": "特別会計の一括改正で、賛否を単一の政策命題として読み替えられません。"
+  },
+  {
+   "id": "217-0516-v003",
+   "code": "CANDIDATE"
+  },
+  {
+   "id": "217-0516-v004",
+   "code": "CANDIDATE"
+  },
+  {
+   "id": "217-0516-v005",
+   "code": "CANDIDATE"
+  },
+  {
+   "id": "217-0516-v006",
+   "code": "CANDIDATE"
+  },
+  {
+   "id": "217-0514-v001",
+   "code": "REPRESENTED",
+   "note": "対北朝鮮制裁(特定船舶入港禁止)の承認。同じ制裁継続の外為法承認で立場が読めます。",
+   "rep": "217-0613-v002"
+  },
+  {
+   "id": "217-0514-v002",
+   "code": "CANDIDATE"
+  },
+  {
+   "id": "217-0509-v001",
+   "code": "NO_DIFF"
+  },
+  {
+   "id": "217-0509-v002",
+   "code": "NO_DIFF"
+  },
+  {
+   "id": "217-0509-v003",
+   "code": "NO_DIFF"
+  },
+  {
+   "id": "217-0509-v004",
+   "code": "TOO_NARROW",
+   "note": "WTO協定(サービス貿易)の改正議定書の受諾。個別協定の技術的改正です。"
+  },
+  {
+   "id": "217-0509-v005",
+   "code": "CANDIDATE"
+  },
+  {
+   "id": "217-0509-v006",
+   "code": "CANDIDATE"
+  },
+  {
+   "id": "217-0509-v007",
+   "code": "CANDIDATE"
+  },
+  {
+   "id": "217-0509-v008",
+   "code": "PROCEDURAL"
+  },
+  {
+   "id": "217-0509-v009",
+   "code": "PROCEDURAL"
+  },
+  {
+   "id": "217-0425-v001",
+   "code": "CANDIDATE"
+  },
+  {
+   "id": "217-0425-v002",
+   "code": "CANDIDATE"
+  },
+  {
+   "id": "217-0425-v003",
+   "code": "CANDIDATE"
+  },
+  {
+   "id": "217-0423-v001",
+   "code": "TOO_NARROW",
+   "note": "個別の国との租税条約(二重課税除去)。"
+  },
+  {
+   "id": "217-0423-v002",
+   "code": "TOO_NARROW",
+   "note": "個別の国との租税条約(二重課税除去)。"
+  },
+  {
+   "id": "217-0423-v003",
+   "code": "TOO_NARROW",
+   "note": "個別の国との租税条約(二重課税除去)。"
+  },
+  {
+   "id": "217-0423-v004",
+   "code": "TOO_NARROW",
+   "note": "個別の国との経済連携協定の改正議定書。"
+  },
+  {
+   "id": "217-0418-v001",
+   "code": "CANDIDATE"
+  },
+  {
+   "id": "217-0418-v002",
+   "code": "CANDIDATE"
+  },
+  {
+   "id": "217-0418-v003",
+   "code": "CANDIDATE"
+  },
+  {
+   "id": "217-0416-v001",
+   "code": "CANDIDATE"
+  },
+  {
+   "id": "217-0416-v002",
+   "code": "CANDIDATE"
+  },
+  {
+   "id": "217-0416-v003",
+   "code": "REPRESENTED",
+   "note": "部隊間協力円滑化(RAA)の国内実施法。設問に使用した比RAA承認で立場が読めます。",
+   "rep": "217-0606-v001"
+  },
+  {
+   "id": "217-0411-v001",
+   "code": "CANDIDATE"
+  },
+  {
+   "id": "217-0411-v002",
+   "code": "CANDIDATE"
+  },
+  {
+   "id": "217-0411-v003",
+   "code": "CANDIDATE"
+  },
+  {
+   "id": "217-0411-v004",
+   "code": "CANDIDATE"
+  },
+  {
+   "id": "217-0409-v001",
+   "code": "NO_DIFF"
+  },
+  {
+   "id": "217-0409-v002",
+   "code": "CANDIDATE"
+  },
+  {
+   "id": "217-0409-v003",
+   "code": "CANDIDATE"
+  },
+  {
+   "id": "217-0401-v001",
+   "code": "ACCOUNTS"
+  },
+  {
+   "id": "217-0331-v001",
+   "code": "AMBIGUOUS",
+   "note": "予算への賛否は「規模が大きすぎる」「小さすぎる」の両方向の理由から生じるため、単一の立場として読み替えません。"
+  },
+  {
+   "id": "217-0331-v002",
+   "code": "AMBIGUOUS",
+   "note": "予算への賛否は「規模が大きすぎる」「小さすぎる」の両方向の理由から生じるため、単一の立場として読み替えません。"
+  },
+  {
+   "id": "217-0331-v003",
+   "code": "AMBIGUOUS",
+   "note": "予算への賛否は「規模が大きすぎる」「小さすぎる」の両方向の理由から生じるため、単一の立場として読み替えません。"
+  },
+  {
+   "id": "217-0331-v004",
+   "code": "CANDIDATE"
+  },
+  {
+   "id": "217-0331-v005",
+   "code": "CANDIDATE"
+  },
+  {
+   "id": "217-0331-v006",
+   "code": "CANDIDATE"
+  },
+  {
+   "id": "217-0331-v007",
+   "code": "CANDIDATE"
+  },
+  {
+   "id": "217-0331-v008",
+   "code": "AMBIGUOUS",
+   "note": "複数の税目・措置を束ねた税制の一括改正で、賛否を単一の政策命題として読み替えられません。"
+  },
+  {
+   "id": "217-0331-v009",
+   "code": "CANDIDATE"
+  },
+  {
+   "id": "217-0331-v010",
+   "code": "AMBIGUOUS",
+   "note": "複数の税目・措置を束ねた税制の一括改正で、賛否を単一の政策命題として読み替えられません。"
+  },
+  {
+   "id": "217-0331-v011",
+   "code": "AMBIGUOUS",
+   "note": "地方財政の一括改正で、賛否の理由が「行き過ぎ」「不十分」の両方向から生じます。"
+  },
+  {
+   "id": "217-0331-v012",
+   "code": "CANDIDATE"
+  },
+  {
+   "id": "217-0331-v013",
+   "code": "NO_DIFF"
+  },
+  {
+   "id": "217-0326-v001",
+   "code": "PERSONNEL"
+  },
+  {
+   "id": "217-0326-v002",
+   "code": "PERSONNEL"
+  },
+  {
+   "id": "217-0326-v003",
+   "code": "PERSONNEL"
+  },
+  {
+   "id": "217-0326-v004",
+   "code": "PERSONNEL"
+  },
+  {
+   "id": "217-0326-v005",
+   "code": "PERSONNEL"
+  },
+  {
+   "id": "217-0326-v006",
+   "code": "PERSONNEL"
+  },
+  {
+   "id": "217-0326-v007",
+   "code": "PERSONNEL"
+  },
+  {
+   "id": "217-0326-v008",
+   "code": "PERSONNEL"
+  },
+  {
+   "id": "217-0326-v009",
+   "code": "CANDIDATE"
+  },
+  {
+   "id": "217-0326-v010",
+   "code": "NO_DIFF"
+  },
+  {
+   "id": "217-0326-v011",
+   "code": "CANDIDATE"
+  },
+  {
+   "id": "217-0326-v012",
+   "code": "NO_DIFF"
+  },
+  {
+   "id": "217-0326-v013",
+   "code": "PROCEDURAL"
+  },
+  {
+   "id": "217-0314-v001",
+   "code": "PROCEDURAL"
+  },
+  {
+   "id": "217-0314-v002",
+   "code": "PROCEDURAL"
+  },
+  {
+   "id": "217-0219-v001",
+   "code": "PERSONNEL"
+  },
+  {
+   "id": "217-0219-v002",
+   "code": "PERSONNEL"
+  },
+  {
+   "id": "217-0219-v003",
+   "code": "PERSONNEL"
+  },
+  {
+   "id": "217-0219-v004",
+   "code": "PERSONNEL"
+  },
+  {
+   "id": "217-0219-v005",
+   "code": "PERSONNEL"
+  },
+  {
+   "id": "217-0219-v006",
+   "code": "PERSONNEL"
+  },
+  {
+   "id": "217-0219-v007",
+   "code": "PERSONNEL"
+  },
+  {
+   "id": "217-0219-v008",
+   "code": "PERSONNEL"
+  },
+  {
+   "id": "217-0219-v009",
+   "code": "PERSONNEL"
+  },
+  {
+   "id": "217-0219-v010",
+   "code": "PERSONNEL"
+  },
+  {
+   "id": "217-0219-v011",
+   "code": "PERSONNEL"
+  },
+  {
+   "id": "217-0219-v012",
+   "code": "PERSONNEL"
+  },
+  {
+   "id": "219-1216-v001",
+   "code": "AMBIGUOUS",
+   "note": "予算への賛否は「規模が大きすぎる」「小さすぎる」の両方向の理由から生じるため、単一の立場として読み替えません。"
+  },
+  {
+   "id": "219-1216-v002",
+   "code": "AMBIGUOUS",
+   "note": "予算への賛否は「規模が大きすぎる」「小さすぎる」の両方向の理由から生じるため、単一の立場として読み替えません。"
+  },
+  {
+   "id": "219-1216-v003",
+   "code": "NO_DIFF"
+  },
+  {
+   "id": "219-1216-v004",
+   "code": "CANDIDATE"
+  },
+  {
+   "id": "219-1216-v005",
+   "code": "CANDIDATE"
+  },
+  {
+   "id": "219-1216-v006",
+   "code": "CANDIDATE"
+  },
+  {
+   "id": "219-1216-v007",
+   "code": "CANDIDATE"
+  },
+  {
+   "id": "219-1216-v008",
+   "code": "AMBIGUOUS",
+   "note": "地方財政の一括改正で、賛否の理由が「行き過ぎ」「不十分」の両方向から生じます。"
+  },
+  {
+   "id": "219-1216-v009",
+   "code": "CANDIDATE"
+  },
+  {
+   "id": "219-1216-v010",
+   "code": "CANDIDATE"
+  },
+  {
+   "id": "219-1216-v011",
+   "code": "CANDIDATE"
+  },
+  {
+   "id": "219-1205-v001",
+   "code": "NO_DIFF"
+  },
+  {
+   "id": "219-1205-v002",
+   "code": "CANDIDATE"
+  },
+  {
+   "id": "219-1203-v001",
+   "code": "CANDIDATE"
+  },
+  {
+   "id": "219-1203-v002",
+   "code": "NO_DIFF"
+  },
+  {
+   "id": "219-1203-v003",
+   "code": "NO_DIFF"
+  },
+  {
+   "id": "219-1203-v004",
+   "code": "NO_DIFF"
+  },
+  {
+   "id": "219-1203-v005",
+   "code": "ACCOUNTS"
+  },
+  {
+   "id": "219-1203-v006",
+   "code": "ACCOUNTS"
+  },
+  {
+   "id": "219-1203-v007",
+   "code": "ACCOUNTS"
+  },
+  {
+   "id": "219-1203-v008",
+   "code": "ACCOUNTS"
+  },
+  {
+   "id": "219-1128-v001",
+   "code": "PERSONNEL"
+  },
+  {
+   "id": "219-1128-v002",
+   "code": "PERSONNEL"
+  },
+  {
+   "id": "219-1128-v003",
+   "code": "PERSONNEL"
+  },
+  {
+   "id": "219-1128-v004",
+   "code": "PERSONNEL"
+  },
+  {
+   "id": "219-1128-v005",
+   "code": "PERSONNEL"
+  },
+  {
+   "id": "219-1128-v006",
+   "code": "PERSONNEL"
+  },
+  {
+   "id": "219-1128-v007",
+   "code": "PERSONNEL"
+  },
+  {
+   "id": "219-1128-v008",
+   "code": "PERSONNEL"
+  },
+  {
+   "id": "219-1128-v009",
+   "code": "PERSONNEL"
+  },
+  {
+   "id": "219-1128-v010",
+   "code": "NO_DIFF"
+  },
+  {
+   "id": "221-0717-v001",
+   "code": "CANDIDATE"
+  },
+  {
+   "id": "221-0717-v002",
+   "code": "CANDIDATE"
+  },
+  {
+   "id": "221-0717-v003",
+   "code": "CANDIDATE"
+  },
+  {
+   "id": "221-0717-v004",
+   "code": "CANDIDATE"
+  },
+  {
+   "id": "221-0717-v005",
+   "code": "CANDIDATE"
+  },
+  {
+   "id": "221-0717-v006",
+   "code": "CANDIDATE"
+  },
+  {
+   "id": "221-0717-v007",
+   "code": "CANDIDATE"
+  },
+  {
+   "id": "221-0715-v001",
+   "code": "CANDIDATE"
+  },
+  {
+   "id": "221-0715-v002",
+   "code": "ACCOUNTS"
+  },
+  {
+   "id": "221-0715-v003",
+   "code": "CANDIDATE"
+  },
+  {
+   "id": "221-0715-v004",
+   "code": "CANDIDATE"
+  },
+  {
+   "id": "221-0713-v001",
+   "code": "CANDIDATE"
+  },
+  {
+   "id": "221-0713-v002",
+   "code": "CANDIDATE"
+  },
+  {
+   "id": "221-0713-v003",
+   "code": "CANDIDATE"
+  },
+  {
+   "id": "221-0713-v004",
+   "code": "CANDIDATE"
+  },
+  {
+   "id": "221-0710-v001",
+   "code": "CANDIDATE"
+  },
+  {
+   "id": "221-0710-v002",
+   "code": "CANDIDATE"
+  },
+  {
+   "id": "221-0710-v003",
+   "code": "CANDIDATE"
+  },
+  {
+   "id": "221-0708-v001",
+   "code": "ACCOUNTS"
+  },
+  {
+   "id": "221-0708-v002",
+   "code": "ACCOUNTS"
+  },
+  {
+   "id": "221-0708-v003",
+   "code": "ACCOUNTS"
+  },
+  {
+   "id": "221-0708-v004",
+   "code": "ACCOUNTS"
+  },
+  {
+   "id": "221-0708-v005",
+   "code": "CANDIDATE"
+  },
+  {
+   "id": "221-0708-v006",
+   "code": "CANDIDATE"
+  },
+  {
+   "id": "221-0626-v001",
+   "code": "REPRESENTED",
+   "note": "防衛省設置法等改正(第221回)。設問の参考にした第217回の同名法案と同一争点です。",
+   "rep": "217-0521-v011"
+  },
+  {
+   "id": "221-0619-v001",
+   "code": "USED"
+  },
+  {
+   "id": "221-0619-v002",
+   "code": "REPRESENTED",
+   "note": "同一争点(自衛隊と他国軍の物品役務相互提供=ACSA)。設問に使用した比ACSAで立場が読めます。",
+   "rep": "221-0619-v001"
+  },
+  {
+   "id": "221-0619-v003",
+   "code": "REPRESENTED",
+   "note": "同一争点(自衛隊と他国軍の物品役務相互提供=ACSA)。設問に使用した比ACSAで立場が読めます。",
+   "rep": "221-0619-v001"
+  },
+  {
+   "id": "221-0619-v004",
+   "code": "NO_DIFF"
+  },
+  {
+   "id": "221-0619-v005",
+   "code": "CANDIDATE"
+  },
+  {
+   "id": "221-0619-v006",
+   "code": "CANDIDATE"
+  },
+  {
+   "id": "221-0619-v007",
+   "code": "CANDIDATE"
+  },
+  {
+   "id": "221-0617-v001",
+   "code": "ACCOUNTS"
+  },
+  {
+   "id": "221-0617-v002",
+   "code": "ACCOUNTS"
+  },
+  {
+   "id": "221-0617-v003",
+   "code": "CANDIDATE"
+  },
+  {
+   "id": "221-0617-v004",
+   "code": "CANDIDATE"
+  },
+  {
+   "id": "221-0617-v005",
+   "code": "CANDIDATE"
+  },
+  {
+   "id": "221-0617-v006",
+   "code": "CANDIDATE"
+  },
+  {
+   "id": "221-0612-v001",
+   "code": "PERSONNEL"
+  },
+  {
+   "id": "221-0612-v002",
+   "code": "PERSONNEL"
+  },
+  {
+   "id": "221-0612-v003",
+   "code": "PERSONNEL"
+  },
+  {
+   "id": "221-0612-v004",
+   "code": "PERSONNEL"
+  },
+  {
+   "id": "221-0612-v005",
+   "code": "PERSONNEL"
+  },
+  {
+   "id": "221-0612-v006",
+   "code": "CANDIDATE"
+  },
+  {
+   "id": "221-0612-v007",
+   "code": "CANDIDATE"
+  },
+  {
+   "id": "221-0612-v008",
+   "code": "CANDIDATE"
+  },
+  {
+   "id": "221-0612-v009",
+   "code": "CANDIDATE"
+  },
+  {
+   "id": "221-0610-v001",
+   "code": "CANDIDATE"
+  },
+  {
+   "id": "221-0610-v002",
+   "code": "CANDIDATE"
+  },
+  {
+   "id": "221-0610-v003",
+   "code": "CANDIDATE"
+  },
+  {
+   "id": "221-0605-v001",
+   "code": "AMBIGUOUS",
+   "note": "予算への賛否は「規模が大きすぎる」「小さすぎる」の両方向の理由から生じるため、単一の立場として読み替えません。"
+  },
+  {
+   "id": "221-0605-v002",
+   "code": "AMBIGUOUS",
+   "note": "予算への賛否は「規模が大きすぎる」「小さすぎる」の両方向の理由から生じるため、単一の立場として読み替えません。"
+  },
+  {
+   "id": "221-0603-v001",
+   "code": "CANDIDATE"
+  },
+  {
+   "id": "221-0529-v001",
+   "code": "TOO_NARROW",
+   "note": "個別の国との租税協定(二重課税除去)。"
+  },
+  {
+   "id": "221-0529-v002",
+   "code": "NO_DIFF"
+  },
+  {
+   "id": "221-0529-v003",
+   "code": "NO_DIFF"
+  },
+  {
+   "id": "221-0529-v004",
+   "code": "NO_DIFF"
+  },
+  {
+   "id": "221-0529-v005",
+   "code": "CANDIDATE"
+  },
+  {
+   "id": "221-0529-v006",
+   "code": "CANDIDATE"
+  },
+  {
+   "id": "221-0529-v007",
+   "code": "USED"
+  },
+  {
+   "id": "221-0529-v008",
+   "code": "CANDIDATE"
+  },
+  {
+   "id": "221-0529-v009",
+   "code": "CANDIDATE"
+  },
+  {
+   "id": "221-0529-v010",
+   "code": "CANDIDATE"
+  },
+  {
+   "id": "221-0527-v001",
+   "code": "CANDIDATE"
+  },
+  {
+   "id": "221-0527-v002",
+   "code": "CANDIDATE"
+  },
+  {
+   "id": "221-0522-v001",
+   "code": "CANDIDATE"
+  },
+  {
+   "id": "221-0520-v001",
+   "code": "CANDIDATE"
+  },
+  {
+   "id": "221-0520-v002",
+   "code": "CANDIDATE"
+  },
+  {
+   "id": "221-0515-v001",
+   "code": "TOO_NARROW",
+   "note": "個別の国との投資協定。争点として問うなら複数協定をまとめた「投資協定・経済連携」の形になります。"
+  },
+  {
+   "id": "221-0515-v002",
+   "code": "TOO_NARROW",
+   "note": "個別の国との投資協定。争点として問うなら複数協定をまとめた「投資協定・経済連携」の形になります。"
+  },
+  {
+   "id": "221-0515-v003",
+   "code": "TOO_NARROW",
+   "note": "個別の国との投資協定。争点として問うなら複数協定をまとめた「投資協定・経済連携」の形になります。"
+  },
+  {
+   "id": "221-0515-v004",
+   "code": "TOO_NARROW",
+   "note": "個別の国との投資協定。争点として問うなら複数協定をまとめた「投資協定・経済連携」の形になります。"
+  },
+  {
+   "id": "221-0515-v005",
+   "code": "CANDIDATE"
+  },
+  {
+   "id": "221-0515-v006",
+   "code": "CANDIDATE"
+  },
+  {
+   "id": "221-0513-v001",
+   "code": "CANDIDATE"
+  },
+  {
+   "id": "221-0424-v001",
+   "code": "CANDIDATE"
+  },
+  {
+   "id": "221-0424-v002",
+   "code": "CANDIDATE"
+  },
+  {
+   "id": "221-0424-v003",
+   "code": "CANDIDATE"
+  },
+  {
+   "id": "221-0424-v004",
+   "code": "NO_DIFF"
+  },
+  {
+   "id": "221-0424-v005",
+   "code": "CANDIDATE"
+  },
+  {
+   "id": "221-0424-v006",
+   "code": "CANDIDATE"
+  },
+  {
+   "id": "221-0424-v007",
+   "code": "CANDIDATE"
+  },
+  {
+   "id": "221-0417-v001",
+   "code": "NO_DIFF"
+  },
+  {
+   "id": "221-0417-v002",
+   "code": "NO_DIFF"
+  },
+  {
+   "id": "221-0417-v003",
+   "code": "CANDIDATE"
+  },
+  {
+   "id": "221-0407-v001",
+   "code": "AMBIGUOUS",
+   "note": "予算への賛否は「規模が大きすぎる」「小さすぎる」の両方向の理由から生じるため、単一の立場として読み替えません。"
+  },
+  {
+   "id": "221-0407-v002",
+   "code": "AMBIGUOUS",
+   "note": "予算への賛否は「規模が大きすぎる」「小さすぎる」の両方向の理由から生じるため、単一の立場として読み替えません。"
+  },
+  {
+   "id": "221-0407-v003",
+   "code": "AMBIGUOUS",
+   "note": "予算への賛否は「規模が大きすぎる」「小さすぎる」の両方向の理由から生じるため、単一の立場として読み替えません。"
+  },
+  {
+   "id": "221-0331-v001",
+   "code": "AMBIGUOUS",
+   "note": "複数の税目・措置を束ねた税制の一括改正で、賛否を単一の政策命題として読み替えられません。"
+  },
+  {
+   "id": "221-0331-v002",
+   "code": "AMBIGUOUS",
+   "note": "地方財政の一括改正で、賛否の理由が「行き過ぎ」「不十分」の両方向から生じます。"
+  },
+  {
+   "id": "221-0331-v003",
+   "code": "ACCOUNTS"
+  },
+  {
+   "id": "221-0331-v004",
+   "code": "CANDIDATE"
+  },
+  {
+   "id": "221-0331-v005",
+   "code": "CANDIDATE"
+  },
+  {
+   "id": "221-0331-v006",
+   "code": "USED"
+  },
+  {
+   "id": "221-0331-v007",
+   "code": "CANDIDATE"
+  },
+  {
+   "id": "221-0331-v008",
+   "code": "NO_DIFF"
+  },
+  {
+   "id": "221-0331-v009",
+   "code": "AMBIGUOUS",
+   "note": "赤字国債の発行を認める特例法。財政規律を求める側と積極財政を求める側の両方向から反対が生じ、単一の立場として読めません。"
+  },
+  {
+   "id": "221-0331-v010",
+   "code": "CANDIDATE"
+  },
+  {
+   "id": "221-0331-v011",
+   "code": "CANDIDATE"
+  },
+  {
+   "id": "221-0331-v012",
+   "code": "AMBIGUOUS",
+   "note": "複数の税目・措置を束ねた税制の一括改正で、賛否を単一の政策命題として読み替えられません。"
+  },
+  {
+   "id": "221-0331-v013",
+   "code": "NO_DIFF"
+  },
+  {
+   "id": "221-0331-v014",
+   "code": "CANDIDATE"
+  },
+  {
+   "id": "221-0330-v001",
+   "code": "AMBIGUOUS",
+   "note": "予算への賛否は「規模が大きすぎる」「小さすぎる」の両方向の理由から生じるため、単一の立場として読み替えません。"
+  },
+  {
+   "id": "221-0330-v002",
+   "code": "AMBIGUOUS",
+   "note": "予算への賛否は「規模が大きすぎる」「小さすぎる」の両方向の理由から生じるため、単一の立場として読み替えません。"
+  },
+  {
+   "id": "221-0330-v003",
+   "code": "AMBIGUOUS",
+   "note": "予算への賛否は「規模が大きすぎる」「小さすぎる」の両方向の理由から生じるため、単一の立場として読み替えません。"
+  },
+  {
+   "id": "221-0323-v001",
+   "code": "PERSONNEL"
+  },
+  {
+   "id": "221-0323-v002",
+   "code": "PERSONNEL"
+  },
+  {
+   "id": "221-0323-v003",
+   "code": "PERSONNEL"
+  },
+  {
+   "id": "221-0323-v004",
+   "code": "PERSONNEL"
+  },
+  {
+   "id": "221-0323-v005",
+   "code": "PERSONNEL"
+  },
+  {
+   "id": "221-0323-v006",
+   "code": "PERSONNEL"
+  },
+  {
+   "id": "221-0323-v007",
+   "code": "PERSONNEL"
+  },
+  {
+   "id": "221-0323-v008",
+   "code": "PERSONNEL"
+  }
+ ]
+}
