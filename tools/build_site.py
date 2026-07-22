@@ -1224,10 +1224,22 @@ RESEARCH=(f'<title>先行研究と、この設計の根拠｜ AI政策くらべ<
     "（たとえば外国人政策、放送の受信料、デジタル・ガバナンス改革など、6分野に素直に収まらないもの）は、"
     "<b>「他党と同じ6分野」の中に均され、その党を際立たせている当のものが見えにくくなる</b>おそれがあります。"
     "分野の分け方自体が編集判断であることは04で書いていますが、"
-    "<b>その分け方が、特定の党の争点を構造的に不利にしていないかは、まだ確かめていません。</b>",
+    "<b>その分け方が、特定の党の争点を構造的に不利にしていないかは、まだ確かめていません。</b>"
+    "たとえばドイツの海賊党は、デジタルの権利や<b>政治の透明化</b>という、"
+    "左右の軸にも経済・社会文化の軸にも乗りにくい争点を掲げました"
+    "（このサイトの6分野にも素直には収まりません）。"
+    "海外では、こうした争点の党が議席や政権入りに至った例（チェコの海賊党）もあれば、"
+    "定着できずに消えた例（ドイツの海賊党）もあります。"
+    "<b>ここで言いたいのは党の成否ではなく、6分野という枠の側が、"
+    "そもそもこうした争点を置きにくいということ</b>です。"
+    "さらに、日本の有権者研究は、<b>若い世代では「保守／革新」という左右の対立軸そのものが"
+    "共有されなくなっている</b>と報告しています。"
+    "もしそうなら、主流の争点軸にならった分野分けは、世代によって効き方が変わることになります。",
     _cite("Wagner（ニッチ政党／著者公開）", "https://www.wagnermarkus.net/uploads/7/2/9/8/72983017/niche_parties_chapter_web.pdf")
     + " ／ " + _cite("Meyer &amp; Miller (2015) The niche party concept and its measurement (Party Politics 21-2)", "https://pmc.ncbi.nlm.nih.gov/articles/PMC5180693/")
-    + " ／ " + _cite("De Vries &amp; Hobolt (2020) Political Entrepreneurs (Princeton University Press)", "https://press.princeton.edu/books/hardcover/9780691194752/political-entrepreneurs"))
+    + " ／ " + _cite("De Vries &amp; Hobolt (2020) Political Entrepreneurs (Princeton University Press)", "https://press.princeton.edu/books/hardcover/9780691194752/political-entrepreneurs")
+    + " ／ " + _cite("ドイツ海賊党（Wikipedia）", "https://en.wikipedia.org/wiki/Pirate_Party_Germany")
+    + " ／ " + _cite("遠藤晶久・ウィリー・ジョウ (2019)『イデオロギーと日本政治』新泉社", "https://www.shinsensha.com/books/2188/"))
 
   + _rs("open",
     "「政策で照らす」は賛否を測るが、争点には「賛否で表せないもの」がある",
