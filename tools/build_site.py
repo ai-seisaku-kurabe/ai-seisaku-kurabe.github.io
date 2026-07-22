@@ -623,8 +623,8 @@ def _xaudit_load():
 
 XAUDIT = _xaudit_load()
 
-# 話題の配分（agents/audit_saliency.py）は測定するが、順位・割合としては公開しない
-# （憲法5条＝ランキング・点数化の禁止。⑧査読の指摘で取り下げ）。research.html では言葉で開示する。
+# 話題の配分の順位・割合は公開しない（憲法5条＝ランキング・点数化の禁止。⑧査読の指摘で、
+# 表示も集計スクリプト audit_saliency.py も取り下げた）。research.html では言葉で開示する。
 
 ABOUT_CSS="""
 .ab-lede{color:var(--muted);font-size:15.5px;line-height:1.85;max-width:64ch;margin:0 0 8px;}
@@ -907,8 +907,8 @@ def _audit_table(a):
             '<tbody>' + rows + '</tbody></table></div>')
 
 # ※ 話題の配分を党×順位×割合で出す表（_saliency_table）は、憲法5条（ランキング・点数化の禁止）に
-#   触れると⑧査読で指摘され、取り下げた。measure（agents/audit_saliency.py）は道具として残すが、
-#   順位・割合としては公開しない。research.html では順位化せず言葉で開示する。
+#   触れると⑧査読で指摘され、表示も集計スクリプト（audit_saliency.py）も取り下げた。
+#   research.html では順位化せず言葉で開示する。
 
 # 縦に長すぎる（7セクション直列）ため、「政党で選ぶ」の政党タブと同じ発想で
 # 01〜06 をタブ切替にする。00（読み方＝このページの規約）は常時表示。
@@ -1516,13 +1516,14 @@ RESEARCH=(f'<title>先行研究と、この設計の根拠｜ AI政策くらべ<
     "<b>ただし、それを「この党の1位はこの話題、割合は何％」という形で出すことは、やめました。</b>"
     "党ごとに話題を順位づけ・数値化して並べることは、"
     "このサイト自身の「点数化・格付け・ランキングをしない」というルールに、私たち自身が触れるからです。"
-    "<b>これは机上の心配ではありません。</b>この表示を一度は実装しましたが、"
+    "<b>これは机上の心配ではありません。</b>この表示と、党ごとの割合を出す集計そのものを一度は作りましたが、"
     "⑧の査読で複数のAIがそろって「順位と割合の出力はそのルールに反する」と指摘し、"
-    "私たちはそれを妥当と認めて取り下げました（この経緯自体も残します）。"
-    "測定は道具としては残し（<a href=\"https://github.com/ai-seisaku-kurabe/ai-seisaku-kurabe.github.io/blob/main/tools/agents/audit_saliency.py\" target=\"_blank\" rel=\"noopener\">audit_saliency.py</a>）、"
-    "そこから言えるのは「6分野の外にも各党が力を入れる争点がある」という<b>言葉での事実まで</b>です。"
+    "私たちはそれを妥当と認め、表示だけでなく<b>順位・割合を出す集計スクリプトごと取り下げました</b>"
+    "（この経緯自体も残します）。"
+    "言えるのは「6分野の外にも各党が力を入れる争点がある」という<b>言葉での事実まで</b>です。"
     "各党がどの争点をどれだけ扱っているかは、点数ではなく"
-    "<a class=\"src\" href=\"speeches.html\">発言一覧</a>の原文でご確認ください。",
+    "<a class=\"src\" href=\"speeches.html\">発言一覧</a>の原文でご確認ください"
+    "（例：参政党の外国人・移民、チームみらいのデジタル）。",
     _cite("Manifesto Project（MARPOR・顕出性にもとづく公約分析）", "https://manifesto-project.wzb.eu/"))
 
   + '</section>'

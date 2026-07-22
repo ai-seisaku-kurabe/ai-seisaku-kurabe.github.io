@@ -458,19 +458,8 @@ def check_matching_audit(bp):
     print(f"  抽出の選択比: 候補{xt['candidate_total']}件／表示{xt['shown']}枠"
           f"（枠あたり中央値{xt['median_candidates_per_shown_cell']}件）")
 
-    # 話題の配分（agents/audit_saliency.py）。掲載会期と一致するか。
-    p5 = os.path.join(TOOLS, "state", "saliency_audit.json")
-    if not os.path.exists(p5):
-        fail("話題の配分", "state/saliency_audit.json が無い（agents/audit_saliency.py を実行する）")
-        return
-    sa = json.load(open(p5, encoding="utf-8"))
-    if set(sa.get("windows", {})) != published:
-        fail("話題の配分",
-             f"測定した会期が掲載会期と違う（{sorted(set(sa.get('windows', {})))} / "
-             f"{sorted(published)}）。agents/audit_saliency.py を回し直す")
-        return
-    print(f"  話題の配分: {len(sa.get('by_party', []))}党／横断争点が上位に出た例 "
-          f"{len(sa.get('cross_signal', []))}件")
+    # （話題の配分＝旧 audit_saliency.py の会期一致チェックは撤去。順位・割合を出す測定自体を
+    #   憲法5条抵触として取り下げたため。⑧査読 chunk A/B の指摘。）
 
 
 # ------------------------------------------- 6. 先行研究ページの引用リンク
