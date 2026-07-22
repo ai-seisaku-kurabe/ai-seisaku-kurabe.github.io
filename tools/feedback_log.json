@@ -1,0 +1,5 @@
+{
+  "_comment": "⑦応答班: ご意見と対応の記録(kiroku.html)の元データ。要旨は運営者が書き直したものだけを書く。原文・原文の特徴的な言い回しをここに書いてはならない(FEEDBACK_CHARTER.md ルール6)。policy_boundary_utc は開示改定がGitHub Pagesで公開された時刻(UTC, ISO8601)。マージ・公開後に実測して記入するまで null のままにする(nullの間は feedback_read.py が動かない)。",
+  "policy_boundary_utc": null,
+  "entries": []
+}

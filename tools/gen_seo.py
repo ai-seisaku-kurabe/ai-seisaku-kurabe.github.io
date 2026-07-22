@@ -12,7 +12,7 @@ SITE_URL = "https://ai-seisaku-kurabe.github.io"
 
 PAGES = ["", "guide.html", "oneissue.html", "shindan.html", "news.html",
          "speeches.html", "votes.html", "shukei.html", "about.html", "research.html",
-         "privacy.html", "mynote.html", "feedback.html"]
+         "privacy.html", "mynote.html", "feedback.html", "kiroku.html"]
 
 
 def generate(outdir="site"):
