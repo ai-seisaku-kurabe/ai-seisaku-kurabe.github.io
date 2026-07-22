@@ -68,11 +68,7 @@ META217 = json.load(open("217_speech_meta.json", encoding="utf-8"))  # 第217回
 
 # 各党が会議録で触れた話題の配分（agents/audit_saliency.py の測定結果）。党タブに
 # 「会議録で多く取り上げた話題」を出すために読む。研究ページ04と同じ数字。
-SAL = {}
-if os.path.exists("state/saliency_audit.json"):
-    _sa = json.load(open("state/saliency_audit.json", encoding="utf-8"))
-    SAL = {e["party"]: e for e in _sa.get("by_party", [])}
-SAL_UI_MIN = 30   # 対象発言がこれ未満の党は、党タブでは順位を出さず「保留」にする（判断保留）
+# 「話題の配分」の党タブ表示は憲法5条（ランキング禁止）に触れるため撤去（下記 saliency_block 参照）。
 
 
 def _load_votes(path, sel):
@@ -390,28 +386,11 @@ def oneissue_block(full):
             f'<h2 class="oi-title">{esc(issue)}</h2><p class="oi-why">{esc(why)}</p>'
             f'{quote_block(e, ref+"分野の発言")}{more}</div>')
 
-def saliency_block(full):
-    """会議録で多く取り上げた話題（機械集計）。★＝6分野の外の争点。
-    ワンイシュー（編集判断の★）とは別物。あくまで話題の配分の粗い目安で、党の重点・本質ではない。
-    発言が少ない党は順位を出さず保留する（判断保留）。"""
-    e = SAL.get(full)
-    if not e:
-        return ""
-    head = ('<div class="salbox"><span class="sal-label">会議録で多く取り上げた話題'
-            '<span class="sal-sub">（第217〜221回・質問側発言の機械集計）</span></span>')
-    if e.get("reserved") or e.get("total", 0) < SAL_UI_MIN:
-        return (head + f'<p class="sal-hold">この会期は対象の発言が少なく（{e.get("total",0)}件）、'
-                '配分を出していません。</p></div>')
-    chips = "".join(
-        f'<span class="sal-chip{" cross" if t["cross"] else ""}" '
-        f'title="{esc(t["theme"])}に触れた質問側発言 {t["n"]}件">'
-        f'{esc(t["theme"])}{"★" if t["cross"] else ""} <b>{t["share"]}%</b></span>'
-        for t in e["top"][:3])
-    return (head + f'<div class="sal-chips">{chips}</div>'
-            '<p class="sal-note">★＝6つの分野に収まらない横断争点。'
-            '割合は「いずれかの話題に触れた発言のうち、その話題に触れた割合」で、'
-            '<b>党の重点や本質ではなく、話題の配分の粗い目安</b>です'
-            '（<a class="src" href="research.html">測り方と限界</a>）。</p></div>')
+# ※「会議録で多く取り上げた話題」の党タブ表示（saliency_block）は撤去した。
+# ⑧査読で Gemini・ChatGPT がともに、話題を1位/2位/3位＋割合で出すのは憲法5条
+# 「点数化・格付け・ランキングを出力しない」に反すると指摘。妥当なので取り下げた。
+# 測定そのもの（agents/audit_saliency.py）は残すが、順位・割合としては公開しない。
+# 6分野に収まらない争点があるという弱点は、research.html で順位化せず言葉で開示する。
 
 def package_block(full):
     pk = PACKAGE.get(full)
@@ -480,7 +459,7 @@ for i,(full,short) in enumerate(PARTIES):
             if missing else "")
     panes.append(f'<section class="pane" data-pane="{i}" '
                  f'style="--pc:{PARTY_COLOR[full]};--pc-on:{pc_on(PARTY_COLOR[full])}"{"" if i==0 else " hidden"}>'
-                 f'{oneissue_block(full)}{saliency_block(full)}{package_block(full)}'
+                 f'{oneissue_block(full)}{package_block(full)}'
                  f'<div class="dgrid">{rows}</div>{miss}</section>')
 
 CSS = """
@@ -528,20 +507,6 @@ h1{ font-family:var(--serif); font-weight:600; font-size:clamp(24px,4.4vw,38px);
   font-weight:600; color:var(--pc,var(--accent)); text-decoration:none; border:1px solid var(--pc,var(--accent));
   border-radius:20px; padding:7px 15px; transition:background .15s,color .15s; }
 .oi-more:hover{ background:var(--pc,var(--accent)); color:var(--pc-on,#fff); }
-/* 会議録の話題の配分。ワンイシュー(★)の下位に見えるよう、控えめ・囲みは弱く */
-.salbox{ border:1px solid var(--line); border-radius:12px; padding:11px 14px; margin:0 0 16px;
-  background:var(--paper); }
-.sal-label{ display:block; font-family:var(--mono); font-size:11px; letter-spacing:.04em;
-  color:var(--muted); margin-bottom:8px; }
-.sal-sub{ font-weight:400; }
-.sal-chips{ display:flex; flex-wrap:wrap; gap:6px; }
-.sal-chip{ display:inline-flex; align-items:center; gap:5px; font-size:12px; color:var(--ink);
-  border:1px solid var(--line); border-radius:16px; padding:3px 10px; background:var(--card); }
-.sal-chip b{ font-family:var(--mono); font-weight:700; }
-.sal-chip.cross{ border-color:var(--pc,var(--accent)); }
-.sal-hold{ font-size:12px; color:var(--muted); margin:0; }
-.sal-note{ font-size:11px; line-height:1.7; color:var(--muted); margin:8px 0 0; }
-.sal-note a{ color:var(--accent); }
 .pkg{ background:var(--card); border:1px solid var(--line); border-radius:14px; padding:16px 20px;
   margin-bottom:22px; box-shadow:var(--shadow); }
 .pkg>summary{ font-family:var(--sans); font-weight:700; font-size:13px; color:var(--muted); cursor:pointer;

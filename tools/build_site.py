@@ -616,15 +616,8 @@ def _xaudit_load():
 
 XAUDIT = _xaudit_load()
 
-def _saudit_load():
-    """各党が会議録で何に触れたかの配分の測定（agents/audit_saliency.py）の結果を読む。"""
-    p = "state/saliency_audit.json"
-    if not os.path.exists(p):
-        raise SystemExit("state/saliency_audit.json がありません。"
-                         "先に python agents/audit_saliency.py を実行してください。")
-    return json.load(open(p, encoding="utf-8"))
-
-SALIENCY = _saudit_load()
+# 話題の配分（agents/audit_saliency.py）は測定するが、順位・割合としては公開しない
+# （憲法5条＝ランキング・点数化の禁止。⑧査読の指摘で取り下げ）。research.html では言葉で開示する。
 
 ABOUT_CSS="""
 .ab-lede{color:var(--muted);font-size:15.5px;line-height:1.85;max-width:64ch;margin:0 0 8px;}
@@ -906,38 +899,9 @@ def _audit_table(a):
             '<th>同率1位に含まれる割合</th><th>賛否が釣り合った回答で1位</th></tr></thead>'
             '<tbody>' + rows + '</tbody></table></div>')
 
-def _saliency_short(full):
-    """党の正式名→短縮名（PARTIES から）。"""
-    for p in PARTIES:
-        if p["full"] == full:
-            return p["short"]
-    return full
-
-def _saliency_table(s):
-    """各党が会議録で触れたテーマの上位。★＝6分野に収まらない横断争点。
-    順位・格付けに見えないよう、割合は「話題の配分」であることを列見出しで明示する。"""
-    rows = ""
-    for e in s["by_party"]:
-        short = _saliency_short(e["party"])
-        if e["reserved"]:
-            rows += ('<tr><td>' + esc(short) + '</td><td class="n">' + str(e["total"])
-                     + '</td><td colspan="3">資料不足のため保留</td></tr>')
-            continue
-        cells = "".join(
-            '<td class="n">' + esc(t["theme"]) + ('★' if t["cross"] else '')
-            + ' ' + str(t["share"]) + '%</td>'
-            for t in e["top"][:3])
-        cells += '<td class="n"></td>' * (3 - len(e["top"][:3]))
-        rows += ('<tr><td>' + esc(short) + '</td><td class="n">' + str(e["total"])
-                 + '</td>' + cells + '</tr>')
-    return ('<div class="rs-tw"><table class="rs-tbl">'
-            '<thead><tr><th>党</th><th>対象の発言数</th>'
-            '<th>触れた話題 1位</th><th>2位</th><th>3位</th></tr></thead>'
-            '<tbody>' + rows + '</tbody></table></div>'
-            '<p class="rs-note">★＝6分野に収まらない横断争点。'
-            '「%」は、その党が<b>いずれかの話題に触れた質問側発言</b>のうち、その話題に触れた割合'
-            '（1つの発言が複数の話題に当たりうるので、合計は100%を超えます）。'
-            '<b>党の重点や本質を表すものではなく、会議録での話題の配分の粗い目安</b>です。</p>')
+# ※ 話題の配分を党×順位×割合で出す表（_saliency_table）は、憲法5条（ランキング・点数化の禁止）に
+#   触れると⑧査読で指摘され、取り下げた。measure（agents/audit_saliency.py）は道具として残すが、
+#   順位・割合としては公開しない。research.html では順位化せず言葉で開示する。
 
 # 縦に長すぎる（7セクション直列）ため、「政党で選ぶ」の政党タブと同じ発想で
 # 01〜06 をタブ切替にする。00（読み方＝このページの規約）は常時表示。
@@ -1335,8 +1299,10 @@ RESEARCH=(f'<title>先行研究と、この設計の根拠｜ AI政策くらべ<
     "さらに、日本の有権者研究は、<b>若い世代では「保守／革新」という左右の対立軸そのものが"
     "共有されなくなっている</b>と報告しています。"
     "もしそうなら、主流の争点軸にならった分野分けは、世代によって効き方が変わることになります。"
-    "<b>→ この弱点は、04で実際に測りました。</b>6分野の外の争点（外国人・移民、デジタル）が、"
-    "参政党やチームみらいの最大の強調として現れ、6分野だけでは埋もれることを数字で確認しています。",
+    "<b>→ この弱点は本物です。</b>6分野の外の争点（外国人・移民、デジタル）を、"
+    "参政党やチームみらいが国会でくり返し取り上げていることは確認しました。"
+    "ただし、それを党ごとの順位や割合として出すことは、私たち自身の"
+    "「点数化・格付け・ランキングをしない」原則に触れるため、していません（04を参照）。",
     _cite("Wagner（ニッチ政党／著者公開）", "https://www.wagnermarkus.net/uploads/7/2/9/8/72983017/niche_parties_chapter_web.pdf")
     + " ／ " + _cite("Meyer &amp; Miller (2015) The niche party concept and its measurement (Party Politics 21-2)", "https://pmc.ncbi.nlm.nih.gov/articles/PMC5180693/")
     + " ／ " + _cite("De Vries &amp; Hobolt (2020) Political Entrepreneurs (Princeton University Press)", "https://press.princeton.edu/books/hardcover/9780691194752/political-entrepreneurs")
@@ -1532,41 +1498,24 @@ RESEARCH=(f'<title>先行研究と、この設計の根拠｜ AI政策くらべ<
     "この選択への歯止めです。",
     _cite("NTCIR-15 QA Lab-PoliInfo-2 データセット", "https://github.com/poliinfo2/NTCIR15-QA-Lab-PoliInfo-2-Dataset"))
 
-  + _rs("meas",
-    "分かったこと⑦：6分野の外にある争点も測ってみた──そして党の最大の強調に出た",
-    "顕出性理論（政党は「どの争点を強調するか」で競う）に立つなら、"
-    "各党が国会で<b>どの話題にどれだけ触れたか</b>は数えられる。"
-    "03の弱点で「6分野は主流の争点軸なので、それに収まらない少数政党の看板争点が埋もれるおそれがある。"
-    "だが確かめていない」と書いた。<b>そこで、実際に測った。</b>",
-    "6分野の検索に加えて、<b>6分野に収まらない横断争点</b>"
-    "（" + "・".join(SALIENCY["cross_themes"]) + "）の検索語を足し、"
-    "各党の質問側発言が各話題にどれだけ触れたかを、掲載"
-    + str(len(SALIENCY["sessions"])) + "会期ぶん機械的に数えました。"
-    "その結果、<b>6分野に収まらない争点が、いくつかの党では最大の強調として現れました。</b>"
-    # 見出しには、その話題の発言数が十分ある（n>=15）ものだけを出す。少数の発言による
-    # 大きな割合（例：社民の外国人8件で28.6%）を先頭に置くと、ノイズを事実のように見せてしまう。
-    + "".join(
-        "<b>" + _saliency_short(c["party"]) + "＝" + esc(c["theme"]) + "（"
-        + str(c["share"]) + "％、" + str(c["n"]) + "件）</b>、"
-        for c in sorted([x for x in SALIENCY["cross_signal"] if x["n"] >= 15],
-                        key=lambda x: -x["share"])[:3])
-    + "といった具合です（発言数が少ない党は割合が不安定なので、見出しには発言数の多いものだけを挙げました）。"
-    "<b>固定した6分野だけでは、まさにこれらの党を際立たせている争点が、"
-    "「他党と同じ6分野」の中に埋もれる</b>——弱点2番を、数字で確かめたことになります。"
-    + _saliency_table(SALIENCY)
-    + "<b>強い限界があります。</b>"
-    "①検索語の選び方は編集判断です（横断争点の語の一覧は"
-    "<a href=\"https://github.com/ai-seisaku-kurabe/ai-seisaku-kurabe.github.io/blob/main/tools/agents/audit_saliency.py\" target=\"_blank\" rel=\"noopener\">audit_saliency.py</a>"
-    "で公開し、訂正を受け付けます）。"
-    "②<b>国会の質問側発言だけ</b>が対象で、公約・演説・記者会見・SNSは含みません。"
-    "会議録に出ない強調は測れません。"
-    "③発言が少ない党（社民" + str(next((e["total"] for e in SALIENCY["by_party"]
-                                       if e["party"] == "社会民主党"), "-"))
-    + "件、チームみらい" + str(next((e["total"] for e in SALIENCY["by_party"]
-                                    if e["party"] == "チームみらい"), "-"))
-    + "件）は割合が不安定です。"
-    "④これは<b>話題の配分の粗い目安であって、党の重点や本質を断定するものではありません。</b>"
-    "だからこのサイトは、この数字を各党のラベルとして掲げることはしていません。",
+  + _rs("open",
+    "6分野の外に争点は「ある」。でも、順位や割合では出さないと決めた",
+    "顕出性理論（政党は「どの争点を強調するか」で競う）に立てば、各党が国会で"
+    "どの話題にどれだけ触れたかは数えられる。03の弱点で「6分野に収まらない少数政党の"
+    "看板争点が埋もれるおそれがある」と書いたので、実際に会議録を機械的に数えてみた。",
+    "測ってみると、<b>6分野に収まらない横断争点（外国人・移民、デジタル・行政改革など）を、"
+    "参政党やチームみらいが国会でくり返し取り上げている</b>ことは、はっきり確かめられました。"
+    "6分野の枠だけではこうした争点が見えにくい、という弱点は事実です。"
+    "<b>ただし、それを「この党の1位はこの話題、割合は何％」という形で出すことは、やめました。</b>"
+    "党ごとに話題を順位づけ・数値化して並べることは、"
+    "このサイト自身の「点数化・格付け・ランキングをしない」というルールに、私たち自身が触れるからです。"
+    "<b>これは机上の心配ではありません。</b>この表示を一度は実装しましたが、"
+    "⑧の査読で複数のAIがそろって「順位と割合の出力はそのルールに反する」と指摘し、"
+    "私たちはそれを妥当と認めて取り下げました（この経緯自体も残します）。"
+    "測定は道具としては残し（<a href=\"https://github.com/ai-seisaku-kurabe/ai-seisaku-kurabe.github.io/blob/main/tools/agents/audit_saliency.py\" target=\"_blank\" rel=\"noopener\">audit_saliency.py</a>）、"
+    "そこから言えるのは「6分野の外にも各党が力を入れる争点がある」という<b>言葉での事実まで</b>です。"
+    "各党がどの争点をどれだけ扱っているかは、点数ではなく"
+    "<a class=\"src\" href=\"speeches.html\">発言一覧</a>の原文でご確認ください。",
     _cite("Manifesto Project（MARPOR・顕出性にもとづく公約分析）", "https://manifesto-project.wzb.eu/"))
 
   + '</section>'
