@@ -2090,6 +2090,17 @@ NEWS_CSS="""
 .nw-empty{background:var(--card);border:1px dashed var(--line);border-radius:12px;
   padding:24px;text-align:center;color:var(--muted);font-size:13.5px;}
 """
+# 検索語と本文を、同じ形に均してから照合する。
+# 均さないと「AI」を半角で打つと0件・全角だと出る、という取りこぼしが起きる（実際に起きた）。
+#   NFKC … 全角英数字⇔半角英数字、半角カナ⇔全角カナ（濁点の合成を含む）を揃える
+#   小文字化 … GX と gx を同じにする
+#   カタカナ→ひらがな … 「エネルギー」と「えねるぎー」を同じにする
+# 表示は原文のまま。均した文字列は照合にしか使わない。
+KWNORM_JS = ("function kwnorm(s){s=String(s||'');if(s.normalize)s=s.normalize('NFKC');"
+             "return s.toLowerCase().replace(/[\\u30a1-\\u30f6]/g,function(c){"
+             "return String.fromCharCode(c.charCodeAt(0)-0x60);});}")
+
+
 def kw_row(el_id, label, placeholder, fields):
     """キーワードで絞り込む入力欄（発言一覧・採決一覧・ニュースで同じ形）。
 
@@ -2105,6 +2116,7 @@ def kw_row(el_id, label, placeholder, fields):
             f'<label class="nw-lbl" for="{el_id}">{label}</label>'
             f'<input type="search" class="nw-kw" id="{el_id}" placeholder="{placeholder}">'
             f'<p class="nw-kwhint">{fields}から探します。'
+            '全角と半角、カタカナとひらがな、英字の大文字と小文字は区別しません。'
             '並び順は日付の新しい順のままで、関連度では並べ替えません。'
             '入力した語はこの端末の中だけで使い、送信も保存もしません。</p>'
             '</div>')
@@ -2114,8 +2126,9 @@ NEWS_JS=("<script>(function(){"
   f"var PTY={json.dumps(PJS,ensure_ascii=False)};"
   "function esc(s){return String(s).replace(/[&<>\"]/g,function(c){return({'&':'&amp;','<':'&lt;','>':'&gt;','\\\"':'&quot;'}[c]);});}"
   "var ALL=[],fd='all',fp='all',kw='',PAGE=10,page=1;"
+  + KWNORM_JS +
   "function hit(x){if(!kw)return true;"
-  "return String(x.t||'').toLowerCase().indexOf(kw)>=0||String(x.s||'').toLowerCase().indexOf(kw)>=0;}"
+  "return (x._k||'').indexOf(kw)>=0;}"
   "function render(){var L=ALL.filter(function(x){"
   "return (fd==='all'||(x.d||[]).indexOf(fd)>=0)&&(fp==='all'||(x.p||[]).indexOf(fp)>=0)&&hit(x);});"
   "var total=L.length,pages=Math.max(1,Math.ceil(total/PAGE));if(page>pages)page=pages;""var from=(page-1)*PAGE;var slice=L.slice(from,from+PAGE);""document.getElementById('nwCount').textContent=total?(total+' 件中 '+(from+1)+'〜'+(from+slice.length)+' 件目'):'0 件';""var cta=document.getElementById('nwCta'),ctaT=document.getElementById('nwCtaT');""if(cta){if(fd==='all'){cta.href='guide.html';""ctaT.textContent='各党が国会で何を論じ、どう投票したかを、原典リンク付きで確かめる →';}""else{cta.href='guide.html?domain='+encodeURIComponent(fd);""ctaT.textContent='「'+fd+'」について、各党が国会で何を論じ、どう投票したかを確かめる →';}}"
@@ -2133,9 +2146,9 @@ NEWS_JS=("<script>(function(){"
   "c.classList.add('on');"
   "if(g==='d'){fd=c.getAttribute('data-v');}else{fp=c.getAttribute('data-v');}page=1;render();});});"
   "var _kb=document.getElementById('nwKw');"
-  "if(_kb)_kb.addEventListener('input',function(){kw=_kb.value.trim().toLowerCase();page=1;render();});""document.getElementById('nwPager').addEventListener('click',function(e){""var b=e.target.closest('.nw-pg');if(!b||b.disabled)return;""page += (b.getAttribute('data-go')==='next'?1:-1);render();""document.getElementById('nwList').scrollIntoView({behavior:'smooth',block:'start'});});"
+  "if(_kb)_kb.addEventListener('input',function(){kw=kwnorm(_kb.value.trim());page=1;render();});""document.getElementById('nwPager').addEventListener('click',function(e){""var b=e.target.closest('.nw-pg');if(!b||b.disabled)return;""page += (b.getAttribute('data-go')==='next'?1:-1);render();""document.getElementById('nwList').scrollIntoView({behavior:'smooth',block:'start'});});"
   "var _q=new URLSearchParams(location.search);""var _d=_q.get('domain'),_p=_q.get('party');""if(_d)fd=_d;if(_p)fp=_p;""document.querySelectorAll('.nw-chip').forEach(function(c){""var g=c.getAttribute('data-g'),v=c.getAttribute('data-v');""var want=(g==='d')?fd:fp;""if(v===want){c.classList.add('on');}else{c.classList.remove('on');}});""fetch('news_archive.json').then(function(r){return r.json();}).then(function(d){"
-  "ALL=d.items||[];var u=document.getElementById('nwUpd');"
+  "ALL=d.items||[];ALL.forEach(function(x){x._k=kwnorm((x.t||'')+' '+(x.s||''));});""var u=document.getElementById('nwUpd');"
   "if(u&&d.updated)u.textContent=d.updated+' 時点';render();})"
   ".catch(function(){document.getElementById('nwList').innerHTML="
   "'<div class=\"nw-empty\">ニュースを読み込めませんでした。</div>';});})();</script>")
@@ -2198,9 +2211,10 @@ SP_JS = ("<script>(function(){"
   "var D=" + SP_JSON + ";"
   "function esc(s){return String(s).replace(/[&<>\"]/g,function(c){return({'&':'&amp;','<':'&lt;','>':'&gt;','\"':'&quot;'}[c]);});}"
   "var fd='all',fp='all',fs='all',kw='',PAGE=10,page=1;"
+  + KWNORM_JS +
+  "D.items.forEach(function(x){x._k=kwnorm([x.quote,x.who,x.meeting,x.house].join(' '));});"
   "function hit(x){if(!kw)return true;"
-  "return [x.quote,x.who,x.meeting,x.house].some(function(v){"
-  "return String(v||'').toLowerCase().indexOf(kw)>=0;});}"
+  "return x._k.indexOf(kw)>=0;}"
   "var q=new URLSearchParams(location.search);"
   "if(q.get('domain'))fd=q.get('domain');"
   "if(q.get('party'))fp=q.get('party');"
@@ -2235,7 +2249,7 @@ SP_JS = ("<script>(function(){"
   "c.classList.add('on');var v=c.getAttribute('data-v');"
   "if(g==='d')fd=v;else if(g==='p')fp=v;else fs=v;page=1;render();});});"
   "var _kb=document.getElementById('spKw');"
-  "if(_kb)_kb.addEventListener('input',function(){kw=_kb.value.trim().toLowerCase();page=1;render();});"
+  "if(_kb)_kb.addEventListener('input',function(){kw=kwnorm(_kb.value.trim());page=1;render();});"
   "document.getElementById('nwPager').addEventListener('click',function(e){"
   "var b=e.target.closest('.nw-pg');if(!b||b.disabled)return;"
   "page+=(b.getAttribute('data-go')==='next'?1:-1);render();"
@@ -2366,12 +2380,14 @@ VT_JS = ("<script>(function(){"
   "var D=" + VT_JSON + ";"
   "function esc(s){return String(s).replace(/[&<>\"]/g,function(c){return({'&':'&amp;','<':'&lt;','>':'&gt;','\"':'&quot;'}[c]);});}"
   "var fs='all',ft='all',kw='',PAGE=10,page=1;"
+  + KWNORM_JS +
+  "D.items.forEach(function(x){x._k=kwnorm(x.label);});"
   "var q=new URLSearchParams(location.search);if(q.get('session'))fs=q.get('session');"
   "document.querySelectorAll('.nw-chip[data-v]').forEach(function(c){"
   "if(c.getAttribute('data-v')===fs)c.classList.add('on');else c.classList.remove('on');});"
   "function render(){"
   "var L=D.items.filter(function(x){return (fs==='all'||x.ses===fs)"
-  "&&(ft==='all'||(x.tr&&x.tr.code===ft))&&(!kw||String(x.label||'').toLowerCase().indexOf(kw)>=0);});"
+  "&&(ft==='all'||(x.tr&&x.tr.code===ft))&&(!kw||x._k.indexOf(kw)>=0);});"
   "var total=L.length,pages=Math.max(1,Math.ceil(total/PAGE));if(page>pages)page=pages;"
   "var from=(page-1)*PAGE,slice=L.slice(from,from+PAGE);"
   "document.getElementById('nwCount').textContent=total?(total+' 件中 '+(from+1)+'〜'+(from+slice.length)+' 件目'):'0 件';"
@@ -2399,7 +2415,7 @@ VT_JS = ("<script>(function(){"
   "document.querySelectorAll('.nw-chip[data-t]').forEach(function(x){x.classList.remove('on');});"
   "c.classList.add('on');ft=c.getAttribute('data-t');page=1;render();});});"
   "var kb=document.getElementById('vtKw');"
-  "if(kb)kb.addEventListener('input',function(){kw=kb.value.trim().toLowerCase();page=1;render();});"
+  "if(kb)kb.addEventListener('input',function(){kw=kwnorm(kb.value.trim());page=1;render();});"
   "document.getElementById('nwPager').addEventListener('click',function(e){"
   "var b=e.target.closest('.nw-pg');if(!b||b.disabled)return;"
   "page+=(b.getAttribute('data-go')==='next'?1:-1);render();"
