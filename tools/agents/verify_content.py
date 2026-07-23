@@ -23,6 +23,7 @@ import urllib.error, urllib.parse, urllib.request
 HERE = os.path.dirname(os.path.abspath(__file__))
 TOOLS = os.path.abspath(os.path.join(HERE, ".."))
 ROOT = os.path.abspath(os.path.join(TOOLS, ".."))
+sys.path.insert(0, TOOLS)          # tools/ の共有モジュール（contrast.py など）を読む
 API = "https://kokkai.ndl.go.jp/api/speech"
 UA = {"User-Agent": "seisaku-kurabe-verifier/1.0 (+https://ai-seisaku-kurabe.github.io)"}
 
@@ -662,6 +663,51 @@ def check_search_disclosure():
         fail("検索の開示", "キーワード検索欄がどのページにも無い（発言一覧・採決一覧・ニュースに置いている）")
     print(f"  検索の開示: 検索欄 {boxes} ページ／外部への送信経路なし")
 
+
+# 政党の色の上に載る文字が読めるか（WCAG 2.1 AA = 4.5:1）を、公開ページの実際の
+# 組み合わせで確かめる。**政党の色は変えない**ので、直すのは文字色のほう。
+# 以前は明るさのしきい値で白/濃色を決めていて、4党が基準を下回っていた
+# （チームみらい 2.43 / 公明 3.18 / 維新 3.37 / 参政 3.38）。
+# 党を足したときに、同じことが静かに起きるのを止める。
+def check_contrast():
+    import contrast
+    # 党の色の上に文字を載せる箇所（--pc-on）と、党の色を文字そのものに使う箇所
+    # （--pc-tl＝明るい地／--pc-td＝暗い地）の両方を見る。地の色はカードの色。
+    on_pat = re.compile(r"--pc-on:(#[0-9A-Fa-f]{6})")
+    tl_pat = re.compile(r"--pc-tl:(#[0-9A-Fa-f]{6})")
+    td_pat = re.compile(r"--pc-td:(#[0-9A-Fa-f]{6})")
+    pat = re.compile(r"--pc:(#[0-9A-Fa-f]{6});--pc-on:(#[0-9A-Fa-f]{6})")
+    # 党の色を文字に使う箇所の地は accent-soft（ワンイシューの囲み）。
+    # カードの色より条件が厳しい側なので、こちらで判定する。
+    LIGHT_CARD, DARK_CARD = "#e6e9f4", "#222a40"
+    pairs, worst, worst_pair = set(), 99.0, None
+    for fn in sorted(f for f in os.listdir(ROOT) if f.endswith(".html")):
+        html = open(os.path.join(ROOT, fn), encoding="utf-8").read()
+        for bg, fg in pat.findall(html):
+            pairs.add((fn, bg.lower(), fg.lower()))
+        for fg in tl_pat.findall(html):
+            pairs.add((fn, LIGHT_CARD, fg.lower()))
+        for fg in td_pat.findall(html):
+            pairs.add((fn, DARK_CARD, fg.lower()))
+        # 党の色を背景に使うのに文字色を指定していない箇所が増えていないか
+        if html.count("--pc-on:") == 0 and 'class="nw-pty"' in html:
+            fail("コントラスト", f"{fn}: 党の色を背景にしているのに文字色（--pc-on）が出ていない")
+    for fn, bg, fg in sorted(pairs):
+        r = contrast.ratio(fg, bg)
+        if r < worst:
+            worst, worst_pair = r, (fn, bg, fg)
+        if r < contrast.AA_SMALL:
+            fail("コントラスト",
+                 f"{fn}: 地の色 {bg} に文字色 {fg} は {r:.2f}:1 で基準（4.5:1）に届かない。"
+                 "党の色は変えず、文字色のほうを直すこと"
+                 "（contrast.best_text＝色の上に載せる文字／contrast.readable_on＝色を文字に使うとき）")
+    if not pairs:
+        fail("コントラスト", "党の色と文字色の組み合わせが1つも見つからない。--pc-on の出力が消えた可能性がある")
+        return
+    ok = "すべて4.5:1以上" if worst >= contrast.AA_SMALL else "基準を下回る組がある"
+    print(f"  コントラスト: 党の色と文字色 {len(pairs)} 組／{ok}"
+          f"（最小 {worst:.2f}:1 / {worst_pair[1]}）")
+
 # 暗い背景でのリンクの可読性。
 # 個別に色を指定していないリンクは、CSSに既定のリンク色が無いとブラウザ既定
 # （未訪問 #0000EE / 訪問済み #551A8B）のままになり、ダークモードの背景（#12151d）
@@ -892,6 +938,7 @@ def main():
     check_vote_triage()
     check_privacy_claims()
     check_search_disclosure()
+    check_contrast()
     check_link_colors()
     check_intake_watch()
     check_feedback_log()

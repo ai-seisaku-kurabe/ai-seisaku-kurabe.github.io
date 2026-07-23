@@ -71,14 +71,23 @@ ID={"自由民主党":"jimin","立憲民主党":"rikken","日本維新の会":"i
 PC={"自由民主党":"#E60012","立憲民主党":"#004097","日本維新の会":"#12A150","国民民主党":"#F2B200",
     "公明党":"#F55881","日本共産党":"#D7003A","れいわ新選組":"#E4007F","参政党":"#E8630A",
     "チームみらい":"#00B8C4","社会民主党":"#0B60A8"}
+import contrast
 def on_color(hx):
-    r,g,b=int(hx[1:3],16),int(hx[3:5],16),int(hx[5:7],16)
-    return "#1b2130" if (0.299*r+0.587*g+0.114*b)>150 else "#ffffff"
+    """党の色の上に載せる文字の色。実際のコントラスト比が高いほうを選ぶ（contrast.py）。"""
+    return contrast.best_text(hx)
 def esc(s): return html.escape(str(s))
 
 # ---------- 共通ナビ（スクロールしても常時表示のスティッキーヘッダ） ----------
 NAV_CSS=("<style>"
   "html{scroll-padding-top:64px;}"
+  # キーボードで操作しているとき、いまどこにいるかを見えるようにする。
+  # 絞り込みのチップ・政党タブ・しおりは背景色を自分で持つので、ブラウザ既定の輪郭は
+  # 色によっては沈む。輪郭を外側（offset）に出し、下地はページの地色に固定する
+  # （accent とページ地色のコントラストは明7.2:1／暗7.4:1で、党の色の影響を受けない）。
+  # :focus-visible なので、マウスでクリックしたときには出ない。
+  ":focus-visible{outline:3px solid var(--accent);outline-offset:2px;border-radius:4px;}"
+  # このヘッダ自身は sticky なので、内側の輪郭が隠れないよう余白を確保する
+  ".sitehdr a:focus-visible{outline-offset:1px;}"
   ".sitehdr{position:sticky;top:0;z-index:100;background:var(--paper);"
   # .wrap の上・左右パディングを打ち消して画面幅いっぱいのバーにする
   "margin:calc(-1*clamp(20px,5vw,56px)) calc(-1*clamp(16px,5vw,40px)) 26px;"
@@ -1984,7 +1993,10 @@ MYNOTE_CSS="""
 .mn-card{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--pc,var(--accent));
   border-radius:12px;padding:14px 16px;display:flex;flex-direction:column;gap:9px;}
 .mn-top{display:flex;align-items:center;justify-content:space-between;}
-.mn-badge{font-family:var(--mono);font-size:12px;font-weight:700;color:var(--pc,var(--accent));}
+.mn-badge{font-family:var(--mono);font-size:12px;font-weight:700;color:var(--pc-tl,var(--pc,var(--accent)));}
+@media(prefers-color-scheme:dark){.mn-badge{color:var(--pc-td,var(--pc,var(--accent)));}}
+:root[data-theme="dark"] .mn-badge{color:var(--pc-td,var(--pc,var(--accent)));}
+:root[data-theme="light"] .mn-badge{color:var(--pc-tl,var(--pc,var(--accent)));}
 .mn-x{background:none;border:none;cursor:pointer;color:var(--muted);font-size:18px;line-height:1;padding:2px 6px;border-radius:6px;}
 .mn-x:hover{color:#c1704f;background:var(--accent-soft);}
 .mn-point{font-size:13.5px;line-height:1.8;color:var(--ink);margin:0;}
@@ -2009,6 +2021,11 @@ MYNOTE_JS=("<script>(function(){"
   "function get(){try{return JSON.parse(localStorage.getItem('kg_notes')||'{}');}catch(e){return {};}}"
   "function save(o){localStorage.setItem('kg_notes',JSON.stringify(o));}"
   "var ORD=['経済・産業','財政','社会保障','外交・安保','エネルギー・環境','憲法'];"
+  # 党の色をそのまま文字色にすると、明るい党色は白地で読めない（国民 #F2B200 は1.88:1）。
+  # 地の色ごとに、色相を保ったまま読める濃さに寄せた値を渡す（contrast.readable_on）。
+  + "var PTV=" + json.dumps({p["short"]: {"l": contrast.readable_on(PC[p["full"]], "#e6e9f4"),
+                                          "d": contrast.readable_on(PC[p["full"]], "#222a40")}
+                             for p in PARTIES}, ensure_ascii=False) + ";"
   "function scls(st){return st==='賛成'?'yes':(st==='反対'?'no':'na');}"
   "function render(){var notes=get(),ids=Object.keys(notes);"
   "var root=document.getElementById('noteRoot'),empty=document.getElementById('noteEmpty'),act=document.getElementById('noteActions');"
@@ -2018,7 +2035,8 @@ MYNOTE_JS=("<script>(function(){"
   "var order=ORD.filter(function(d){return g[d];}).concat(Object.keys(g).filter(function(d){return ORD.indexOf(d)<0;}));"
   "root.innerHTML=order.map(function(dom){var items=g[dom].map(function(it){"
   "var votes=(it.votes||[]).map(function(v){return '<a class=\"mn-v '+scls(v.st)+'\" href=\"'+v.u+'\" target=\"_blank\" rel=\"noopener\">'+esc(v.l)+' <b>'+esc(v.st)+'</b></a>';}).join('');"
-  "return '<div class=\"mn-card\" style=\"--pc:'+esc(it.pc)+'\"><div class=\"mn-top\"><span class=\"mn-badge\">'+esc(it.party)+'</span>'"
+  "var tv=PTV[it.party]||{};"
+  "return '<div class=\"mn-card\" style=\"--pc:'+esc(it.pc)+';--pc-tl:'+esc(tv.l||it.pc)+';--pc-td:'+esc(tv.d||it.pc)+'\"><div class=\"mn-top\"><span class=\"mn-badge\">'+esc(it.party)+'</span>'"
   "+'<button class=\"mn-x\" data-id=\"'+esc(it._id)+'\" title=\"削除\" aria-label=\"削除\">×</button></div>'"
   "+'<p class=\"mn-point\">'+esc(it.point)+'</p>'"
   "+'<blockquote class=\"mn-q\">「'+esc(it.quote)+'」<cite>— '+esc(it.who)+'議員　<a class=\"src\" href=\"'+esc(it.url)+'\" target=\"_blank\" rel=\"noopener\">議事録原文→</a></cite></blockquote>'"
@@ -2044,7 +2062,8 @@ open("site/mynote.html","w",encoding="utf-8").write(MYNOTE)
 
 # ---------- news.html (政策ニュース・アーカイブ＝分野タグ付きで蓄積) ----------
 NEWS_DOMAINS = ["経済・産業","財政","社会保障","外交・安保","エネルギー・環境","憲法"]
-PJS = {ID[p["full"]]: {"n": p["short"], "c": PC[p["full"]]} for p in PARTIES}
+PJS = {ID[p["full"]]: {"n": p["short"], "c": PC[p["full"]], "o": on_color(PC[p["full"]])}
+       for p in PARTIES}
 NEWS_CSS="""
 .nw-lede{color:var(--muted);font-size:14.5px;line-height:1.85;max-width:66ch;margin:0 0 20px;}
 .nw-lede b{color:var(--ink);}
@@ -2055,10 +2074,10 @@ NEWS_CSS="""
   border:1px solid var(--line);border-radius:20px;padding:5px 13px;transition:.13s;}
 .nw-chip:hover{border-color:var(--accent);color:var(--ink);}
 .nw-chip.on{background:var(--accent);color:#fff;border-color:var(--accent);font-weight:600;}
-.nw-chip.on[data-pc]{background:var(--pc);border-color:var(--pc);}
+.nw-chip.on[data-pc]{background:var(--pc);border-color:var(--pc);color:var(--pc-on,#fff);}
 .nw-kw{flex:1;min-width:160px;font:inherit;font-size:13px;padding:6px 10px;
   border:1px solid var(--line);border-radius:8px;background:var(--card);color:var(--ink);}
-.nw-kw:focus{outline:2px solid var(--accent);outline-offset:1px;border-color:var(--accent);}
+.nw-kw:focus{border-color:var(--accent);}
 .nw-kwhint{flex:1 0 100%;font-size:11.5px;line-height:1.7;color:var(--muted);margin:0;}
 .nw-count{font-family:var(--mono);font-size:12px;color:var(--muted);margin:0 0 14px;}
 .nw-list{display:flex;flex-direction:column;gap:10px;}
@@ -2072,7 +2091,7 @@ NEWS_CSS="""
 .nw-tag{font-family:var(--mono);font-size:10.5px;font-weight:700;letter-spacing:.04em;
   background:var(--accent-soft);color:var(--accent);border-radius:6px;padding:3px 8px;}
 .nw-pty{font-family:var(--mono);font-size:10.5px;font-weight:700;border-radius:6px;padding:3px 8px;
-  background:var(--pc,var(--accent));color:#fff;}
+  background:var(--pc,var(--accent));color:var(--pc-on,#fff);}
 .nw-cta{display:block;text-decoration:none;color:inherit;background:transparent;
   border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:0 12px 12px 0;
   padding:14px 18px;margin:0 0 18px;transition:border-color .15s;}
@@ -2136,7 +2155,7 @@ NEWS_JS=("<script>(function(){"
   "var pg=document.getElementById('nwPager');""if(!total){var wider=(fp!=='all'&&fd!=='all'&&!kw)?('<div class=\"nw-empty\">この党のこの分野の見出しは、まだ蓄積されていません。<br>'+'<a href=\"#\" id=\"nwWiden\">▸ 「'+fd+'」の見出しをすべて見る</a></div>'):'<div class=\"nw-empty\">条件に合う見出しがありません。</div>';root.innerHTML=wider;pg.innerHTML='';var w=document.getElementById('nwWiden');if(w)w.addEventListener('click',function(e){e.preventDefault();fp='all';page=1;document.querySelectorAll('.nw-chip').forEach(function(c){if(c.getAttribute('data-g')==='p'){if(c.getAttribute('data-v')==='all'){c.classList.add('on');}else{c.classList.remove('on');}}});render();});return;}""pg.innerHTML = pages>1 ? ('<button class=\"nw-pg\" data-go=\"prev\"'+(page<=1?' disabled':'')+'>← 前の10件</button>'""+'<span class=\"nw-pgi\">'+page+' / '+pages+' ページ</span>'""+'<button class=\"nw-pg\" data-go=\"next\"'+(page>=pages?' disabled':'')+'>次の10件 →</button>') : '';"
   "root.innerHTML=slice.map(function(x){"
   "var tags=(x.d||[]).map(function(d){return '<span class=\"nw-tag\">'+esc(d)+'</span>';}).join('');"
-  "var pts=(x.p||[]).map(function(p){var m=PTY[p];return m?'<span class=\"nw-pty\" style=\"--pc:'+m.c+'\">'+esc(m.n)+'</span>':'';}).join('');"
+  "var pts=(x.p||[]).map(function(p){var m=PTY[p];return m?'<span class=\"nw-pty\" style=\"--pc:'+m.c+';--pc-on:'+(m.o||'#fff')+'\">'+esc(m.n)+'</span>':'';}).join('');"
   "return '<div class=\"nw-item\"><a class=\"nw-t\" href=\"'+x.u+'\" target=\"_blank\" rel=\"noopener\">'+esc(x.t)+'</a>'"
   "+'<div class=\"nw-meta\"><span class=\"nw-date\">'+esc(x.date||'')+'</span>'"
   "+(x.s?'<span class=\"nw-src\">'+esc(x.s)+'</span>':'')+tags+pts+'</div></div>';}).join('');}"
@@ -2155,7 +2174,8 @@ NEWS_JS=("<script>(function(){"
 _dchips = "".join(f'<button type="button" class="nw-chip" data-g="d" data-v="{esc(d)}">{esc(d)}</button>'
                   for d in NEWS_DOMAINS)
 _pchips = "".join(f'<button type="button" class="nw-chip" data-g="p" data-v="{ID[p["full"]]}" '
-                  f'data-pc style="--pc:{PC[p["full"]]}">{esc(p["short"])}</button>' for p in PARTIES)
+                  f'data-pc style="--pc:{PC[p["full"]]};--pc-on:{on_color(PC[p["full"]])}">'
+                  f'{esc(p["short"])}</button>' for p in PARTIES)
 NEWS=(f'<title>政策ニュース — 分野別のアーカイブ ｜ AI政策くらべ</title>\n'
   f'<style>{INDEX_CSS}{NEWS_CSS}</style>\n'
   f'<div class="wrap">{nav("news.html")}<div class="doc">'
@@ -2195,7 +2215,8 @@ for _ses in ("221", "219", "217"):
 SPEECH_ITEMS.sort(key=lambda x: (x["ses"] == "217", x["date"]), reverse=False)
 SPEECH_ITEMS.sort(key=lambda x: x["date"], reverse=True)
 SP_JSON = json.dumps({"items": SPEECH_ITEMS,
-                      "parties": {ID[p["full"]]: {"n": p["short"], "c": PC[p["full"]]} for p in PARTIES},
+                      "parties": {ID[p["full"]]: {"n": p["short"], "c": PC[p["full"]], "o": on_color(PC[p["full"]])}
+       for p in PARTIES},
                       "pmap": {p["full"]: ID[p["full"]] for p in PARTIES},
                       "domains": NEWS_DOMAINS}, ensure_ascii=False)
 SP_CSS = NEWS_CSS + """
@@ -2235,14 +2256,14 @@ SP_JS = ("<script>(function(){"
   "+'<span class=\"nw-pgi\">'+page+' / '+pages+' ページ</span>'"
   "+'<button class=\"nw-pg\" data-go=\"next\"'+(page>=pages?' disabled':'')+'>次の10件 →</button>') : '';"
   "root.innerHTML=slice.map(function(x){"
-  "var m=D.parties[D.pmap[x.party]]||{n:x.party,c:'#888'};"
+  "var m=D.parties[D.pmap[x.party]]||{n:x.party,c:'#888',o:'#fff'};"
   "return '<div class=\"nw-item\">'"
   "+'<p class=\"sp-ctx\">第'+x.ses+'回 ｜ '+esc(x.house+x.meeting)+' ｜ '+esc(x.date)+'</p>'"
   "+'<p class=\"sp-q\">「'+esc(x.quote)+'」</p>'"
   "+'<p class=\"sp-cite\">— '+esc(x.who)+'議員'"
   "+'<a href=\"'+x.url+'\" target=\"_blank\" rel=\"noopener\">全文→</a></p>'"
   "+'<div class=\"nw-meta\"><span class=\"nw-tag\">'+esc(x.domain)+'</span>'"
-  "+'<span class=\"nw-pty\" style=\"--pc:'+m.c+'\">'+esc(m.n)+'</span></div></div>';}).join('');}"
+  "+'<span class=\"nw-pty\" style=\"--pc:'+m.c+';--pc-on:'+(m.o||'#fff')+'\">'+esc(m.n)+'</span></div></div>';}).join('');}"
   "document.querySelectorAll('.nw-chip').forEach(function(c){c.addEventListener('click',function(){"
   "var g=c.getAttribute('data-g');"
   "document.querySelectorAll('.nw-chip').forEach(function(x){if(x.getAttribute('data-g')===g)x.classList.remove('on');});"
@@ -2257,7 +2278,8 @@ SP_JS = ("<script>(function(){"
   "render();})();</script>")
 _sd = "".join(f'<button type="button" class="nw-chip" data-g="d" data-v="{esc(d)}">{esc(d)}</button>' for d in NEWS_DOMAINS)
 _sp = "".join(f'<button type="button" class="nw-chip" data-g="p" data-v="{ID[p["full"]]}" '
-              f'data-pc style="--pc:{PC[p["full"]]}">{esc(p["short"])}</button>' for p in PARTIES)
+              f'data-pc style="--pc:{PC[p["full"]]};--pc-on:{on_color(PC[p["full"]])}">'
+                  f'{esc(p["short"])}</button>' for p in PARTIES)
 SPEECHES = (f'<title>発言一覧 — 党と分野で探す ｜ AI政策くらべ</title>'
   f'<style>{INDEX_CSS}{SP_CSS}</style>'
   f'<div class="wrap">{nav("speeches.html")}<div class="doc">'
