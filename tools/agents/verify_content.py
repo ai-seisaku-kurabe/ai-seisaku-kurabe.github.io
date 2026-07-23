@@ -601,6 +601,18 @@ def check_privacy_claims():
                  f"firebase.js が想定外のコレクション（{', '.join(sorted(unexpected))}）に"
                  "個別レコードを書いている。開示・レビューが必要")
 
+    # 端末内に保存するものは、privacy.html に列挙してあることを実装側からも縛る。
+    # 表示テーマ(kg_theme)はマイノート(kg_notes)と同じ扱いなので、開示なしに増えたら止める。
+    priv_path = os.path.join(ROOT, "privacy.html")
+    priv = open(priv_path, encoding="utf-8").read() if os.path.exists(priv_path) else ""
+    for key, word in (("kg_theme", "表示テーマ"), ("kg_notes", "マイノート")):
+        used = any(key in open(os.path.join(ROOT, f), encoding="utf-8").read()
+                   for f in os.listdir(ROOT) if f.endswith(".html"))
+        if used and word not in priv:
+            fail("プライバシー",
+                 f"ローカルストレージに {key} を保存しているが、privacy.html に"
+                 f"「{word}」の開示が見当たらない")
+
     if "increment" not in js:
         fail("プライバシー", "firebase.js に increment が無い。集計方式が変わった可能性がある")
     # アクセス解析タグが入っていないか

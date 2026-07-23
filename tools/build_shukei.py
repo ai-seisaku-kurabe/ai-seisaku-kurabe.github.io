@@ -61,16 +61,16 @@ for i in sorted(range(len(QSHORT)), key=lambda i:-D_SAMPLE[i]):
         f'<div class="cval">{pct}%<small>{n}</small></div></div>')
 
 CSS="""
-:root{ --paper:#f3f4f7; --card:#fbfbfd; --ink:#1b2130; --muted:#5c6675; --line:#dcdfe6;
+:root{ color-scheme:light dark; --paper:#f3f4f7; --card:#fbfbfd; --ink:#1b2130; --muted:#5c6675; --line:#dcdfe6;
   --accent:#3a4d8f; --accent-soft:#e6e9f4; --pos:#2f8f7f; --neg:#c1704f; --neu:#9aa3b2;
   --shadow:0 1px 2px rgba(20,28,50,.05),0 8px 24px rgba(20,28,50,.05); }
 @media (prefers-color-scheme:dark){ :root{ --paper:#12151d; --card:#191d27; --ink:#e7eaf1;
   --muted:#98a1b2; --line:#282e3b; --accent:#8ea2e6; --accent-soft:#222a40; --neu:#5c6473;
   --shadow:0 1px 2px rgba(0,0,0,.3),0 10px 30px rgba(0,0,0,.35); } }
-:root[data-theme="dark"]{ --paper:#12151d; --card:#191d27; --ink:#e7eaf1; --muted:#98a1b2;
+:root[data-theme="dark"]{ color-scheme:dark; --paper:#12151d; --card:#191d27; --ink:#e7eaf1; --muted:#98a1b2;
   --line:#282e3b; --accent:#8ea2e6; --accent-soft:#222a40; --neu:#5c6473;
   --shadow:0 1px 2px rgba(0,0,0,.3),0 10px 30px rgba(0,0,0,.35); }
-:root[data-theme="light"]{ --paper:#f3f4f7; --card:#fbfbfd; --ink:#1b2130; --muted:#5c6675;
+:root[data-theme="light"]{ color-scheme:light; --paper:#f3f4f7; --card:#fbfbfd; --ink:#1b2130; --muted:#5c6675;
   --line:#dcdfe6; --accent:#3a4d8f; --accent-soft:#e6e9f4; --neu:#9aa3b2;
   --shadow:0 1px 2px rgba(20,28,50,.05),0 8px 24px rgba(20,28,50,.05); }
 *{ box-sizing:border-box; }

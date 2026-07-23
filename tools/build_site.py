@@ -98,7 +98,39 @@ NAV_CSS=("<style>"
   "-webkit-overflow-scrolling:touch;scrollbar-width:none;font-size:11.5px;gap:5px;}"
   ".topnav::-webkit-scrollbar{display:none;}"
   ".topnav a{flex:none;white-space:nowrap;padding:5px 10px;}}"
+  # 表示テーマの切り替えボタン。ページへの入口ではなく操作ボタンなので、
+  # 「ヘッダーは入口5つに絞る」方針とは別枠として右端に置く。
+  ".thbtn{flex:none;margin-left:8px;font-family:var(--mono);font-size:12px;color:var(--muted);"
+  "background:transparent;border:1px solid var(--line);border-radius:20px;padding:5px 11px;"
+  "cursor:pointer;line-height:1.5;white-space:nowrap;}"
+  ".thbtn:hover{border-color:var(--accent);color:var(--accent);}"
+  "@media(max-width:600px){.thbtn{font-size:11.5px;padding:5px 9px;margin-left:6px;}}"
   "</style>")
+
+# 表示テーマの切り替え（自動→明るい→暗い→自動）。
+# 既定は「自動」＝これまでどおり端末・ブラウザの設定に従う（@media prefers-color-scheme）。
+# 選ぶと :root[data-theme] を立てて上書きする（CSS側の上書き規則は以前からあったが、
+# 属性を立てる仕組みが無く使われていなかった）。設定はこの端末の中だけに保存する。
+NAV_JS = ("<script>(function(){"
+  "var b=document.getElementById('thBtn');if(!b)return;"
+  "var L={auto:'自動',light:'明るい',dark:'暗い'},O=['auto','light','dark'];"
+  "function cur(){try{var v=localStorage.getItem('kg_theme');"
+  "return (v==='light'||v==='dark')?v:'auto';}catch(e){return 'auto';}}"
+  "function apply(v){var r=document.documentElement;"
+  "if(v==='auto'){r.removeAttribute('data-theme');}else{r.setAttribute('data-theme',v);}"
+  "b.textContent=L[v];"
+  "b.setAttribute('aria-label','表示テーマ：'+L[v]+'（押すと 自動→明るい→暗い の順に切り替わります）');}"
+  "apply(cur());"
+  "b.addEventListener('click',function(){var v=O[(O.indexOf(cur())+1)%O.length];"
+  "try{if(v==='auto'){localStorage.removeItem('kg_theme');}else{localStorage.setItem('kg_theme',v);}}catch(e){}"
+  "apply(v);});"
+  "})();</script>")
+
+# 描画より前にテーマを反映するための最小のスクリプト（head に入れる）。
+# 後ろに置くと、暗い設定の人に一瞬だけ明るい画面が出る（逆も同じ）。
+THEME_BOOT = ("<script>(function(){try{var t=localStorage.getItem('kg_theme');"
+  "if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t);}"
+  "catch(e){}})();</script>")
 def nav(cur):
     # ヘッダーは「情報の入口」だけに絞る。二次的な導線はフッターへ（項目が増えても崩れないように）
     items=[("index.html","トップ"),("guide.html","政党で選ぶ"),("oneissue.html","ワンイシュー"),
@@ -106,7 +138,10 @@ def nav(cur):
     a="".join(f'<a href="{h}"{" class=\"cur\"" if h==cur else ""}>{t}</a>' for h,t in items)
     return (NAV_CSS+'<header class="sitehdr"><div class="sitehdr-in">'
             '<a class="brand" href="index.html">AI政策<span>くらべ</span></a>'
-            f'<nav class="topnav">{a}</nav></div></header>')
+            f'<nav class="topnav">{a}</nav>'
+            '<button class="thbtn" id="thBtn" type="button" '
+            'aria-label="表示テーマを切り替える（自動・明るい・暗い）">自動</button>'
+            '</div></header>' + NAV_JS)
 def inject_nav(src, cur):
     return src.replace('<div class="wrap"><div class="doc">',
                        '<div class="wrap">'+nav(cur)+'<div class="doc">', 1)
@@ -264,12 +299,12 @@ party_cards="".join(
   f'<span class="ps"><i class="pdot"></i>{esc(p["short"])}</span>'
   f'<span class="poi">{esc(p["oneissue"])}</span></a>' for p in PARTIES)
 INDEX_CSS="""
-:root{ --paper:#f3f4f7; --card:#fbfbfd; --ink:#1b2130; --muted:#5c6675; --line:#dcdfe6;
+:root{ color-scheme:light dark; --paper:#f3f4f7; --card:#fbfbfd; --ink:#1b2130; --muted:#5c6675; --line:#dcdfe6;
   --accent:#3a4d8f; --accent-soft:#e6e9f4; --shadow:0 1px 2px rgba(20,28,50,.05),0 8px 24px rgba(20,28,50,.05); }
 @media(prefers-color-scheme:dark){ :root{ --paper:#12151d; --card:#191d27; --ink:#e7eaf1; --muted:#98a1b2;
   --line:#282e3b; --accent:#8ea2e6; --accent-soft:#222a40; --shadow:0 1px 2px rgba(0,0,0,.3),0 10px 30px rgba(0,0,0,.35);} }
-:root[data-theme="dark"]{ --paper:#12151d;--card:#191d27;--ink:#e7eaf1;--muted:#98a1b2;--line:#282e3b;--accent:#8ea2e6;--accent-soft:#222a40; }
-:root[data-theme="light"]{ --paper:#f3f4f7;--card:#fbfbfd;--ink:#1b2130;--muted:#5c6675;--line:#dcdfe6;--accent:#3a4d8f;--accent-soft:#e6e9f4; }
+:root[data-theme="dark"]{ color-scheme:dark; --paper:#12151d;--card:#191d27;--ink:#e7eaf1;--muted:#98a1b2;--line:#282e3b;--accent:#8ea2e6;--accent-soft:#222a40; }
+:root[data-theme="light"]{ color-scheme:light; --paper:#f3f4f7;--card:#fbfbfd;--ink:#1b2130;--muted:#5c6675;--line:#dcdfe6;--accent:#3a4d8f;--accent-soft:#e6e9f4; }
 *{box-sizing:border-box;}
 /* 既定のリンク色。個別に色を指定していないリンクは、これが無いとブラウザ既定
    (未訪問 #0000EE / 訪問済み #551A8B) のまま残り、暗い背景ではほぼ読めない
@@ -1796,6 +1831,9 @@ PRIVACY=(f'<title>プライバシーポリシー ｜ AI政策くらべ</title>'
   '<li><b>「マイノート」で保存した内容は、お使いの端末の中だけに残ります。</b>'
   'ブラウザのローカルストレージに保存され、こちらへは送信されません。'
   'ブラウザのデータを消すと、保存内容も消えます。</li>'
+  '<li><b>表示テーマ（自動・明るい・暗い）の設定も、同じく端末の中だけに残ります。</b>'
+  '画面の見た目の設定であり、こちらへは送信されません。'
+  '「自動」に戻すと、その保存も消えます。</li>'
   '<li><b>アクセス解析ツールを入れていません。</b>'
   'Google Analytics などの計測タグは設置していません。</li>'
   '<li><b>このサイト自身は、Cookieを設定していません。</b>'
@@ -2687,7 +2725,8 @@ def wrap_document(fn, html):
                   f'<meta property="og:title" content="{esc(title)}">'
                   f'<meta property="og:description" content="{esc(d)}">'
                   f'<meta property="og:url" content="{SITE_URL}/{"" if fn=="index.html" else fn}">'
-                  f'<meta name="twitter:card" content="summary">')
+                  f'<meta name="twitter:card" content="summary">'
+                  + THEME_BOOT)
     # 既存の先頭メタ・title・style は head に入れ、残りを body に置く
     idx = html.find('<div class="wrap">')
     head, body = (html[:idx], html[idx:]) if idx > 0 else ("", html)
