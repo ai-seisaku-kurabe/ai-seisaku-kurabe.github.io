@@ -627,6 +627,41 @@ def check_privacy_claims():
                      "privacy.html の「アクセス解析ツールを入れていません」と食い違う")
     print("  プライバシー: 記述と実装が一致")
 
+
+# キーワード検索の「入力した語は送信も保存もしません」という約束を、実装側から縛る。
+# 文章だけの約束は、あとから検索を外部サービスに置き換えたときに残ったまま嘘になる
+# （同じ型の食い違いを、このサイトは何度も出している）。
+# 縛り方: 公開ページの fetch() は**同じフォルダの .json だけ**を読む、を機械で確かめる。
+# 外部の検索APIに投げる形に変えれば、この検査で止まる。
+def check_search_disclosure():
+    FETCH = re.compile(r"fetch\(\s*(['\"])([^'\"]*)\1")
+    ANY_FETCH = re.compile(r"fetch\(")
+    LOCAL_JSON = re.compile(r"^[A-Za-z0-9_.\-]+\.json$")
+    pages = sorted(f for f in os.listdir(ROOT) if f.endswith(".html"))
+    boxes = 0
+    for f in pages:
+        html = open(os.path.join(ROOT, f), encoding="utf-8").read()
+        if 'class="nw-kw"' in html:
+            boxes += 1
+            if "送信も保存もしません" not in html:
+                fail("検索の開示", f"{f}: 検索欄があるのに、送信しない旨の開示が無い")
+            for tag in ("navigator.sendBeacon", "XMLHttpRequest"):
+                if tag in html:
+                    fail("検索の開示", f"{f}: 検索欄のあるページに {tag} がある。送信経路が増えていないか確認が要る")
+        lits = FETCH.findall(html)
+        if len(lits) != len(ANY_FETCH.findall(html)):
+            fail("検索の開示",
+                 f"{f}: 宛先が文字列で書かれていない fetch がある。"
+                 "どこへ送っているかを機械で確かめられないため、実装を確認すること")
+        for _q, url in lits:
+            if not LOCAL_JSON.match(url):
+                fail("検索の開示",
+                     f"{f}: 同じフォルダのJSON以外を読む fetch がある（{url}）。"
+                     "『入力した語は送信しない』『解析を置いていない』開示と食い違わないか確認が要る")
+    if boxes == 0:
+        fail("検索の開示", "キーワード検索欄がどのページにも無い（発言一覧・採決一覧・ニュースに置いている）")
+    print(f"  検索の開示: 検索欄 {boxes} ページ／外部への送信経路なし")
+
 # 暗い背景でのリンクの可読性。
 # 個別に色を指定していないリンクは、CSSに既定のリンク色が無いとブラウザ既定
 # （未訪問 #0000EE / 訪問済み #551A8B）のままになり、ダークモードの背景（#12151d）
@@ -856,6 +891,7 @@ def main():
     check_matching_audit(bp)
     check_vote_triage()
     check_privacy_claims()
+    check_search_disclosure()
     check_link_colors()
     check_intake_watch()
     check_feedback_log()
