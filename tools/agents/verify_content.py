@@ -335,6 +335,10 @@ PROMISES = [
                                                                   "ご意見：プライバシー側の開示と不遡及"),
     ("kiroku.html",   ["原文は公開しません", "採否の根拠にしません", "変更を完結させません"],
                                                                   "記録：原文非公開・件数非根拠・AI非完結の宣言"),
+    # 窓口の新着をどれくらいの頻度で確認しているかの開示。
+    # 「確認のうえ対応します」とだけ書いて監視が無い状態に戻らないよう、機械で縛る
+    # （実装との一致は check_intake_watch() が見る）。
+    ("feedback.html", ["新着の有無を機械的に確認"],             "ご意見：窓口の確認頻度の開示"),
     # 採決トリアージ(agents/TRIAGE_CRITERIA.md) — 全件判定の開示。
     # 「重要度の格付けではない」「編集判断を含む」が消えると、分類が格付けに見え始める。
     ("votes.html",    ["判定の基準", "重要度の格付けではありません", "編集判断を含みます"],
@@ -598,6 +602,45 @@ def check_privacy_claims():
                      "privacy.html の「アクセス解析ツールを入れていません」と食い違う")
     print("  プライバシー: 記述と実装が一致")
 
+# 窓口の監視（⑥運用班 feedback-count.yml）と、その開示が一致しているか。
+# サイトは削除・訂正の申出をご意見フォームとGitHubのIssue・PRで受け付け、
+# 「半日ごとに新着の有無を機械的に確認している」と書いている。監視を外したのに
+# 開示だけ残る／頻度を変えたのに開示が古いまま、はどちらも約束と実態のずれになる。
+def check_intake_watch():
+    fb = os.path.join(ROOT, "feedback.html")
+    html = open(fb, encoding="utf-8").read() if os.path.exists(fb) else ""
+    claimed = "新着の有無を機械的に確認" in html
+    wf = os.path.join(ROOT, ".github", "workflows", "feedback-count.yml")
+    if not os.path.exists(wf):
+        if claimed:
+            fail("窓口の監視",
+                 "feedback.html は半日ごとの機械的な確認を約束しているが、"
+                 ".github/workflows/feedback-count.yml が無い")
+        return
+    y = open(wf, encoding="utf-8").read()
+
+    # ご意見フォームとIssue・PRの両方を数えているか（片方だけの監視に戻らないように）。
+    for rel in ("agents/feedback_count.py", "agents/issue_count.py"):
+        if rel not in y:
+            fail("窓口の監視", f"feedback-count.yml が {rel} を実行していない")
+        elif not os.path.exists(os.path.join(TOOLS, *rel.split("/"))):
+            fail("窓口の監視", f"feedback-count.yml が実行する {rel} が存在しない")
+
+    # 「半日ごと」と書いている以上、cron も1日2回であること。
+    m = re.search(r"cron:\s*'([^']+)'", y)
+    if not m:
+        if claimed:
+            fail("窓口の監視", "feedback-count.yml に schedule(cron) が無いのに、"
+                              "feedback.html は定期的な確認を約束している")
+    elif claimed:
+        hours = [h for h in m.group(1).split()[1].split(",") if h.strip()]
+        if len(hours) != 2:
+            fail("窓口の監視",
+                 f"feedback.html は「半日ごと」と書いているが、cron は1日{len(hours)}回"
+                 f"（{m.group(1)}）")
+    print("  窓口の監視: 開示と実装が一致"
+          + ("（半日ごと・ご意見／Issue・PR）" if claimed else "（開示なし）"))
+
 
 # ------------------------------- 7b. ご意見と対応の記録(⑦応答班)の整合
 # 取り決めは agents/FEEDBACK_CHARTER.md。ここで見るのは:
@@ -649,6 +692,7 @@ def main():
     check_matching_audit(bp)
     check_vote_triage()
     check_privacy_claims()
+    check_intake_watch()
     check_feedback_log()
     collect_research_citations()
 
