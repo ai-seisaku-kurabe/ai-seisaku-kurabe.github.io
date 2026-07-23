@@ -46,6 +46,11 @@
    境界時刻は Pages のデプロイ完了時刻**以降**の値にする(早すぎる側に倒さない)。
 1. **検知:** 新着の有無は半日ごとに GitHub Actions が**件数のみ**確認
    (`agents/feedback_count.py`。本文はActionsに載せない)。
+   **同じ頻度で GitHub の Issue・Pull Request の未対応件数も数える**
+   (`agents/issue_count.py`。表題・本文は取得しない)。サイトは削除・訂正の申出を
+   Issue でも受け付けると案内しており、そちらだけ監視が無いと窓口の約束が空になるため。
+   確認の頻度は feedback.html に開示し、開示と実装の一致は
+   `agents/verify_content.py` の `check_intake_watch()` が見る。
 2. **読解と分類(Claude):** `agents/feedback_read.py`(ローカル専用)で本文を読み、
    (i)誤字・リンク切れ (ii)事実誤りの指摘 (iii)内容に関わる提案 (iv)迷うもの に分類。
 3. **事実確認(Claude):** ルール3の参照先のみで確認。(i)は修正案の作成まで。

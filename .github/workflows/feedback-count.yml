@@ -1,11 +1,18 @@
 name: feedback-count
-# ⑥運用班: ご意見の新着件数だけを数える（本文は取得しない）
+# ⑥運用班: 窓口の新着を数える（本文は取得しない）
+#   ・ご意見フォーム（Firestore）      … 新着件数だけ
+#   ・GitHub の Issue / Pull Request … 未対応件数と新着件数だけ
+# サイトは「削除・訂正のご要望は Issue かリポジトリ経由で」と案内している。
+# そちらに定期確認が無いと、権利に関する申出だけ誰も見ていない状態になるため、
+# ご意見フォームと同じ頻度で数える（agents/issue_count.py の冒頭に経緯）。
 on:
   schedule:
     - cron: '0 21,9 * * *'   # 半日ごと(毎日 JST 6:00 / 18:00)。⑦応答班の検知に使う
   workflow_dispatch:
 permissions:
   contents: write
+  issues: read
+  pull-requests: read
 jobs:
   count:
     runs-on: ubuntu-latest
@@ -15,16 +22,26 @@ jobs:
         with:
           python-version: '3.12'
       - run: pip install --quiet google-auth requests
-      - name: 新着件数を数える
+      - name: ご意見の新着件数を数える
         env:
           FIREBASE_SA_KEY: ${{ secrets.FIREBASE_SA_KEY }}
         working-directory: tools
         run: python agents/feedback_count.py
+      - name: Issue・PR の未対応件数を数える
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        working-directory: tools
+        run: python agents/issue_count.py
+      # どちらかの窓口で数え損ねてもジョブ自体は失敗として残す（失敗を隠さない）が、
+      # コミットは always() で必ず走らせる。片方の障害でもう片方の検知まで
+      # 止めてしまうと、動いていた仕組みを新しい監視が壊すことになるため。
       - name: 件数をコミットに残す
+        if: always()
         run: |
           git config user.name "github-actions"
           git config user.email "actions@github.com"
           N=$(python -c "import json;print(json.load(open('tools/state/feedback_state.json'))['last_new'])")
-          git add tools/state/feedback_state.json
-          git commit -m "chore(ご意見): 新着 ${N} 件" || echo "no changes"
+          M=$(python -c "import json,os;p='tools/state/issue_state.json';d=json.load(open(p)) if os.path.exists(p) else {};print(d.get('open_issues',0)+d.get('open_prs',0))")
+          git add tools/state/feedback_state.json tools/state/issue_state.json
+          git commit -m "chore(窓口): ご意見の新着 ${N} 件 / 未対応 Issue・PR ${M} 件" || echo "no changes"
           git push

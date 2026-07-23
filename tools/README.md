@@ -13,7 +13,7 @@
 | ① 収集 | `agents/watch_sources.py` | 週次 (Actions) | 不要（読むだけ） |
 | ② 編集 | `agents/EDITOR.md`（AIへの指示書） | 人が起動 | **必要**（PRをマージ） |
 | ③ 検証 | `agents/verify_content.py` | PR時・週次 (Actions) | 不要（止めるだけ） |
-| ⑥ 運用 | `agents/health_check.py` | 日次 (Actions) | 不要（知らせるだけ） |
+| ⑥ 運用 | `agents/health_check.py` ／ `agents/feedback_count.py`・`agents/issue_count.py` | 日次・半日ごと (Actions) | 不要（知らせるだけ） |
 | ⑧ 査読 | `agents/REVIEW_CHARTER.md` ＋ `agents/make_review_request.py` | 人がPRごとに起動 | **必要**（BLOCKを裁く） |
 | ⑨ 文献調査 | `agents/SURVEY_CHARTER.md` ＋ `agents/audit_matching.py` | 人が起動（設問・政党を変えたら必ず） | 不要（測るだけ） |
 
