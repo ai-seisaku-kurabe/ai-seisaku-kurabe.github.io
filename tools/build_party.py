@@ -2,7 +2,7 @@
 """AI政策くらべ v1.1 「政党で選ぶ」= 党タブ主体。
 既存 build_guide.py のデータ(46発言+投票)・整形関数を再利用し、行列を転置して党ごとに表示。
 各党に『ワンイシュー』(特に重視する1点)を新設。"""
-import html, json, urllib.parse, os, sys
+import html, json, re, urllib.parse, os, sys
 
 # このファイルは exec() で読み込まれることがあり、そのとき __file__ は無い。
 # 呼び出し側は必ず tools/ を作業ディレクトリにしてから実行する（相対パス前提のため）ので、
@@ -130,6 +130,19 @@ def sessions_for(full, dname, entry, votes, labels):
     return [("第217回", entry.get("vkey"), votes, labels),
             ("第219回", VKEY219.get(full), v219, l219),
             ("第221回", VKEY221.get(full), v221, l221)]
+
+
+# 脚注に出す会期の表記。sessions_for() が唯一の出どころなので、そこから会期名だけを
+# 取り出す（データ側の引数は使わないので空で呼ぶ）。会期名を文面に書き写すと、
+# 会期を足したときに脚注だけが古いまま残る——⑧査読が指摘した「約束と実態のずれ」。
+SESSION_LABELS = [s for s, *_ in sessions_for(None, None, {}, None, None)]
+SESSIONS_JP = "・".join(SESSION_LABELS)             # 例: 第217回・第219回・第221回
+SESSIONS_COUNT = len(SESSION_LABELS)
+VOTE_INDEX_LINKS = "・".join(
+    f'<a class="src" href="https://www.sangiin.go.jp/japanese/touhyoulist/'
+    f'{s.strip("第回")}/vote_ind.htm" target="_blank" rel="noopener">{s}</a>'
+    for s in SESSION_LABELS)
+
 
 def vote_url(bid):
     """議案IDの先頭3桁が会期番号なので、そこからURLを組み立てる。"""
@@ -372,10 +385,23 @@ PACKAGE = {
    "「脱・脱炭素」（再エネ賦課金の見直し、次世代原発）"]},
 }
 
+def quote_session(url):
+    """発言の会期を、会議録IDから読む（IDは「1＋会期3桁＋会議コード」）。
+
+    会期名を文面に書くと、別会期の発言にまで同じ会期名が付く。実際、
+    第221回しか発言の無い党（チームみらい・社民）の引用に「第217回国会」と
+    書いていた。会期は引用そのものから採る。
+    """
+    m = re.search(r"/txt/\d(\d{3})", url or "")
+    return f"第{m.group(1)}回国会" if m else ""
+
+
 def quote_block(e, ref_note=""):
+    ses = quote_session(e.get("url"))
+    who = f'{esc(e["who"])}議員' + (f'・{ses}' if ses else "")
     note = f'（{esc(ref_note)}）' if ref_note else ""
     return (f'<blockquote>「{esc(clean_quote(e["quote"]))}」'
-            f'<cite>— {esc(e["who"])}議員・第217回国会{note}</cite>'
+            f'<cite>— {who}{note}</cite>'
             f'<a class="evq" href="{esc(e["url"])}" target="_blank" rel="noopener">全文→</a></blockquote>')
 
 def oneissue_block(full):
@@ -700,8 +726,8 @@ HTML = f'''<title>AI政策くらべ — 政党で選ぶ（比例区）v1.5</titl
   <p class="note">
     <b>ワンイシューについて：</b>各党が特に重視する1点を、国会での言動から<b>編集の判断</b>で1つに絞ったものです（根拠となる実発言にリンク）。
     この項目への共感を第1問に、他の政策との整合も合わせて「どの党が自分に近いか」を照らし合わせる「政策で照らす」も用意しています。<br>
-    <b>データの出どころ：</b>言＝<a class="src" href="https://kokkai.ndl.go.jp/" target="_blank" rel="noopener">国会会議録検索システム</a>（第217回・第219回・第221回の3会期を併記）。
-    行＝参議院 記名投票の会派別賛否（<a class="src" href="https://www.sangiin.go.jp/japanese/touhyoulist/217/vote_ind.htm" target="_blank" rel="noopener">第217回</a>・<a class="src" href="https://www.sangiin.go.jp/japanese/touhyoulist/219/vote_ind.htm" target="_blank" rel="noopener">第219回</a>・<a class="src" href="https://www.sangiin.go.jp/japanese/touhyoulist/221/vote_ind.htm" target="_blank" rel="noopener">第221回</a>の3会期を併記）。憲法分野は記名投票の議案が無く「行」は該当なし。<br>
+    <b>データの出どころ：</b>言＝<a class="src" href="https://kokkai.ndl.go.jp/" target="_blank" rel="noopener">国会会議録検索システム</a>（{SESSIONS_JP}の{SESSIONS_COUNT}会期を併記）。
+    行＝参議院 記名投票の会派別賛否（{VOTE_INDEX_LINKS}の{SESSIONS_COUNT}会期を併記）。憲法分野は記名投票の議案が無く「行」は該当なし。<br>
     <b>会期を並べている理由：</b>同じ党でも会期によって賛否が変わることがあります。どちらが良いという評価はせず、事実として並べています。第217回と第221回の間に選挙があり、会派の構成も変わりました。<br>
     <b>衆参の扱いが異なります：</b>発言（言）は<b>衆議院・参議院の両方</b>から採っています（引用に議院と委員会を明記）。一方、採決（行）は<b>参議院のみ</b>です。衆議院の本会議は原則として起立採決で、会派別・個人別の賛否が公式記録に残らないためです。<br><b>賛否は「結果」であり「理由」ではありません：</b>各党は「方向性には賛成だが規定が不十分」等の複雑な理由で反対することもあります。
     賛否だけで是非を判断せず、反対・賛成の<b>理由や討論は原典（会議録・記名投票結果）</b>でご確認ください。<br>
