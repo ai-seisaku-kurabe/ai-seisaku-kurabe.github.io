@@ -38,10 +38,8 @@ jobs:
       - name: 件数をコミットに残す
         if: always()
         run: |
-          git config user.name "github-actions"
-          git config user.email "actions@github.com"
           N=$(python -c "import json;print(json.load(open('tools/state/feedback_state.json'))['last_new'])")
           M=$(python -c "import json,os;p='tools/state/issue_state.json';d=json.load(open(p)) if os.path.exists(p) else {};print(d.get('open_issues',0)+d.get('open_prs',0))")
-          git add tools/state/feedback_state.json tools/state/issue_state.json
-          git commit -m "chore(窓口): ご意見の新着 ${N} 件 / 未対応 Issue・PR ${M} 件" || echo "no changes"
-          git push
+          bash .github/scripts/commit_and_push.sh \
+            "chore(窓口): ご意見の新着 ${N} 件 / 未対応 Issue・PR ${M} 件" \
+            tools/state/feedback_state.json tools/state/issue_state.json

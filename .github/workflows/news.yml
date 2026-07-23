@@ -15,12 +15,11 @@ jobs:
         with:
           python-version: '3.12'
       - run: python update_news.py
+      # 反映は共通スクリプトに任せる（rebase して再試行する。理由はスクリプト冒頭）
       - run: |
-          git config user.name "github-actions"
-          git config user.email "actions@github.com"
-          git add news.json news_archive.json
-          git commit -m "chore: update news.json / news_archive.json" || echo "no changes"
-          git push
+          bash .github/scripts/commit_and_push.sh \
+            "chore: update news.json / news_archive.json" \
+            news.json news_archive.json
       # 更新を検索エンジンへ通知する（新規ドメインはクロール間隔が長いため）
       - run: python tools/ping_indexnow.py
         continue-on-error: true   # 通知の失敗でニュース更新まで赤くしない

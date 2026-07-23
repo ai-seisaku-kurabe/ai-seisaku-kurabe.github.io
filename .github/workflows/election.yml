@@ -26,10 +26,8 @@ jobs:
       - name: 変更があればコミット
         if: always()
         run: |
-          git config user.name "github-actions"
-          git config user.email "actions@github.com"
-          git add config.json
-          git diff --cached --quiet || (git commit -m "chore(①収集班): 選挙日程にもとづき停止スイッチを更新" && git push)
+          bash .github/scripts/commit_and_push.sh \
+            "chore(①収集班): 選挙日程にもとづき停止スイッチを更新" config.json
 
       # 掲載中の日程が一次情報とずれていないか。新しい動きがあれば赤くして人に知らせる。
       # 上のコミット段より後に置く（検知で落ちてもスイッチの反映は済ませる）。

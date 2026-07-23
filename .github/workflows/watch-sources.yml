@@ -22,9 +22,7 @@ jobs:
       - name: 名簿の差分をコミット
         if: always()
         run: |
-          git config user.name "github-actions"
-          git config user.email "actions@github.com"
-          git add tools/roster.json
-          git diff --cached --quiet || (git commit -m "chore: 統一会派の議員名簿を更新" && git push)
+          bash .github/scripts/commit_and_push.sh \
+            "chore: 統一会派の議員名簿を更新" tools/roster.json
       - name: 新会期・新規発言の差分を検知
         run: python tools/agents/watch_sources.py --fail-on-new
