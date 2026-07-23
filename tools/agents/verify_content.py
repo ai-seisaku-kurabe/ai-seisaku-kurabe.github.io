@@ -777,6 +777,51 @@ def check_election_schedule():
           f"／election_mode={bool(cfg.get('election_mode'))} は日程と一致")
 
 
+def check_data_range():
+    """フッターの「掲載データの範囲」が、実際のデータと一致しているかを見る。
+
+    件数と日付はビルド時に埋めるので、**データを足してHTMLを作り直さないと古いまま公開される**。
+    公開している数字がデータとずれたら止める（この開示は「いつ時点のデータか」という
+    利用者の判断の土台なので、ずれたまま出すのは開示が無いより悪い）。
+    """
+    from _sessions import published_sessions
+    sessions = published_sessions()
+    n_sp = 0
+    for s in sessions:
+        p = os.path.join(TOOLS, f"speeches_{s}.json")
+        if os.path.exists(p):
+            n_sp += len(json.load(open(p, encoding="utf-8"))["items"])
+    n_vt = 0
+    for s in sessions:
+        p = os.path.join(TOOLS, f"{s}_votes.json")
+        if os.path.exists(p):
+            n_vt += len(json.load(open(p, encoding="utf-8")).get("bills", []))
+
+    pages = [f for f in os.listdir(ROOT) if f.endswith(".html")]
+    checked = 0
+    for fn in sorted(pages):
+        html = open(os.path.join(ROOT, fn), encoding="utf-8").read()
+        if 'class="sitefoot"' not in html:
+            continue
+        m = re.search(r'<p class="sf-data">(.*?)</p>', html, re.S)
+        if not m:
+            fail("掲載データの範囲", f"{fn}: フッターに掲載データの範囲が無い")
+            continue
+        line = m.group(1)
+        miss = [s for s in sessions if f"第{s}回" not in line]
+        if miss:
+            fail("掲載データの範囲", f"{fn}: 掲載中の会期が書かれていない（第{'・第'.join(miss)}回）")
+        for label, want in (("国会発言", n_sp), ("記名投票", n_vt)):
+            m2 = re.search(label + r"\s*([0-9,]+)件", line)
+            if not m2:
+                fail("掲載データの範囲", f"{fn}: 「{label} N件」が読み取れない")
+            elif int(m2.group(1).replace(",", "")) != want:
+                fail("掲載データの範囲",
+                     f"{fn}: {label}の件数が実データと違う（表示 {m2.group(1)} / 実際 {want}）。"
+                     "build_site.py → deploy_to_repo.py で作り直す必要がある")
+        checked += 1
+    print(f"  掲載データの範囲: {checked}ページ／発言{n_sp}件・記名投票{n_vt}件と一致")
+
 # ---------------------------------------------------------------- main
 def main():
     ap = argparse.ArgumentParser()
@@ -799,6 +844,7 @@ def main():
     check_intake_watch()
     check_feedback_log()
     check_election_schedule()
+    check_data_range()
     collect_research_citations()
 
     if not a.offline:

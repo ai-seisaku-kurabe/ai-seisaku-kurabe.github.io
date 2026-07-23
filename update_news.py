@@ -27,6 +27,19 @@ PARTY_NAME = {"jimin": "自民", "rikken": "立憲", "ishin": "維新", "kokumin
 PER_TOPIC = 3     # news.json（各ページ表示用）に載せる件数
 PER_FETCH = 8     # 取得件数。余りはアーカイブにだけ入れる
 
+
+def _now_utc():
+    """取得時刻を、時間帯の分かる形（UTC）で残す。
+
+    従来からある `updated` は `datetime.now()` ＝ **実行した環境のローカル時刻**で、
+    時間帯の表示が無い。GitHub Actions は UTC、手元で実行すれば JST になるため、
+    同じ文字列が9時間ずれた意味を持ちうる（cron は 21:00 UTC なので、日付まで1日ずれる）。
+    そのままサイトに「最終取得」として出すと、読む人を誤らせる。
+    表示に使う値は、時間帯を明示したこちらを使う（`updated` は health_check.py が
+    従来の形式で読んでいるので残す）。
+    """
+    return datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+
 # ---- 政策分野タグ（サイトの6分野と揃える。ここに当たらない見出しは蓄積しない） ----
 DOMAIN_KEYWORDS = {
     "財政": ["消費税", "増税", "減税", "税制", "国債", "財政", "歳出", "歳入", "予算",
@@ -164,6 +177,7 @@ def main():
 
     # 従来どおりの表示用
     json.dump({"updated": datetime.datetime.now().strftime("%Y-%m-%d %H:%M"),
+               "updated_utc": _now_utc(),
                "topics": topics, "parties": parties},
               open("news.json", "w", encoding="utf-8"), ensure_ascii=False, indent=1)
     print("wrote news.json  headlines:",
@@ -200,6 +214,7 @@ def merge_archive(collected, today):
     items = items[:MAX_ITEMS]
 
     json.dump({"updated": datetime.datetime.now().strftime("%Y-%m-%d %H:%M"),
+               "updated_utc": _now_utc(),
                "domains": list(DOMAIN_KEYWORDS.keys()),
                "parties": PARTY_NAME, "items": items},
               open(ARCHIVE_PATH, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
