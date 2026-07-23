@@ -174,6 +174,81 @@ shukei=shukei+FB_TAGS+SHUKEI_JS+("<script>(function(){""var META=" + SNAP_META +
   "fetch('config.json', { cache: 'no-store' }).then(function(r){return r.json();}).then(function(cfg){""if(!cfg||!cfg.election_mode)return;""var d=document.querySelector('.doc');if(!d)return;""var box=document.createElement('div');box.className='sk-pause';""box.innerHTML='<b>集計の公開を一時停止しています。</b><br>'+ (cfg.election_notice||'');""var keep=d.querySelector('.topnav');""[].slice.call(d.children).forEach(function(el){if(el!==keep&&!el.classList.contains('eyebrow')&&el.tagName!=='H1')el.remove();});""d.appendChild(box);""}).catch(function(){});""var btn=document.getElementById('snapBtn');""if(btn)btn.addEventListener('click',function(){""if(!window.KG||!KG.loadAgg){alert('集計を読み込めません');return;}""KG.loadAgg().then(function(agg){""var snap={captured_at:new Date().toISOString(),session:META.session,""responses:(agg&&agg.responses)||0,questions:META.questions,""aggregate:agg||{},caveat:META.caveat};""var b=new Blob([JSON.stringify(snap,null,1)],{type:'application/json'});""var a=document.createElement('a');a.href=URL.createObjectURL(b);""var t=new Date();a.download='snapshot-'+t.getFullYear()+'-'+String(t.getMonth()+1).padStart(2,'0')+'.json';""a.click();URL.revokeObjectURL(a.href);});});""})();</script>")
 open("site/shukei.html","w",encoding="utf-8").write(shukei)
 
+# ---------- 次の国政選挙の日程（トップページ） ----------
+# 正本は tools/election_schedule.json。公示日・投票日は、人が総務省・官報などの
+# 一次情報を見て確認してから書く（agents/watch_election.py は検知して知らせるだけ）。
+# 期日が入っていなければ「未定」と書き、任期満了日＝いつまでに必ず選挙があるかを示す。
+# 空欄を埋めるために推測の日付を置かない（憲法6条）。
+def _election_load():
+    p = "election_schedule.json"
+    if not os.path.exists(p):
+        raise SystemExit("election_schedule.json がありません。")
+    return json.load(open(p, encoding="utf-8"))
+
+ELECTIONS = _election_load()
+
+def _jdate(iso):
+    """2028-07-25 → 2028年7月25日"""
+    y, m, d = iso.split("-")
+    return f"{int(y)}年{int(m)}月{int(d)}日"
+
+def _esrc(url, label):
+    return (f'<a class="src" href="{esc(url)}" target="_blank" rel="noopener">'
+            f'▸ {esc(label)}</a>') if url else ""
+
+def election_cards():
+    out = []
+    for e in ELECTIONS.get("elections", []):
+        vote, koji = e.get("vote"), e.get("koji")
+        if vote:
+            stat = f'<span class="estat fixed">{_jdate(vote)} 投票</span>'
+            body = ('<div class="edate">'
+                    + (f'公示 {_jdate(koji)}／' if koji else "")
+                    + f'<span class="ecd" data-vote="{esc(vote)}"></span></div>')
+            srcs = _esrc(e.get("source"), "選挙期日の告示（一次情報）")
+        else:
+            stat = '<span class="estat pending">期日未定</span>'
+            body = (f'<div class="edate">{esc(e.get("term_end_note",""))}'
+                    f'<br><b>{_jdate(e["term_end"])}</b></div>')
+            srcs = (_esrc(e.get("term_end_source"), e.get("term_end_source_label", "出典"))
+                    + _esrc(e.get("law_source"), e.get("law_source_label", "根拠法")))
+        out.append(
+            f'<div class="ecard">'
+            f'<div class="eh"><span class="ehouse">{esc(e.get("house",""))}</span>{stat}</div>'
+            f'<div class="ename">{esc(e.get("name",""))}</div>{body}'
+            f'<div class="enote">{esc(e.get("window_note",""))}</div>'
+            f'<div class="esrc">{srcs}</div></div>')
+    return "".join(out)
+
+# トップページだけで使う。INDEX_CSS は他のページの土台にもなっているので、そこには入れない。
+ELECTION_CSS = """
+/* 次の国政選挙。事実だけを置く枠なので、政党カードより控えめにし、色で煽らない。 */
+.egrid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:34px;}
+@media(max-width:600px){.egrid{grid-template-columns:1fr;}}
+.ecard{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:15px 18px;}
+.eh{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:6px;}
+.ehouse{font-family:var(--mono);font-size:11px;letter-spacing:.1em;color:var(--muted);}
+.estat{font-family:var(--mono);font-size:12px;border-radius:20px;padding:3px 10px;}
+.estat.pending{color:var(--muted);border:1px dashed var(--line);}
+.estat.fixed{color:#fff;background:var(--accent);}
+.ename{font-family:var(--serif);font-weight:600;font-size:16px;margin-bottom:4px;}
+.edate{font-size:13px;color:var(--muted);line-height:1.75;}
+.edate b{color:var(--ink);font-size:15px;}
+.ecd{font-family:var(--mono);color:var(--accent);}
+.enote{font-size:11.5px;color:var(--muted);line-height:1.75;margin-top:8px;}
+.esrc{margin-top:8px;display:flex;flex-wrap:wrap;gap:12px;}
+.esrc a{font-size:11.5px;color:var(--accent);text-decoration:none;}
+.esrc a:hover{text-decoration:underline;}
+"""
+
+# 「あと◯日」だけは閲覧者の端末で数える（日付そのものは上で埋め込み済み）。
+# JSが動かなくても、投票日・公示日は本文に出ているので情報は落ちない。
+ELECTION_JS = ("<script>(function(){var n=new Date();"
+  "[].forEach.call(document.querySelectorAll('.ecd'),function(el){"
+  "var v=new Date(el.getAttribute('data-vote')+'T00:00:00+09:00');"
+  "var d=Math.ceil((v-n)/86400000);"
+  "el.textContent = d>0 ? ('あと'+d+'日') : (d===0 ? '本日' : '');});})();</script>")
+
 # ---------- index.html ----------
 party_cards="".join(
   f'<a class="pcard" href="guide.html" style="--pc:{PC[p["full"]]}">'
@@ -236,7 +311,7 @@ h1{font-family:var(--serif);font-weight:600;font-size:clamp(26px,5vw,42px);line-
 .note{margin-top:28px;font-size:12px;color:var(--muted);line-height:1.85;}
 """
 INDEX=f'''<title>AI政策くらべ — 中身で選ぶ投票ガイド</title>
-<style>{INDEX_CSS}</style>
+<style>{INDEX_CSS}{ELECTION_CSS}</style>
 <div class="wrap">{nav("index.html")}<div class="doc">
   <p class="eyebrow">比例区・投票ガイド</p>
   <h1>知名度でなく、中身で選ぶ。</h1>
@@ -255,6 +330,10 @@ INDEX=f'''<title>AI政策くらべ — 中身で選ぶ投票ガイド</title>
     <a class="big" href="shukei.html"><span class="k">集計</span><div class="t">みんなの結果</div>
       <div class="s">「政策で照らす」に答えた人の傾向（参考値・自己選択サンプル）</div><span class="arw">→</span></a>
   </div>
+  <p class="sec">次の国政選挙</p>
+  <p class="sec-s">期日は、<b>一次情報で確認できたものだけ</b>を載せます。決まっていないときは「未定」と書き、
+  かわりに任期満了日（いつまでに必ず選挙があるか）を示します。推測の日付は置きません。</p>
+  <div class="egrid">{election_cards()}</div>
   <p class="sec">各政党の政策パッケージ</p>
   <p class="sec-s">カードを押すと、その党の全分野の言と行（政党で選ぶ）へ進みます。</p>
   <div class="pgrid">{party_cards}</div>
@@ -263,7 +342,7 @@ INDEX=f'''<title>AI政策くらべ — 中身で選ぶ投票ガイド</title>
   データの作り方・編集の判断・限界（点数化しない理由など）は
   <a class="src" href="about.html" style="color:var(--accent);text-decoration:none">▸ このサイトについて（方法論）</a>で公開しています。</p>
 </div></div>'''
-open("site/index.html","w",encoding="utf-8").write(INDEX)
+open("site/index.html","w",encoding="utf-8").write(INDEX+ELECTION_JS)
 
 # ---------- feedback.html (Netlify Forms) ----------
 FEEDBACK_CSS = """
@@ -1072,6 +1151,11 @@ RESEARCH=(f'<title>先行研究と、この設計の根拠｜ AI政策くらべ<
     "立法趣旨は、選挙人が誤った予断を抱くことを防ぐことにあると説明されている。",
     "「みんなの結果」の公開と保存を、設定ひとつで停止できるようにしてあります。"
     "停止中は、この条文を根拠として明示した通知だけが残ります。"
+    "<b>この切替は、人の記憶ではなく日付に任せています</b>——"
+    "トップページに出している選挙日程（公示日・投票日）と当日の日付を毎日くらべ、"
+    "選挙期間に入っていれば自動で止め、投票日の翌日に戻します。"
+    "掛け忘れ・戻し忘れが、そのまま法的リスクになるためです。"
+    "日付そのものは、一次情報を見た人が書き込みます（機械には書かせません）。"
     "<b>集計の公開が本条に当たるかどうかは、私たちの解釈であって確定した見解ではありません。</b>"
     "安全側に倒して止める設計にしています。",
     _cite("e-Gov 法令検索 公職選挙法", "https://laws.e-gov.go.jp/law/325AC1000000100"))

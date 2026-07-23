@@ -1,0 +1,28 @@
+{
+ "seen_headlines": [
+  "参議院議員通常選挙結果 <https://www.soumu.go.jp/senkyo/senkyo_s/data/sangiin/index.html>",
+  "衆議院議員及び参議院議員選挙にかかる繰上補充 <kuriagehoju/index.html>",
+  "衆議院議員総選挙・最高裁判所裁判官国民審査結果 <https://www.soumu.go.jp/senkyo/senkyo_s/data/shugiin/index.html>"
+ ],
+ "sangiin_rows": [
+  {
+   "kai": 25,
+   "vote": "2019-07-21",
+   "term_start": "2019-07-29",
+   "term_end": "2025-07-28"
+  },
+  {
+   "kai": 26,
+   "vote": "2022-07-10",
+   "term_start": "2022-07-26",
+   "term_end": "2028-07-25"
+  },
+  {
+   "kai": 27,
+   "vote": "2025-07-20",
+   "term_start": "2025-07-29",
+   "term_end": "2031-07-28"
+  }
+ ],
+ "checked": "2026-07-23"
+}

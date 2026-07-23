@@ -1,0 +1,37 @@
+name: election-schedule
+# 次の国政選挙の日程まわり（①収集班）
+#   1. 停止スイッチ(election_mode)を日程データに合わせる … 日付の比較だけ。判断はしない
+#   2. 一次情報に新しい動きが出ていないかを見張る       … 知らせるだけ。日付は書き込まない
+# 期日を election_schedule.json に書くのは人の仕事（agents/ELECTION_SCHEDULE.md）。
+on:
+  schedule:
+    - cron: '0 21 * * *'   # 毎日 JST 6:00（GitHubのスケジュールは大幅に遅れることがある）
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  election:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      # 公示日〜投票日に入っていれば集計の公開を止め、投票日の翌日に戻す。
+      - name: 停止スイッチを日程に合わせる
+        working-directory: tools
+        run: python agents/sync_election_mode.py
+
+      - name: 変更があればコミット
+        if: always()
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git add config.json
+          git diff --cached --quiet || (git commit -m "chore(①収集班): 選挙日程にもとづき停止スイッチを更新" && git push)
+
+      # 掲載中の日程が一次情報とずれていないか。新しい動きがあれば赤くして人に知らせる。
+      # 上のコミット段より後に置く（検知で落ちてもスイッチの反映は済ませる）。
+      - name: 一次情報の動きを検知
+        run: python tools/agents/watch_election.py --fail-on-new

@@ -354,6 +354,11 @@ PROMISES = [
     ("shindan.html",  ["賛成・反対で答えられる争点", "賛否の代わりにはなりません"],
                                                                   "政策で照らす：valence争点の限界開示"),
     ("about.html",    ["賛否で表せない訴え"],                     "限界：valence争点の開示"),
+    # 次の国政選挙の日程（①収集班）。日付は一次情報で確認できたものだけを載せ、
+    # 決まっていないものは「未定」と書く、という約束。ここが消えると、
+    # 報道や推測の日付を置くことへの歯止めが無くなる（実装との一致は check_election_schedule()）。
+    ("index.html",    ["一次情報で確認できたものだけ", "推測の日付は置きません"],
+                                                                  "トップ：選挙日程の出典ルール"),
 ]
 def check_constitution():
     ok = 0
@@ -700,6 +705,78 @@ def check_feedback_log():
     print(f"  ご意見の記録: {len(entries)} 件"
           + (f"／境界時刻 {boundary}" if boundary else "／新運用は未開始(境界時刻なし)"))
 
+# ------------------------------------------- 7c. 次の国政選挙の日程(①収集班)
+# 日程は tools/election_schedule.json を正本とし、トップページと
+# election_mode(選挙期間中の停止スイッチ)がそこから作られる。
+# ここで見るのは「日付そのものが正しいか」ではない——それは一次情報を見た人の仕事で、
+# ①収集班(agents/watch_election.py)が毎日一次情報と突き合わせている。
+# ここで見るのは、正本とページとスイッチが**食い違っていないか**:
+#   ①期日を載せるなら出典が要る ②ページが再生成されている ③スイッチが日付と一致している
+def collect_election_urls():
+    p = os.path.join(TOOLS, "election_schedule.json")
+    if not os.path.exists(p):
+        return []
+    urls = []
+    for e in json.load(open(p, encoding="utf-8")).get("elections", []):
+        urls += [e.get(k) for k in ("source", "term_end_source", "law_source") if e.get(k)]
+    return urls
+
+
+def _jdate(iso):
+    y, m, d = iso.split("-")
+    return f"{int(y)}年{int(m)}月{int(d)}日"
+
+
+def check_election_schedule():
+    p = os.path.join(TOOLS, "election_schedule.json")
+    if not os.path.exists(p):
+        fail("選挙日程", "tools/election_schedule.json が無い")
+        return
+    schedule = json.load(open(p, encoding="utf-8"))
+    elections = schedule.get("elections", [])
+    if not elections:
+        fail("選挙日程", "election_schedule.json に選挙が1件も無い")
+        return
+
+    index = os.path.join(ROOT, "index.html")
+    html_txt = open(index, encoding="utf-8").read() if os.path.exists(index) else ""
+
+    for e in elections:
+        name = e.get("name", e.get("id", "?"))
+        # ① 期日を載せるなら、その根拠になった一次情報が要る。
+        #    推測や報道だけで日付を置かない、という約束を機械で縛る。
+        if e.get("vote") and not e.get("source"):
+            fail("選挙日程", f"{name}: 投票日を載せているのに出典(source)が無い")
+        if not e.get("term_end_source"):
+            fail("選挙日程", f"{name}: 任期満了日の出典(term_end_source)が無い")
+        # ② 正本を書き換えたのにページを再生成していない、を検出する。
+        shown = e.get("vote") or e.get("term_end")
+        if shown and html_txt and _jdate(shown) not in html_txt:
+            fail("選挙日程",
+                 f"{name}: {_jdate(shown)} がトップページに出ていない。"
+                 "build_site.py で再生成が必要")
+
+    # ③ 停止スイッチが日程と一致しているか（掛け忘れ・戻し忘れの検出）。
+    sys.path.insert(0, os.path.join(TOOLS, "agents"))
+    try:
+        from sync_election_mode import active_election, today_jst
+    except Exception as exc:
+        fail("選挙日程", f"agents/sync_election_mode.py を読み込めない（{exc}）")
+        return
+    cfgp = os.path.join(ROOT, "config.json")
+    cfg = json.load(open(cfgp, encoding="utf-8")) if os.path.exists(cfgp) else {}
+    today = today_jst()
+    want = active_election(schedule, today) is not None
+    if bool(cfg.get("election_mode")) != want:
+        fail("選挙日程",
+             f"config.json の election_mode が {bool(cfg.get('election_mode'))} だが、"
+             f"日程では {want} であるべき。python agents/sync_election_mode.py を実行する")
+
+    fixed = sum(1 for e in elections if e.get("vote"))
+    print(f"  選挙日程: {len(elections)} 件（期日確定 {fixed} 件）"
+          f"／election_mode={bool(cfg.get('election_mode'))} は日程と一致")
+
+
 # ---------------------------------------------------------------- main
 def main():
     ap = argparse.ArgumentParser()
@@ -721,12 +798,13 @@ def main():
     check_link_colors()
     check_intake_watch()
     check_feedback_log()
+    check_election_schedule()
     collect_research_citations()
 
     if not a.offline:
         print("\n[通信を伴う点検]")
         check_quotes(bp, oneissue, a.quotes_limit)
-        check_links(collect_urls(bp, oneissue), a.links_limit)
+        check_links(collect_urls(bp, oneissue) + collect_election_urls(), a.links_limit)
         check_links(collect_research_citations(), a.links_limit, soft_blocked=True)
     else:
         print("\n[--offline のため 引用照合・リンク到達性 は省略]")

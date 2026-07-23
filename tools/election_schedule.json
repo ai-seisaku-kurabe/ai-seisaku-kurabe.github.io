@@ -1,0 +1,36 @@
+{
+ "_comment": "次の国政選挙の日程。トップページの表示と election_mode の自動切替は、すべてこのファイルを正本とします。koji(公示日)と vote(投票日)は、人が総務省・官報などの一次情報を見て確定させてから書きます。機械には書かせません(agents/watch_election.py は一次情報の変化を検知して知らせるだけで、日付をここに書き込みません)。書き方は agents/ELECTION_SCHEDULE.md。",
+ "updated": "2026-07-23",
+ "elections": [
+  {
+   "id": "sangiin-28",
+   "house": "参議院",
+   "name": "第28回参議院議員通常選挙",
+   "koji": null,
+   "vote": null,
+   "source": null,
+   "term_end": "2028-07-25",
+   "term_end_note": "2022年7月10日の第26回通常選挙で選ばれた議員の任期満了日",
+   "term_end_source": "https://www.sangiin.go.jp/japanese/san60/s60_shiryou/senkyoichiran.htm",
+   "term_end_source_label": "参議院「参議院議員通常選挙一覧」",
+   "window_note": "公職選挙法第32条第1項により、通常選挙は議員の任期が終わる日の前30日以内に行われます（同条第2項に、その期間が国会の開会中などにかかる場合の例外があります）。期日は少なくとも17日前に公示されます（同条第3項）。",
+   "law_source": "https://laws.e-gov.go.jp/law/325AC1000000100",
+   "law_source_label": "公職選挙法（e-Gov法令検索）"
+  },
+  {
+   "id": "shugiin-52",
+   "house": "衆議院",
+   "name": "次回衆議院議員総選挙",
+   "koji": null,
+   "vote": null,
+   "source": null,
+   "term_end": "2030-02-07",
+   "term_end_note": "第51回総選挙（2026年2月8日執行）で選ばれた議員の任期満了日。任期は4年で（日本国憲法第45条）、総選挙の期日から起算します（公職選挙法第256条）。",
+   "term_end_source": "https://www.soumu.go.jp/senkyo/51syusokuhou/index.html",
+   "term_end_source_label": "総務省「令和8年2月8日執行 衆議院議員総選挙 速報資料」",
+   "window_note": "衆議院は解散があれば任期満了を待たずに総選挙が行われるため、期日はあらかじめ定まりません。",
+   "law_source": "https://laws.e-gov.go.jp/law/325AC1000000100",
+   "law_source_label": "公職選挙法（e-Gov法令検索）"
+  }
+ ]
+}
