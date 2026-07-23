@@ -5,7 +5,8 @@
 "あなたの回答との一致度"を透明に示す。"""
 import json, html, urllib.parse
 
-# 党(具体ワンイシュー)。ワンイシューはブラウズ版と一致。why=なぜこの1点か、link=根拠発言(会議録)。
+# 党(具体ワンイシュー)。ワンイシューはブラウズ版と一致。why=なぜこの1点か、
+# link=関連発言の例(会議録)。会議録で特定できていない党だけ公式サイトを参考として持つ。
 PARTIES = [
  {"full":"自由民主党","short":"自民","oneissue":"防衛力の強化と現実的な政権運営",
   "why":"広範な政権与党で単一争点ではないが、強いて挙げれば抑止力の向上・防衛力強化を前面に掲げる。",
@@ -34,6 +35,22 @@ PARTIES = [
   "why":"既存政治への異議として、消費税減税やインボイス廃止など負担軽減を前面に掲げる。",
   "link":"https://kokkai.ndl.go.jp/txt/121714370X00420250325/231"},
 ]
+# 第1問の「詳しく見る」から辿る先。
+#   pid    = ワンイシューのページの党セクション(#pid)、および発言一覧の党の絞り込み値
+#   domain = 発言一覧の分野の絞り込み値(その党のワンイシューに対応する分野)
+# 以前はここから会議録の1発言に直リンクしていたが、1件だけでは根拠として弱く、
+# 選んだ1件が代表であるかのようにも見えるため、複数の発言・採決を並べた面へ渡す。
+# 値は build_site.py の ID・ONEISSUE_DOMAIN の写しなので、ずれたまま公開されないよう
+# build_site.py 側で突き合わせて、食い違えばビルドを止める。
+ONEISSUE_LINK = {
+ "自由民主党":("jimin","外交・安保"), "立憲民主党":("rikken","財政"),
+ "日本維新の会":("ishin","財政"),     "国民民主党":("kokumin","財政"),
+ "公明党":("komei","社会保障"),       "日本共産党":("kyosan","外交・安保"),
+ "れいわ新選組":("reiwa","財政"),     "参政党":("sansei","財政"),
+ "チームみらい":("mirai","経済・産業"),"社会民主党":("shamin","憲法"),
+}
+for _p in PARTIES:
+    _p["pid"], _p["domain"] = ONEISSUE_LINK[_p["full"]]
 # 政策設問。stance: +1=賛成/近い, -1=反対/遠い, 0=中立・不明。
 # pro/con=賛成派・反対派の主張(編集要約)、links=根拠資料[(ラベル,URL)]。
 SANGIIN="https://www.sangiin.go.jp/japanese/touhyoulist/217/"
@@ -130,7 +147,20 @@ oi_picks = "".join(
  f'<span class="oip-i">{html.escape(p["oneissue"])}</span></div>'
  f'<details class="oi-more"><summary>詳しく見る</summary>'
  f'<div class="oi-detail"><p>{html.escape(p["why"])}</p>'
- f'<a class="src" href="{html.escape(p["link"])}" target="_blank" rel="noopener">根拠の発言（会議録） ↗</a>'
+ f'<p class="oi-go">'
+ f'<a class="src" href="oneissue.html#{p["pid"]}">この一点に関わる発言と採決を見る →</a><br>'
+ f'<a class="src" href="speeches.html?party={p["pid"]}&amp;domain={urllib.parse.quote(p["domain"])}">'
+ f'機械的に集めた関連発言の一覧（この党・{html.escape(p["domain"])}） →</a>'
+ # 会議録の発言を特定できていない党は、公式サイトを「参考」として区別して置く。
+ # 同じ欄に並べると、会議録と同等の検証資料に見えてしまうため。
+ + ('' if "kokkai.ndl.go.jp" in p["link"] else
+    f'<br><span class="oi-nf">国会会議録では、この一点にしぼった関連発言をまだ十分に取得できていません'
+    f'（ワンイシューのページにもそう表示しています）。参考：'
+    f'<a class="src" href="{html.escape(p["link"])}" target="_blank" rel="noopener">党の公式サイト ↗</a></span>')
+ + '</p>'
+ f'<p class="oi-cav">ここで示すのは関連する発言の例であって、網羅でも重要度の順でもありません。'
+ f'発言の多い少ないは議席数や質問の機会にも左右されるため、'
+ f'その党がどれだけ重視しているかを表すものではありません。</p>'
  f'</div></details></div>' for p in PARTIES)
 
 # 政策設問
@@ -279,6 +309,9 @@ h1{ font-family:var(--serif); font-weight:600; font-size:clamp(24px,4.4vw,36px);
 .oi-more>summary::before{ content:"▸ "; }
 .oi-more[open]>summary::before{ content:"▾ "; }
 .oi-detail{ padding:0 0 12px; }
+.oi-go{ margin:10px 0 0; font-size:13px; line-height:2; }
+.oi-nf{ display:inline-block; margin-top:6px; font-size:12px; color:var(--muted); line-height:1.8; }
+.oi-cav{ margin:10px 0 0; font-size:11.5px; color:var(--muted); line-height:1.8; }
 .oi-detail p{ margin:0 0 8px; font-size:12.5px; line-height:1.75; color:var(--ink); }
 .oi-detail .src{ font-size:11.5px; }
 .oi-none{ margin-top:10px; }
@@ -573,7 +606,7 @@ HTML = f'''<title>政策で照らす — あなたの考えと各党の言と行
 
   <p class="qhead">第1問　各党のワンイシュー、特に共感するものを1つ選んでください <span class="req">必須</span></p>
   <p class="qsub">最も共感する1つを選択（1つだけ）。ワンイシューにこだわらないなら「特にない」を。
-  各カードの「詳しく見る」で、なぜその1点なのか（＋根拠発言）を確認できます。</p>
+  各カードの「詳しく見る」で、なぜその1点なのかと、関連する発言・採決の一覧を確認できます。</p>
   <div class="oi-grid">{oi_picks}</div>
   <div class="oi-none"><div class="oi-item" data-party="none">
     <div class="oi-main" role="button" tabindex="0" aria-pressed="false">

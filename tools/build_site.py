@@ -558,6 +558,17 @@ ONEISSUE_DOMAIN = {"自由民主党":"外交・安保","立憲民主党":"財政
   "国民民主党":"財政","公明党":"社会保障","日本共産党":"外交・安保",
   "れいわ新選組":"財政","参政党":"財政",
   "チームみらい":"経済・産業","社会民主党":"憲法"}
+# 「政策で照らす」第1問の深掘りリンク（build_shindan.py の ONEISSUE_LINK）は、
+# ワンイシューのページの党セクション(ID)と発言一覧の分野(ONEISSUE_DOMAIN)を指す。
+# 別ファイルなので値が写しになる。片方だけ直すと、リンク先が存在しない見出しや
+# 別分野の一覧に飛ぶので、ここで突き合わせてビルドを止める。
+for _sp in ns["PARTIES"]:
+    _f = _sp["full"]
+    if _sp.get("pid") != ID.get(_f) or _sp.get("domain") != ONEISSUE_DOMAIN.get(_f):
+        raise SystemExit(
+            f"build_shindan.py の ONEISSUE_LINK が build_site.py とずれている（{_f}）: "
+            f"pid {_sp.get('pid')} / {ID.get(_f)}、domain {_sp.get('domain')} / {ONEISSUE_DOMAIN.get(_f)}")
+
 ONEISSUE_KEYWORD = {"自由民主党":"抑止力","立憲民主党":"説明責任","日本維新の会":"歳出改革",
   "国民民主党":"手取り","公明党":"処遇改善","日本共産党":"軍事費",
   "れいわ新選組":"消費税","参政党":"消費税",
