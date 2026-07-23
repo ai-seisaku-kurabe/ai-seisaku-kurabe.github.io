@@ -11,6 +11,11 @@
 :root[data-theme="dark"]{ --paper:#12151d;--card:#191d27;--ink:#e7eaf1;--muted:#98a1b2;--line:#282e3b;--accent:#8ea2e6;--accent-soft:#222a40; }
 :root[data-theme="light"]{ --paper:#f3f4f7;--card:#fbfbfd;--ink:#1b2130;--muted:#5c6675;--line:#dcdfe6;--accent:#3a4d8f;--accent-soft:#e6e9f4; }
 *{box-sizing:border-box;}
+/* 既定のリンク色。個別に色を指定していないリンクは、これが無いとブラウザ既定
+   (未訪問 #0000EE / 訪問済み #551A8B) のまま残り、暗い背景ではほぼ読めない
+   (実測: 公開7ページ・221か所がこの状態だった)。要素セレクタなので、
+   .topnav a や .ab-cta a.p など個別に指定しているリンクには影響しない。 */
+a{color:var(--accent);}
 .wrap{ --serif:"Hiragino Mincho ProN","Yu Mincho",YuMincho,"Noto Serif JP",serif;
   --sans:"Hiragino Kaku Gothic ProN","Yu Gothic",YuGothic,"Noto Sans JP",Meiryo,sans-serif;
   --mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace;

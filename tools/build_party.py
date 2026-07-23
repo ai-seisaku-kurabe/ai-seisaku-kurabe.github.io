@@ -475,6 +475,9 @@ CSS = """
   --line:#dcdfe6; --accent:#3a4d8f; --accent-soft:#e6e9f4; --answer:#9aa3b2;
   --shadow:0 1px 2px rgba(20,28,50,.05),0 8px 24px rgba(20,28,50,.05); }
 *{ box-sizing:border-box; }
+/* 既定のリンク色。無いとブラウザ既定(未訪問 #0000EE / 訪問済み #551A8B)のままになり、
+   暗い背景で読めなくなる。この画面では「全文→」の原典リンク145か所がその状態だった。 */
+a{ color:var(--accent); }
 .wrap{ --serif:"Hiragino Mincho ProN","Yu Mincho",YuMincho,"Noto Serif JP",serif;
   --sans:"Hiragino Kaku Gothic ProN","Yu Gothic",YuGothic,"Noto Sans JP",Meiryo,sans-serif;
   --mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace;

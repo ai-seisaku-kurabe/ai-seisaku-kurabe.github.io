@@ -74,6 +74,9 @@ CSS="""
   --line:#dcdfe6; --accent:#3a4d8f; --accent-soft:#e6e9f4; --neu:#9aa3b2;
   --shadow:0 1px 2px rgba(20,28,50,.05),0 8px 24px rgba(20,28,50,.05); }
 *{ box-sizing:border-box; }
+/* 既定のリンク色（他ページと同じ保険。個別指定の無いリンクがブラウザ既定の色で
+   暗い背景に埋もれるのを防ぐ）。 */
+a{ color:var(--accent); }
 .wrap{ --serif:"Hiragino Mincho ProN","Yu Mincho",YuMincho,"Noto Serif JP",serif;
   --sans:"Hiragino Kaku Gothic ProN","Yu Gothic",YuGothic,"Noto Sans JP",Meiryo,sans-serif;
   --mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace;

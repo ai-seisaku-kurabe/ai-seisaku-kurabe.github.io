@@ -606,6 +606,28 @@ def check_privacy_claims():
                      "privacy.html の「アクセス解析ツールを入れていません」と食い違う")
     print("  プライバシー: 記述と実装が一致")
 
+# 暗い背景でのリンクの可読性。
+# 個別に色を指定していないリンクは、CSSに既定のリンク色が無いとブラウザ既定
+# （未訪問 #0000EE / 訪問済み #551A8B）のままになり、ダークモードの背景（#12151d）
+# ではコントラスト比1.3程度でほぼ読めない。実測で公開7ページ・221か所がこの状態だった
+# （guide.html の「全文→」原典リンク145か所を含む＝このサイトの中心的な導線）。
+# 生成CSSから既定の指定が消えたら止める。
+def check_link_colors():
+    pat = re.compile(r"(^|[};])a\{color:var\(--accent\)")
+    pages = sorted(f for f in os.listdir(ROOT) if f.endswith(".html"))
+    missing = []
+    for f in pages:
+        html = open(os.path.join(ROOT, f), encoding="utf-8").read()
+        css = re.sub(r"\s+", "", re.sub(r"/\*.*?\*/", "", html, flags=re.S))
+        if not pat.search(css):
+            missing.append(f)
+    if missing:
+        fail("リンクの可読性",
+             "既定のリンク色（a{color:var(--accent)}）がCSSに無い: " + ", ".join(missing)
+             + "。個別指定の無いリンクがブラウザ既定色になり、暗い背景で読めなくなる")
+    else:
+        print(f"  リンクの可読性: {len(pages)} ページに既定のリンク色あり")
+
 # 窓口の監視（⑥運用班 feedback-count.yml）と、その開示が一致しているか。
 # サイトは削除・訂正の申出をご意見フォームとGitHubのIssue・PRで受け付け、
 # 「半日ごとに新着の有無を機械的に確認している」と書いている。監視を外したのに
@@ -696,6 +718,7 @@ def main():
     check_matching_audit(bp)
     check_vote_triage()
     check_privacy_claims()
+    check_link_colors()
     check_intake_watch()
     check_feedback_log()
     collect_research_citations()
