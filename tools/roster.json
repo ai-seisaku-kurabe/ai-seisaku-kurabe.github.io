@@ -1,8 +1,50 @@
 {
- "generated": "2026-07-21",
+ "generated": "2026-07-28",
  "members": {
   "國重徹": {
    "party": "公明党",
+   "group": "中道改革連合・無所属",
+   "house": "衆議院",
+   "source": "api"
+  },
+  "近藤和也": {
+   "party": "立憲民主党",
+   "group": "中道改革連合・無所属",
+   "house": "衆議院",
+   "source": "api"
+  },
+  "小川淳也": {
+   "party": "立憲民主党",
+   "group": "中道改革連合・無所属",
+   "house": "衆議院",
+   "source": "api"
+  },
+  "西園勝秀": {
+   "party": "公明党",
+   "group": "中道改革連合・無所属",
+   "house": "衆議院",
+   "source": "api"
+  },
+  "輿水恵一": {
+   "party": "公明党",
+   "group": "中道改革連合・無所属",
+   "house": "衆議院",
+   "source": "api"
+  },
+  "山崎正恭": {
+   "party": "公明党",
+   "group": "中道改革連合・無所属",
+   "house": "衆議院",
+   "source": "api"
+  },
+  "伊佐進一": {
+   "party": "公明党",
+   "group": "中道改革連合・無所属",
+   "house": "衆議院",
+   "source": "api"
+  },
+  "早稲田ゆき": {
+   "party": "立憲民主党",
    "group": "中道改革連合・無所属",
    "house": "衆議院",
    "source": "api"
@@ -13,14 +55,14 @@
    "house": "衆議院",
    "source": "api"
   },
-  "西村智奈美": {
-   "party": "立憲民主党",
+  "吉田宣弘": {
+   "party": "公明党",
    "group": "中道改革連合・無所属",
    "house": "衆議院",
    "source": "api"
   },
-  "山崎正恭": {
-   "party": "公明党",
+  "西村智奈美": {
+   "party": "立憲民主党",
    "group": "中道改革連合・無所属",
    "house": "衆議院",
    "source": "api"
@@ -133,8 +175,8 @@
    "house": "衆議院",
    "source": "api"
   },
-  "小川淳也": {
-   "party": "立憲民主党",
+  "岡本三成": {
+   "party": "公明党",
    "group": "中道改革連合・無所属",
    "house": "衆議院",
    "source": "api"
@@ -145,20 +187,8 @@
    "house": "衆議院",
    "source": "api"
   },
-  "伊佐進一": {
-   "party": "公明党",
-   "group": "中道改革連合・無所属",
-   "house": "衆議院",
-   "source": "api"
-  },
   "長妻昭": {
    "party": "立憲民主党",
-   "group": "中道改革連合・無所属",
-   "house": "衆議院",
-   "source": "api"
-  },
-  "吉田宣弘": {
-   "party": "公明党",
    "group": "中道改革連合・無所属",
    "house": "衆議院",
    "source": "api"
@@ -187,43 +217,7 @@
    "house": "衆議院",
    "source": "api"
   },
-  "輿水恵一": {
-   "party": "公明党",
-   "group": "中道改革連合・無所属",
-   "house": "衆議院",
-   "source": "api"
-  },
-  "近藤和也": {
-   "party": "立憲民主党",
-   "group": "中道改革連合・無所属",
-   "house": "衆議院",
-   "source": "api"
-  },
-  "中川宏昌": {
-   "party": "公明党",
-   "group": "中道改革連合・無所属",
-   "house": "衆議院",
-   "source": "api"
-  },
-  "西園勝秀": {
-   "party": "公明党",
-   "group": "中道改革連合・無所属",
-   "house": "衆議院",
-   "source": "api"
-  },
-  "金城泰邦": {
-   "party": "公明党",
-   "group": "中道改革連合・無所属",
-   "house": "衆議院",
-   "source": "api"
-  },
   "沼崎満子": {
-   "party": "公明党",
-   "group": "中道改革連合・無所属",
-   "house": "衆議院",
-   "source": "api"
-  },
-  "浜地雅一": {
    "party": "公明党",
    "group": "中道改革連合・無所属",
    "house": "衆議院",
@@ -235,14 +229,20 @@
    "house": "衆議院",
    "source": "api"
   },
-  "早稲田ゆき": {
+  "大島敦": {
    "party": "立憲民主党",
    "group": "中道改革連合・無所属",
    "house": "衆議院",
    "source": "api"
   },
-  "大島敦": {
-   "party": "立憲民主党",
+  "大森江里子": {
+   "party": "公明党",
+   "group": "中道改革連合・無所属",
+   "house": "衆議院",
+   "source": "api"
+  },
+  "中川宏昌": {
+   "party": "公明党",
    "group": "中道改革連合・無所属",
    "house": "衆議院",
    "source": "api"
