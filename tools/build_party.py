@@ -182,8 +182,10 @@ def say_block(full, dname, entry):
         rows = [session_quote("第217回", entry["who"], clean_quote(entry["quote"]), entry["url"],
                               f'{_m.get("house","")}{_m.get("meeting","")}', _m.get("date",""))]
     else:
+        # 既定は「会派が無い」。ただし会派はあった（または個人の記録から採っている）のに
+        # この分野だけ記録が無い党があるので、その場合は entry 側の note217 を使う。
         rows = ['<div class="vses"><span class="vsl">第217回</span>'
-                '<span class="vna">この会期にはこの党の会派が存在せず、会派としての発言記録がありません</span></div>']
+                f'<span class="vna">{entry.get("note217") or "この会期にはこの党の会派が存在せず、会派としての発言記録がありません"}</span></div>']
     for ses, src in (("第219回", S219), ("第221回", S221)):
         e2 = src.get(full, {}).get(dname)
         if e2:
@@ -302,6 +304,23 @@ for full, doms in S221.items():
         v, l = _DOM_VOTES.get(dname, (None, None))
         PIDX[full][dname] = ({"party": full, "point": "", "who": "", "quote": "",
                               "url": "", "vkey": None, "tag": ""}, v, l)
+
+# 第217回にはカードが無いが、後の会期に記録がある党×分野。上のループは「第217回に
+# 一つもカードが無い党」しか拾わないので、分野単位の欠けはここで足す。
+# 参政党の憲法は、第221回に「行」（憲法改正手続法の記名投票）が生じたため掲載する
+# （2026-07-28・運営者の判断）。第217回は憲法審査会での発言を確認できなかったので、
+# 捏造せず空欄にし、理由を画面に出す。既定の文（会派が存在しない）は参政党には
+# 使えない——この党の第217回の発言は議員個人の記録から採っており、他の分野では
+# 掲載しているため、「会派が無いから記録が無い」と書くと事実と食い違う。
+LATE_CARDS = {
+    ("参政党", "憲法"): "この会期の憲法審査会で、この党の議員の発言を確認できませんでした",
+}
+for (_lp, _ld), _lnote in LATE_CARDS.items():
+    if _ld in PIDX.get(_lp, {}):
+        continue
+    _lv, _ll = _DOM_VOTES.get(_ld, (None, None))
+    PIDX[_lp][_ld] = ({"party": _lp, "point": "", "who": "", "quote": "", "url": "",
+                       "vkey": None, "tag": "", "note217": _lnote}, _lv, _ll)
 
 # ワンイシュー(国会での言動から抽出した具体版)。根拠は ref 領域の実発言にリンク。
 ONEISSUE = {
