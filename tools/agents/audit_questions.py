@@ -65,7 +65,10 @@ def main():
         items.append({
             "short": q.get("short", ""),
             "q": q["q"],
-            "basis_kind": "採決" if q.get("basis_url") else "公約・発言",
+            # 設問側が明示した来歴を優先する。リンクの有無で決めると、参考として
+            # 採決を貼っただけの設問（本文で「採決を根拠にはしていません」と断っている）
+            # まで採決ベースと数えてしまう。
+            "basis_kind": q.get("basis_kind") or ("採決" if q.get("basis_url") else "公約・発言"),
             "basis": q.get("basis", ""),
             "vote_ids": sorted(ids),
             "neutral_parties": sum(1 for p in parties if q["stance"].get(p["full"], 0) == 0),
