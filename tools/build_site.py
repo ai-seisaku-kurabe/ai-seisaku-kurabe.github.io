@@ -560,6 +560,16 @@ def load_votes(fn):
         _vcache[fn]=(json.load(open(fn,encoding="utf-8")).get("bills",[]) if os.path.exists(fn) else [])
     return _vcache[fn]
 SANGIIN="https://www.sangiin.go.jp/japanese/touhyoulist/217/"
+
+# このページに実際に載っている会期を、文面に書き写さずデータから数える。会期名の写しを
+# 持つと、データを足したときにここだけ古いまま残る（トップの脚注で実際に起きた型）。
+# 発言は会議録URL（kokkai.ndl.go.jp/txt/{院}{会期}…）、採決は議案IDの先頭3桁が会期。
+_OI_SES_SAY = sorted({s for s in re.findall(r"kokkai\.ndl\.go\.jp/txt/\d(\d{3})",
+                                            json.dumps(OISPEECH, ensure_ascii=False))})
+_OI_SES_VOTE = sorted({b["id"][:3] for fn, _dom in REFVOTE.values() if fn
+                       for b in load_votes(fn) if b.get("id")})
+def _ses_jp(ss):
+    return "・".join("第%s回" % s for s in ss) + "国会"
 def oi_speeches(full):
     recs=OISPEECH.get(full,[])
     hd='<div class="oi-hd"><span class="oi-tag gen">言</span>この争点に関わる国会発言</div>'
@@ -741,7 +751,12 @@ ONEISSUE=(f'<title>ワンイシュー — 各党が最も重視する一点 ｜ 
   f'<div class="oi-ixgrid">{oi_index}</div>'
   '<p class="oi-ixhint">▸ 気になる党を押すと、その党の発言・実績へ移動します。争点で絞り込むと、同じ土俵で戦う党が見えます。</p>'
   + oi_sections +
-  '<p class="note" style="margin-top:34px">出典：国会会議録検索システム（発言）／参議院 記名投票結果 第217回国会（採決）。'
+  '<p class="note" style="margin-top:34px">出典：国会会議録検索システム（発言・' + _ses_jp(_OI_SES_SAY) + '）／'
+  '参議院 記名投票結果（採決・' + _ses_jp(_OI_SES_VOTE) + '）。'
+  + ('<b>このページの採決は' + _ses_jp(_OI_SES_VOTE) + 'だけです。</b>'
+     'サイトが掲載している' + SESSIONS_JP + '国会の賛否の併記は'
+     '<a class="src" href="guide.html">▸ 政党で選ぶ</a>で確認できます。'
+     if _OI_SES_VOTE != SESSIONS_PUB else '') +
   '「ワンイシュー」は各党の国会での言動をもとに編集部が要約したものです。採決は各党のワンイシューに関連の深い分野のものを表示しています。'
   'データの作り方・選定基準・限界は<a class="src" href="about.html">▸ このサイトについて（方法論）</a>で公開しています。</p>'
   '</div></div>'+OI_FILTER_JS)
@@ -1696,8 +1711,11 @@ RESEARCH=(f'<title>先行研究と、この設計の根拠｜ AI政策くらべ<
     + "）。",
     _cite("Hix, Noury &amp; Roland (2018) Is there a selection bias in roll call votes? Evidence from the European Parliament",
           "https://ideas.repec.org/p/ehl/lserod/87696.html")
-    + " ／ " + _cite("参議院 議案情報（第217回国会）",
-                     "https://www.sangiin.go.jp/japanese/joho1/kousei/gian/217/gian.htm"))
+    # 数えているのは掲載中の全会期ぶんなので、出典も全会期を挙げる（第217回だけ挙げていた）。
+    + " ／ " + " ・ ".join(
+        _cite("参議院 議案情報（第%s回国会）" % s,
+              "https://www.sangiin.go.jp/japanese/joho1/kousei/gian/%s/gian.htm" % s)
+        for s in SESSIONS_PUB))
 
   + _rs("meas",
     "分かったこと⑥：発言は「候補のうち1件」で、その選択の度合いを数えた",
