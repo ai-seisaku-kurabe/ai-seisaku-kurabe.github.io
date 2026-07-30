@@ -1,16 +1,16 @@
 {
  "criteria_version": "2026-07-v1",
- "generated": "2026-07-22",
+ "generated": "2026-07-28",
  "sessions": [
   "217",
   "219",
   "221"
  ],
- "total": 280,
+ "total": 287,
  "counts": {
-  "CANDIDATE": 128,
-  "NO_DIFF": 29,
-  "USED": 7,
+  "CANDIDATE": 132,
+  "NO_DIFF": 31,
+  "USED": 8,
   "ACCOUNTS": 21,
   "REPRESENTED": 6,
   "TOO_NARROW": 11,
@@ -709,6 +709,34 @@
   {
    "id": "219-1128-v010",
    "code": "NO_DIFF"
+  },
+  {
+   "id": "221-0724-v001",
+   "code": "USED"
+  },
+  {
+   "id": "221-0724-v002",
+   "code": "NO_DIFF"
+  },
+  {
+   "id": "221-0724-v003",
+   "code": "CANDIDATE"
+  },
+  {
+   "id": "221-0724-v004",
+   "code": "NO_DIFF"
+  },
+  {
+   "id": "221-0724-v005",
+   "code": "CANDIDATE"
+  },
+  {
+   "id": "221-0724-v006",
+   "code": "CANDIDATE"
+  },
+  {
+   "id": "221-0724-v007",
+   "code": "CANDIDATE"
   },
   {
    "id": "221-0717-v001",

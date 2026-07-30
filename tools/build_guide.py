@@ -42,7 +42,7 @@ def votes_html(vkey, votes, labels):
             f'<div class="vrow">{"".join(chips)}</div></div>')
 
 NO_VOTE_BLOCK = ('<div class="votes"><span class="vlbl">行 ／ 参院採決</span>'
-    '<span class="vna">該当なし — 憲法審査会は討議の場で、本会議の記名投票にかかる議案がありません</span></div>')
+    '<span class="vna">該当なし — この会期には、本会議の記名投票にかかる議案がありません（憲法審査会は討議の場です）</span></div>')
 
 def cards_html(items, votes, labels):
     out = []
@@ -441,9 +441,9 @@ a.src{{ color:var(--accent); text-decoration:none; }} a.src:hover{{ text-decorat
   <section class="pane" data-pane="4" hidden>
     <div class="axis"><b>憲法の対立軸</b>（どちらが正しいという評価はしません）
       <div class="flow"><span>改憲を進める（任期延長・緊急事態条項）</span><hr><span>改憲に慎重・反対</span></div></div>
-    <div class="callout"><b>この領域だけ「言のみ」です：</b>憲法審査会は
-      <b>討議・意見表明の場</b>で、本会議の記名投票にかかる議案がありません。よって各党の「行(採決)」は
-      <b>該当なし</b>と明示し、憲法審査会での発言(言)だけを並べます。争点は議員任期延長・緊急事態条項・国民投票法など。
+    <div class="callout"><b>この領域は長く「言のみ」でした：</b>憲法審査会は
+      <b>討議・意見表明の場</b>で、第217回・第219回には本会議の記名投票にかかる議案がありません。よってその会期の「行(採決)」は
+      <b>該当なし</b>と明示し、憲法審査会での発言(言)を並べます（第221回は憲法改正手続法の改正が記名投票にかかりました）。争点は議員任期延長・緊急事態条項・国民投票法など。
       <br><span style="font-size:11.5px">※参政党は当会期の憲法審査会で発言が確認できず、掲載を見送りました。</span></div>
     <div class="grid">{kenpo_cards}</div>
   </section>
