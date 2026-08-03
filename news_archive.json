@@ -1,6 +1,6 @@
 {
- "updated": "2026-08-02 21:59",
- "updated_utc": "2026-08-02T21:59:43Z",
+ "updated": "2026-08-03 22:11",
+ "updated_utc": "2026-08-03T22:11:49Z",
  "domains": [
   "財政",
   "外交・安保",
@@ -20,6 +20,88 @@
   "sansei": "参政"
  },
  "items": [
+  {
+   "t": "食料品の消費税1%への引き下げ、自民党の税調会合は会長一任で集約",
+   "u": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE5ERUZLQnlPaDBkOHB4R0xzLVdicDQzRjM2X3BrSzBOX0NPS0xuX0FLV2hDdjlVd1pJcHVfZlA4U1FPenVEVzMtOERaa2p4cG5SWV9vYVNvLWphZWZhekVRUVJhYktBaGM?oc=5",
+   "s": "朝日新聞",
+   "d": [
+    "財政"
+   ],
+   "p": [],
+   "date": "2026-08-03"
+  },
+  {
+   "t": "食料品の消費税 来年4月から2年間1％の方針を大筋了承「国民は減税を約束したと思っている」 自民・税制調査会などの合同会議（TBS NEWS DIG Powered by JNN）",
+   "u": "https://news.google.com/rss/articles/CBMif0FVX3lxTE42aXkyZklLN21SSmNYaDBTamRpLWpMX2F1UXI5eDZKeTJCWGxhcnB0eHVzT3dhRkc2eE8ycnVta2VKTUM0OVRoT2NHU0c2MnA2Q090U1hHVnF1ckZwSVBzSGJMUjFPSENiSTJPbUZvZGlvclhMR3RPVXV0ZWV4OG8?oc=5",
+   "s": "Yahoo!ニュース",
+   "d": [
+    "財政"
+   ],
+   "p": [],
+   "date": "2026-08-03"
+  },
+  {
+   "t": "食料品の消費税 来年4月から2年間1％の方針を大筋了承「国民は減税を約束したと思っている」 自民・税制調査会などの合同会議",
+   "u": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE1WSDFvRmdqMW85MnhPVHFoUzVjbWVnUkxxZk9xVmltYzFVa2ZBVHFnVm1uNlRydUdLRWRHaXoxajlrb3FmOHV1S1plaVNoTG5uV1A2dnVFaHFlZlQ1RUx1RkItU3I?oc=5",
+   "s": "TBS NEWS DIG",
+   "d": [
+    "財政"
+   ],
+   "p": [],
+   "date": "2026-08-03"
+  },
+  {
+   "t": "自民・船田元氏、消費税減税「見直すべき」「公約で検討を加速としたが明言はしていない」",
+   "u": "https://news.google.com/rss/articles/CBMidkFVX3lxTE95NGUtOGM1UlcxaG9saE9fd0hJNUFGQzU3c2dFOThXTm1BOXhCZzNleVJRNFgzcnQyeTFJcUNfZWlRdkxHeGNUUmZrcV9kM2VFcG5UU1dJYlpjSzRmeXdlTllvVUdEbkVTaUhIWXUzYmlZU19oT3c?oc=5",
+   "s": "産経ニュース",
+   "d": [
+    "財政"
+   ],
+   "p": [],
+   "date": "2026-08-03"
+  },
+  {
+   "t": "自民、消費減税を事実上了承 反対論押し切る、５日にも閣議決定",
+   "u": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE15WUlfSUtaR2J3bzMyanJmVVJvUXRHLTBvVnRjTV9LUHVxcFpIbkc4akRtc0RNNGZVemI3RktrS1hzaWZiZDVLd1VfTFZ1RU9KaUNGalpwal9ndm1fVVVYV3dHYw?oc=5",
+   "s": "時事ドットコム",
+   "d": [
+    "財政"
+   ],
+   "p": [],
+   "date": "2026-08-03"
+  },
+  {
+   "t": "【福島】「生まれた世代によって将来の可能性が左右されない、公正で持続可能な社会保障制度をつくりたい」玉木代表が政策実現に強い意欲",
+   "u": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE1FSkZveXZrdVlaVGhjQXBqRWU0a284bi1LQTc0UXRWQUxMd0ZfWVN5WlNad3lyTVJ4ZklQUzJkU1RsUkRLWnIxdFUxZG81LVRaLVo3VkNENzRYZkRI?oc=5",
+   "s": "新・国民民主党",
+   "d": [
+    "社会保障"
+   ],
+   "p": [
+    "kokumin"
+   ],
+   "date": "2026-08-03"
+  },
+  {
+   "t": "【島根原発2号機】再稼働後初めての定期検査中「原子炉格納容器」ふた取り付け作業を報道関係者に公開",
+   "u": "https://news.google.com/rss/articles/CBMiTkFVX3lxTE5rUkVLZFNpZmhNQ0lDNXJ4NWpxYUVOd1gtRlNIWWl0Zy1YRW5weHVKV1V4ekFVWTd4OG9jVEtXUUh3ZjN6SW05MGtqTUM2UQ?oc=5",
+   "s": "FNNプライムオンライン",
+   "d": [
+    "エネルギー・環境"
+   ],
+   "p": [],
+   "date": "2026-08-03"
+  },
+  {
+   "t": "NISAやiDeCoだけで老後は守れる？ ドイツ年金改革が日本人に突きつける現実",
+   "u": "https://news.google.com/rss/articles/CBMiU0FVX3lxTE1remM5RFBsNy1DNkNZZ3RXVW5pZ0FCdTNZOWlsenhFZk94bXBjdUJEbEVYVGtiR040OW1SS3JQYXc0SWJpNFJvQWhyYmFBUml5X09v?oc=5",
+   "s": "東京報道新聞",
+   "d": [
+    "社会保障"
+   ],
+   "p": [],
+   "date": "2026-08-03"
+  },
   {
    "t": "麻生太郎氏が皇室典範改正を主導・消費税減税に反対…党内から「政権にマイナス」の声、支持率も急落（西日本新聞me）",
    "u": "https://news.google.com/rss/articles/CBMif0FVX3lxTE1tWEpmQkhNZHhNNkJxWk1FeHZSZk1QakhmUkFoQ2RvMUpGZmMtWTlhV3FoQU5DTjF2RFhZT1BRS3JjNEhEZTJxS2lLQmpubVBiWHhacENhbXdadXl6bnFTYUFacmRsVXBVMG5UOXJiajdvVHI2ZVMyMFJ3RE8yc00?oc=5",
@@ -45,8 +127,8 @@
    "u": "https://news.google.com/rss/articles/CBMi2gJBVV95cUxQN3ZjOHJvWXdCNzRjMnpEV0pyMDhVTVVqZ0djTTI4YlZTQS1PdjVZUzE4MVpkcUMtZ2JLb0hGRHdia3MtWTd6OWFxSWdndXhYeldjRXhTUnREMXdIaDhLUHBVQ0o0djNiYktCcnFtZmNObXZIWWNDNl9jaTRYR01wZ3FadkdfN3NuNGVzYS10Y0lBNUprTFNWWjBuVHVGaWg5OTVjOVdSeVFiLWt1S1RwYVhtcC1RTEM2ZWFhSjhrS1pkbHZiQUk3V2ZsbklfdzBkWlhnclVqWi1WZjVUYXNEN253ZHZJZXVZalpuQkw2SmpjbHdpTVhzemV6ZzVWVWg1bFJuWXJMWkxQUG42aWVRcXRBa0Zia29pLXpoRnk2WjdXQkZjTEJMenJjSGdmYzZIbGpTU1BvQnV5NlNNU1VWRW5EQkpaeEVWc3ZiVjljT3ZxYWFmVjIzMlNn?oc=5",
    "s": "公明党",
    "d": [
-    "財政",
-    "社会保障"
+    "社会保障",
+    "財政"
    ],
    "p": [
     "komei"
@@ -245,10 +327,10 @@
    "u": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE44NHhYT1RWeUFaVmFMcFVqa0dwd0VHT1ZKRE1Ta3ZTdUJXRXQwZlZEUVRmbVZUZ0ZJbDZtRC02WUE1cmJLTmtCcHZyd2hWYlZBcXN5NXd3?oc=5",
    "s": "JBpress",
    "d": [
-    "財政",
     "外交・安保",
     "社会保障",
-    "経済・産業"
+    "経済・産業",
+    "財政"
    ],
    "p": [],
    "date": "2026-07-31"
@@ -327,6 +409,16 @@
    "t": "食品消費税、来年４月に１％ ２年限定、首相正式表明―財源「赤字国債に頼らず」",
    "u": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE1wbWY3QlB1c2taWi14R0F5enNqRFJBZHZJWUoxTEhNRVRRWW5fUXVoekxCTVdBZU9oYi1TdGtBanc4X0Z2cXY0TWtEZWw5aHBmNVkzd0h3aHNzWnhEQV9rUjJidw?oc=5",
    "s": "時事ドットコム",
+   "d": [
+    "財政"
+   ],
+   "p": [],
+   "date": "2026-07-30"
+  },
+  {
+   "t": "社説：首相が消費税減税表明 将来に禍根を残す浅慮だ",
+   "u": "https://news.google.com/rss/articles/CBMiaEFVX3lxTFB1d1Y4OGI4N29rREViRHFlejBHQTBZcTB6NS1YdU43b0JXNGRCS21KTzkzbGYtZF9FZF81WFFGUXRwSFA5NWZqak9VSk9JekJtQkwzLTFnNkc4NkFmUHkyNGZRemdWaGZh?oc=5",
+   "s": "毎日新聞",
    "d": [
     "財政"
    ],
@@ -559,6 +651,16 @@
    "s": "静岡新聞DIGITAL",
    "d": [
     "エネルギー・環境"
+   ],
+   "p": [],
+   "date": "2026-07-29"
+  },
+  {
+   "t": "【憲法改正論議】与党、条文化加速狙う 中道けん制、際立つ溝",
+   "u": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE5hR2N1S3p2WEd5WGZXaUtFNEVCMEpjQUlvbTlMQkdPTzJhWDBOU1BrWnVjanpkaVVUWHhmQXpHUlJMY3ZNSHprWHhza0t3clpkWHc?oc=5",
+   "s": "山陽新聞",
+   "d": [
+    "憲法"
    ],
    "p": [],
    "date": "2026-07-29"
@@ -10498,6 +10600,16 @@
    "date": "2026-06-15"
   },
   {
+   "t": "日本のGX市場拡大へ新制度 補助金の要件に脱炭素製品の調達目標",
+   "u": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE84TkFkSGVRRFFEMDFoeVF3dVJnb2NyWDk0V3A5ZWU1OGw1N3Y0SEE1VmxTejFfaDdOaTdqZDBVb1pvcnVaTG8xSUtGTUVrMG50VTJtSmtrSGE2a3A1OGQwTFJiOFdhX0U?oc=5",
+   "s": "日経ビジネス電子版",
+   "d": [
+    "エネルギー・環境"
+   ],
+   "p": [],
+   "date": "2026-06-15"
+  },
+  {
    "t": "専業主婦は絶滅? 「主婦年金」が縮小方向へ - これまで専業主婦だった人の年金はどうなるのか",
    "u": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE9ZbWo4MC1uUzd2THN3d2xyZDVyQmVrVGlBSVZoQ1FuN1J2UDh5SWNLSGZ4UTRkak5CcVhGQTRRZXFFVUxqWHNDN2kzTEpvcDB0WEx6Q204N1AtOHZF?oc=5",
    "s": "マイナビニュース",
@@ -14509,8 +14621,8 @@
    "u": "https://news.google.com/rss/articles/CBMic0FVX3lxTE8wTVUzVUdESGdzOGlLSmg1WVdyUFpGVXVOS0xaTVZvRkhlcGNad0RqbzVuSDE4ZUNXX01kSUVIM0ZaRVduVDZ0azB0ZVF4emllSkN0b0ZrSU1FMlNSRFFVaWpYLWlJT3dQQnZmNG9UNmNiYUU?oc=5",
    "s": "みんなの広報宣伝部",
    "d": [
-    "財政",
-    "エネルギー・環境"
+    "エネルギー・環境",
+    "財政"
    ],
    "p": [],
    "date": "2026-05-18"
@@ -21439,6 +21551,36 @@
    ],
    "p": [],
    "date": "2026-03-23"
+  },
+  {
+   "t": "【経団連後援】GXフューチャー・リーグ、GX-ETS本格始動で変わる脱炭素経営 ―― 経産省と解き明かす、我が国のGX戦略",
+   "u": "https://news.google.com/rss/articles/CBMiTkFVX3lxTE11cnhBT25iYV9RT3JsYlJHY0phMXRmS2JYZnBZdnhtZ2Jmc0h4c21hblI3RkFnMlFnSkYycEJGeTNoZlF2ekZReFlKNHF0dw?oc=5",
+   "s": "Zeroboard",
+   "d": [
+    "エネルギー・環境"
+   ],
+   "p": [],
+   "date": "2026-03-19"
+  },
+  {
+   "t": "排出量取引が義務化へ｜日本のGX政策、2026年度から新たなステージへ – SDGs特化メディア-持続可能な未来のために",
+   "u": "https://news.google.com/rss/articles/CBMiTEFVX3lxTFBjR25zcUx4aFlhRmdSNGlDSW9GQ3NjNU91ME1pc2ZEMVdBZm1obHZjRjdNTXQ3WGZ6NzliU3BwZU9sUmxSU2JRNFZGQkk?oc=5",
+   "s": "mirasus.jp",
+   "d": [
+    "エネルギー・環境"
+   ],
+   "p": [],
+   "date": "2026-03-06"
+  },
+  {
+   "t": "施政方針演説から「GX」が消えた——高市エネルギー政策の静かな転換 #エキスパートトピ（大場紀章） - エキスパート",
+   "u": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxPM0tldEdtbHRPWmhqbzNwcDY2V05XeUd6WE5KdTVYeFJtOXN2bE1wMTFqd3FaNVNuZG1jQmpPZUVuN1VzOEV0OHRyMU1GMkFSN2VJNVRGbkxWalJRZDRIYTdWMjNoX0pCSnBnMTloU1hZT2xWbWRQOURRNjFlcHpfSjVDcm95WGpW?oc=5",
+   "s": "Yahoo!ニュース",
+   "d": [
+    "エネルギー・環境"
+   ],
+   "p": [],
+   "date": "2026-02-27"
   },
   {
    "t": "総選挙の争点 共産党の物価政策/光る財源論/大企業・大株主に課税を | しんぶん赤旗",
