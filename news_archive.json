@@ -1,6 +1,6 @@
 {
- "updated": "2026-08-30 23:19",
- "updated_utc": "2026-08-30T23:19:06Z",
+ "updated": "2026-09-01 00:28",
+ "updated_utc": "2026-09-01T00:28:59Z",
  "domains": [
   "財政",
   "外交・安保",
@@ -21,6 +21,98 @@
  },
  "items": [
   {
+   "t": "高市内閣の物価高対策 | 政策 | ニュース",
+   "u": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE1rQnB6SFowbVZsalB1elZReDBEY0duRnhTQnBrQ3BIRFdsZTd4YURtMm5wbUpjZjRlcGtzSmotRFdtSnVfbno4Qi1aSXY2YVcxc0hiOE81Yw?oc=5",
+   "s": "jimin.jp",
+   "d": [
+    "経済・産業"
+   ],
+   "p": [
+    "jimin"
+   ],
+   "date": "2026-08-31"
+  },
+  {
+   "t": "食料品消費税減税 地方減収分は適切に補てん 政府方針明らかに",
+   "u": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE4zaWt0N3kyaVNRcGxUSUtXMk93YWxiQWZidk9PS2s1a1FEcFpNbUw2VEpvdE92YTZZQzFBcVNjYzVtVDFRR2Z5RnJZcjRrSV8xOXhUM0VJc3F0Zno1czI4?oc=5",
+   "s": "NHKニュース",
+   "d": [
+    "財政"
+   ],
+   "p": [],
+   "date": "2026-08-31"
+  },
+  {
+   "t": "防衛省、過去最高の8.9兆円を要求 「事項要求」多数でさらに膨張 [高市政権の安保見直し][安全保障関連3文書]",
+   "u": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE85TGw2bHVkRThRazFiQzl4Z1poZUlZTW9mNFR5WmY0QklBVTJiRXdvTmlfSUlGYkFfVXJUUXN5U3JKTzVSS3hzYW9tN01JY2VrU05QLXJseUMyMV9pRXZDaTExVXRkRmc?oc=5",
+   "s": "朝日新聞",
+   "d": [
+    "外交・安保"
+   ],
+   "p": [],
+   "date": "2026-08-31"
+  },
+  {
+   "t": "第３原発「再稼働準備段階」に、核安会",
+   "u": "https://news.google.com/rss/articles/CBMiRkFVX3lxTE1Tb2xnamVTX25sN3g4VWVCcDhhREQ4UlFWcmI4dTFaY0g5cnozdTVCb3BTODA0ZXRnTGZMVmVpMUxNekRKTWc?oc=5",
+   "s": "nna.jp",
+   "d": [
+    "エネルギー・環境"
+   ],
+   "p": [],
+   "date": "2026-08-31"
+  },
+  {
+   "t": "消費税減税見据え 税率下がる冷凍食品強化の動き",
+   "u": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE8yM2hORWJSc04xRXZvMGpHbk5QTzdSWnE1bXRhd3lEWm5raWJzc1NfZVNBZ1NWbWVBTVFsYTdmazBUc0JRZm5nUHJHSkhlbTBVTC11QV9Mb0ZpRXRqUHlv?oc=5",
+   "s": "NHKニュース",
+   "d": [
+    "財政"
+   ],
+   "p": [],
+   "date": "2026-08-31"
+  },
+  {
+   "t": "消費税減税「総額表示」特例具体案 前後2か月変更前税率表示も",
+   "u": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE9vcXBVQVJYbjdTaFlKTjhoS3lPUkp4YzJZVWNZSmxpTDBtVElsbDI3US14emdJb3RkUFBjNTQ4bFE3OHdZM3pZc0FfQkdGZ3dMVU5XYS1BZ041OGNmVUpF?oc=5",
+   "s": "NHKニュース",
+   "d": [
+    "財政"
+   ],
+   "p": [],
+   "date": "2026-08-31"
+  },
+  {
+   "t": "外国人労働者257万人 過去の反省から生まれた「特定技能」 迷走？受け入れ政策の「アクセルとブレーキ」 争奪戦ライバル韓国との「2つの差」とは",
+   "u": "https://news.google.com/rss/articles/CBMiYkFVX3lxTE1WdjRqM2Y1QlBWQXByM1VqTnJ1TVFOU2hNTWpBNHZZRDA5aUJuaWpZcE1aUnkzcm5rMFJvU3poLUVJd0N0a3Q0Wmx4WGRncGtySTQtZGdZR2ZVZXdzeWdEdVZn?oc=5",
+   "s": "tbs.co.jp",
+   "d": [
+    "経済・産業"
+   ],
+   "p": [],
+   "date": "2026-08-31"
+  },
+  {
+   "t": "【米スリーマイル原発】来年再稼働、経済効果期待",
+   "u": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE1MTTBDalpDWkdPVmRaaHlCNE1UYnFVZFRFREpTUkRtWGFlZmR0OUdtTUhWM012WEFxbDR1X1UwRFk3UWpZdlpjT1NTT2VhWGlwVERvbkN1RVpKd3c?oc=5",
+   "s": "下野新聞社",
+   "d": [
+    "エネルギー・環境"
+   ],
+   "p": [],
+   "date": "2026-08-31"
+  },
+  {
+   "t": "「危機対応のために国民に負担をお願い」自民・古川禎久幹事長代理、消費税減税に反対（産経新聞）",
+   "u": "https://news.google.com/rss/articles/CBMif0FVX3lxTE02Q2VBdDZ0eUVUNkRSZHVuZkcxb3gzdjBZeTFNNDFhV2EzRUNBN2V4YjVHR3ZUNlFBQjB4ejBJMkJxTnlGMVdEUEljdHJYMUJZdTFhSDdPel9Da3RnNm9wSGFFdlctUHFxTmMwVFhGVngzZHhobUVTcXV2NXhXQ1k?oc=5",
+   "s": "Yahoo!ニュース",
+   "d": [
+    "財政"
+   ],
+   "p": [],
+   "date": "2026-08-31"
+  },
+  {
    "t": "飲食料品の消費税減税…自民党の森山裕前幹事長（衆院鹿児島4区）に聞く インフレ下「効果薄い」 社会保障の財源、議論不足",
    "u": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE5DSjFBZ05ITzhzYWRpYWk3ZEozTXI5RE9EMS1IZkN1Yk80U3BEajg0V2VtVHo3dk9EcmRzQUdHLWRQNW9nTmRfT2R4S3FUeUIzTGQyVjlUSQ?oc=5",
    "s": "南日本新聞",
@@ -35,6 +127,16 @@
    "t": "消費税減税の地方財政・外食対策「説明が不十分」76% 日経世論調査",
    "u": "https://news.google.com/rss/articles/CBMibEFVX3lxTE11YncybGRLaVlsQlI1ZW5LR0N6VE85U0w0QzluOFNqT1FpMEJuOENzYTRYTF9hLUpnZjllZXpWbDR5bGNWWTBXTk83MGxhcDcxck4xa0hoTzdJZUVZTV9oNGx0VjAwNUlkVzRVUg?oc=5",
    "s": "日本経済新聞",
+   "d": [
+    "財政"
+   ],
+   "p": [],
+   "date": "2026-08-30"
+  },
+  {
+   "t": "消費減税「賛成」55% 財源「明示すべきだ」77% 朝日世論",
+   "u": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTFBtRl92REdlcUsxa05aeWE2ZHhkWFBESVRtWG9Qak5OclVhRTlWNXg4bVJNVXNsaElKS0YxM0Jfd2lWRktvSDlDcXNfVWV0MFdra0ZoQnR1UGEwZFJRUTQtQUF4c21ZbHc?oc=5",
+   "s": "朝日新聞",
    "d": [
     "財政"
    ],
@@ -64,6 +166,26 @@
   {
    "t": "外国人労働者257万人 過去の反省から生まれた「特定技能」 迷走?受け入れ政策の「アクセルとブレーキ」 争奪戦ライバル韓国との「2つの差」とは【サンデーモーニング】",
    "u": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE83OW1YZnphR3dMR3VtcVRXZkV5djJaY1ozOWE0U0lYVDhOZ3RZb2JDWWNpTWxMZWVzSWc0QmFrVkl6ZXBPSEpQdkxQN2pDR2dyMi02RWJaTQ?oc=5",
+   "s": "TBS NEWS DIG",
+   "d": [
+    "経済・産業"
+   ],
+   "p": [],
+   "date": "2026-08-30"
+  },
+  {
+   "t": "外国人労働者257万人 過去の反省から生まれた「特定技能」 迷走?受け入れ政策の「アクセルとブレーキ」 争奪戦ライバル韓国との「2つの差」とは【サンデーモーニング】",
+   "u": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE1YNzRNOEJPUUtCM2o3ZG5kX2Q0X0tFZEw5TWphTEZfSmlzOHU4S1oxb1l2MVU4LWFwNnhxcW5zeklwdkNycHE3cG9CN1k5X3d6RDUzZ2RpZVdhNEFfeF94Tg?oc=5",
+   "s": "TBS NEWS DIG",
+   "d": [
+    "経済・産業"
+   ],
+   "p": [],
+   "date": "2026-08-30"
+  },
+  {
+   "t": "外国人労働者257万人 過去の反省から生まれた「特定技能」 迷走?受け入れ政策の「アクセルとブレーキ」 争奪戦ライバル韓国との「2つの差」とは【サンデーモーニング】",
+   "u": "https://news.google.com/rss/articles/CBMiYEFVX3lxTFA1UTBWLTdibU1NS2xNUjFHSXYyRDhMSW1sbjE3SGlaVTVfaUd6MDFjWWZNVmMxcHNnTjV5RlFFNzlVYW1JRWxpRDg4RkFMcVNwcUprYTFFRWM2OGlpMzNyTQ?oc=5",
    "s": "TBS NEWS DIG",
    "d": [
     "経済・産業"
@@ -195,6 +317,16 @@
    "t": "東海第2原発の防潮堤工事、完成2年遅れ 再稼働2028年度後半以降に",
    "u": "https://news.google.com/rss/articles/CBMibEFVX3lxTE1EUG5DRGpaVFFiU2otbFFTZHFVTlljcHZjZEJwM2NzT3d1NXdWcWdYVTVNclZJOEkwNjlrbU5yRW5SWlFKNGYwTTJGYy1YSWo1cHplckh1eEZfSGQ5UjJRSTFrMklPNHBpaS14UA?oc=5",
    "s": "日本経済新聞",
+   "d": [
+    "エネルギー・環境"
+   ],
+   "p": [],
+   "date": "2026-08-28"
+  },
+  {
+   "t": "東海第2原発 安全対策工事、4度目の工期延長 28年度下期に（毎日新聞）",
+   "u": "https://news.google.com/rss/articles/CBMif0FVX3lxTE96OW1aaTB6aFE0QnpRMDRqX1dLeHBpNXM2QU9oUU5wM1g1SVNNbDlfV19QZm8zRHJSOE1YVDVJTm1VcUwzTzF5Yk9zOWJKdGIzdEJUTVdtSXl1UDEyR08za1Bpdnpzbm1lOElJOHk5QldUaEhRQnVpc2J3MFktbDA?oc=5",
+   "s": "Yahoo!ニュース",
    "d": [
     "エネルギー・環境"
    ],
@@ -1081,6 +1213,18 @@
     "エネルギー・環境"
    ],
    "p": [],
+   "date": "2026-08-21"
+  },
+  {
+   "t": "ペット防災や憲法の事。 #俵山ミエの政策 #れいわ新選組 #（新党名）いのちの党",
+   "u": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE9TRkVsWHpjWW43cTNsY0EwVm4wWFY0cXpsNE9JdFpYa2VzcWphcFRBTnZNV24xNHRtUDhXTmV3b0Y5cWotMFA2eFJ3aDQtN3FxRUM5UkVSY1RvNzNT?oc=5",
+   "s": "YouTube",
+   "d": [
+    "憲法"
+   ],
+   "p": [
+    "reiwa"
+   ],
    "date": "2026-08-21"
   },
   {
