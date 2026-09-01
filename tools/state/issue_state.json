@@ -1,8 +1,10 @@
 {
- "last_checked": "2026-09-01T14:01:53Z",
+ "last_checked": "2026-09-01T23:09:37Z",
  "open_issues": 0,
- "open_prs": 0,
- "open_numbers": [],
+ "open_prs": 1,
+ "open_numbers": [
+  16
+ ],
  "new_since_last": 0,
- "checked_at": "2026-09-01T14:01:53Z"
+ "checked_at": "2026-09-01T23:09:37Z"
 }
