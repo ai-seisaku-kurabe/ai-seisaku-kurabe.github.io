@@ -1,26 +1,368 @@
 {
- "updated": "2026-09-09 23:08",
- "updated_utc": "2026-09-09T23:08:08Z",
+ "updated": "2026-09-10 23:01",
+ "updated_utc": "2026-09-10T23:01:41Z",
  "topics": {
-  "0": [],
-  "1": [],
-  "2": [],
-  "3": [],
-  "4": [],
-  "5": [],
-  "6": [],
-  "7": [],
-  "8": [],
-  "9": []
+  "0": [
+   {
+    "t": "食料品消費税１％は2年間だけ、2年後には8％へ…「減税」の先にある「負担」増への懸念",
+    "u": "https://news.google.com/rss/articles/CBMif0FVX3lxTFBEQ0ViSzBkN3U0QVZKaDQ0a21sUGxvRUZxR1JBYVVMdl9KRXB3Vml5MVdHVk1zWkFuYzNQcFNBSm5faUZxQmsyMkFZc3FNYkFkQjZmQ0M5RmtpbWNnbC13NElRNUJlckpTZFFLT3BjTnYxY0RFOVZZcWtfVm13Z0E?oc=5",
+    "s": "Yahoo!ニュース",
+    "pub": "2026-09-10"
+   },
+   {
+    "t": "消費税減税「２年限り」 大綱案 地方減収分、国が穴埋め",
+    "u": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE8xUkpMd2VjbVFXdEJrZXF0Rnl5Y3gyWG5Ld2tQVThiY2RiYjRvd2lPZ1paSVI3TG8yUXhVQU1uYmp6Y2MwNE9fSDhsbC1zMk9KUGtVdmM4eHoxRk0?oc=5",
+    "s": "山陰中央新報デジタル",
+    "pub": "2026-09-08"
+   },
+   {
+    "t": "外食業界団体、消費減税に懸念 政府支援策は「望むものとギャップ」 [消費税減税 給付付き税額控除]",
+    "u": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE9menRBdWFud1liLWpfVDBTNnZMQWhTXzNqUnBxMk5yOU10c0JxTHhfaV96eTZndkVla2MzUzQ0d05Zbnc5U0FZVWEwUzBEZU9jN0IxRl95SjRCVUlOeXlnZ2FWMEs2VG8?oc=5",
+    "s": "朝日新聞",
+    "pub": "2026-09-10"
+   }
+  ],
+  "1": [
+   {
+    "t": "防衛費の概算要求は過去最大8.9兆円、財源どこに？ 「赤字でも防衛力を増やせ」との風潮に識者は強い懸念",
+    "u": "https://news.google.com/rss/articles/CBMiU0FVX3lxTE15MjRLRGF3T1lQVnhDNGlPVTJFaW1GeU9pd293ZUs4THpmQno3ZDROYVdKYUVZMlBzendfOFlYaFNVYVExTFd5U2RfMW44a2pKcDVz?oc=5",
+    "s": "東京新聞",
+    "pub": "2026-09-05"
+   },
+   {
+    "t": "防衛省、過去最高の8.9兆円を要求 「事項要求」多数でさらに膨張 [高市政権の安保見直し][安全保障関連3文書]",
+    "u": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE85TGw2bHVkRThRazFiQzl4Z1poZUlZTW9mNFR5WmY0QklBVTJiRXdvTmlfSUlGYkFfVXJUUXN5U3JKTzVSS3hzYW9tN01JY2VrU05QLXJseUMyMV9pRXZDaTExVXRkRmc?oc=5",
+    "s": "朝日新聞",
+    "pub": "2026-08-31"
+   },
+   {
+    "t": "社説：防衛費概算要求 国民の理解を得られる増額に",
+    "u": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE1tWGJmVGVfTS1ZSTRBQ3dOZDlmNWducVhOekd2bzJkd2J2R01iQU5ycXZlV0hOM0xsQmNoT2V2bmJlRFpyd2hpdmJTdENkUWxlUDlHbVJmeE1oNEFDZ09GTWQ2YlFiTzg?oc=5",
+    "s": "読売新聞",
+    "pub": "2026-09-06"
+   }
+  ],
+  "2": [
+   {
+    "t": "欧州株に年金マネー流入 独の制度改革に期待感 少子高齢化・物価高、リターン追求",
+    "u": "https://news.google.com/rss/articles/CBMia0FVX3lxTFBNMWtqRVJGNDVENlRTT3pPdUUtTnJ5czN6S0czT21RbEc1alQ0ZFhBcEZpdHlIMURGMldUZTJmOURxWXZYMUV0ZTF5d3RXeG9PMjRDaWR6Z1ZhMmxsdmI2UWM0V0xNcEtYNW0w?oc=5",
+    "s": "日本経済新聞",
+    "pub": "2026-09-08"
+   },
+   {
+    "t": "令和7年度年金制度改正法が6月20日に公布されました。",
+    "u": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE5wUTQ3Y2RKX3hGdkk3STJaUTBRVVJpSEI4VHdKOUNrZllmUXNfZWd3c3gwTW43Wk5ycFNZV3VZaDdTN3J5X3d3aUQyeFdOcUhrTGNXYU5TMnhWNWEwUGwwc0RmODQtUQ?oc=5",
+    "s": "mhlw.go.jp",
+    "pub": "2026-06-20"
+   },
+   {
+    "t": "保険料払わず年金受け取れる「第３号」縮小へ調査・議論、２０３０年の制度改正で反映…検討会初会合（読売新聞オンライン）",
+    "u": "https://news.google.com/rss/articles/CBMif0FVX3lxTE05VHVHNmJ2cEJNQm0yS3JBN0FzaVpQSHlDTGdJLU9fbGRadXZPeWhycGdmM3JpMlJsR3VNUzFhNDJ2SlR6WUlVeGE0aEtMekZoNy1wMHdPZjlZRzRvVU0tNWhHVDF4anRManVDYXJuYkJteEZEa0diZGptNmxndE0?oc=5",
+    "s": "Yahoo!ニュース",
+    "pub": "2026-09-05"
+   }
+  ],
+  "3": [
+   {
+    "t": "「パワーGX」はGXを衰退させる？政府公表のエネルギー政策パッケージへの3つの懸念と、問われる高市内閣の本気度",
+    "u": "https://news.google.com/rss/articles/CBMiTEFVX3lxTFBrNWJUYmNvNzQwVjFkV2pCdWFxWERNM3pwclJRQ1JWeWxIeVRxR21sbS1QZHhNSF9oZkJ2SUg4VS1TRkg4enhFNjBwWmPSAU9BVV95cUxPY2pkbDZrX05vbVh6MnpBbU43elFCbWltY0liQlUwWEdkQVFyNUU5TjUyMHc5OWpBNFNVZHJpVDFZaDJOZExGZFJ3SDFQWTk4?oc=5",
+    "s": "ダイヤモンド・オンライン",
+    "pub": "2026-09-09"
+   },
+   {
+    "t": "原発と再生エネルギーを最大活用、脱炭素へＧＸ加速…エネルギー多角化へ政策パッケージ案",
+    "u": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE0xOGZMRE54V1hVVzdSZkJYWTZIRTBiaEdaQXpkTXJKZ2x2YTg0WG5RUFltSW5aWHFLRkwzTV9QM2R3V01oalJSVHJrdElpRFlDbk00My1jdUJYY05LRTVCX2JfTEwzUQ?oc=5",
+    "s": "読売新聞",
+    "pub": "2026-08-26"
+   },
+   {
+    "t": "【研究ノート】エネルギー安定供給法案（脱・脱炭素法案）",
+    "u": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE5vdl9VV25HN2psdjN4SERvN3pzMkRPcWJNX3NvVm9OMXg0WGNSOFo4Q3R2WjlmWVc4d3BIcWVWOEJBbEZ1MzBxTU5Dc3lidlNEcW9zWmZzcVJMdw?oc=5",
+    "s": "キヤノングローバル戦略研究所",
+    "pub": "2026-07-10"
+   }
+  ],
+  "4": [
+   {
+    "t": "衆憲法審 欧州3か国へ出発 憲法改正 緊急事態条項で意見交換へ",
+    "u": "https://news.google.com/rss/articles/CBMiX0FVX3lxTFBSXzUtX3BOZEM2RGVFWDllRGJ2RWpGMzNJSVlFWklBcHY0UVJTcURjMjROcGxoejFHXzJHMEpTYVRYbFVFTTFRSTJMbkZURUpBSmwzQjBEV2lWbnhYS1M0?oc=5",
+    "s": "news.web.nhk",
+    "pub": "2026-09-02"
+   },
+   {
+    "t": "【社説】憲法に緊急事態条項 政府に権限集中の危うさ [高市早苗首相]",
+    "u": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE5acWRKZDVIR2p6eS0yMlA1TExBdG9peks5MHBMNEtCaU80U3lPa1h6dHFyTmtPSlpKemtIT19BVjdXc0ZpUkZLNVhlSDhJN0xrVER4ZVdwdTQ3ZERNdzNIQ19valRjNGM?oc=5",
+    "s": "朝日新聞",
+    "pub": "2026-05-16"
+   },
+   {
+    "t": "読む政治：国会議員の“延命策” 「国民不在」で進む緊急事態条項の改憲議論",
+    "u": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE1zYks0MTRpVUM5eTZwbnpESjBnT2hFRTlwNDZTaTBydjh3ak5Jb3E5N1lGR1E2ekIteXJnT0o1SC1ZcXpONXRLWHN6NzF0TUUybk9PUlp6SkEyY1oyMzJmNHVrbXFzc0ZG?oc=5",
+    "s": "毎日新聞",
+    "pub": "2026-06-30"
+   }
+  ],
+  "5": [
+   {
+    "t": "緩められる財政健全化目標と財政規律（NRI研究員の時事解説）",
+    "u": "https://news.google.com/rss/articles/CBMif0FVX3lxTE5rYlB3aDBSdjQxdngtLTYwS0dfd2dEaER4R3EwTmRYZ3NzdE1HQTNHOVV5c3laVUpWUUFyMlRoQzgyMnBnRExwOXpMRXpvQWJNdW5wakNDc0JpQnNHVmJqdGYxZld4N0hSX1c3NHlBM0I3cHB0MVhWR3lSVHM5T28?oc=5",
+    "s": "Yahoo!ニュース",
+    "pub": "2026-07-03"
+   },
+   {
+    "t": "骨太の方針を閣議決定 「財政健全化」の文言消え、日銀の「独立性」 [高市早苗首相 自民党総裁][予算・税制]",
+    "u": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTFA5UlM1aDVsd3N1eUFRSWZzNldJamdvczgza1ZWUUpRc0o2T3FsdWU5VWptRlFxcWFZNDFQWUdMcnRucHRiYjB5d3o3OHBqcWxXWEFTMTk3dFpJOXFKSTJhUWcxVXBUTkk?oc=5",
+    "s": "朝日新聞",
+    "pub": "2026-07-21"
+   },
+   {
+    "t": "【論考】プライマリーバランス単年度黒字化目標は予算編成にあたっての最重要なメルクマールだ―連載コラム「税の交差点」第138回",
+    "u": "https://news.google.com/rss/articles/CBMiX0FVX3lxTFBpVXplOXJ0ZndfSm5sRm9UaHVaVElNcmxWQzl1NHdxd1BZakh2SWM1XzFFMXE1SVJqR0EwVjVuZlNxVy1rZ3A4dEQ4eFRKZlJKQkZjSnpuVXFuNnlQb3dZ?oc=5",
+    "s": "東京財団",
+    "pub": "2026-01-23"
+   }
+  ],
+  "6": [
+   {
+    "t": "NATOにおける宇宙安全保障の国際化 ――日本の宇宙戦略への示唆",
+    "u": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE0teDNKaVZZY0h2aTNhTFRZaFdvVWxjS1pOVFRvc2VXQTF1XzdLODA4aVR0M3ZtUUlxc1NwTlBHT1hFYnRONkNPRTRBRThjcnBuYjhJbkpNTGRIbm9NYnVpVw?oc=5",
+    "s": "笹川平和財団",
+    "pub": "2026-09-10"
+   },
+   {
+    "t": "日米同盟、老いとの戦い 中国台頭がさらす安保体制の弱点",
+    "u": "https://news.google.com/rss/articles/CBMibEFVX3lxTFAyZU1fNVp3ZTYxNldZWXF3LU12RGVJYTcwYTFmT2tuUFg3NU5lbV9DZjJiWjFhR0tSZGlFN1Z1UU5ZdnlQdlM3V21tLXhBN2pDdHBrcW1TU1dlV0xoZVp4WWs1bEtLNW5Ib0VJeQ?oc=5",
+    "s": "日本経済新聞",
+    "pub": "2026-08-17"
+   },
+   {
+    "t": "「今のままでは抑止が機能しない」 防衛省が三文書改定へ、中国軍拡と自衛官減少に危機感 | 黃信維（コウ・シンイ） | ニュース",
+    "u": "https://news.google.com/rss/articles/CBMiUEFVX3lxTE13eHFxYkxkdlhrelJWUUtrOExzLUxGeVB4S2xPRERaM2tYNUdVUzJmUzJMa1VKOVJwVmtVU0Y2cy00ZmM5WXFoTE90U05NcE9y?oc=5",
+    "s": "風傳媒",
+    "pub": "2026-09-10"
+   }
+  ],
+  "7": [
+   {
+    "t": "静岡県御前崎市が「使用済み核燃料税」導入方針表明 中電浜岡原発",
+    "u": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE9BRzdQdVF4NkNsSC1UTDdjZlR6TW5oblJXalh3SmgyVjhRSnIyTlJxZzhpWjBsdkdZVnd4bEFicjBEazMxeUV4bmtmbkU5WFd3VmdTTXhXUEZzTlZrcGZXdkNZZl9vcnM?oc=5",
+    "s": "朝日新聞",
+    "pub": "2026-09-10"
+   },
+   {
+    "t": "政府、柏崎刈羽「安全最優先で運転を」 再稼働受け監視チーム会合",
+    "u": "https://news.google.com/rss/articles/CBMibEFVX3lxTE9BNlJGRnlaRk1JSzB0VEpKUGdITEpLd085TTFVbW5JOFdYVnBQRDNtUkJZSl95UUdQdVI3elZmUnMyZm5zQ21hSGVpdkNCNmR5V00yS0w1clFQWS1iVDlLVUNDcFVTRmZQRzg4NQ?oc=5",
+    "s": "日本経済新聞",
+    "pub": "2026-09-09"
+   },
+   {
+    "t": "米AI大手が電力不足で自衛策——電力購入、原発再稼働、自前発電所建設、送電網が最大のボトルネックに",
+    "u": "https://news.google.com/rss/articles/CBMidEFVX3lxTE85S3NNOGhOS3dFa0FiS1gySmd2b1NUQVVjeGNTaXE2cjBvR3dlX1lwWEFkd2J5SElNQU5yRjl1Zkt4Uk9wUHFSeXZNYjVfS3NQVVEycjRCT1VRNE52LVgyNWtfc2otLW9HUVIxN2RiRFQ4MDc0?oc=5",
+    "s": "BigGo ファイナンス",
+    "pub": "2026-09-10"
+   }
+  ],
+  "8": [
+   {
+    "t": "日本在住の外国人として、「外国人問題」について考えたこと",
+    "u": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE1HX1FVQVpQTjdRTDhYQlkxb3Y0VlRfLXJxU3dyVVpJWTlYVGtmaW0wSk10Y2lNTG9aUTMzakQxbVJqU1RqT3N2SFRJLUJ5Qm5rcWFLQ1VZWVVTTW1ocWtEczVDRDdIdw?oc=5",
+    "s": "Coral Capital",
+    "pub": "2026-09-09"
+   },
+   {
+    "t": "「警備業」人手不足深刻 特定技能外国人ら受け入れ議論の検討会設置",
+    "u": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE51S3FGS0VCcE5qN2wwb2VmaGsxTTkzUExzaGxWLVpEQ3VkS2hFTlVkZXRZbDFYckRKR0c4U2F0YTlid2o5VEhHck5KRWRIQmR3SzFPdzNtYnUxVzhMaW5ZeV9wSm45T2c?oc=5",
+    "s": "朝日新聞",
+    "pub": "2026-09-10"
+   },
+   {
+    "t": "移民と社会：外国人受け入れ「突如停止は行政ミスと政治的ポーズ」 是川夕氏",
+    "u": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE1BMlVacmRSOEQ0UUozT1QyejBNS2JlM1YycTQzT0dNVFNqb1ZzczZna19qVUo0LTlxMEZTVi1LUGdDbEw0UjZIX1lvTFo4ZFRtUVVhZ19BcjZlRUk2d3BHQnlOcTF4Ykx1?oc=5",
+    "s": "毎日新聞",
+    "pub": "2026-08-21"
+   }
+  ],
+  "9": [
+   {
+    "t": "授業料の実質無償化で『私立志向』高まる～4割近い生徒と6割超える保護者が「進路選択に影響」と回答…2026年度の私立高入学者は約1000人増→“公立高校の魅力化”課題に―教育委員会の調査〈北海道〉",
+    "u": "https://news.google.com/rss/articles/CBMif0FVX3lxTFBxZV8xZVI3Z1c1SXhBVFBVY3MwS19pYUtVY0FoalY2LVBXQVM5MmZ3eGxnU0Z6NlZjbzlmMTNZQ3dZVWpQWkRnQjVPLUFiUm1zOUZvVm82UmdsZXY5aV9TZUwxRUttZGRJMVNEZ0lST0lDaWF6N0JzZm5LZzRlVUU?oc=5",
+    "s": "Yahoo!ニュース",
+    "pub": "2026-09-07"
+   },
+   {
+    "t": "多子世帯の給付型奨学金・大学無償化｜条件・金額・申請方法を解説【2026年最新】",
+    "u": "https://news.google.com/rss/articles/CBMic0FVX3lxTE9hRmlXc0dSREZXMHNINEJVZ2loVmVXMFpsTVhNd1djZ05la1lPUy1IUkNPU0w3SzBJRVhPbjkwNEpFT0g3YndPbk9GV09BQzF3Q2d3UkFSMXF5VzY4NE9Mb1pOdFdYVF9xRlZoVFNMcVJsOHc?oc=5",
+    "s": "補助金ポータル",
+    "pub": "2026-09-08"
+   },
+   {
+    "t": "私立高無償化、進路選択に「影響あった」保護者6割…道教委",
+    "u": "https://news.google.com/rss/articles/CBMiZkFVX3lxTFBWd1UzM1dBZlVlZEdjQTBiTWFJNmdBOWZiT19HQ3F0MnhQTF9TLS1ydGZLa0ZlbWg3SlpWam1PaGxYbDN5WnFzVWlQQTkzelRHTFN6Rk9NT1lWUmUzLWhIZmxnalYxUQ?oc=5",
+    "s": "リセマム",
+    "pub": "2026-09-08"
+   }
+  ]
  },
  "parties": {
-  "jimin": [],
-  "rikken": [],
-  "ishin": [],
-  "kokumin": [],
-  "komei": [],
-  "kyosan": [],
-  "reiwa": [],
-  "sansei": []
+  "jimin": [
+   {
+    "t": "人事は「実力主義」と「政策本位」 官房長官が首相の判断基準を解説 [高市早苗首相 自民党総裁]",
+    "u": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE5nSU1vNndLenJKbzhiN0FUYnlMc0l2WnZJaUdWODB4ZHozYi02anBrV2dWNWRMM3VhZ3BBZUU5WWVZVElOTmVhdTVZdmZ2MVAtZTRUbDJaN3NTdmUxVVJUN3lYa3pBRGc?oc=5",
+    "s": "朝日新聞",
+    "pub": "2026-09-10"
+   },
+   {
+    "t": "自民・入閣適齢期120人 薄まる派閥順送り、首相と近さ・政策も重み",
+    "u": "https://news.google.com/rss/articles/CBMibEFVX3lxTE5zQ2t2dEJicHV3aElXR0cyUzB2Z3VBVXJiTkV5ZlFjRkdQcGRFdzZLVVdfSmNwcGswbFotYWxnUzZHOEpueC1PYkpDNG8wRHhlLXNxZFFPVGJSYndqR0hMV1VMR0Rwc1BLYnZFNw?oc=5",
+    "s": "日本経済新聞",
+    "pub": "2026-09-09"
+   },
+   {
+    "t": "高市首相、小林鷹之・政調会長の留任意向固める…「責任ある積極財政」など主要政策の調整役継続",
+    "u": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE4wRmhueG8zS1R0aXlldlplSE0tUTVFam9jRm5qLU53OTFGdE9oS0JQVVdRNmtwamhYT3d0b1ptc09OcDQ5alNCMll4blNMcXcwazFCM2V5YkRvSDhFTVNvYi1VWkh5dw?oc=5",
+    "s": "読売新聞",
+    "pub": "2026-09-07"
+   }
+  ],
+  "rikken": [
+   {
+    "t": "国民民主・玉木代表、中道離党者受け入れに含み「政策一致なら」",
+    "u": "https://news.google.com/rss/articles/CBMibEFVX3lxTE1tbk1JcU83VjdHc1FnMGJiWU5rRnhJcHFqZERCdlc1Smdzc1daS2NYcm5rMUx1aVduaEJmU05WNDFlNl9CTGRyajAtdU40RkVtODVIUnRjcHFkSzM2YlJPOEd0LXBIbnVaNW8zaw?oc=5",
+    "s": "日本経済新聞",
+    "pub": "2026-09-10"
+   },
+   {
+    "t": "水岡代表「若者の声を政策実現につなげる」 第1回「若者政策実現会議」を開催",
+    "u": "https://news.google.com/rss/articles/CBMiUEFVX3lxTE4wTEphV05RY2U3RXVaWERiRmR5VlZTOTFLWGtYbEJhTU1TUDN4SzhTZGFXc1BrZlk3MGJSd1hiVlpfTnZ3SS1fLUFTWDZERk4z?oc=5",
+    "s": "立憲民主党",
+    "pub": "2026-06-23"
+   },
+   {
+    "t": "［山口二郎コラム］政権の座を脅かす野党が不在の日本 : 社説・コラム",
+    "u": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE1hZmFiYmtFeWVYSFpXZl9Rbm5VRUFwOERFZndZVW4weVBtbU1IVVV2UVlkZ3U3Q0I1R1FLdnJad18zUTZha2RaMF9JVTg2eTB5VGpBY01iT2Y5NENF?oc=5",
+    "s": "ハンギョレ新聞",
+    "pub": "2026-09-06"
+   }
+  ],
+  "ishin": [
+   {
+    "t": "内閣改造「実力、政策で判断」 木原官房長官 維新との連立合意書「改定する必要ない」",
+    "u": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE84T3E2UmZCT2tYcFFnYnlQZFBXbjdqa0NnWE54MS1RN1E5UmdSZEZDV3c0bi1GWjl0YXREeXdibDhBeE05ZWZyRkNvSXlCdmc?oc=5",
+    "s": "khb-tv.co.jp",
+    "pub": "2026-09-10"
+   },
+   {
+    "t": "木原官房長官 維新との連立合意書「改定する必要ない」 内閣改造「判断基準は政策。当選回数に関わらず閣僚・副大臣にするだろう」",
+    "u": "https://news.google.com/rss/articles/CBMiTkFVX3lxTE9xOVdyOHdVSV8xTlZPRGdWeVZiMmV1alZBbEpVLWVJbmdtd1JPRnBRdXF2QUtlTHdzazJLMWNmT3IyRGtVNUpfeU9CcGg2QQ?oc=5",
+    "s": "FNNプライムオンライン",
+    "pub": "2026-09-10"
+   },
+   {
+    "t": "日本維新の会に対し「2026年度 連合の重点政策」について要請（連合ニュース）",
+    "u": "https://news.google.com/rss/articles/CBMiaEFVX3lxTFAzbm0xWDhzeFk4VDFPX0FlNlBpa2tCbnRvU1pQaWduSWdVQWpKeVN6bWNtcDBxeEN3YjlKSVRqWjQxTlJodi1PNmlxcHRmUXFUSWFESnhGZW40U0tUMzFMWTVhWDNjM0xo?oc=5",
+    "s": "連合（日本労働組合総連合会）",
+    "pub": "2026-07-16"
+   }
+  ],
+  "kokumin": [
+   {
+    "t": "【代表選2026】臨時党大会を開催、新代表を決定",
+    "u": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE55RWF5MWhHVk9YdVFJdWhmaFpHM3R6OEJ6clRON2gxcGFOU0N3ZGxIX2NCNE5YY01QemR2Mzc4YUNWdkJqQ2c3VFhOSUhVMW1vZ1N5V3NPRWF5ZVE?oc=5",
+    "s": "新・国民民主党",
+    "pub": "2026-09-07"
+   },
+   {
+    "t": "国民民主・玉木代表、中道離党者受け入れに含み「政策一致なら」",
+    "u": "https://news.google.com/rss/articles/CBMibEFVX3lxTE1tbk1JcU83VjdHc1FnMGJiWU5rRnhJcHFqZERCdlc1Smdzc1daS2NYcm5rMUx1aVduaEJmU05WNDFlNl9CTGRyajAtdU40RkVtODVIUnRjcHFkSzM2YlJPOEd0LXBIbnVaNW8zaw?oc=5",
+    "s": "日本経済新聞",
+    "pub": "2026-09-10"
+   },
+   {
+    "t": "国民代表3選の玉木氏「参院選が天王山だ」 問われる対・高市政権 [国民民主党][中道改革連合][高市早苗首相 自民党総裁]",
+    "u": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE8yc3JXN2hjaldpQ1N0RUhHUVlDbndSNzNCZFpMdDdITEh2NUxqVWJwdmpwNnFnMDJPMnFlei04cDZ5c1JxR1laRVFyamc1UmkzdWlObXUweks5QjlJUHFGd0dLTlpmT1U?oc=5",
+    "s": "朝日新聞",
+    "pub": "2026-09-06"
+   }
+  ],
+  "komei": [
+   {
+    "t": "(公明、再結集で新出発、中道政治実現の軸担う)「政策5本柱」具体化へ 次期国会、新党と統一会派 中道「新たな形態」で竹谷とし子代表に聞く 2026.9.11付",
+    "u": "https://news.google.com/rss/articles/CBMibkFVX3lxTE0wNDJVc0dDeG5xTGkwLW9QNnk0QjZmQkRhQWV2UWxhdktPUUctcE9tVU02aUNTTGdlYlNYQ2tNbVJFZHFiVkp2V3kzTXpYMUxCemp5WnpOa3pyWlo5Tk0wUjVSZ3N3bDFzRkVuNjRR?oc=5",
+    "s": "公明新聞電子版プラス",
+    "pub": "2026-09-10"
+   },
+   {
+    "t": "”3党協議で公明、合流を断念 ”中道政治実現へ、まい進",
+    "u": "https://news.google.com/rss/articles/CBMiVEFVX3lxTFB5STE1Q3U5bmNUWlpyTjFIV3RUQndfRjBCVlpmcUp0d2ljcE5FWTMtLWdwZkNVMzlzMFFoWUN5QlRTaTgtWlZuUVk5R2hKZTEwMkFvYQ?oc=5",
+    "s": "komei.or.jp",
+    "pub": "2026-09-02"
+   },
+   {
+    "t": "公明党兵庫県議団が知事に令和9年度予算の重要政策提言を手交【神戸市北区】兵庫県議会議員 大塚公彦",
+    "u": "https://news.google.com/rss/articles/CBMiX0FVX3lxTFBRaHhnRHVNWmNTazMzWWtlamliMFcxZG1pa0x1Z0dqekt3aFlHc0hubUd3TjBUUk5waEpSQ0FXUm9EeUUzZU9QcFRxNks2X1Q3TVlUVGJJTFdNUkwtN2hj?oc=5",
+    "s": "選挙ドットコム",
+    "pub": "2026-09-07"
+   }
+  ],
+  "kyosan": [
+   {
+    "t": "物価高騰、暮らしの危機打開へ――経済政策を転換する緊急要求",
+    "u": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE9IOFVBVHhWUm9IY2drNDBBLWY1ZElJeXAyUXY0bmlfUVFfU0h4U3JUdFlONkZDaTJXVzBoVnVDT2trei1PcHFUQm1XQjQyWXBJTDNYOFJn?oc=5",
+    "s": "jcp.or.jp",
+    "pub": "2026-07-14"
+   },
+   {
+    "t": "沖縄知事選 古謝氏 極右と連携強化/排外主義・歴史否定の野合 | しんぶん赤旗",
+    "u": "https://news.google.com/rss/articles/CBMidEFVX3lxTFBtdkVpNVhJd3d4TVJNTFBKblo5WFYyVFU0LVgyNEptQjUyZUdBRDZVeVAxUXY4MU9aeWlWNFRtTkd5YktEdnJsYTVfc3JodVpHaE9ncEVfMTlOQTlYRE1BQnJhS2RTUm5qNE9nMHNpbXhQNTd0?oc=5",
+    "s": "jcp.or.jp",
+    "pub": "2026-09-04"
+   },
+   {
+    "t": "物価高騰・暮らしの危機打開を/共産党が緊急経済要求/山添政策委員長「国民の怒り臨界点」 | しんぶん赤旗",
+    "u": "https://news.google.com/rss/articles/CBMidEFVX3lxTE9sdTJyRzdIMHZmcTFJT1lMb2RiQ0dmOElfNDBmRjBvaVIyUXVKWFdiREM2M19lYWRZWkhWZjBwNzJQMXBDbjVmWFphWmk0aFNxVllOdEZwUlBYTnJrOW8wMTlwZEM3VWkwUlU1VFZQeUwwajNR?oc=5",
+    "s": "jcp.or.jp",
+    "pub": "2026-07-15"
+   }
+  ],
+  "reiwa": [
+   {
+    "t": "れいわ新選組が押した減税ポピュリズムのドミノ 財源なき政策の限界",
+    "u": "https://news.google.com/rss/articles/CBMibEFVX3lxTE52TElMUUhnNV9RUzN4SVpFWWUzak9KSy15ZWZJWTl3WnFJVWZ5UDVLcWxOM3cyQjNKcGowemZ5U1V6c09QTHFOcmhUVjhCVkpRempOS1JpSkhGTU82a1BtQ2V1NkhGWjVhVG9qQQ?oc=5",
+    "s": "日本経済新聞",
+    "pub": "2026-07-22"
+   },
+   {
+    "t": "「れいわ新選組」から「いのちの党」へ、私が受け継ぎたい原点",
+    "u": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE1vNjVabkFQV0hmV2lIWUVPek9MdGJHRXV3dHd1MDA0RVh3ZE9wYXgyeGo0OTY2OHdTYmJxOEg4UXJaUGNoNVVYcF95a284dVJNamk4YTJhNzFMcU1PNkF3?oc=5",
+    "s": "選挙ドットコム",
+    "pub": "2026-08-16"
+   },
+   {
+    "t": "2026年は沖縄でスタート “れいわ新選組の増税反対デモ”｜れいわ新選組newsR【密着・文字起こし】",
+    "u": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE96NmktN0lOdGtwOVREeGo3NDVuaDRhalNha3Y5dThER2hiemwtMlBOa1REMkZOMWJ5M2lZUkwtN0JfYzhRSG1UcXVBLTUwQ3pTNGtxNTQxYzYyZw?oc=5",
+    "s": "reiwa-shinsengumi.com",
+    "pub": "2026-07-03"
+   }
+  ],
+  "sansei": [
+   {
+    "t": "９月６日 選挙スタート！【石垣市議選】 平得ひろゆき",
+    "u": "https://news.google.com/rss/articles/CBMiR0FVX3lxTFBTWUx1WHZTX0k0c2Q2T0NLRURxekNBQWxfRWdpQUF0eVdOYnBGQ0QtYVFMb3IxWVlTcUt0anV3TExHVGY5NUFJ?oc=5",
+    "s": "参政党",
+    "pub": "2026-09-06"
+   },
+   {
+    "t": "「参政票を取り戻せ」焦った自民、頼った高市氏と外国人政策の難しさ",
+    "u": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTFBqWUlQQUhvR1kwS1o0Q1JScFZtQzdCVld5eWdQcWI2SkE4WVExejRWRnZxaTJ3amlEWlM2YzRRZGNlWllhdHNhQS1nVFJUT2pvWmtuWERNVENlWWpUNndSX3hYSThqckk?oc=5",
+    "s": "朝日新聞",
+    "pub": "2026-08-28"
+   },
+   {
+    "t": "参政党・神谷氏「若いリーダーに」 古謝氏支持訴え、合同演説（沖縄八重山日報）",
+    "u": "https://news.google.com/rss/articles/CBMif0FVX3lxTE1RdXVZUVhhYjVWX3VJV3RZRzluQjFkcm5JZ3Nid0N0dDA3WDdqRnJhZG8tdDlUMHhaRTJxT2RWMzN0YWVKZ1FzT1FqbWRfNEEwVC1zT2dsN1R1UVAtNUs0T1UtTGhqb1lwSDZiR0VlTkM1T2lMdVh6VEVMUUdqY2s?oc=5",
+    "s": "Yahoo!ニュース",
+    "pub": "2026-09-06"
+   }
+  ]
  }
 }
