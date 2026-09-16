@@ -1,6 +1,6 @@
 {
- "updated": "2026-09-15 23:28",
- "updated_utc": "2026-09-15T23:28:19Z",
+ "updated": "2026-09-16 23:35",
+ "updated_utc": "2026-09-16T23:35:42Z",
  "domains": [
   "財政",
   "外交・安保",
@@ -21,6 +21,155 @@
  },
  "items": [
   {
+   "t": "＜社説＞浜岡原発、再稼働白紙 構造的課題の抜本改善を",
+   "u": "https://news.google.com/rss/articles/CBMiYkFVX3lxTE1RX0FHTUt0U1J1d3JmUVR2MjVGTXBZLS1pMThZMkNDSHRfdnROazA2R0VMTm5aTXFic3UxMjMybVVDSjhxekRVeFFqTE1KWWIwb08zQ0p6NjFQMFJRME9QaV93?oc=5",
+   "s": "琉球新報デジタル",
+   "d": [
+    "エネルギー・環境"
+   ],
+   "p": [],
+   "date": "2026-09-16"
+  },
+  {
+   "t": "片山財務大臣 生出演で消費税減税の効果で“食料品の小売価格は下がる”認識示す 「消費税が8から1に下がるのに値札を変えないということはライバル店との関係でないという話も聞いている」",
+   "u": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE5nWnJLNVlJTHIzUHBNZFo1UW5jUzJrYlRNaGRLYVVIOVlKVWlsZmNrLWNoMEM4WU1FU1hiUHYwT0tMYmZwc05hcFA1WVlwa1BTLWlPN2l2TERxaWtwcnc?oc=5",
+   "s": "ktv.jp",
+   "d": [
+    "財政"
+   ],
+   "p": [],
+   "date": "2026-09-16"
+  },
+  {
+   "t": "消費税減税は悪手？日本の経済政策はどうあるべき？ – Quebee キュエビー",
+   "u": "https://news.google.com/rss/articles/CBMiWEFVX3lxTFBoWVg1aW5rQm5UdlpqZjVGWFdFdGlpcUtFRmdjLVR3MTFlWHJPb2JMQjhBYU8wZlZTSjQ4eFBCblRiU2x5QkNRVGZYQWl4d1g1OXBZdEozc0w?oc=5",
+   "s": "qab.co.jp",
+   "d": [
+    "財政"
+   ],
+   "p": [],
+   "date": "2026-09-16"
+  },
+  {
+   "t": "浜岡原発データ不正の背後にある「再稼働圧力」、3.11を引き起こした電力業界の制度OSはなぜ今も生き続けるのか 【澤田哲生の「科学と社会のあいだ」】中部電力の調査報告から浮かぶ投資回収圧力、露わになった内部通報と規制の欠陥",
+   "u": "https://news.google.com/rss/articles/CBMiVkFVX3lxTFBLTE9qUVhrOG1Zb2NrYk1BeWQ4NnRMUFNGLWlyYUFCdGdMY3FJRE8xM29tRUVteXlTWFJUM0pvR2NEV0xHUElHLUNFMFRlaWMwWXA0clpR?oc=5",
+   "s": "JBpress",
+   "d": [
+    "エネルギー・環境",
+    "経済・産業"
+   ],
+   "p": [],
+   "date": "2026-09-16"
+  },
+  {
+   "t": "浜岡原発になぜ固執？中部電会見に見た「独自の正当化理論」",
+   "u": "https://news.google.com/rss/articles/CBMif0FVX3lxTFB0aml4YXc1WW95Yzliakh1N3E1Q3BVN0xyRWQtSHBKTVFyV3dsbmJQM3p5WEl2Slhhb0g3ckc2MEVuQW5Odko0NzhtNUpvbnFpTGxjeXFjMzJ1UVdBYURoMnp5blo4Slh0Z2l0OHVaei03MGlaeEVvbXJySDF3WHc?oc=5",
+   "s": "毎日新聞",
+   "d": [
+    "エネルギー・環境"
+   ],
+   "p": [],
+   "date": "2026-09-16"
+  },
+  {
+   "t": "民進党×自民党、外交・防衛政策対話「5+5」",
+   "u": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE5OWmkzOXBlb1ZDSkRBTk5YQWhZMVRwLXYzTWtwaEljaFo3cnRHNkxlS3ZpaFgzbXVOQjlfVEVqeU5sZnV5MGlpdU5DN2lJY1VZU2JBTWFHOUdQMUFrV3c?oc=5",
+   "s": "roc-taiwan.org",
+   "d": [
+    "外交・安保"
+   ],
+   "p": [
+    "jimin"
+   ],
+   "date": "2026-09-16"
+  },
+  {
+   "t": "柏崎刈羽原発の再稼働求めた東京商工会議所 “電力の産地”新潟の魅力を発信「今後も交流続けていきたい」",
+   "u": "https://news.google.com/rss/articles/CBMif0FVX3lxTE4xQjFKZ25mZjIyYW5pQWxfODJ4QW5uNVFkUU1QQTV0U0dlMzFnVkc4QVR0U0RNUUpDZVNvZVBVV3o4Y3hoLU5sQnAzaWRydlZxQmg4QnFfSk1VWHlnM19VYS1IZHREazNtRjZVLTNJenFuZGFJeDJQa3hoa1VvdUE?oc=5",
+   "s": "news.yahoo.co.jp",
+   "d": [
+    "エネルギー・環境"
+   ],
+   "p": [],
+   "date": "2026-09-16"
+  },
+  {
+   "t": "日本は米圧力を受けて防衛費の大幅増額を検討中、韓国と同じ3.5%案も",
+   "u": "https://news.google.com/rss/articles/CBMikgJBVV95cUxQTzdwNVA4YTV2aXpyNmF4cDg3Vld6WjZDZ1lHMHhQQzk3WUtydTlGdi1sTDNiVnpwT2t3YzFOeXJxZDFYa1ZrSnBrWkZUM1g3YW5kdk9IVFJJM09aMmwwdExEU3pXaWc2eUgtVlczTmU2ZmdMa0QwVEJuOFkxVEFMR0h0NllhZ1kzRXNLLUFtSy1qTDFLLURvZVhHZ1l4YVNYTFZ1TzhjdnNDTi1vdEdiTFlsVnk4RzBLejFTQy1SdUxlMG82ZUJWb1d3WDdSYmNRTjhpQUI5QzNTdkVNbUZMejh2ODl1U1FDYVYxdkltNi02OGtBVUJ1Sjk1cTYzMjlYNDJJLXhOZUFYbjFjOW4yNUNB?oc=5",
+   "s": "航空万能論GF",
+   "d": [
+    "外交・安保"
+   ],
+   "p": [],
+   "date": "2026-09-16"
+  },
+  {
+   "t": "宮崎県知事選挙、日本維新の会の県総支部が現職・河野俊嗣氏の推薦決定…行財政改革などで政策協定結ぶ予定",
+   "u": "https://news.google.com/rss/articles/CBMickFVX3lxTFBoRDVYQlE1QnhvS2JTRmhZYzRjdmw3eWh1WFVqcnNZSGtPS2dTNU81cEUxcGp4RWRESkdoOV9qeDFER3Y4b1dIRWNrenVtQVk2bGFUTjF3Q3d2cWJISmw2dTYyQWRvNVN4RUU4OUxVbFItdw?oc=5",
+   "s": "読売新聞",
+   "d": [
+    "財政"
+   ],
+   "p": [
+    "ishin"
+   ],
+   "date": "2026-09-16"
+  },
+  {
+   "t": "宮崎県知事選挙、日本維新の会の県総支部が現職・河野俊嗣氏の推薦決定…行財政改革などで政策協定結ぶ予定",
+   "u": "https://news.google.com/rss/articles/CBMif0FVX3lxTE1yajd0dzhRbERUTGZ5Uy1OVTZPa2JrZFZVRGRTZDJyZ0t4akYwZW0wN1p5WXpSS0w4ek5ZdTBiT3BTemRtUDdydFZ1SHlqRzhudWZtczdab05SdUxOUXZ1SVkxQWpiSTd3dDd1MzNoTGgzcVYyUFFqRVJqYmNwYk0?oc=5",
+   "s": "news.yahoo.co.jp",
+   "d": [
+    "財政"
+   ],
+   "p": [
+    "ishin"
+   ],
+   "date": "2026-09-16"
+  },
+  {
+   "t": "初の「減税」へきめ細かく対応飲食料品の消費税減税大綱を決定 | お知らせ | ニュース",
+   "u": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE5zTXhkYTd6U1FCTXZvQWRmSVN0NVlBTmdrdmYtclVrdkdNeHVuc1g5Z3JyZk1jMllUOThPdXVwNmQ4YVl6MmZqbDNoN1Y2ZWFKbmVqdjJTYThPUGs1MUE?oc=5",
+   "s": "jimin.jp",
+   "d": [
+    "財政"
+   ],
+   "p": [],
+   "date": "2026-09-16"
+  },
+  {
+   "t": "【浜岡原発データ不正】遠のく再稼働「原発のまち」先行き見通せず 国や地方を含めて問われる原子力への向き合い方＝静岡・御前崎市",
+   "u": "https://news.google.com/rss/articles/CBMiWkFVX3lxTFBOTnVDenBLZkxuU0xYTkRZb081RHRRcHRmWTZicl9VVnZ1R0Q4eDMxTU9SbWFrOG8tTjA3QXZvbjdxYlhWQUF5Mlk5MmVnR1ktN0RaRXQ0ZGdTUQ?oc=5",
+   "s": "newsdig.tbs.co.jp",
+   "d": [
+    "エネルギー・環境"
+   ],
+   "p": [],
+   "date": "2026-09-16"
+  },
+  {
+   "t": "【原子力発電所マップ2026】 震災後の再稼働原発15基に、浜岡原発は再稼働申請取り下げへ（nippon.com）",
+   "u": "https://news.google.com/rss/articles/CBMif0FVX3lxTFBybm90M0JLaTEyejluS0V6NzJLdnI0eXJWRDdncUU0bjRxU2s5enZBT2Y1V2VKMTlHYXg5cTc2Zklzc0VyZjZRWnNMTHVFTmZIdWs4dmI0VG52c2k1M0hDMlVsOC1LaU5RNE1vZjItTHhjZGRIMFRad25SLXdLaFU?oc=5",
+   "s": "news.yahoo.co.jp",
+   "d": [
+    "エネルギー・環境"
+   ],
+   "p": [],
+   "date": "2026-09-16"
+  },
+  {
+   "t": "「高市台湾発言は撤回を」/日中友好議連訪中 山添議員が発言 | しんぶん赤旗",
+   "u": "https://news.google.com/rss/articles/CBMidEFVX3lxTE5SdC1FT0V0XzlKUmx2TTNEUjlaSlQtTFJDLUg4dDNyd21CNzU0d2J6b1BxUnp2ZElDQndiaVM1emFGaksxdDdJOEVIRzMtTkxPRXdvNVhHNVJYTGhjVXljallIbS1DRHJfRk04elZNbzQtQldW?oc=5",
+   "s": "jcp.or.jp",
+   "d": [
+    "外交・安保"
+   ],
+   "p": [
+    "kyosan"
+   ],
+   "date": "2026-09-16"
+  },
+  {
    "t": "高市財政の歯止めは市場だけか 問われる国会の意義 消費税大綱決定",
    "u": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE8yMjRudkRsVUVXcDlGRjdCSEZxLXRPWnFUYjVuWHQ0TDU1WHFEQlEtLURRNmZpeGtCVjZpbVhqRFNwT2F2aU5wTGp5WkZ6dmtOb1dBVTBrXzdMbnBmVmNzNGpsMFM3b3c?oc=5",
    "s": "朝日新聞",
@@ -35,8 +184,8 @@
    "u": "https://news.google.com/rss/articles/CBMid0FVX3lxTE9sRWM1SGRuZUpLYk5pajlsc3pDR2ltNUZ5WFBNMU4ybnEyVW5DVTJ6NmJjZVpfT09KeEY5dm5MVXNXN0Q0SHlVOUtkdG00SVI3TmNYQ2c0Z1dLdjd3M2NHOUxURklaNkVDeWlLbXYxU01HWEhKQ3Iw?oc=5",
    "s": "Bloomberg.com",
    "d": [
-    "財政",
-    "外交・安保"
+    "外交・安保",
+    "財政"
    ],
    "p": [],
    "date": "2026-09-15"
@@ -45,6 +194,16 @@
    "t": "飲食料品消費税率の臨時的な引き下げと就業者負担支援金導入に向けた大綱を決定 | 政策 | ニュース",
    "u": "https://news.google.com/rss/articles/CBMiV0FVX3lxTFBub29sVGhzbW1kTl8xOGVzbUQ3cVFfSFZiUUpMYlQ4TkxHZ3hkUS1OX1RXV21JaDRZd1o0MHdaaVJTRVVZMkhHY3E2N1BwZWthaHU5bGR6RQ?oc=5",
    "s": "jimin.jp",
+   "d": [
+    "財政"
+   ],
+   "p": [],
+   "date": "2026-09-15"
+  },
+  {
+   "t": "食料品消費税減税の大綱 閣議決定 来年4月から2年間 税率1％に",
+   "u": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE9XRndOWWVTajlKd25ldjVCenY5Njg4STR3Z0VrZEpnSjdCZ2RlUS03OGsxMktOcmYyVG9QWnUxaThsTlBSQ243OHQ5cE9scHVBXzF6YmxYcER4aEpRWmpj?oc=5",
+   "s": "NHKニュース",
    "d": [
     "財政"
    ],
@@ -102,11 +261,41 @@
    "date": "2026-09-15"
   },
   {
+   "t": "消費税1%+所得連動給付の大綱を閣議決定 財源未定で国会審議へ [消費税減税 給付付き税額控除]",
+   "u": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE4tZ1NEb3RLM2dNcElaR20xX0dvX282MUlzZDJYZVdhZjJHMnp4V0F1Q2RmTlA2RDZZckg3dmNtT3FDZG03eTM4Qlh2WENuTDF4QVJvZkhvSmplV3ZWb3dsUFNSTC0zalk?oc=5",
+   "s": "asahi.com",
+   "d": [
+    "財政"
+   ],
+   "p": [],
+   "date": "2026-09-15"
+  },
+  {
+   "t": "消費減税、大綱を閣議決定 来春から２年間食料品１％―所得連動給付、２９年度本格化",
+   "u": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE5BUjdyMXpEU3ZEMkRralB5bjU5akZUbE44NS1xLWJqekhyU2ZfQUlKb3FJYTBnb0NXUUhwNDY5ZkNsUlZhcDl2LWZaaU9mYXBEOW5DUmIzTndNRXg4VHF2UWxmUQ?oc=5",
+   "s": "jiji.com",
+   "d": [
+    "財政"
+   ],
+   "p": [],
+   "date": "2026-09-15"
+  },
+  {
    "t": "浜岡原発の審査再申請「議論の前提満たさず」 経産相が中部電に苦言",
    "u": "https://news.google.com/rss/articles/CBMibEFVX3lxTE1JNVh1cjJMdHdhVS1iUzQtaHUyRkhmOHEyN016SV8xdE1JTmMteTF3VXpMWjAzU243dWdyMmtWemFnS0c1Ny1teWs2Tko5YUktWWVnQjBwaXFZRVBuc3d1amd3ZjNibWQ5bmNMMg?oc=5",
    "s": "日本経済新聞",
    "d": [
     "エネルギー・環境"
+   ],
+   "p": [],
+   "date": "2026-09-15"
+  },
+  {
+   "t": "政府、税制改正大綱を夕方に閣議決定へ…消費税減税と新たな給付制度の導入盛り込む",
+   "u": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE1SM05xb0ZJQTBqQTZNd25GbVhNQWhONmhRNXNYQ3NjM0JvYWhkbXkwQnlUSi1HbGdmLTFRaWZYSXVBcmZ0dWdMdkRPMTFNM2hxS0dmelJkaTlHVlBid19qWURBaHU?oc=5",
+   "s": "読売新聞",
+   "d": [
+    "財政"
    ],
    "p": [],
    "date": "2026-09-15"
@@ -126,8 +315,8 @@
    "u": "https://news.google.com/rss/articles/CBMidkFVX3lxTE9VUHFNaGlmWm1DSllYVEp4T2xtbEdXbnBOTkJLcDdCSEFTa1BhcXdabkpJWnpVYTNCMDc0OFFURXN0TTNxb25sR05wM29yOHhLQmhnakhSUUNWQ3Z1RWIwU21qdVBLTGlUcE5GRkVSbVhiQm9GeEE?oc=5",
    "s": "産経ニュース",
    "d": [
-    "財政",
-    "社会保障"
+    "社会保障",
+    "財政"
    ],
    "p": [],
    "date": "2026-09-15"
@@ -139,6 +328,16 @@
    "d": [
     "外交・安保",
     "エネルギー・環境"
+   ],
+   "p": [],
+   "date": "2026-09-15"
+  },
+  {
+   "t": "【無料記事】高市政権1年の総決算――ハドソン研究所・日本部長が指摘する「核の傘」「日米同盟」「対中国」",
+   "u": "https://news.google.com/rss/articles/CBMiUEFVX3lxTE9FQldsSFMwQ3gxaEFNNlBLS3UxQ1lXRmdLMTlPQkFhNGE2TWtHLWItcmNNcGhSQTZZTUEzMnZqMFJVN1h4dVRHRmlHSXlRWkhF?oc=5",
+   "s": "新潮QUE",
+   "d": [
+    "外交・安保"
    ],
    "p": [],
    "date": "2026-09-15"
@@ -188,6 +387,18 @@
   {
    "t": "自維が税制改正大綱案了承 政府が15日閣議決定 「国会の議論に耐え得る法案を」",
    "u": "https://news.google.com/rss/articles/CBMidkFVX3lxTE5Zcl9fWXBOWnBQZXZjcVVkUW16ODltMzdvcVZzYjkxWGtqYklJUkxGU2dBMVFrcGI3SVc1TGFkeGxhMWJJWDlBNkNpZ0VwX2tvaG9xajdKb1NMcXBjOG85YjhxbTBHV3JYTWttSGRGLV9JZ3F4V1E?oc=5",
+   "s": "産経ニュース",
+   "d": [
+    "財政"
+   ],
+   "p": [
+    "ishin"
+   ],
+   "date": "2026-09-14"
+  },
+  {
+   "t": "自維、税制協議会で消費税減税大綱を了承 政府、15日に閣議決定へ",
+   "u": "https://news.google.com/rss/articles/CBMidkFVX3lxTFBqWDVycjB3clJMVk90eXRjX0JxaVg4V29mdVBpODVFeXM4Skw2Rkk4c2F3YmtVVXZfLTVlZTRqdnVGZW51SjdtLXVndksyVzRGSDM2Yl9vYUhCeHlSbW1fLW9pVFIzZUZQVVZiVXlRZURxN2FGdUE?oc=5",
    "s": "産経ニュース",
    "d": [
     "財政"
