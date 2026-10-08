@@ -1,6 +1,6 @@
 {
- "updated": "2026-10-07 00:30",
- "updated_utc": "2026-10-07T00:30:30Z",
+ "updated": "2026-10-08 00:51",
+ "updated_utc": "2026-10-08T00:51:59Z",
  "domains": [
   "財政",
   "外交・安保",
@@ -21,6 +21,183 @@
  },
  "items": [
   {
+   "t": "首相、消費税減税の財源示さず",
+   "u": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE1fQ3F5MFczSlJQOWwwZFZPamFaaTR0MDRTSVVPdnhaYmcwWm03WmJDUWh2Wlk5YjhESGNXQjNVZlc2TzBzTThsNkFFbFdIY3JCZ1hGaEQ1UWdTbG1vWmdQTnhKcw?oc=5",
+   "s": "nippon.com",
+   "d": [
+    "財政"
+   ],
+   "p": [],
+   "date": "2026-10-07"
+  },
+  {
+   "t": "首相、消費税減税の財源示さず",
+   "u": "https://news.google.com/rss/articles/CBMiXkFVX3lxTFBrVDczcXlRN01lUFE5NlNRZXBQWks5d3hVcGR3TW15M0dOZkEzbTFTbUZ6T0pwWXVTeE8tc2lGdHlBRTJmRWU2T0luLTVCMG1oY1VVT3pEVmVJeTlkdEE?oc=5",
+   "s": "沖縄タイムス社",
+   "d": [
+    "財政"
+   ],
+   "p": [],
+   "date": "2026-10-07"
+  },
+  {
+   "t": "首相、消費税減税の財源示さず",
+   "u": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE01ems4S3ZwSWEzb2l4RXpZTV9FYWwxZE96R1dyOEp4a1hkYkRJWTBpM01FN2haazVvMWY5T0RNeTBNeTJ6WlhzbXRwV1NUYVBTX1JDcTQ0eXQwX1k?oc=5",
+   "s": "下野新聞社",
+   "d": [
+    "財政"
+   ],
+   "p": [],
+   "date": "2026-10-07"
+  },
+  {
+   "t": "防衛費、主体的な判断で積み上げると首相",
+   "u": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE9qMC1ocklHQUpBaHNRVDkyQkZRazFRbVcwYm50WnN4ZGMtQXp0N0Z2N0NfU19lRHlIWFQ3djdZMlg0RllobmpiUjNVRU5LNHpBWXNOR1lGZ1k1UUgzQi1RbEtUYw?oc=5",
+   "s": "nippon.com",
+   "d": [
+    "外交・安保"
+   ],
+   "p": [],
+   "date": "2026-10-07"
+  },
+  {
+   "t": "自民・小林政調会長「憲法改正発議へ議論加速を」緊急事態条項や9条など議論",
+   "u": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTFBLMUJ4dnYzdS1KTHNLb2c0N1RIY1ptVU9YRWNyczFhZnVwVmNzbERfQWRLWjgxN1Y3cFRzR1VBZ2Qzc2RmbDFCcGx5YlFPZUFwQ050ZTZpOVR6MUJrVl9PVS13RmNwSlk?oc=5",
+   "s": "朝日放送",
+   "d": [
+    "憲法"
+   ],
+   "p": [],
+   "date": "2026-10-07"
+  },
+  {
+   "t": "自民・小林政調会長「憲法改正発議へ　議論加速を」　緊急事態条項や9条など議論",
+   "u": "https://news.google.com/rss/articles/CBMijwFBVV95cUxONGZrLTRYNUxhc0o5YXJmY29zcFN2ekRRUjRPeVdlYncwYm5nVTlzWEhjVDhoY1M1eTk1YmtDSWRDQWtEZmNZYkhfUWgyZUhCWWFBZTNiMnpsSm9KRVVNbUNqZWp6RUpiaGc0RUMyVUxJdHR5Zk1BUmhHN3lucjJDMWlXMlM4aGtMMmo0SU9rUdIBjwFBVV95cUxONGZrLTRYNUxhc0o5YXJmY29zcFN2ekRRUjRPeVdlYncwYm5nVTlzWEhjVDhoY1M1eTk1YmtDSWRDQWtEZmNZYkhfUWgyZUhCWWFBZTNiMnpsSm9KRVVNbUNqZWp6RUpiaGc0RUMyVUxJdHR5Zk1BUmhHN3lucjJDMWlXMlM4aGtMMmo0SU9rUQ?oc=5",
+   "s": "ｄメニューニュース",
+   "d": [
+    "憲法"
+   ],
+   "p": [],
+   "date": "2026-10-07"
+  },
+  {
+   "t": "自民・小林政調会長「憲法改正発議へ 議論加速を」 緊急事態条項や9条など議論 (テレビ朝日系（ANN）)",
+   "u": "https://news.google.com/rss/articles/CBMijgFBVV95cUxNSXVVdDZLZzQ4UDY3eXMwdUJQMWtDRjQ0aGtJaHcwMlVXZWQ2Szhfc2ROSDZhZWpibmptUkc3R0hxUDVNUmZJUlFlbFVCOGdEWjY5R0U5ODQ1U2dKWTZFTFhPYXN6Z3JiNlFOaDJyNmNra2RXYTczVW5ydkhTZXZUUmhTTm8xRVNJVDY3TU1R?oc=5",
+   "s": "Yahoo!ニュース",
+   "d": [
+    "憲法"
+   ],
+   "p": [],
+   "date": "2026-10-07"
+  },
+  {
+   "t": "自民・小林政調会長「憲法改正発議へ 議論加速を」 緊急事態条項や9条など議論",
+   "u": "https://news.google.com/rss/articles/CBMic0FVX3lxTE5sNlZTVHpKdXJMbDZCenRsYmlwcERSNkNsYUJXdTB2QjBRbUlteGpHRzBXUlctMmFlRHNJT1dQVkhZamUzN0dta0RmQ2dXcmsxQ3hONkE2OTlpLVNDSGQzTnpMd09XdXdXeG9zc0dXY1pIak0?oc=5",
+   "s": "テレ朝NEWS",
+   "d": [
+    "憲法"
+   ],
+   "p": [],
+   "date": "2026-10-07"
+  },
+  {
+   "t": "自民・小林政調会長「憲法改正発議へ 議論加速を」 緊急事態条項や9条など議論",
+   "u": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE9ZNlgxeDFtUXNqMXlTbXY5X25rME5TOC1NRnFjU3BGQkwyM3I4M002aC1NcUNaWWhuNmVpZ29UdHVyM3hReDV3NUdzdGgxVkV1dURpVDBn?oc=5",
+   "s": "KFB福島放送",
+   "d": [
+    "憲法"
+   ],
+   "p": [
+    "ishin",
+    "jimin"
+   ],
+   "date": "2026-10-07"
+  },
+  {
+   "t": "立民 消費税減税めぐり\"今年度中に迅速給付を\" 考え方まとめる",
+   "u": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE1zSEtXU1U3N1ZsNjhfNXpUSy02V2tJU0lfbTgwdzFtZ3R2UVdQQmM4Q3pLTGI5WWgyR0o3aklKb1lHQ2RTRm41REQ2TExmX3hRZEtfanFYNFN3ajhxN0pv?oc=5",
+   "s": "NHKニュース",
+   "d": [
+    "財政"
+   ],
+   "p": [],
+   "date": "2026-10-07"
+  },
+  {
+   "t": "物価高にどう応えるか 臨時国会で問われる政策の中身【神戸市北区】兵庫県議会議員 大塚公彦",
+   "u": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE9BX0ctOE1vMXNDWDN0QWpWYVNpMGxwQ25uald4dDdiYnpiUEhTRGJRbDVvU2psMGhJQVhLUkJIQUpTVlBfMTB3TFZEdEVQUnZ1bkNZaWV5Ml9SdXlhZnhR?oc=5",
+   "s": "選挙ドットコム",
+   "d": [
+    "経済・産業"
+   ],
+   "p": [
+    "komei"
+   ],
+   "date": "2026-10-07"
+  },
+  {
+   "t": "参院できょうから代表質問 消費税減税など論戦 農相発言追及も",
+   "u": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE9adzgwVVF5NHRWRElVa1c0UWtwS1hUSWVZUWlfSFZsUVluRk5ValdNcTVVLWNabWszN0tKVU1aN0Yydm81dFgybG0xN0FidVEzRHhiSzVhd3BfYUFfM09j?oc=5",
+   "s": "NHKニュース",
+   "d": [
+    "財政"
+   ],
+   "p": [],
+   "date": "2026-10-07"
+  },
+  {
+   "t": "トランプ氏「中国は大戦の同盟国」米中“急接近”の思惑は？揺らぐ日本の安全保障（テレビ朝日系（ANN））",
+   "u": "https://news.google.com/rss/articles/CBMif0FVX3lxTFBhVExKSlF1YnlRRE5oem5CVmVzSGZ3dVdvWE8wcTlhX3JFbnQtaFZZb01pT2tEZkZNRmFoU3RfVHVPeTVFOFZIdGw4RlhEUW1PLUhnS25EYjc3QktsSWdTNjI5a0VIeW42WkhaZTVaZTl5TXd0QjJhUnFkRjFfSDg?oc=5",
+   "s": "Yahoo!ニュース",
+   "d": [
+    "外交・安保"
+   ],
+   "p": [],
+   "date": "2026-10-07"
+  },
+  {
+   "t": "カナダ議会予算局、2035年の国防費が推定18.1兆円に達する見込み",
+   "u": "https://news.google.com/rss/articles/CBMi7wFBVV95cUxPYkRzbGhzdVJmRFRGSEFQVldqaTE1Nkl2X2dkazdidUNlMGFtU0ktdTRwMm1jeS1MZVBvOHhkeDJuWV9GVGN5cHgzTXU5YTdkakhoWExQSWxjMXlHWEJIYUt5d3ZWaUhUby03Ylg3SFhZMm0yOFZ4OEJnVHFsUzZMdno3TVBWMXhxbmM3TmJWZ0ZzeC01OEdkV002eVRpMnplT0J1azNPXzU2QUlUdHp3Nlhkb1hrWlY0enlQSjNiWktUT3hjNFpUc2U0bmFfcVhVcVpVaGY5ZVdBZEhLU3BxenYyS29hSm9URkh2NHhpRQ?oc=5",
+   "s": "航空万能論GF",
+   "d": [
+    "財政"
+   ],
+   "p": [],
+   "date": "2026-10-07"
+  },
+  {
+   "t": "【速報】首相、消費税減税の財源示さず",
+   "u": "https://news.google.com/rss/articles/CBMiS0FVX3lxTE1Dd3ZLdldpMFloTF91TmdwNUYwY0VJY2pCLVRzU0tYTV9mTVNaVG1RVi10OU5JNWgtVEdQNVFRdERkcEJ1YTZPZVhNZw?oc=5",
+   "s": "47NEWS",
+   "d": [
+    "財政"
+   ],
+   "p": [],
+   "date": "2026-10-07"
+  },
+  {
+   "t": "【記者会見】中低所得者に手厚い給付を 徳永・熊谷両会長が政府の消費税減税・支援金への対案を発表",
+   "u": "https://news.google.com/rss/articles/CBMiUEFVX3lxTE53a3l0SHdDcG96dUtfLTBlMFNtVEtQdy1ta1ppLUpRZ190bkV4YVY1SEx4azlRd0VnNjZIZVhxQzdNUWFxbDBESXRTZy1jS3Bs?oc=5",
+   "s": "立憲民主党",
+   "d": [
+    "財政"
+   ],
+   "p": [
+    "rikken"
+   ],
+   "date": "2026-10-07"
+  },
+  {
+   "t": "【さようなら原発全国集会】論理も経済性も破綻 ～ 再稼働はありえない",
+   "u": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE1OVTU3SVlNb1NRWkd1eC1uQ1dFd29zSnlscE1pQVJxQkYwb3A5Z3FmU1FYcHFtcjhLcFBuVnFHUVRYVnQwNGRkZ1FYUzc5WXdFNWc?oc=5",
+   "s": "社民党",
+   "d": [
+    "エネルギー・環境"
+   ],
+   "p": [],
+   "date": "2026-10-07"
+  },
+  {
    "t": "11/20 経済学会 令和8年度第2回学術講演会「あれから15年、原発再稼働・新増設の危うさ」開催のお知らせ",
    "u": "https://news.google.com/rss/articles/CBMiTkFVX3lxTE9TelIwVFFUbXgtRHRjVmJaTTRwQlZlSmlkLThpdmFBTUkxZS1KbEU5N3BCdm9EYTN2cFNsb0NtTzh2a3VYRmVJbWhWa05Gdw?oc=5",
    "s": "高崎経済大学",
@@ -29,6 +206,16 @@
    ],
    "p": [],
    "date": "2026-10-07"
+  },
+  {
+   "t": "食料品の消費税減税に関する法案を了承　自民・総務会　来年4月から2年間は1％に引き下げ　政府近く法案を閣議決定へ",
+   "u": "https://news.google.com/rss/articles/CBMickFVX3lxTE9KQUNQZTRVMU1oS1pZR2RXV3JpX09QZFRkX2FJREVIek9Wb1dSbk54TmJ6TVNJNHUxM0hkdUZKQm9rVUVHRlRrYWNPTl9ydjItakdOWEpMRlNDT2hpNmpjWG90ZkRtNG1CREhEUS1uVjJNd9IBd0FVX3lxTE1ianA0YmNLZERKbmFLQU1rV281SXFvNE1DQXZfeDlWVDlYdG9Hb2lBV2FDY0lGOGpzRmxIOXp6S2hiaXMtcVlUMjNuT01MaUFxaHhvZTM2OE9VcVo5emMwT294VGNvWW9iUkZhTmhqWVdEamsxZnRN?oc=5",
+   "s": "ｄメニューニュース",
+   "d": [
+    "財政"
+   ],
+   "p": [],
+   "date": "2026-10-06"
   },
   {
    "t": "進むか改憲議論 与党は条文起草委の設置目指す 緊急事態条項軸に議論へ",
@@ -278,6 +465,16 @@
    "t": "臨時国会きょう召集 消費税減税法案などで論戦へ",
    "u": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE9IekpHUWJzYTJwRzZZZmJjZFh3akdZWFBVbl9jY3U2ajlXSHVZb0NtbUhBdmZBaVN1M0xsbmZyQWpZS3VVaWVRLVk1bGU1LW92VTlwTHRzUjliSVlFdURN?oc=5",
    "s": "NHKニュース",
+   "d": [
+    "財政"
+   ],
+   "p": [],
+   "date": "2026-10-04"
+  },
+  {
+   "t": "消費税国会が開会 野党対案は現金給付、10兆円ありきの論争へ",
+   "u": "https://news.google.com/rss/articles/CBMibEFVX3lxTE04LXA2Q3lEdXZ0ekJKSVFuUGdRSzI4RGRNNXBNSmFKRjVPNVZFZGwwbUlzLUg4QmM5bEJwcVlOSFhDSmFUaHdJeHJuSjNTUkpreUxrVVZzOTF1Q20zTmIwWHU4MkVGTm1uV2U5Sw?oc=5",
+   "s": "日本経済新聞",
    "d": [
     "財政"
    ],
