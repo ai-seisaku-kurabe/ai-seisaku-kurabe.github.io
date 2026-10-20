@@ -1,7 +1,19 @@
 {
- "generated": "2026-10-13",
+ "generated": "2026-10-20",
  "members": {
   "中川康洋": {
+   "party": "公明党",
+   "group": "中道改革連合・無所属",
+   "house": "衆議院",
+   "source": "api"
+  },
+  "佐藤英道": {
+   "party": "公明党",
+   "group": "中道改革連合・無所属",
+   "house": "衆議院",
+   "source": "api"
+  },
+  "金城泰邦": {
    "party": "公明党",
    "group": "中道改革連合・無所属",
    "house": "衆議院",
