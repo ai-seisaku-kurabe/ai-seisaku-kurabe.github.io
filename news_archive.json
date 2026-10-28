@@ -1,6 +1,6 @@
 {
- "updated": "2026-10-27 00:17",
- "updated_utc": "2026-10-27T00:17:36Z",
+ "updated": "2026-10-28 00:21",
+ "updated_utc": "2026-10-28T00:21:11Z",
  "domains": [
   "財政",
   "外交・安保",
@@ -21,11 +21,215 @@
  },
  "items": [
   {
+   "t": "（安保３文書）防衛費、増額の陰に「無駄」「遅れ」 他国の技術進歩、「陳腐化」懸念",
+   "u": "https://news.google.com/rss/articles/CBMiXEFVX3lxTFBFaVJTMGdST2NFRzNDVlM0aFBFc0k5RFdqSlVmZmk1VUtVODhycGVTUlY0TUlmQjdScHRURFhudzlwM3p1dks2SWVhR1NtQml6LUpXUWw4MkVFTjZP?oc=5",
+   "s": "朝日新聞",
+   "d": [
+    "外交・安保"
+   ],
+   "p": [],
+   "date": "2026-10-27"
+  },
+  {
+   "t": "食料品の消費税減税でどう変わる？ 飲食店の7割が「マイナスの影響」【東京商工リサーチ調べ】（Web担当者Forum）",
+   "u": "https://news.google.com/rss/articles/CBMif0FVX3lxTFBtODYxTm1YTEViWThlVHNneWREa0JwdzZkSGtIOWkyWkM3S0NvOXNvck8ySUhfd3hWemxlb2MwMUxiLVB3UldaeHNCbjFJdkl1TTRYcXk5TnVBR1F5TWt0SXRhNlFULUxmbkNGZUFsY3JUYnJOcnp5Z0Z3ZGVwTzQ?oc=5",
+   "s": "Yahoo!ニュース",
+   "d": [
+    "財政"
+   ],
+   "p": [],
+   "date": "2026-10-27"
+  },
+  {
+   "t": "静岡・浜岡原発：浜岡差し止め、却下 「再稼働見通しない」 静岡地裁",
+   "u": "https://news.google.com/rss/articles/CBMiaEFVX3lxTFA5eXFtTG5YUTBfdl80NXRtZHRrdy1oMDAxTHpGd3dUZGtpSTRad2JGd3U5N3kzX1hoT2YyMmlDWXo2QXdPbzA3MUlBeXZwOHByUDNWMUJGN1RMMEJQcDlDeXc1aEF6Ymg1?oc=5",
+   "s": "毎日新聞",
+   "d": [
+    "エネルギー・環境"
+   ],
+   "p": [],
+   "date": "2026-10-27"
+  },
+  {
+   "t": "防衛費増額の財源「増税も排除せず」 安保有識者会議で意見",
+   "u": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE4tcjZ3S0FOeXBldHV6M3NYellIdm5zZk5QYkNQbXg5eGFiNWhLOHBIb21SdVJXRElyeFEwdUlVb1JzSjlUWllPcDNqZnhQWTVQanNFU2hfamdsWEd6UWtlTWcxbkh1Rm52?oc=5",
+   "s": "毎日新聞",
+   "d": [
+    "財政",
+    "外交・安保"
+   ],
+   "p": [],
+   "date": "2026-10-27"
+  },
+  {
+   "t": "防衛費増額、有識者会議が提言へ 財源「増税も選択肢」 安保3文書改定（北海道新聞）",
+   "u": "https://news.google.com/rss/articles/CBMif0FVX3lxTE1Kek9KeWppMkg3ZGtZTWpQX2ZYM1ZXOG9saWJKTXhMVjMwQ2JuN3N4S1NqUjBTeV83RldiSUY5Ql9wQlZFRXR0dTZtTnBDa1lkandFRVR4eVUyWmxBQWZYRldjNlB3MWwxeDZSNTVJSDZLam9YVG9hVzJmaU9kR0E?oc=5",
+   "s": "Yahoo!ニュース",
+   "d": [
+    "財政",
+    "外交・安保"
+   ],
+   "p": [],
+   "date": "2026-10-27"
+  },
+  {
+   "t": "防衛費増強、増税排除すべきでないとの声も 安保3文書改定の有識者会議",
+   "u": "https://news.google.com/rss/articles/CBMihwFBVV95cUxOUXJKbWVlU210QW0wUHdvMC02X1dRRzdkQW1lcmdqemh0Qi1pTGxiN01vZUt0ek8tSFBsN0U5c0hOc0dVdUFDOEg1QnBYcmxVM1h5aHl2dGplM05LaHc4WndlUUs0S296VkZ2N2xLXzFUSW1OSWp5cndjTlZzenRUd3N0REVpQWM?oc=5",
+   "s": "Reuters",
+   "d": [
+    "財政",
+    "外交・安保"
+   ],
+   "p": [],
+   "date": "2026-10-27"
+  },
+  {
+   "t": "防衛費増「財源・国民理解が必要」 政府、産業基盤強化で新戦略―安保３文書改定の有識者会議",
+   "u": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE9VUFQtOVpuZFpYM0J1WjZydi1nS3paUjl3SHJXc3ZxTktZRnVMZUJ6c19LaUdSZVk4UUYxZmF4QVdTNEhIU01zVnVOd1RmNy1MTjhMVlVvOXc4bERsOUZIME9OZw?oc=5",
+   "s": "時事ドットコム",
+   "d": [
+    "外交・安保",
+    "経済・産業"
+   ],
+   "p": [],
+   "date": "2026-10-27"
+  },
+  {
+   "t": "防衛費「暗黙のルール」なし崩しに 大幅増でも埋められぬ中国との差 [高市政権の安保見直し][安全保障関連3文書]",
+   "u": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE9xdGExcDd0QjJuRnNBelFoVTg1TWlPYlhaX01ZSTZnWmd6NWZSWXM4V3NvTWFKbFBIZnpUaFIxdDk1TkRqWG5OZ0NCSEtxSGdaUURYV2tJc1N6bUlGU0VHWW5ia1dIa0k?oc=5",
+   "s": "朝日新聞",
+   "d": [
+    "外交・安保"
+   ],
+   "p": [],
+   "date": "2026-10-27"
+  },
+  {
+   "t": "片山財務相 消費税減税の買い控えと駆け込み 関係省庁で対処",
+   "u": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE1waTdhYzJmQ01LLWNHTDMyVU10ZWlXb1hZeHFMamQ5OFRQVDVaZHJ5cXIwVG9KWG84Vmlad01jbjZ6THcwZVhyRXRWM1p1QzlQVWFpOGdGVGVkNjJfcGJr?oc=5",
+   "s": "NHKニュース",
+   "d": [
+    "財政"
+   ],
+   "p": [],
+   "date": "2026-10-27"
+  },
+  {
+   "t": "消費税減税「目的が購買力の低下を補うことならコスパ悪い」「物価高対策として不適切」…衆院財務金融委員会で参考人質疑",
+   "u": "https://news.google.com/rss/articles/CBMif0FVX3lxTE1FOExpR1pFVzFDcUZxbmN4aHowWG9jTGxub3VXOTdEdHJzR2xETVpUNGYzZ2VOYllvM2g5UnVpWnRNZFNzT1JhMzg5UmRCb05xSXBES19UUHFrR2ViUFF3T21xYkhsTVJQTGJIS05URVBNZVdsc2xjYUVUVlQtMlU?oc=5",
+   "s": "Yahoo!ニュース",
+   "d": [
+    "財政",
+    "経済・産業"
+   ],
+   "p": [],
+   "date": "2026-10-27"
+  },
+  {
+   "t": "浜岡差し止め、訴えを却下 データ不正で中部電批判―再稼働見通し立たず・静岡地裁",
+   "u": "https://news.google.com/rss/articles/CBMiY0FVX3lxTFBBcDFxWW80ZVNFUGp4NENQNUVrNXV4QkJUV1pwcTZQUG03aDRvRUZ6cWE0NnN5Mkg4Nmlzajg1dmtLTnVodFRTTWhQRGoxb3lpaHhmcVB0R1I2UjRMS3ljai1XYw?oc=5",
+   "s": "時事ドットコム",
+   "d": [
+    "エネルギー・環境"
+   ],
+   "p": [],
+   "date": "2026-10-27"
+  },
+  {
+   "t": "浜岡原発「運転差し止めの訴え」却下 静岡地裁「再稼働見込みなく具体的危険性ない」",
+   "u": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE1zMTJrcVgzamozZF90U2ktWHdJNGY5QURNX1k3dTFSRmZ4N2RmbzZQaV9PZ29ZVkM5ck5NRXlENGFiUy1Jb0J5WXlqNWxsUjQ?oc=5",
+   "s": "khb東日本放送",
+   "d": [
+    "エネルギー・環境"
+   ],
+   "p": [],
+   "date": "2026-10-27"
+  },
+  {
+   "t": "政府が掲げる「防衛と経済の好循環」 有事念頭、実現性に疑問の声も",
+   "u": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE5TcVY0TnMwZXh5LXgwVmNFUDY4MnRGRWtQU2pJVVV2S1Q2SkdmMUo5dUZldEd0ZllMZmRVbllzMUJrcXByOUh5emg2RVVLWFJQS2ZUQXlYeFMzRU5oZ2tfX1FaY1E2MWM?oc=5",
+   "s": "朝日新聞",
+   "d": [
+    "外交・安保"
+   ],
+   "p": [
+    "jimin"
+   ],
+   "date": "2026-10-27"
+  },
+  {
+   "t": "原発再稼働後の柏崎刈羽地域、医療産業誘致で地域振興を ＲＩ製造「可能」大学教授が提言",
+   "u": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE43X1p6Sk44NG91QXB1NWg5Qkw5MHhEbnFOaDRqVmt5Nlo5SG92cFB0bDBsX1dFQ1hjMGU3Ty1IZXVjaUZEcWp5UEt1V3MxQXhXMkJUd200ZGQyeGtGRlE?oc=5",
+   "s": "新潟日報",
+   "d": [
+    "社会保障",
+    "エネルギー・環境",
+    "経済・産業"
+   ],
+   "p": [],
+   "date": "2026-10-27"
+  },
+  {
+   "t": "原発再稼働後の柏崎刈羽地域、医療産業誘致で地域振興を ＲＩ製造「可能」大学教授が提言",
+   "u": "https://news.google.com/rss/articles/CBMiS0FVX3lxTE55LTNxVDFtWTV6eGxQOGFoZWhfZUdfc3NMUzNLdVFlZDlJdmF0cUVXOGdfbWV3TmpGOXNZZVU0VkVTbUc4TEhpb1ZHTQ?oc=5",
+   "s": "47NEWS",
+   "d": [
+    "社会保障",
+    "エネルギー・環境",
+    "経済・産業"
+   ],
+   "p": [],
+   "date": "2026-10-27"
+  },
+  {
+   "t": "再稼働原発から50キロの栄村､内部被ばく防ぐ薬の備蓄始める “想像より近い”と｢自分たちで対策｣",
+   "u": "https://news.google.com/rss/articles/CBMicEFVX3lxTFB1UjZSU2JYR01SLVhEZkZDMzlFbmdQeHR2blNDbV91d2FwandxcjVxQi00aWtRc0d1a1d1NjRIWk83bVBjcjFMci0zYVMyNGU3Q0lsaWJ2Q1l2Vllkbk1ZOUs5Y2M2Y0pSeWwtbG04WTE?oc=5",
+   "s": "信濃毎日新聞デジタル",
+   "d": [
+    "エネルギー・環境"
+   ],
+   "p": [],
+   "date": "2026-10-27"
+  },
+  {
+   "t": "党サポマイページおよびお手続きフォームご利用にあたっての推奨環境に関するお知らせ",
+   "u": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE9pQkhsMFNub3BhM2dkZVZiVVhpTHVyczRrUTY0Xzlqa0FLTEFmY0tCY3FnSmRzcFIzRWZNcFdOa3FHYVdQU1J1N0dVZ1oyVzFwNkFjUkJqUnozc2s?oc=5",
+   "s": "新・国民民主党",
+   "d": [
+    "エネルギー・環境"
+   ],
+   "p": [
+    "kokumin"
+   ],
+   "date": "2026-10-27"
+  },
+  {
    "t": "「鳴り物入り」のはずが… 防衛費の使い道は適切か、検証すると [高市政権の安保見直し][安全保障関連3文書]",
    "u": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTFA4U0htRWs1UG1zZlNJT20yNklKOGxUR1RfdjV2YnRRVVBYMnUwQjVGNFlmSFBwa0p2Zk80TVZ5eml0UDh2RU1SS2YwYlRrbWlSSXNpSUtEeWwwSV96UGVNRzJ5MVFWZk0?oc=5",
    "s": "朝日新聞",
    "d": [
     "外交・安保"
+   ],
+   "p": [],
+   "date": "2026-10-27"
+  },
+  {
+   "t": "「再稼働の見込みなく」浜岡原発の運転差し止め訴訟 原告の訴えを「却下」 提訴から15年",
+   "u": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE5jdlA1Rnh5d2FZdHptWHJDVV9jMndSY2kwTXNQMjkxWEJlZGZNdm9IeGNYYUE4UHV3VURxNHU0alB6cVVwbVpTVGVZUC1rNEZ4UUUzUlVCYw?oc=5",
+   "s": "TBS NEWS DIG",
+   "d": [
+    "エネルギー・環境"
+   ],
+   "p": [],
+   "date": "2026-10-27"
+  },
+  {
+   "t": "BNSは賃金制度と年金の改革を要求／労働組合員らは労働相フロリン・マノレと優先課題について協議",
+   "u": "https://news.google.com/rss/articles/CBMipwFBVV95cUxOMnV5TlJscU9zUFZoYU5hWTdOQ01RMHQwb2hwYmt6Ylc4czdUcnZ3LVZwQnN6QnJHV0syc3NZMFV4cElhV21rM2Y3alRhVDJ4MjdZQVNOOGR1ZWJGUDdoTUNEcjFFZVVqLXZQMlM0Y2RCV0xaNEZ2ZGc5Z0FIMDRoZGVtblRMaFNXQnFCZUozUGZ6S1RhSmFDcHg1TVNkU2xXRTBWdC1tMA?oc=5",
+   "s": "Informat.ro",
+   "d": [
+    "社会保障",
+    "経済・産業"
    ],
    "p": [],
    "date": "2026-10-27"
@@ -4747,6 +4951,16 @@
    "t": "片山財務大臣 生出演で消費税減税の効果で“食料品の小売価格は下がる”認識示す 「消費税が8から1に下がるのに値札を変えないということはライバル店との関係でないという話も聞いている」",
    "u": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE5nWnJLNVlJTHIzUHBNZFo1UW5jUzJrYlRNaGRLYVVIOVlKVWlsZmNrLWNoMEM4WU1FU1hiUHYwT0tMYmZwc05hcFA1WVlwa1BTLWlPN2l2TERxaWtwcnc?oc=5",
    "s": "ktv.jp",
+   "d": [
+    "財政"
+   ],
+   "p": [],
+   "date": "2026-09-16"
+  },
+  {
+   "t": "消費税減税後の新給付、財源1.8兆円なら3700万人に最大5万円 専門家が4試算",
+   "u": "https://news.google.com/rss/articles/CBMibEFVX3lxTE1YM3pQdGNoOUlRTFp5SG16UTNNbFZXNEhIWXduSHhTek9wRUlTUXFFS3Z1dndTQzJTeFE4S2luTkxLU0ZyN1RGcTh1ejNEUmF1Q0ZHZFU0dFBrT3YyVEZrMzRRZVVHdkEtSHljdA?oc=5",
+   "s": "日本経済新聞",
    "d": [
     "財政"
    ],
@@ -21042,6 +21256,17 @@
    "date": "2026-06-12"
   },
   {
+   "t": "令和8年版 地方財政白書｜第3部 5 社会保障の充実及びいわゆる教育無償化への対応等",
+   "u": "https://news.google.com/rss/articles/CBMijgFBVV95cUxNNmk2cjJ1YlRYRkNBLURkUFRrSlJWblNHOXN6Mlc2VFdHYURHVUw1amtlQXREdkZ2WXFlblYxd21oc0ZCNERQVVZ6SzVMcW9LRDVWcHJETFRBMWo1c1l4ZExxeDM5MXZHZW1HNzNtS09EOEtNbVNuU3VMbDIyMVh4WGdMM3htM1N2WGIwR3VR?oc=5",
+   "s": "総務省",
+   "d": [
+    "財政",
+    "社会保障"
+   ],
+   "p": [],
+   "date": "2026-06-12"
+  },
+  {
    "t": "まえばしのGX",
    "u": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxORkx5ZG4wUkRyYVVIMDh4TENpVXFURnFMT0QxcWVlUXY3T1BjRl9UTkJFNzBhM0NCMVdiSDBhOEpQeGtOMUltaEd4WnViOHVtZy1FZjNhUVJyR2dYbGFfaVlRd24yVXlrUjJGS1pmNy0zTEI2SkxMYXB2OW1BU2xIUm9OSjNrbjBUWVVv?oc=5",
    "s": "city.maebashi.gunma.jp",
@@ -32059,6 +32284,16 @@
    ],
    "p": [],
    "date": "2026-01-22"
+  },
+  {
+   "t": "「50年CO2ゼロ」の非現実性、高市政権の覚悟 「脱炭素」の終わりの始まり",
+   "u": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE9LT3JOZDNlaVZLeVhYN2hLSXJVLS1GTGN3SDlSdk9BVG1FTF9qTU9BR0o5T1BCNzNzT2xTOGt1WHBUdlljRVRmTmVtVWpISnh0ak1HWnBNWHk?oc=5",
+   "s": "キヤノングローバル戦略研究所",
+   "d": [
+    "エネルギー・環境"
+   ],
+   "p": [],
+   "date": "2026-01-16"
   },
   {
    "t": "新たな財政目標指標の提案とその意味合い",
