@@ -1,6 +1,6 @@
 {
- "updated": "2026-10-31 00:35",
- "updated_utc": "2026-10-31T00:35:07Z",
+ "updated": "2026-10-31 23:58",
+ "updated_utc": "2026-10-31T23:58:54Z",
  "domains": [
   "財政",
   "外交・安保",
@@ -20,6 +20,50 @@
   "sansei": "参政"
  },
  "items": [
+  {
+   "t": "緊急事態条項、災害対応に必要か 迅速な対応と権力抑制、両立は 創設に賛否・憲法公布80年（時事通信）",
+   "u": "https://news.google.com/rss/articles/CBMif0FVX3lxTFBmZ3NNQS1SUGpObTZYS040SjREa01yLTZPMS16UFJjd2d6S1prZzhIbE9sRlNKSHRHdm5KQWJ2OFpwTXR0aUlSdVVmNzZvN1lEVDhQOFhCNzJXX3JwdXhFVEx6TGVXM2x6ZHVkei1nUEw2Z2JwbmVrX3ZmSFV4aUE?oc=5",
+   "s": "Yahoo!ニュース",
+   "d": [
+    "憲法"
+   ],
+   "p": [],
+   "date": "2026-10-31"
+  },
+  {
+   "t": "消費税減税、コカ-コーラボトラーズジャパン「引き下げ分に関しては消費者に適切に還元することを基本とする」（食品新聞）",
+   "u": "https://news.google.com/rss/articles/CBMif0FVX3lxTE5TTTNVLW9xc1lTdmRDOEFONUlJYkRkd2drNjVueGhYMUphX1BlTWRrMTc3dGRUN3FPc3lqaFlvUnFMNlNRdS1uUHdsNTFnUE00UnNEVFdGU1RTdEs4WUZCX2JyUmlvVFFpRGtHaW45OGJVa2NmQ1RVaDJkWUxaVmc?oc=5",
+   "s": "Yahoo!ニュース",
+   "d": [
+    "財政"
+   ],
+   "p": [],
+   "date": "2026-10-31"
+  },
+  {
+   "t": "憲法・平和守る１票に",
+   "u": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE5Hc2pFT2s4Ti00Tmw1ekxHZDB6T1VwMzZsNGRwMW5HaFpjSmZ3YUh1NEc0WG02YUdCdk1RRFROMy1ZTHRTdFMxU0lIc0dIYS01UjRsdw?oc=5",
+   "s": "JCP TOKYO",
+   "d": [
+    "憲法"
+   ],
+   "p": [
+    "kyosan"
+   ],
+   "date": "2026-10-31"
+  },
+  {
+   "t": "リフレ政策を巡る主な発言 - 高市政権「脱リフレ」強調も市場は懐疑的 予算編成、日銀対応が焦点 - 写真・画像(2/2)",
+   "u": "https://news.google.com/rss/articles/CBMiV0FVX3lxTFBYU2dUcUxpc2FfYU9rUHFoMzBiTTJMWUV3LVlsS2FXWm1xdnFpaGFTOUNXMEpNUzRERHgzTWRCMGYxbVFJNHRNZXB0RF9laEZjRnF1bHJQQQ?oc=5",
+   "s": "西日本新聞me",
+   "d": [
+    "財政"
+   ],
+   "p": [
+    "jimin"
+   ],
+   "date": "2026-10-31"
+  },
   {
    "t": "浜岡原発再稼働巡る不正、中部電力に対し経産省が業務改善命令へ…赤沢経産相「遺憾の極みだ」",
    "u": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE5ZWWJJZHM4dFFieGpBMHEzdVo0dVA0R2FQRHU4YzYzZ2IzSl9Gc210dHhaQ29OWnE2X2pWdjRzUGxGQWpRclZKM1RPX1lwLWNmbDJEMmhTMmNXaWZFQzVuQzVjVU8?oc=5",
@@ -93,9 +137,29 @@
    "date": "2026-10-30"
   },
   {
+   "t": "参政、消費税減税法案の参議院を政府に提出 消費税一律5％引き下げとインボイス廃止",
+   "u": "https://news.google.com/rss/articles/CBMidEFVX3lxTE45THU1WGgzWHFPQnVPSTFlWVVhMlpjTzlWRWxnblVSdnA3b3VOV3ZOVUdVS3RJaFhrZ0lQdzlXVGR0b2xPRkN1dmtLTGwxMnltRWs4NnFvYW1maEVEQnVMQ0pRNlNGak9VRmNaN0c2RXpwLUha?oc=5",
+   "s": "TBS NEWS DIG",
+   "d": [
+    "財政"
+   ],
+   "p": [],
+   "date": "2026-10-30"
+  },
+  {
    "t": "北海道電力「泊原発再稼働で電気料金11%値下げ」は困難か 送電線利用料値上げ等で「率の維持難しい」",
    "u": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE9rS0VySmpseE85bzB3bS1TZkU5RXVXdGdMbUlUSUFVVS1GNUdLMDQ5dUpZeWpNeDdRa0pUMDI3ZllYQndmdGxMU3FSZXdYcFZCdlhKeHZFcTZQUQ?oc=5",
    "s": "HTB 北海道テレビ",
+   "d": [
+    "エネルギー・環境"
+   ],
+   "p": [],
+   "date": "2026-10-30"
+  },
+  {
+   "t": "再稼働目指す北海道電力・泊原子力発電所で原子力規制委員会が現地調査",
+   "u": "https://news.google.com/rss/articles/CBMif0FVX3lxTE96VVlvSHNjMF94Q2kwT2RfNnphV3JuUmV4OEdmcEVPU2hTek0waUZ3ejB5NW5qOFhvbnhHRHZ5VVVXVU0wOVh1MlM3U19uYTR5UklJdnVUdm9Yc2pCN3N1aFBxSTBSLXBEYmFOWHYyVzlLSnZER1lzWFNoRUJnWkk?oc=5",
+   "s": "Yahoo!ニュース",
    "d": [
     "エネルギー・環境"
    ],
@@ -123,6 +187,16 @@
    "date": "2026-10-30"
   },
   {
+   "t": "アスエネ、気候変動・GX分野で初の政策共創カンファレンスをPoliPoliと共催。木原誠二元官房副長官、当社代表の西和",
+   "u": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE1yVmJaMVRWQnNVNzcxc0psN28tOFVPVWdHampZTnZkd1J0S1dCeVViMndmZmhKXzlMdEcwWlJvUnMtSVdDd19GV1RId1pfd0R5dGxocA?oc=5",
+   "s": "ニコニコニュース",
+   "d": [
+    "エネルギー・環境"
+   ],
+   "p": [],
+   "date": "2026-10-30"
+  },
+  {
    "t": "どうなる？ 消費税減税と「支援金」",
    "u": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE1VQUdXUVlxWVRvdnhxRWItY2NqVk9iRnpKYXBoeVoyOEZaV3lLZE9EMHZpUEJBUXhmcjV5RmRmWXpFY1FSOHVrV2tpRmxLNVBHWFR5LWU2bnVDQjU5U25R?oc=5",
    "s": "NHKニュース",
@@ -142,6 +216,16 @@
    "p": [
     "kokumin"
    ],
+   "date": "2026-10-30"
+  },
+  {
+   "t": "「毎年“緊急避難”が続いている」食料品消費税1％へ引き下げ＆給付案に専門家が疑問符…月7万円・財源100兆円の“AIベーシックインカム”は2030年の“AI失業”を救えるか（ABEMA TIMES）",
+   "u": "https://news.google.com/rss/articles/CBMif0FVX3lxTE5QZ29GRUZNRVZJb3lsN0hjVFFBcTlleHU3NEZHSDRWNzF4cEdoZFBZdURQN0tiZG4wankwNWs2cnhaRFNIY3lzSXVaSDd6WGlMc2FHT19ZSERjWFhPRGR6RjZCdlRWaVpVeUtVaGpvMk1hSVhKQ2sxQkdQZXpGekU?oc=5",
+   "s": "Yahoo!ニュース",
+   "d": [
+    "財政"
+   ],
+   "p": [],
    "date": "2026-10-30"
   },
   {
@@ -253,6 +337,16 @@
   {
    "t": "【ヤフコメで話題】「消費税減税と2年後の増税再議論」「給付付き税額控除の是非」 - 消費税率変更を巡る現場と政策の温度差",
    "u": "https://news.google.com/rss/articles/CBMif0FVX3lxTE1tb1JtTFNMb1g3LTByRUtqN25EWHZGNURTX2JLQmNNNlVxWTR0a1kzREdUb3BUclI4Z1ppeGhweDZwbjVCTHJPYnVOQndfclJObDUzOUo3Rm9sZEd4NG1IdkxXQ0plUlJUbkFjdU1aN19HWXZlN0pvRl9aQ3BudTA?oc=5",
+   "s": "Yahoo!ニュース",
+   "d": [
+    "財政"
+   ],
+   "p": [],
+   "date": "2026-10-29"
+  },
+  {
+   "t": "【Go To Eat 再び?】消費税減税に伴う“外食支援”の行方 コロナ禍には「錬金術」と批判も…今回の制度設計はどうなる?【news23】（TBS NEWS DIG Powered by JNN）",
+   "u": "https://news.google.com/rss/articles/CBMif0FVX3lxTE9rbi10OFZMS24yMlAxeHpjUUFSbUh0M2dSVkhldEk1Vm13dU1NWllOMXFuRlZQM3Zyb21nREFUa05GZTV0Y29CRGpsS1lBZUh4SElsbkN2a0NaYlc1RlhRSEhRdXd0UlF2MTByc3NmaGVNYkVBM0ZUOXhyWURObmc?oc=5",
    "s": "Yahoo!ニュース",
    "d": [
     "財政"
@@ -3366,6 +3460,16 @@
    "t": "憲法改正、首相が掲げた「来年党大会めど」に向け 与党が協議再開（朝日新聞）",
    "u": "https://news.google.com/rss/articles/CBMif0FVX3lxTFBuSkpJaGxQZlVvT2dWVFlnNWd0VG5JSWJZeGVkbEdfSmlkeGFlMjNLS2RJSFB0NV9STndiOVlHSjRWZEV3a3U1bmlHSjU0WU4yOXpBVExSYURwR3ZpY1pkMWl0R2h3RGlId0FYWHZjMFFBbzg2QlBaMzdmQXlTT1E?oc=5",
    "s": "Yahoo!ニュース",
+   "d": [
+    "憲法"
+   ],
+   "p": [],
+   "date": "2026-10-06"
+  },
+  {
+   "t": "憲法改正、首相が掲げた「来年党大会めど」に向け 与党が協議再開 [高市早苗首相 自民党総裁]",
+   "u": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE0wYlEyNHE2RkdTejdRNFZSQmZ4TWhTVk54VlJnOXZocWVxeHh0eTV3RWNrWWdwajNldmlxZnNYaUR4TVVkR1lmeWFOMnNzQlNjWF95SkN3RmRQb0lmVkNyaHhTUmVLRjA?oc=5",
+   "s": "朝日新聞",
    "d": [
     "憲法"
    ],
